@@ -1,0 +1,24 @@
+# Landslide
+
+An extensive Donation Tracker with PayPal integration.
+
+**As this plugin is based on a previously written plugin, it's going to require a massive clean up before it gets committed here. I'm creating this repo ahead of time so I don't have to do it later!**
+
+
+# Prerequisites
+
+You will need to have a verified PayPal account for this plugin to function at all.
+
+
+# Translations
+
+If you would like to translate this plugin, post the translations on [paste2.org](http://paste2.org/) and [PM](http://e107.org/e107_plugins/pm/pm.php?send.37) me the URL generated.
+
+
+# Credits
+
+This plugin is based of version 2.6 of the Roofdog Donation Tracker by DelTree (originally by roofdog).
+
+That plugin was based on my first Donation Tracker coupled with features from the Donate Menu by Lolo Irie, Cameron, Barry Keal (Father Barry), and Richard Perry (whoisrich).
+
+Please **do not** contact any of the previously mentioned authors for support with this plugin as they cannot assist you.
