@@ -1,4 +1,4 @@
-# Landslide
+# Ante Up!
 
 An extensive Donation Tracker with PayPal integration.
 
