@@ -32,18 +32,18 @@ $text .= "<form action='".e_SELF."' method='post'>
 ".$script."
 
 <div align='center'>
-Start Date: <td style='text-align:center;'><input type='text' class='tbox' name='sd' id='sd' value='".$sd."' /> <a href='#' id='f-calendar-trigger-1'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'sd','button':'f-calendar-trigger-1'});</script>
- - End Date: <input type='text' class='tbox' name='ed' id='ed' value='".$ed."' /> <a href='#' id='f-calendar-trigger-2'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'ed','button':'f-calendar-trigger-2'});</script>
+".ANTELAN_DONATIONS_01." <td style='text-align:center;'><input type='text' class='tbox' name='sd' id='sd' value='".$sd."' /> <a href='#' id='f-calendar-trigger-1'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'sd','button':'f-calendar-trigger-1'});</script>
+ - ".ANTELAN_DONATIONS_02." <input type='text' class='tbox' name='ed' id='ed' value='".$ed."' /> <a href='#' id='f-calendar-trigger-2'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'ed','button':'f-calendar-trigger-2'});</script>
 <input class='button' type='submit' name='setdates' value='Filter' />
 
 </form>
 
 <table style='width:90%' class='fborder'>
 <tr>
-<td class='fcaption' style='text-align:center; width:25%;'>Donator</td>
-<td class='fcaption' style='text-align:center; width:25%;'>Message</td>
-<td class='fcaption' style='text-align:center; width:25%;'>Date Donated</td>
-<td class='fcaption' style='text-align:center; width:25%;'>Amount</td>
+<td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_03."</td>
+<td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_04."</td>
+<td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_05."</td>
+<td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_06."</td>
 </tr>
 ";
 
@@ -64,7 +64,7 @@ while($row = $sql->db_Fetch()){
 
 if($donations == 0){
 	$text .= "<tr>
-	<td colspan='4' class='forumheader3' style='text-align:center;'>No donations found during that time period.</td>
+	<td colspan='4' class='forumheader3' style='text-align:center;'>".ANTELAN_DONATIONS_07."</td>
 	</tr>";
 }else{
 	$text .= "
@@ -73,15 +73,15 @@ if($donations == 0){
 	</tr>
 	<tr>
 	<td colspan='3'>&nbsp;</td>
-	<td class='forumheader3' style='text-align:center;'>Total: <b>".format_currency($total, $pref['anteup_currency'])."</b></td>
+	<td class='forumheader3' style='text-align:center;'>".ANTELAN_DONATIONS_08." <b>".format_currency($total, $pref['anteup_currency'])."</b></td>
 	</tr>";
 }
 
 $text .= "</table>
 <br /><br />
-Want to be a part of this elite club of donators? Guess what! You can be! <a href='".ANTEUP."donate.php'>Click here</a> to send us a very welcome donation!
+".ANTELAN_DONATIONS_09."
 </div>";
 
-$ns -> tablerender("Donations", $text);
+$ns -> tablerender(ANTELAN_DONATIONS_CAPTION00, $text);
 require_once(FOOTERF);
 ?>

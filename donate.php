@@ -32,7 +32,7 @@ if(USER){
 	</script>";
 	$paypal_donate_jscript_onclick = "onclick='paypal_donate_set()'";
 	$paypal_donate_action          = ANTEUP;
-	$paypal_donate_email           = "JAVASCRIPT_REQUIRED";
+	$paypal_donate_email           = "JAVASCRIPT_REQUIRED"; // TODO LANGUAGE??
 }
 
 $text = $pref['anteup_description']."
@@ -43,7 +43,7 @@ $text = $pref['anteup_description']."
 if(USER){
 	$text .= "<input type='hidden' name='item_name' value='".USERNAME."' />";
 }else{
-	$text .= "<td width='30%'>Name:<br>
+	$text .= "<td width='30%'>".ANTELAN_DONATE_01."<br>
 	<input name='item_name' type='text' class='tbox' id='item_name' value='' maxlength='50' />";
 }
 
@@ -63,7 +63,7 @@ $text .= "<input type='hidden' name='cmd' value='_xclick' />\n
 ".(($pref['pal_amount']) ? "<input type='hidden' name='amount' value='".$pref['pal_amount']."' />\n" : "")."
 ".(($pref['pal_tax']) ? "<input type='hidden' name='tax' value='".$pref['pal_tax']."' />\n" : "")."
 </td>
-<td width='25%'>Currency:<br>
+<td width='25%'>".ANTELAN_DONATE_02."<br>
 <select class='tbox' name='currency_code'>";
 $sql->db_Select("anteup_currency", "*");
 while($row = $sql->db_Fetch()){
@@ -71,9 +71,9 @@ while($row = $sql->db_Fetch()){
 }
 $text .= "</select>
 </td>
-<td width='20%'>Amount:<br>
+<td width='20%'>".ANTELAN_DONATE_03."<br>
 <select class='tbox' name='amount'>
-<option value='0.00'>-- other --</option>
+<option value='0.00'>".ANTELAN_DONATE_04."</option>
 <option value='1.00'>1.00</option>
 <option value='5.00' selected>5.00</option>
 <option value='10.00'>10.00</option>
@@ -99,6 +99,6 @@ $text .= "</select>
 <br><br>
 ";
 
-$ns -> tablerender(LAN_TRACK_M_0, $tp->toHTML($text, true));
+$ns -> tablerender(ANTELAN_DONATE_CAPTION00, $tp->toHTML($text, true));
 require_once(FOOTERF);
 ?>

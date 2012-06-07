@@ -1,137 +1,28 @@
 <?php
 
-//------------------------------------------------------------------------------------------------------------+
-// admin_menu.php
-define("ANTELAN_MMENU_00", "Ante Up!");
-
-define("ANTELAN_MMENU_01", "Configuration");
-define("ANTELAN_MMENU_02", "Cash Manager");
-define("ANTELAN_MMENU_03", "Readme");
-
-
-//------------------------------------------------------------------------------------------------------------+
-// admin_config.php
-define("ANTELAN_CONFIG_CAPTION00", "Configure Ante Up!");
-
-define("ANTELAN_CONFIG_CAPTION01", "General Configuration"); 
-define("ANTELAN_CONFIG_CAPTION02", "Item Display Configuration"); 
-define("ANTELAN_CONFIG_CAPTION03", "Menu Configuration"); 
-define("ANTELAN_CONFIG_CAPTION04", "PayPal Configuration"); 
-
-define("ANTELAN_CONFIG_01", "Save Settings");
-define("ANTELAN_CONFIG_02", "Settings Saved");
-define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amount.");
-
-	// General Configuration
-	define("ANTELAN_CONFIG_G_01", "Currency to display on menu:");
-	define("ANTELAN_CONFIG_G_02", "Select the currency symbol to display in the menu.");	
-	define("ANTELAN_CONFIG_G_03", "Goal Donation Amount:");
-	define("ANTELAN_CONFIG_G_04", "The amount of money you are requesting.");
-	define("ANTELAN_CONFIG_G_05", "Due Date:");
-	define("ANTELAN_CONFIG_G_06", "The date by which you want to recieve your target donation.<br />If not defined, the due date is set on the last day of the current month.");	
-	define("ANTELAN_CONFIG_G_07", "Date Format:");
-	define("ANTELAN_CONFIG_G_08", "Format you would like dates to be displayed on the plugin.");
-	define("ANTELAN_CONFIG_G_09", "Donation Request Blurb");
-	define("ANTELAN_CONFIG_G_10", "Text to convince people to donate. Displayed on the donations page.");
-	
-	// Item Display Configuration
-	define("ANTELAN_CONFIG_I_01", "Show initial balance?");
-	define("ANTELAN_CONFIG_I_02", "Displays the balance prior to the current due date.");	
-	define("ANTELAN_CONFIG_I_03", "Show current donation amount?");
-	define("ANTELAN_CONFIG_I_04", "Displays the amount of donations received so far.");	
-	define("ANTELAN_CONFIG_I_05", "Show total balance?");	
-	define("ANTELAN_CONFIG_I_06", "Displays the entire donation balance.");	
-	define("ANTELAN_CONFIG_I_07", "Show goal amount?");
-	define("ANTELAN_CONFIG_I_08", "Displays the goal donation amount.");	
-	define("ANTELAN_CONFIG_I_09", "Show due date?");
-	define("ANTELAN_CONFIG_I_10", "Displays the due date.");
-	
-	// Menu Configuration
-	define("ANTELAN_CONFIG_M_01", "Menu Title:");
-	define("ANTELAN_CONFIG_M_02", "The title of your donation tracker menu.");	
-	define("ANTELAN_CONFIG_M_03", "Display Bar?");
-	define("ANTELAN_CONFIG_M_04", "Uncheck to disable progress bar.");	
-	define("ANTELAN_CONFIG_M_05", "Menu Text:");	
-	define("ANTELAN_CONFIG_M_06", "Text under the graphic's bar, should be formatted using XHTML such as &lt;br /&gt; for new lines.");	
-	define("ANTELAN_CONFIG_M_07", "Full Progress Bar Color:");
-	define("ANTELAN_CONFIG_M_08", "The color of the full progress bar. Enter the 6 digit hex code.");	
-	define("ANTELAN_CONFIG_M_09", "Empty Progress Bar Color: ");
-	define("ANTELAN_CONFIG_M_10", "The background color of the progress bar. Enter the 6 digit hex code.");
-	define("ANTELAN_CONFIG_M_11", "Progress Bar Border Color:");
-	define("ANTELAN_CONFIG_M_12", "The color of the border. Enter the 6 digit hex code.");	
-	define("ANTELAN_CONFIG_M_13", "Progress Bar Height: ");
-	define("ANTELAN_CONFIG_M_14", "The height of the progress bar. Enter your value in pixels.");
-
-	// Paypal Configuration
-	define("ANTELAN_CONFIG_P_C_01", "Paypal settings");
-	define("ANTELAN_CONFIG_P_C_02", "Optional settings");
-	define("ANTELAN_CONFIG_P_C_03", "Extra settings");	
-	define("ANTELAN_CONFIG_P_B_01", "Choose");
-	
-	define("ANTELAN_CONFIG_P_01", "Button image:");
-	define("ANTELAN_CONFIG_P_02", "Choose an image or upload your own into '/anteup/images/icons/'");	
-	define("ANTELAN_CONFIG_P_03", "PayPal Email or PayPal Business ID:");
-	define("ANTELAN_CONFIG_P_04", "This must be a valid PayPal account.");	
-	define("ANTELAN_CONFIG_P_05", "Donation Description:");	
-	define("ANTELAN_CONFIG_P_06", "If left blank, the donor will see a field which they can fill in themselves.");	
-	define("ANTELAN_CONFIG_P_07", "Request a Postal Address:");
-	define("ANTELAN_CONFIG_P_08", "Asks the donor to provide a postal address.");	
-	define("ANTELAN_CONFIG_P_09", "Request a Note:");
-	define("ANTELAN_CONFIG_P_10", "Asks the donor to provide a short note with the payment.");
-	define("ANTELAN_CONFIG_P_11", "Custom Note Caption:");
-	define("ANTELAN_CONFIG_P_12", "Text that is shown above the note.");	
-	define("ANTELAN_CONFIG_P_13", "Page Style Name:");
-	define("ANTELAN_CONFIG_P_14", "Log into PayPal to create styles. My Account, Profile, Custom Payment Pages.");
-	define("ANTELAN_CONFIG_P_15", "Locale:");
-	define("ANTELAN_CONFIG_P_16", "Defaults to US English, use a two digit 'ISO 3166-1 Code' to change.");
-	define("ANTELAN_CONFIG_P_17", "Item Number:");
-	define("ANTELAN_CONFIG_P_18", "If set is shown below the item name.");
-	define("ANTELAN_CONFIG_P_19", "Custom: ");
-	define("ANTELAN_CONFIG_P_20", "Not shown to donor, passed back for tracking payments.");
-	define("ANTELAN_CONFIG_P_21", "Invoice:");
-	define("ANTELAN_CONFIG_P_22", "Not shown to donor, passed back for tracking payments.");
-	define("ANTELAN_CONFIG_P_23", "Amount:");
-	define("ANTELAN_CONFIG_P_24", "Fixes payment value, blank allows donor to set the amount.");
-	define("ANTELAN_CONFIG_P_25", "Tax:");
-	define("ANTELAN_CONFIG_P_26", "Override any tax settings that are part of a donors profile.");
-	
-
-//------------------------------------------------------------------------------------------------------------+
-// admin_readme.php
-define("ANTELAN_README_CAPTION00", "Readme");
-
-
-//------------------------------------------------------------------------------------------------------------+
-// donate.php
-define("ANTELAN_DONATE_CAPTION00", "Donate");
-
-define("ANTELAN_DONATE_01", "Name:");
-define("ANTELAN_DONATE_02", "Currency:");
-define("ANTELAN_DONATE_03", "Amount:");
-define("ANTELAN_DONATE_04", "-- other --");
-
-
-//------------------------------------------------------------------------------------------------------------+
-// donations.php
-define("ANTELAN_DONATIONS_CAPTION00", "Donations");
-
-define("ANTELAN_DONATIONS_01", "Start Date:");
-define("ANTELAN_DONATIONS_02", "End Date:");
-define("ANTELAN_DONATIONS_03", "Donator");
-define("ANTELAN_DONATIONS_04", "Message");
-define("ANTELAN_DONATIONS_05", "Date donated");
-define("ANTELAN_DONATIONS_06", "Amount");
-define("ANTELAN_DONATIONS_07", "No donations found during that time period.");
-define("ANTELAN_DONATIONS_08", "Total:");
-define("ANTELAN_DONATIONS_09", "Want to be a part of this elite club of donators? Guess what! You can be! <a href='".ANTEUP."donate.php'>Click here</a> to send us a very welcome donation!");
-
-
-
-
-
-
-
-
+define("LAN_TRACK_00",     "Configure Ante Up!");
+define("LAN_TRACK_01",     "PayPal Settings");
+define("LAN_TRACK_02",     "Configuration");
+define("LAN_TRACK_03",     "Settings Saved");
+define("LAN_TRACK_04",     "Save Settings");
+define("RD_TRACK_PROTECTION_01",       "To prevent spam reaching the PayPal address");
+define("RD_TRACK_PROTECTION_02",       "Please answer");
+define("RD_TRACK_PROTECTION_03",       "Submit");
+define("RD_TRACK_PROTECTION_04",       "Please click below to make a donation.");
+define("LAN_TRACK_05",      "Yes");
+define("LAN_TRACK_06",      "No");
+define("LAN_TRACK_07",      "Main");
+define("LAN_TRACK_08",      "Optional");
+define("LAN_TRACK_09",      "Extra");
+define("LAN_TRACK_10",      "Ante Up! has been successfully installed.");
+define("LAN_TRACK_11",      "Plugin is now upgraded!");
+define("LAN_TRACK_12",      "Update Donation Status");
+define("LAN_TRACK_13",      "Readme");
+define("LAN_TRACK_14",      "Ante Up! has been successfully upgraded.");
+define("LAN_TRACK_15",      "Menu Settings");
+define("LAN_TRACK_16",      "PayPal Email");
+define("LAN_TRACK_17",      SITENAME." will greatly appreciate your contributions in many ways. If you would like to go above and beyond, please consider making a donation to help fund hosting costs!");
+//-----------------------------------------------------------------------------------------------------------+
 
 define("LAN_TRACK_CONFIG_01", "Menu Title:");
 define("LAN_TRACK_CONFIG_02", "Currency to display on Menu:");
@@ -296,13 +187,12 @@ define("LAN_TRACK_MENU_09",  "Spent/Allocated:");
 
 //------------------------------------------------------------------------------------------------------------+
 
-/* admin_menu.php
+// admin_menu.php
 define("ANTELAN_AMENU_01",  "Donation Status");
 define("ANTELAN_AMENU_02",  "Menu Settings");
 define("ANTELAN_AMENU_03",  "PayPal Settings");
 define("ANTELAN_AMENU_04",  "Cash Manager");
 define("ANTELAN_AMENU_05",  "Readme");
-*/
 
 // return.php
 define("ANTELAN_CANCEL_01", "Cancelled Payment");
