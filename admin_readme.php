@@ -8,6 +8,6 @@ $pageid = 'admin_menu_05';
 
 $text = "<pre>\n".file_get_contents(e_PLUGIN."anteup/README.mkd")."</pre>";
 
-$ns->tablerender(LAN_TRACK_13, $text);
+$ns->tablerender(ANTELAN_README_CAPTION00, $text);
 require_once(e_ADMIN."footer.php");
 ?>
