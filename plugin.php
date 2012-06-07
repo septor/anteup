@@ -1,7 +1,7 @@
 <?php
 include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
 
-// -- [ PLUGIN INFO ]
+// -- [ PLUGIN INFO ]  //TODO LANGUAGE?
 $eplug_name			= "Ante Up!";
 $eplug_version		= "1.0.0";
 $eplug_author		= "Patrick Weaver";
@@ -16,7 +16,7 @@ $eplug_menu_name	= "anteup";
 $eplug_conffile		= "admin_config.php";
 $eplug_icon			= $eplug_folder."/images/icon.png";
 $eplug_icon_small	= $eplug_icon;
-$eplug_caption		= LAN_TRACK_00;
+$eplug_caption		= ANTELAN_CONFIG_CAPTION00; 
 
 // -- [ DEFAULT PREFERENCES ]
 $eplug_prefs = array(
@@ -28,7 +28,7 @@ $eplug_prefs = array(
     "anteup_goal" => '0',
     "anteup_lastdue" => date("m/d/Y"),
 	"anteup_due" => date("m/d/Y", strtotime("last day of this month")),
-    "anteup_description"  => LAN_TRACK_17,    
+    "anteup_description"  => LAN_TRACK_17, //TODO LANGUAGE?  
     "anteup_dformat" => "short",
     "anteup_showibalance" => "0",
     "anteup_showtotal" => "0",
@@ -57,7 +57,7 @@ $anteup_cur = array(
 	array('SFr.', 'CHF', 'Swiss Franc', 'front'),
 	array('K&#196;', 'CZK', 'Czech Koruna', 'front'),
 	array('Dkr.', 'DKK', 'Danish Krone', 'front'),
-	array('&#8364;', 'EUR', 'Euro', 'back'),
+	array('&#8364;', 'EUR', 'Euro', 'front'),
 	array('&#163;', 'GBP', 'Pound Sterling', 'front'),
 	array('HK&#36;', 'HKD', 'Hong Kong Dollar', 'front'),
 	array('Ft', 'HUF', 'Hungarian Forint', 'front'),
@@ -111,16 +111,16 @@ foreach($anteup_cur as $cur){
 
 // -- [ MAIN SITE LINK ]
 $eplug_link			= TRUE;
-$eplug_link_name	= LAN_TRACK_M_0;
+$eplug_link_name	= ANTELAN_MMENU_00;
 $eplug_link_url		= e_PLUGIN."anteup/donations.php";
 
 // -- [ INSTALLED MESSAGE ]
-$eplug_done = $eplug_name." has been successfully installed.";
+$eplug_done = $eplug_name." has been successfully installed."; //TODO LANGUAGE?
 
 // -- [ UPGRADE INFORMATION ]
 $upgrade_add_prefs    = "";
 $upgrade_remove_prefs = "";
 $upgrade_alter_tables = "";
-$eplug_upgrade_done   = $eplug_name." has been successfully upgraded.";
+$eplug_upgrade_done   = $eplug_name." has been successfully upgraded."; //TODO LANGUAGE?
 
 ?>
