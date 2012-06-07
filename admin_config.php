@@ -1,235 +1,169 @@
 <?php
-/*
-+ ----------------------------------------------------------------------------+
-|     ROOFDOG DONATION TRACKER v2.7
-|     By roofdog78 & DelTree
-|
-|     Original Donation Tracker plugin by Septor
-|     Original Donate Menu plugin by Lolo Irie,Cameron,Barry Keal,Richard Perry
-|     Plugin support at http://www.roofdog78.com
-|
-|     For the e107 website system visit http://e107.org
-|
-|     Released under the terms and conditions of the
-|     GNU General Public License (http://gnu.org).
-|
-+----------------------------------------------------------------------------+
-*/
 require_once("../../class2.php");
-
-if (!getperms("P"))
-{
-	header("location:".e_BASE."index.php");
-	exit ;
-}
-
+if(!getperms("P")){ header("location:".e_BASE."index.php"); exit; }
 require_once(e_ADMIN."auth.php");
-require_once(e_HANDLER."form_handler.php");
 require_once(e_HANDLER.'userclass_class.php');
-
-//require_once(e_HANDLER."news_class.php");
-require_once(e_HANDLER."ren_help.php");
-require_once(e_HANDLER."file_class.php");
-// new language call method
-$lan_file = e_PLUGIN."rdonation_tracker/languages/".e_LANGUAGE.".php";
-require_once(file_exists($lan_file) ? $lan_file : e_PLUGIN."rdonation_tracker/languages/English.php");
-
+include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
+require_once(e_PLUGIN."anteup/_class.php");
 require_once(e_HANDLER."calendar/calendar_class.php");
 $cal = new DHTML_Calendar(true);
+$gen = new convert();
 
-global $cal;
-
-$script = "
-   <script type=\"text/javascript\">
-    function addtext_us(sc){
-      document.getElementById('dataform').image.value = sc;
-    }
-   </script>\n";
-
-$script .= $cal->load_files();
-
-global $sql, $rs, $ns, $pref, $tp, $pst, $e107;
-$rs = new form;
-
+$script = "<script type='text/javascript' src='".e_PLUGIN."anteup/js/jscolor.js'></script>
+<script type=\"text/javascript\">
+function addtext_us(sc){
+	document.getElementById('dataform').image.value = sc;
+}
+</script>
+<script type='text/javascript'>
+function addtext(sc){
+	document.forms.paypal_donate_form.pal_button_image.value=sc;
+}
+</script>".$cal->load_files();
+	
 $pageid = 'admin_menu_01';
 
-//$e_sub_cat = 'news';
-$e_wysiwyg = "data";
-// define("e_WYSIWYG", TRUE);
-
-if (isset($_POST['updatesettings'])) {
-
-	$pref['rdtrack_currency'] = $_POST['rdtrack_currency'];
-	$pref['rdtrack_goal']     = $_POST['rdtrack_goal'];
-	$pref['rdtrack_current']  = $_POST['rdtrack_current'];
-	$pref['rdtrack_due']      = $_POST['rdtrack_due'];
-	$pref['rdtrack_total']    = $_POST['rdtrack_total'];
-	$pref['rdtrack_spent']    = $_POST['rdtrack_spent'];
-	$pref['rdtrack_showcurrent'] = $_POST['rdtrack_showcurrent'];
-	$pref['rdtrack_showibalance']= $_POST['rdtrack_showibalance'];
-	$pref['rdtrack_showleft']    = $_POST['rdtrack_showleft'];
-	$pref['rdtrack_showgoal']    = $_POST['rdtrack_showgoal'];
-	$pref['rdtrack_showdue']     = $_POST['rdtrack_showdue'];
-	$pref['rdtrack_showtotal']   = $_POST['rdtrack_showtotal'];
-	$pref['rdtrack_showspent']   = $_POST['rdtrack_showspent'];
-	$pref['rdtrack_showlist']    = $_POST['rdtrack_showlist'];
-	$pref['rdtrack_ibalance']    = $_POST['rdtrack_ibalance'];
-	$pref['rdtrack_showbalance'] = $_POST['rdtrack_showbalance'];
-	$pref['rdtrack_dformat']     = $_POST['rdtrack_dformat'];
-        $pref['rdtrack_description'] = $tp -> toDB($_POST['data']);
-	save_prefs();
-
-	$message = "".LAN_TRACK_03."";
+if(isset($_POST['updatesettings'])){
+	if(!empty($_POST['anteup_due']) && !empty($_POST['anteup_goal'])){
+		$pref['anteup_currency'] = $_POST['anteup_currency'];
+		$pref['anteup_goal'] = $_POST['anteup_goal'];
+		$pref['anteup_due'] = $_POST['anteup_due'];
+		$pref['anteup_lastdue'] = $_POST['anteup_lastdue'];
+		$pref['anteup_showcurrent'] = $_POST['anteup_showcurrent'];
+		$pref['anteup_showibalance'] = $_POST['anteup_showibalance'];
+		$pref['anteup_showleft'] = $_POST['anteup_showleft'];
+		$pref['anteup_showgoal'] = $_POST['anteup_showgoal'];
+		$pref['anteup_showdue'] = $_POST['anteup_showdue'];
+		$pref['anteup_showtotal']  = $_POST['anteup_showtotal'];
+		$pref['anteup_dformat'] = $_POST['anteup_dformat'];
+		$pref['anteup_description'] = $tp -> toDB($_POST['data']);
+		$pref['anteup_mtitle']   = $_POST['anteup_mtitle'];
+		$pref['anteup_full']     = str_replace("#","",$_POST['anteup_full']);
+		$pref['anteup_empty']    = str_replace("#","",$_POST['anteup_empty']);
+		$pref['anteup_border']   = str_replace("#","",$_POST['anteup_border']);
+		$pref['anteup_height']   = $_POST['anteup_height'];
+		$pref['anteup_showbar']  = $_POST['anteup_showbar'];
+		$pref['anteup_textbar']  = $_POST['anteup_textbar'];
+		$pref['pal_button_image']   = $_POST['pal_button_image'];
+		$pref['pal_business']       = $_POST['pal_business'];
+		$pref['pal_item_name']      = $_POST['pal_item_name'];
+		$pref['pal_key_private']    = md5(rand(0,rand(100,100000)).time());
+		$pref['pal_no_shipping']    = $_POST['pal_no_shipping'];
+		$pref['pal_no_note']        = $_POST['pal_no_note'];
+		$pref['pal_cn']             = $_POST['pal_cn'];
+		$pref['pal_page_style']     = $_POST['pal_page_style'];
+		$pref['pal_lc']             = $_POST['pal_lc'];
+		$pref['pal_item_number']    = $_POST['pal_item_number'];
+		$pref['pal_custom']         = $_POST['pal_custom'];
+		$pref['pal_invoice']        = $_POST['pal_invoice'];
+		$pref['pal_amount']         = $_POST['pal_amount'];
+		$pref['pal_tax']            = $_POST['pal_tax'];
+		save_prefs();
+		$message = LAN_TRACK_03;
+	}else{
+		$message = "You are required to set a due date and a goal amount.";
+	}
 }
-if(!isset($pref['rdtrack_description'])) {
-   $pref['rdtrack_description'] = LAN_TRACK_17;
+
+if(!isset($pref['anteup_description'])) {
+   $pref['anteup_description'] = LAN_TRACK_17;
 }
-$_POST['data'] = $tp->toForm($pref['rdtrack_description']);
-//$pref['rdtrack_ibalance'] = 0;
-//$pref['rdtrack_showibalance']= 0;
-if (isset($message)) {
-  $ns->tablerender("", "<div style='text-align:center'><b>".$message."</b></div>");
-}
+$_POST['data'] = $tp->toForm($pref['anteup_description']);
+
+if(isset($message)){ $ns->tablerender("", "<div style='text-align:center'><b>".$message."</b></div>"); }
 
 $text = $script."
 <div style='text-align:center'>
-<form method='post' action='".e_SELF."' id='tracker_form'>
-<table style='width:95%' class='fborder'>
-<tr>
-<td class='forumheader' colspan='2'>".LAN_TRACK_12."</td>
-</tr>
-<tr>
-<td style='width:60%;vertical-align:top' class='forumheader3'><b>".LAN_TRACK_CONFIG_02."</b><br />
-			<br /><span class='smalltext'>".LAN_TRACK_CONFIG_12."</span></td>
-<td style='width:40%' class='forumheader3'>".$pref['rdtrack_currency'] //debug help = show $pref['rdtrack_currency']
-// change html entities by there real values. this file is UTF-8 encoded
-."
-<select class='tbox' name='rdtrack_currency'>
-<option ".(($pref['rdtrack_currency'] == '¥')  ? " selected ='selected'" : "")." value='¥'>¥ - Japanese Yen</option>
-<option ".(($pref['rdtrack_currency'] == 'C$') ? " selected ='selected'" : "")." value='C$'>C$ - Canadian Dollar</option>
-<option ".(($pref['rdtrack_currency'] == '€')  ? " selected='selected'" : "")." value='€'>€ - Euro</option>
-<option ".(($pref['rdtrack_currency'] == '$')  ? " selected  ='selected'" : "")." value='$'>$ - US Dollar</option>
-<option ".(($pref['rdtrack_currency'] == '£')  ? " selected ='selected'" : "")." value='£'>£ - Great Britain Pound</option>
-<option ".(($pref['rdtrack_currency'] == 'Kr')  ? " selected ='selected'" : "")." value='Kr'>Kr - Dansk Krone</option>
-<option ".(($pref['rdtrack_currency'] == 'AU$')  ? " selected ='selected'" : "")." value='AU$'>AU$ - Australian Dollar</option>
-<option ".(($pref['rdtrack_currency'] == 'Kc')  ? " selected ='selected'" : "")." value='Kc'>Kc - Czech Koruna</option>
-<option ".(($pref['rdtrack_currency'] == 'Ft')  ? " selected ='selected'" : "")." value='Ft'>Ft - Hungarian Forint</option>
-<option ".(($pref['rdtrack_currency'] == 'kr')  ? " selected ='selected'" : "")." value='kr'>kr - Norwegian Krone</option>
-<option ".(($pref['rdtrack_currency'] == 'kr')  ? " selected ='selected'" : "")." value='kr'>kr - Swedish Krona</option>
-<option ".(($pref['rdtrack_currency'] == 'Zl')  ? " selected ='selected'" : "")." value='Zl'>Zl - Polish Zloty</option>
-</select>
-</td>
-</tr>
-<tr>
-<td style='width:60%;vertical-align:top' class='forumheader3'><b>".LAN_TRACK_CONFIG_07."</b><br />
- <br /><span class='smalltext'>".LAN_TRACK_CONFIG_17."</span></td>
-<td style='width:40%' class='forumheader3'>
-".$pref['rdtrack_currency']." <input  style='width:100px' class='tbox' type='text' name='rdtrack_goal' value='".$pref['rdtrack_goal']."' />
-</td>
-<td style='width:10%' class='forumheader3'><input class='tbox' type='checkbox' name='rdtrack_showgoal'".($pref['rdtrack_showgoal'] ? " checked" : "")."></td>
-</tr>
+<form method='post' action='".e_SELF."' id='tracker_form'>";
 
-<tr>
-<td style='width:60%;vertical-align:top' class='forumheader3'><b>".LAN_TRACK_CONFIG_29."</b><br />
-			<br /><span class='smalltext'>".LAN_TRACK_CONFIG_30."</span></td>
-<td style='width:40%' class='forumheader3'>
-".$pref['rdtrack_currency']." <input  style='width:100px' class='tbox' type='text' name='rdtrack_ibalance' value='".$pref['rdtrack_ibalance']."' />
-</td>
-<td style='width:10%' class='forumheader3'><input class='tbox' type='checkbox' name='rdtrack_showibalance'".($pref['rdtrack_showibalance'] ? " checked" : "")."></td>
-</tr>
-
-<tr>
-<td style='width:60%;vertical-align:top' class='forumheader3'><b>".LAN_TRACK_CONFIG_31."</b><br />
-			<br /><span class='smalltext'>".LAN_TRACK_CONFIG_32."</span></td>
-<td style='width:40%' class='forumheader3'>
-"
-.r_userclass('rdtrack_showbalance',$pref['rdtrack_showbalance']).
-"
-</td>
-
-</tr>
-
-<tr>
-<td style='width:60%;vertical-align:top' class='forumheader3'><b>".LAN_TRACK_CONFIG_08."</b><br />
-			<br /><span class='smalltext'>".LAN_TRACK_CONFIG_18."</span></td>
-<td style='width:40%' class='forumheader3'>
-".$pref['rdtrack_currency']." <input  style='width:100px' class='tbox' type='text' name='rdtrack_current' value='".$pref['rdtrack_current']."' />
-</td>
-<td style='width:10%' class='forumheader3'><input class='tbox' type='checkbox' name='rdtrack_showcurrent'".($pref['rdtrack_showcurrent'] ? " checked" : "")."></td>
-</tr>
-<tr>
-<td style='width:60%;vertical-align:top' class='forumheader3'><b>".LAN_TRACK_CONFIG_09."</b><br />
-			<br /><span class='smalltext'>".LAN_TRACK_CONFIG_19."</span></td>
-<td style='width:40%' class='forumheader3'>".$rs -> form_text("date1", 15, $pref['rdtrack_due'], 15,"tbox","","","","date1")." <a href='#' id='f-calendar-trigger-1'><img style='border: 0px none ; vertical-align: middle;' src='../../e107_handlers/calendar/cal.gif' alt=''></a><script type='text/javascript'>Calendar.setup({'ifFormat':'%d/%m/%Y','daFormat':'%d/%m/%Y','inputField':'date1','button':'f-calendar-trigger-1'});</script>
- ".LAN_TRACK_CONFIG_34.": <select name='rdtrack_dformat' class='tbox'>
-<option value='0' ".($pref['rdtrack_dformat']==0?"selected='selected'":"")." >dd/MM/YYYY</option>
-<option value='1' ".($pref['rdtrack_dformat']==1?"selected='selected'":"")." >dd/MM</option>
-<option value='2' ".($pref['rdtrack_dformat']==2?"selected='selected'":"")." >MM/dd</option>
-<option value='3' ".($pref['rdtrack_dformat']==3?"selected='selected'":"")." >MM/dd/YYYY</option>
-<option value='4' ".($pref['rdtrack_dformat']==4?"selected='selected'":"")." >YYYY/MM/dd</option>
-
-<option value='5' ".($pref['rdtrack_dformat']==5?"selected='selected'":"")." >dd mmm YYYY</option>
-<option value='6' ".($pref['rdtrack_dformat']==6?"selected='selected'":"")." >dd MMM YYYY</option>
-<option value='7' ".($pref['rdtrack_dformat']==7?"selected='selected'":"")." >mmm dd YYYY</option>
-<option value='8' ".($pref['rdtrack_dformat']==8?"selected='selected'":"")." >MMM dd YYYY</option>
-
-<option value='9' ".($pref['rdtrack_dformat']==9?"selected='selected'":"")." >dth mmm YYYY</option>
-<option value='10' ".($pref['rdtrack_dformat']==10?"selected='selected'":"")." >dth MMM YYYY</option>
-<option value='11' ".($pref['rdtrack_dformat']==11?"selected='selected'":"")." >mmm dth YYYY</option>
-<option value='12' ".($pref['rdtrack_dformat']==12?"selected='selected'":"")." >MMM dth YYYY</option>
-
-<option value='13' ".($pref['rdtrack_dformat']==13?"selected='selected'":"")." >dd mmm </option>
-<option value='14' ".($pref['rdtrack_dformat']==14?"selected='selected'":"")." >dd MMM </option>
-<option value='15' ".($pref['rdtrack_dformat']==15?"selected='selected'":"")." >mmm dd </option>
-<option value='16' ".($pref['rdtrack_dformat']==16?"selected='selected'":"")." >MMM dd </option>
-
-<option value='17' ".($pref['rdtrack_dformat']==17?"selected='selected'":"")." >dth mmm </option>
-<option value='18' ".($pref['rdtrack_dformat']==18?"selected='selected'":"")." >dth MMM </option>
-<option value='19' ".($pref['rdtrack_dformat']==19?"selected='selected'":"")." >mmm dth </option>
-<option value='20' ".($pref['rdtrack_dformat']==20?"selected='selected'":"")." >MMM dth </option>
-
-<option value='21' ".($pref['rdtrack_dformat']==21?"selected='selected'":"")." >dd/MM/yy</option>
-<option value='22' ".($pref['rdtrack_dformat']==22?"selected='selected'":"")." >yy/MM/dd</option>
-<option value='23' ".($pref['rdtrack_dformat']==23?"selected='selected'":"")." >mm/dd/yy</option>
-
-</select>
-
-</td>
-<td style='width:10%' class='forumheader3'><input class='tbox' type='checkbox' name='rdtrack_showdue'".($pref['rdtrack_showdue'] ? " checked" : "")."></td>
-</tr>
-
-<tr>
-<td colspan=2 style='width:100%' class='forumheader'>".LAN_TRACK_CONFIG_37."</td>
-</tr>
-<tr>
-<td colspan=2 style='width:95%;margin-left:auto' class='forumheader3'>";
-
-$insertjs = (!e_WYSIWYG) ? "rows='10' onselect='storeCaret(this);' onclick='storeCaret(this);' onkeyup='storeCaret(this);'": "rows='20' ";
-//$_POST['data'] = $tp->toForm($_POST['data']);
-$text .= "<textarea class='tbox' id='data' name='data' cols='80' style='width:100%' $insertjs>".(strstr($tp->post_toForm($_POST['data']), "[img]http") ? $tp->post_toForm($_POST['data']) : str_replace("[img]../", "[img]", $tp->post_toForm($_POST['data'])))."</textarea>";
-$text .= display_help("helpb", 'news');
-
-//Extended news form textarea
-if(e_WYSIWYG){
-   $ff_expand = "tinyMCE.execCommand('mceResetDesignMode')";
+$currency_dropbox = "<select class='tbox' name='anteup_currency'>";
+$sql->db_Select("anteup_currency", "*");
+while($row = $sql->db_Fetch()){
+	$currency_dropbox .= "<option value='".$row['id']."'".($row['id'] == $pref['anteup_currency'] ? " selected" : "").">".$row['description']." (".$row['symbol'].")</option>";
 }
-// Fixes Firefox issue with hidden wysiwyg textarea.
-$text .= "
-</td>
-</tr>
+$currency_dropbox .= "</select>";
 
-<td colspan='2' style='text-align:center' class='forumheader' colspan='2'>
-<input class='button' type='submit' name='updatesettings' value='".LAN_TRACK_04."' />
-</td>
-</tr>
-<tr>
-<td class='forumheader' colspan='2'>Visit the <a href='http://www.roofdog78.com/'>support forum</a></td>
-</tr>
+$format_dropbox = "<select name='anteup_dformat' class='tbox'>";
+foreach(array('long', 'short', 'forum') as $format){
+	$format_dropbox .= "<option value='".$format."'".($format == $pref['anteup_dformat'] ? " selected" : "").">".$gen->convert_date(time(), $format)." (".$format.")</option>";
+}
+$format_dropbox .= "</select>";
+
+$locale_dropbox = "<select name='pal_lc' class='tbox'>";
+foreach(array("default", "AT", "AU", "BE", "C2", "CH", "CN", "DE", "ES", "FR", "GB", "GF", "GI", "GP", "IE", "IT", "JP", "MQ", "NL", "PL", "RE", "US") as $locale){
+	$locale_dropbox .= "<option value='".$locale."'".($locale == $pref['pal_lc'] ? " selected" : "").">".$locale."</option>";
+}
+$locale_dropbox .= "</select>";
+
+$donate_icon_div = "<div style='display:none'>";
+foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon){
+	$icon = str_replace(e_PLUGIN."anteup/images/icons/", "", $icon);
+	$donate_icon_div .= " <a href='javascript:addtext(\"$icon\")'><img src='".e_PLUGIN."anteup/images/icons/".$icon."' /></a>";
+}
+$donate_icon_div .= "</div>";
+
+$text .= "<input class='button' type='submit' name='updatesettings' value='".LAN_TRACK_04."' />
+<br />
+<div onclick='expandit(\"config\");' class='fcaption' style='cursor: pointer;'>General Configuration</div>
+<table style='width:85%; display:none;' class='fborder' id='config'>
+	".config_block($currency_dropbox, LAN_TRACK_CONFIG_02, LAN_TRACK_CONFIG_12)."
+	".config_block(format_currency("<input class='tbox' type='text' name='anteup_goal' value='".$pref['anteup_goal']."' />", $pref['anteup_currency'], false), "Goal Donation Amount:", "The amount of money you are requesting.")."
+	".config_block("<a href='#' id='f-calendar-trigger-1'>".CALENDAR_IMG."</a> <input class='tbox' type='text' id='anteup_due' name='anteup_due' value='".$pref['anteup_due']."' />\n<script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'anteup_due','button':'f-calendar-trigger-1'});</script>", LAN_TRACK_CONFIG_09, LAN_TRACK_CONFIG_19)."
+	".config_block($format_dropbox, "Date Format:", "Format you would like dates to be displayed on the plugin.")."
+	".config_block("<textarea class='tbox' style='width:200px; height:140px' name='anteup_textbar'>".(strstr($tp->post_toForm($_POST['data']), "[img]http") ? $tp->post_toForm($_POST['data']) : str_replace("[img]../", "[img]", $tp->post_toForm($_POST['data'])))."</textarea>", "Donation Request Blurb:")."
 </table>
+
+<div onclick='expandit(\"showhide\");' class='fcaption' style='cursor: pointer;'>Item Display Configuration</div>
+<table style='width:85%; display:none;' class='fborder' id='showhide'>
+	".config_block("<input class='tbox' type='checkbox' name='anteup_showibalance'".($pref['anteup_showibalance'] ? " checked" : "").">", "Show initial balance?", "This will show your balance prior to the current due date.")."
+	".config_block("<input class='tbox' type='checkbox' name='anteup_showcurrent'".($pref['anteup_showcurrent'] ? " checked" : "").">", LAN_TRACK_CONFIG_08, LAN_TRACK_CONFIG_18)."
+	".config_block("<input class='tbox' type='checkbox' name='anteup_showtotal'".($pref['anteup_showtotal'] ? " checked" : "").">", "Show total balance?", "Display your entire donation balance?")."
+	".config_block("<input class='tbox' type='checkbox' name='anteup_showgoal'".($pref['anteup_showgoal'] ? " checked" : "").">", "Show goal amount?")."
+	".config_block("<input class='tbox' type='checkbox' name='anteup_showdue'".($pref['anteup_showdue'] ? " checked" : "").">", "Show due date?", "Display the date in which you wish all donations to be in by.")."
+</table>
+
+<div onclick='expandit(\"menu\");' class='fcaption' style='cursor: pointer;'>Menu Configuration</div>
+<table style='width:85%; display:none;' class='fborder' id='menu'>
+	".config_block("<input class='tbox' type='text' name='anteup_mtitle' value='".$pref['anteup_mtitle']."'>", LAN_TRACK_CONFIG_01, LAN_TRACK_CONFIG_11)."
+	".config_block("<input class='tbox' type='checkbox' name='anteup_showbar'".($pref['anteup_showbar'] ? " checked" : "").">", LAN_TRACK_CONFIG_21, LAN_TRACK_CONFIG_22)."
+	".config_block("<textarea class='tbox' style='width:200px; height:140px' name='anteup_textbar'>".$pref['anteup_textbar']."</textarea>", LAN_TRACK_CONFIG_33, LAN_TRACK_CONFIG_20)."
+	".config_block("#<input class='tbox jscolor' type='text' name='anteup_full' value='".$pref['anteup_full']."' />", LAN_TRACK_CONFIG_03, LAN_TRACK_CONFIG_13)."
+	".config_block("#<input class='tbox jscolor' type='text' name='anteup_empty' value='".$pref['anteup_empty']."' />", LAN_TRACK_CONFIG_04, LAN_TRACK_CONFIG_14)."
+	".config_block("#<input class='tbox jscolor' type='text' name='anteup_border' value='".$pref['anteup_border']."' />", LAN_TRACK_CONFIG_05, LAN_TRACK_CONFIG_15)."
+	".config_block("<input class='tbox' type='text' name='anteup_height' value='".$pref['anteup_height']."' />", LAN_TRACK_CONFIG_06, LAN_TRACK_CONFIG_16)."
+</table>
+
+<div onclick='expandit(\"paypal\");' class='fcaption' style='cursor: pointer;'>PayPal Configutation</div>
+<table style='width:85%; display:none;' class='fborder' id='paypal'>
+<tr>
+<td class='forumheader' colspan='2'>".LAN_TRACK_01."</td>
+</tr>
+	".config_block("<input class='tbox' style='width:200px' type='text' name='pal_button_image' value='".$pref['pal_button_image']."' /> <input class='button' type='button' value='".LAN_TRACK_PAL_05."' onclick='expandit(this)' />".$donate_icon_div , LAN_TRACK_PAL_03, LAN_TRACK_PAL_04)."
+	".config_block("<input class='tbox' type='text' name='pal_business' value='".$pref['pal_business']."' />", LAN_TRACK_PAL_09, LAN_TRACK_PAL_10)."
+	".config_block("<input class='tbox' type='text' name='pal_item_name' value='".$pref['pal_item_name']."' maxlength='127' />", LAN_TRACK_PAL_11, LAN_TRACK_PAL_12)."
+<tr>
+<td class='forumheader' colspan='2'>".LAN_TRACK_08."</td>
+</tr>
+	".config_block("<input class='tbox' type='checkbox' name='pal_no_shipping'".($pref['pal_no_shipping'] ? " checked" : "").">", LAN_TRACK_PAL_17, LAN_TRACK_PAL_18)."
+	".config_block("<input class='tbox' type='checkbox' name='pal_no_note'".($pref['pal_no_note'] ? " checked" : "").">", LAN_TRACK_PAL_19, LAN_TRACK_PAL_20)."
+	".config_block("<input class='tbox' type='text' name='pal_cn' value='".$pref['pal_cn']."' maxlength='30' />", LAN_TRACK_PAL_21, LAN_TRACK_PAL_22)."
+	".config_block("<input class='tbox' type='text' name='pal_page_style' value='".$pref['pal_page_style']."' maxlength='127' />", LAN_TRACK_PAL_27, LAN_TRACK_PAL_28)."
+<tr>
+<td class='forumheader' colspan='2'>".LAN_TRACK_09."</td>
+</tr>
+	".config_block($locale_dropbox, LAN_TRACK_PAL_29, LAN_TRACK_PAL_30)."
+	".config_block("<input class='tbox' type='text' name='pal_item_number' value='".$pref['pal_item_number']."' maxlength='127' />", LAN_TRACK_PAL_31, LAN_TRACK_PAL_32)."
+	".config_block("<input class='tbox' type='text' name='pal_custom' value='".$pref['pal_custom']."' maxlength='127' />", LAN_TRACK_PAL_33, LAN_TRACK_PAL_34)."
+	".config_block("<input class='tbox' type='text' name='pal_invoice' value='".$pref['pal_invoice']."' maxlength='127' />", LAN_TRACK_PAL_35, LAN_TRACK_PAL_36)."
+	".config_block("<input class='tbox' type='text' name='pal_amount' value='".$pref['pal_amount']."' />", LAN_TRACK_PAL_37, LAN_TRACK_PAL_38)."
+	".config_block("<input class='tbox' type='text' name='pal_tax' value='".$pref['pal_tax']."' />", LAN_TRACK_PAL_39, LAN_TRACK_PAL_40)."
+</table>
+<input class='button' type='submit' name='updatesettings' value='".LAN_TRACK_04."' />
+<input type='hidden' value='".$pref['anteup_due']." name='anteup_lastdue' />
 </form>
 </div>
 ";
-// <input  style='width:200px' class='tbox' type='text' name='rdtrack_due' value='".$pref['rdtrack_due']."' />
-$ns->tablerender("".LAN_TRACK_00."", $text);
+
+$ns->tablerender(LAN_TRACK_00, $text);
 require_once(e_ADMIN."footer.php");
 ?>

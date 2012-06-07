@@ -1,24 +1,6 @@
 <?php
-/*
-+ ----------------------------------------------------------------------------+
-|     ROOFDOG DONATION TRACKER v2.6
-|     By roofdog78 & DelTree
-|    
-|     Original Donation Tracker plugin by Septor
-|     Original Donate Menu plugin by Lolo Irie,Cameron,Barry Keal,Richard Perry
-|     Plugin support at http://www.roofdog78.com
-|     
-|     For the e107 website system visit http://e107.org     
-|
-|     Released under the terms and conditions of the
-|     GNU General Public License (http://gnu.org).
-|
-+----------------------------------------------------------------------------+
-*/
 
-//-----------------------------------------------------------------------------------------------------------+
-
-define("LAN_TRACK_00",     "Configure Roofdog Donation Tracker");
+define("LAN_TRACK_00",     "Configure Ante Up!");
 define("LAN_TRACK_01",     "PayPal Settings");
 define("LAN_TRACK_02",     "Configuration");
 define("LAN_TRACK_03",     "Settings Saved");
@@ -26,48 +8,37 @@ define("LAN_TRACK_04",     "Save Settings");
 define("RD_TRACK_PROTECTION_01",       "To prevent spam reaching the PayPal address");
 define("RD_TRACK_PROTECTION_02",       "Please answer");
 define("RD_TRACK_PROTECTION_03",       "Submit");
-define("RD_TRACK_PROTECTION_04",       "Please click below to make the donation.");
+define("RD_TRACK_PROTECTION_04",       "Please click below to make a donation.");
 define("LAN_TRACK_05",      "Yes");
 define("LAN_TRACK_06",      "No");
 define("LAN_TRACK_07",      "Main");
 define("LAN_TRACK_08",      "Optional");
 define("LAN_TRACK_09",      "Extra");
-define("LAN_TRACK_10",      "Roofdog Donation Tracker successfully installed!");
+define("LAN_TRACK_10",      "Ante Up! has been successfully installed.");
 define("LAN_TRACK_11",      "Plugin is now upgraded!");
 define("LAN_TRACK_12",      "Update Donation Status");
-define("LAN_TRACK_13",      "ReadMe.txt");
-define("LAN_TRACK_14",      "Roofdog Donation Tracker successfully upgraded!");
+define("LAN_TRACK_13",      "Readme");
+define("LAN_TRACK_14",      "Ante Up! has been successfully upgraded.");
 define("LAN_TRACK_15",      "Menu Settings");
-define("LAN_TRACK_16",      "Paypal Email");
-define("LAN_TRACK_17",      "
-[center][color=#ff9900][size=18][b]We Need Your Help[/b][/size][/color][/center]
-
-[center]We are a non-profit organization completely supported by you, the members.
-Our servers are run and owned by our members.
-We encourage every member to contribute to our server fund in any way that they can.
-Since we do not have our servers or bandwidth donated we have to pay our bills every month to keep things going.
-For those of you who can, we ask that you make a monetary contribution in whatever denomination you would like.
-Every little bit counts.[/center]
-
-[center][color=#ff9900][size=14][b]MAKE A DONATION NOW![/b][/size][/color][/center]
-");
+define("LAN_TRACK_16",      "PayPal Email");
+define("LAN_TRACK_17",      SITENAME." will greatly appreciate your contributions in many ways. If you would like to go above and beyond, please consider making a donation to help fund hosting costs!");
 //-----------------------------------------------------------------------------------------------------------+
 
 define("LAN_TRACK_CONFIG_01", "Menu Title:");
 define("LAN_TRACK_CONFIG_02", "Currency to display on Menu:");
-define("LAN_TRACK_CONFIG_03", "Progress bar full colour:");
-define("LAN_TRACK_CONFIG_04", "Progress bar empty colour:");
-define("LAN_TRACK_CONFIG_05", "Progress bar border colour:");
-define("LAN_TRACK_CONFIG_06", "Progress bar height:");
-define("LAN_TRACK_CONFIG_07", "Goal donation amount:");
-define("LAN_TRACK_CONFIG_08", "Current donation amount:");
+define("LAN_TRACK_CONFIG_03", "Full Progress Bar Color:");
+define("LAN_TRACK_CONFIG_04", "Empty Progress Bar Color:");
+define("LAN_TRACK_CONFIG_05", "Progress Bar Border Color:");
+define("LAN_TRACK_CONFIG_06", "Progress Bar Height:");
+define("LAN_TRACK_CONFIG_07", "Donation Goal Amount:");
+define("LAN_TRACK_CONFIG_08", "Current Donation Amount:");
 define("LAN_TRACK_CONFIG_09", "Due date:");
 define("LAN_TRACK_CONFIG_10", "This months donators:");
 define("LAN_TRACK_CONFIG_11", "The title of your donation tracker menu.");
 define("LAN_TRACK_CONFIG_12", "Select the currency symbol to display in the menu.");
-define("LAN_TRACK_CONFIG_13", "The colour of the full progress bar. Enter the 6 digit hex code.");
-define("LAN_TRACK_CONFIG_14", "The background colour of the progress bar. Enter the 6 digit hex code.");
-define("LAN_TRACK_CONFIG_15", "The colour of the border. Enter the 6 digit hex code.");
+define("LAN_TRACK_CONFIG_13", "The color of the full progress bar. Enter the 6 digit hex code.");
+define("LAN_TRACK_CONFIG_14", "The background color of the progress bar. Enter the 6 digit hex code.");
+define("LAN_TRACK_CONFIG_15", "The color of the border. Enter the 6 digit hex code.");
 define("LAN_TRACK_CONFIG_16", "The height of the progress bar. Enter your value in pixels.");
 define("LAN_TRACK_CONFIG_17", "Enter your target donation amount. Uncheck to disable.");
 define("LAN_TRACK_CONFIG_18", "Amount of donations received so far. Uncheck to disable.");
@@ -95,7 +66,7 @@ define("LAN_TRACK_CONFIG_37", "Description:");
 define("LAN_TRACK_PAL_01",  "Button Text:");
 define("LAN_TRACK_PAL_02",  "Text above button image, should be formatted using XHTML such as &lt;br /&gt; for new lines.");
 define("LAN_TRACK_PAL_03",  "Button Image:");
-define("LAN_TRACK_PAL_04",  "Choose an image or upload your own into '/rdonation_tracker/images/'");
+define("LAN_TRACK_PAL_04",  "Choose an image or upload your own into '/anteup/images/icons/'");
 define("LAN_TRACK_PAL_05",  "Choose");
 define("LAN_TRACK_PAL_06",  "Button Popup:");
 define("LAN_TRACK_PAL_07",  "Appears when the mouse pointer hovers over the button.");
@@ -108,7 +79,6 @@ define("LAN_TRACK_PAL_13",  "Currency:");
 define("LAN_TRACK_PAL_14",  "Sets the currency that the amount is to be paid in.");
 define("LAN_TRACK_PAL_15",  "Spam Protection:");
 define("LAN_TRACK_PAL_16",  "Prevents spambots from harvesting the PayPal email address.");
-
 //-----------------------------------------------------------------------------------------------------------+
 
 define("LAN_TRACK_PAL_17",  "Request a Postal Address:");
@@ -117,14 +87,9 @@ define("LAN_TRACK_PAL_19",  "Request a Note:");
 define("LAN_TRACK_PAL_20",  "Asks the donor to provide a short note with the payment.");
 define("LAN_TRACK_PAL_21",  "Custom Note Caption:");
 define("LAN_TRACK_PAL_22",  "Text that is shown above the note.");
-define("LAN_TRACK_PAL_23",  "Successful Payment URL");
-define("LAN_TRACK_PAL_24",  "Link donors will be redirected here after completing their payment. To use default page copy this link:<br /> www.yoursite.com/e107_plugins/rdonation_tracker/thank_you.php");
-define("LAN_TRACK_PAL_25",  "Cancel Payment URL");
-define("LAN_TRACK_PAL_26",  "Link donors will be redirected here if they click Cancel. To use default page copy this link:<br /> www.yoursite.com/e107_plugins/rdonation_tracker/cancel_return.php");
 define("LAN_TRACK_PAL_27",  "Page Style Name:");
 define("LAN_TRACK_PAL_28",  "Log into PayPal to create styles. My Account, Profile, Custom Payment Pages.");
 define("LAN_TRACK_PAL_41",  "IPN - Instant Payment Notification:");
-define("LAN_TRACK_PAL_42",  "Validate the payments and save it on your site database. To use default routine copy this link:<br /> www.yoursite.com/e107_plugins/rdonation_tracker/ipn_validate.php");
 
 //-----------------------------------------------------------------------------------------------------------+
 
@@ -163,7 +128,7 @@ define("LAN_TRACK_F_17", "Include");
 define("LAN_TRACK_F_18", "Cancel");
 define("LAN_TRACK_F_19", "Balance");
 define("LAN_TRACK_F_20", "Period between");
-define("LAN_TRACK_F_21", "NEW RECORD");
+define("LAN_TRACK_F_21", "Add a new record.");
 define("LAN_TRACK_F_22", "HISTORIC");
 define("LAN_TRACK_F_23", "ID");
 define("LAN_TRACK_F_24", "DATE");
@@ -176,8 +141,8 @@ define("LAN_TRACK_F_30", "FEE");
 define("LAN_TRACK_F_31", "BALANCE");
 define("LAN_TRACK_F_32", " OPT ");
 define("LAN_TRACK_F_33", "INITIAL BALANCE");
-define("LAN_TRACK_F_34", "CRED");
-define("LAN_TRACK_F_35", "DEBT");
+define("LAN_TRACK_F_34", "Credit");
+define("LAN_TRACK_F_35", "Debit");
 define("LAN_TRACK_F_36", "Please confirm that you wish delete");
 define("LAN_TRACK_F_37", "Edit");
 define("LAN_TRACK_F_38", "Delete");
@@ -195,6 +160,7 @@ define("LAN_TRACK_F_49", "Processed");
 define("LAN_TRACK_F_50", "Voided");
 
 //-----------------------------------------------------------------------------------------------------------+
+define("LAN_TRACK_M_0", "Donations");
 define("LAN_TRACK_M_1", "NEW");
 define("LAN_TRACK_M_2", "EDIT");
 define("LAN_TRACK_M_3", "ACCESS DENIED!!!");
@@ -221,31 +187,20 @@ define("LAN_TRACK_MENU_09",  "Spent/Allocated:");
 
 //------------------------------------------------------------------------------------------------------------+
 
-define("LAN_TRACK_ADMENU_01",  "Donation status");
-define("LAN_TRACK_ADMENU_02",  "Menu settings");
-define("LAN_TRACK_ADMENU_03",  "PayPal settings");
-define("LAN_TRACK_ADMENU_04",  "Cash Manager");
-define("LAN_TRACK_ADMENU_05",  "Readme.txt");
+// admin_menu.php
+define("ANTELAN_AMENU_01",  "Donation Status");
+define("ANTELAN_AMENU_02",  "Menu Settings");
+define("ANTELAN_AMENU_03",  "PayPal Settings");
+define("ANTELAN_AMENU_04",  "Cash Manager");
+define("ANTELAN_AMENU_05",  "Readme");
 
-//------------------------------------------------------------------------------------------------------------+
+// return.php
+define("ANTELAN_CANCEL_01", "Cancelled Payment");
+define("ANTELAN_CANCEL_02", "You have cancelled your transaction. Please consider making a donation in the future or try again now.");
+define("ANTELAN_THANKS_01", "Thanks!");
+define("ANTELAN_THANKS_02", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");
 
-define("LAN_TRACK_THANKS_01", "<b>Thankyou</b>");
-define("LAN_TRACK_THANKS_02", "
-<br /><br /><br /><br /><br /><br /><font face='Verdana' size='2'><br /><br /><br />
-<b>Thankyou for your kind donation!</b>
-<br /><br /><br /><br /><br /><br /><br />
-Please check your email box for<br />
-confirmation from PayPal.<br />
-<br />
-Thanks again!
-<br><center>
-<a href='../../index.php'>Return to homepage</a>
-</font></center>");
 
-//-------------------------------------------------------------------------------------------------------------+
-
-define("LAN_TRACK_CANCELLED_01", "<b>Cancelled payment</b>");
-define("LAN_TRACK_CANCELLED_02", "You have cancelled your transaction. Please consider making a donation in the future or try again now.<br /><br /><a href='".e_BASE."index.php'>Return to homepage</a>");
 define("LAN_PAL_BUTTON_POPUP_DEFAULT", "Click here to donate with PayPal");
 
 //-------------------------------------------------------------------------------------------------------------+
