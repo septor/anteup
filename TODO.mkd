@@ -2,7 +2,7 @@
 
 The following is a list of things that need to be finished before an alpha release can be ready:
 
-* `admin_cash.php` needs to utilize the new currency and date code.
+* `admin_cash.php` needs to utilize the new currency and date code. In all honesty, it should be completely rewritten.
 * The menu item needs to pull the data from the database. This has been started, but not finished.
 * Langauge files need to be rewritten. There is a lot of hardcoded text strings in the plugin that has been added (by me) or changed.
 
