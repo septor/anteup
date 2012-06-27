@@ -236,27 +236,7 @@ define("LAN_TRACK_F_16", "Back");
 define("LAN_TRACK_F_17", "Include");
 define("LAN_TRACK_F_18", "Cancel");
 define("LAN_TRACK_F_19", "Balance");
-define("LAN_TRACK_F_20", "Period between");
-define("LAN_TRACK_F_21", "Add a new record.");
-define("LAN_TRACK_F_22", "HISTORIC");
-define("LAN_TRACK_F_23", "ID");
-define("LAN_TRACK_F_24", "DATE");
-define("LAN_TRACK_F_25", "DESCRIPTION/NOTES");
-define("LAN_TRACK_F_26", "ID/COMMENTS");
-define("LAN_TRACK_F_27", "STATS");
-define("LAN_TRACK_F_28", "TYPE");
-define("LAN_TRACK_F_29", "AMOUNT");
-define("LAN_TRACK_F_30", "FEE");
-define("LAN_TRACK_F_31", "BALANCE");
-define("LAN_TRACK_F_32", " OPT ");
-define("LAN_TRACK_F_33", "INITIAL BALANCE");
-define("LAN_TRACK_F_34", "Credit");
-define("LAN_TRACK_F_35", "Debit");
-define("LAN_TRACK_F_36", "Please confirm that you wish delete");
-define("LAN_TRACK_F_37", "Edit");
-define("LAN_TRACK_F_38", "Delete");
-define("LAN_TRACK_F_39", "### NO ENTRIES TO THIS PERIOD ###");
-define("LAN_TRACK_F_40", "TOTAL");
+
 define("LAN_TRACK_F_41", "Notes:");
 define("LAN_TRACK_F_42", "FINANCIAL BALANCE");
 define("LAN_TRACK_F_43", "Canceled");
@@ -278,8 +258,6 @@ define("LAN_TRACK_M1", "Successful created");
 define("LAN_TRACK_M2", "Creation failed");
 define("LAN_TRACK_M3", "Successful upddated");
 define("LAN_TRACK_M4", "Update failed");
-define("LAN_TRACK_M5", "Successful deleted");
-define("LAN_TRACK_M6", "Delete failed");
 define("LAN_TRACK_M7", "Invalid");
 define("LAN_TRACK_M8", "E-mail");
 //-----------------------------------------------------------------------------------------------------------+
@@ -294,16 +272,6 @@ define("LAN_TRACK_MENU_07",  "Admin configure");
 define("LAN_TRACK_MENU_08",  "Total:");
 define("LAN_TRACK_MENU_09",  "Spent/Allocated:");
 
-//------------------------------------------------------------------------------------------------------------+
-
-/* admin_menu.php
-define("ANTELAN_AMENU_01",  "Donation Status");
-define("ANTELAN_AMENU_02",  "Menu Settings");
-define("ANTELAN_AMENU_03",  "PayPal Settings");
-define("ANTELAN_AMENU_04",  "Cash Manager");
-define("ANTELAN_AMENU_05",  "Readme");
-*/
-
 // return.php
 define("ANTELAN_CANCEL_01", "Cancelled Payment");
 define("ANTELAN_CANCEL_02", "You have cancelled your transaction. Please consider making a donation in the future or try again now.");
@@ -312,11 +280,5 @@ define("ANTELAN_THANKS_02", "Thank you for your donation!<br /><br />Be on the l
 
 
 define("LAN_PAL_BUTTON_POPUP_DEFAULT", "Click here to donate with PayPal");
-
-//-------------------------------------------------------------------------------------------------------------+
-define("DAY_LAN_MONTHS",",Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec");
-define("DAY_LAN_MONTHL",",January,February,March,April,May,June,July,August,September,October,November,December");
-define("DAY_LAN_MONTHSUFFIX",",st,nd,rd,th,th,th,th,th,th,th,th,th,th,th,th,th,th,th,th,th,st,nd,rd,th,th,th,th,th,th,th,st");
-
 
 ?>
