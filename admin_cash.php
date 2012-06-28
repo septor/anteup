@@ -32,7 +32,9 @@ if(isset($_POST['main_delete'])){
 }
 
 if(isset($_POST['addentry'])){
-	if($sql2->db_Select("user","*", "user_name='".$tp->toDB($_POST['item_name'])."'")){
+	$item_name = ($_POST['item_name'] == "--Other--" ? ($_POST['other'] == "" ? "Not Supplied" : $_POST['other']) : $_POST['item_name']);
+	
+	if($sql2->db_Select("user","*", "user_name='".$tp->toDB($item_name)."'")){
 		$row = $sql2->db_Fetch();
 		$buyer_email = $row['user_email'];
 		$user_id = $row['user_id'];
@@ -43,7 +45,7 @@ if(isset($_POST['addentry'])){
 	$pd = explode("/", $_POST['payment_date']);
 	$pd_ts = mktime(0, 0, 0, $pd[0], $pd[1], $pd[2]);
 
-	$sql->db_Insert("anteup_ipn", "'', '".$tp->toDB($_POST['item_name'])."', '".$tp->toDB($_POST['payment_status'])."', '".$tp->toDB($_POST['mc_gross'])."', '".intval($_POST['mc_currency'])."', '".$tp->toDB($_POST['txn_id'])."', '".intval($user_id)."', '".$buyer_email."', '".$pd_ts."', '".$tp->toDB($_POST['mc_fee'])."', '', '".intval($_POST['type'])."', '".$tp->toDB($_POST['comment'])."', '".$tp->toDB($_POST['custom'])."'") or $message = mysql_error();
+	$sql->db_Insert("anteup_ipn", "'', '".$tp->toDB($item_name)."', '".$tp->toDB($_POST['payment_status'])."', '".$tp->toDB($_POST['mc_gross'])."', '".intval($_POST['mc_currency'])."', '".$tp->toDB($_POST['txn_id'])."', '".intval($user_id)."', '".$buyer_email."', '".$pd_ts."', '".$tp->toDB($_POST['mc_fee'])."', '', '".intval($_POST['type'])."', '".$tp->toDB($_POST['comment'])."', '".$tp->toDB($_POST['custom'])."'") or $message = mysql_error();
 	$message = ($message ? $message : "Entry successfully added.");
 }
 
@@ -156,12 +158,14 @@ $text .= $cal->load_files()."
 	<tr>
 		<td style='width:13%; text-align:right; vertical-align:middle;' class='forumheader3'>Donator:</td>
 		<td style='width:20%' class='forumheader3'>
-		<select class='tbox' name='item_name'>";
+		<select class='tbox' id='item_name' name='item_name'>";
 		$sql->db_Select("user", "*", "ORDER BY user_name ASC", "no-where");
 		while($row = $sql->db_Fetch()){
 			$text .= "<option value='".$row['user_name']."'>".$row['user_name']."</option>";
 		}
-		$text .= "</select>
+		$text .= "<option value='--Other--'>Other, not listed:</option>
+		</select>
+		<input class='tbox' type='text' style='display:none;' id='other' name='other' />
 		</td>
 		<td style='width:13%; text-align:right; vertical-align:middle;' class='forumheader3'>Comment:</td>
 		<td style='width:20%' class='forumheader3'><input class='tbox' type='text' name='comment' /></td>
