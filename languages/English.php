@@ -49,14 +49,18 @@ define("ANTELAN_CASHM_I_10", "Total");
 define("ANTELAN_CASHM_I_11", "Initial balance");
 define("ANTELAN_CASHM_I_12", "Save");
 
-define("ANTELAN_CASHM_I_13", "Edit");
-define("ANTELAN_CASHM_I_14", "Delete"); // TODO: not used yet, delete not functioning?
+define("ANTELAN_CASHM_I_13", "Edit"); // we can utilize LAN_EDIT (I swapped it out in admin_cash.php already) instead of defining it again
+define("ANTELAN_CASHM_I_14", "Delete"); // this is a core delete function -- e107_languages/English/admin/lan_admin.php -- line 208
 define("ANTELAN_CASHM_I_15", "Are you sure you want to delete this entry?");
 
 define("ANTELAN_CASHM_I_16", "There are no entries to display during the selected time periods.");
 
 define("ANTELAN_CASHM_I_17", "Entry successfully edited.");
 define("ANTELAN_CASHM_I_18", "Error deleting entry."); 
+define("ANTELAN_CASHM_I_19", "Entry successfully deleted."); 
+define("ANTELAN_CASHM_I_20", "Entry successfully added.");
+
+define("ANTELAN_CASHM_I_21", "Not Supplied."); // default username if Other is selected but left blank
 
 
 
@@ -196,7 +200,20 @@ define("ANTELAN_THANKS_02", "Thank you for your donation!<br /><br />Be on the l
 
 
 
-/* ===  JUST LEAVING IT HERE FOR BACKUP, WILL BE REMOVED SOON ===
+// ===  JUST LEAVING IT HERE FOR BACKUP, WILL BE REMOVED SOON ===
+
+// uncommented the anteup_menu.php defines until they can be converted
+define("LAN_TRACK_MENU_01",  "RECEIVED!");
+define("LAN_TRACK_MENU_02",  "Current:");
+define("LAN_TRACK_MENU_03",  "Remaining:");
+define("LAN_TRACK_MENU_04",  "Target:");
+define("LAN_TRACK_MENU_05",  "Due Date:");
+define("LAN_TRACK_MENU_06",  "This Months Donators:");
+define("LAN_TRACK_MENU_07",  "Admin configure");
+define("LAN_TRACK_MENU_08",  "Total:");
+define("LAN_TRACK_MENU_09",  "Spent/Allocated:");
+
+/*
 define("LAN_TRACK_CONFIG_01", "Menu Title:");
 define("LAN_TRACK_CONFIG_02", "Currency to display on Menu:");
 define("LAN_TRACK_CONFIG_03", "Full Progress Bar Color:");
@@ -326,16 +343,6 @@ define("LAN_TRACK_M7", "Invalid");
 define("LAN_TRACK_M8", "E-mail");
 
 //-----------------------------------------------------------------------------------------------------------+
-
-define("LAN_TRACK_MENU_01",  "RECEIVED!");
-define("LAN_TRACK_MENU_02",  "Current:");
-define("LAN_TRACK_MENU_03",  "Remaining:");
-define("LAN_TRACK_MENU_04",  "Target:");
-define("LAN_TRACK_MENU_05",  "Due Date:");
-define("LAN_TRACK_MENU_06",  "This Months Donators:");
-define("LAN_TRACK_MENU_07",  "Admin configure");
-define("LAN_TRACK_MENU_08",  "Total:");
-define("LAN_TRACK_MENU_09",  "Spent/Allocated:");
 
 define("LAN_PAL_BUTTON_POPUP_DEFAULT", "Click here to donate with PayPal");
 
