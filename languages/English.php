@@ -1,12 +1,63 @@
 <?php
 
 //------------------------------------------------------------------------------------------------------------+
-// admin_menu.php
-define("ANTELAN_MMENU_00", "Ante Up!");
+// admin_cash.php
+define("ANTELAN_CASHM_CAPTION00", "Cash Manager");
 
-define("ANTELAN_MMENU_01", "Configuration");
-define("ANTELAN_MMENU_02", "Cash Manager");
-define("ANTELAN_MMENU_03", "Readme");
+define("ANTELAN_CASHM_01", "Balance");
+define("ANTELAN_CASHM_02", "Start Date:");
+define("ANTELAN_CASHM_03", "End Date:");
+define("ANTELAN_CASHM_04", "Filter");
+define("ANTELAN_CASHM_05", "Add New Entry"); // title of image next to balance - hover
+
+// add entry
+define("ANTELAN_CASHM_E_01", "Transaction ID:");
+define("ANTELAN_CASHM_E_02", "Payment Type:");
+define("ANTELAN_CASHM_E_03", "Credit");
+define("ANTELAN_CASHM_E_04", "Debit");
+
+define("ANTELAN_CASHM_E_05", "Payment Status:");
+define("ANTELAN_CASHM_E_06", "Completed");
+define("ANTELAN_CASHM_E_07", "Pending");
+define("ANTELAN_CASHM_E_08", "Denied");
+
+define("ANTELAN_CASHM_E_09", "Payment Date:");
+define("ANTELAN_CASHM_E_10", "Payment Amount:");
+define("ANTELAN_CASHM_E_11", "Fee:");
+
+define("ANTELAN_CASHM_E_12", "Donator:");
+define("ANTELAN_CASHM_E_13", "Other, not listed:");
+define("ANTELAN_CASHM_E_14", "Comment:");
+define("ANTELAN_CASHM_E_15", "Custom:");
+
+define("ANTELAN_CASHM_E_16", "Add Entry");
+define("ANTELAN_CASHM_E_17", "Cancel");
+
+// donation invoice
+define("ANTELAN_CASHM_I_01", "Donation Invoice");
+
+define("ANTELAN_CASHM_I_02", "ID");
+define("ANTELAN_CASHM_I_03", "Date");
+define("ANTELAN_CASHM_I_04", "Description");
+define("ANTELAN_CASHM_I_05", "Transaction ID");
+define("ANTELAN_CASHM_I_06", "Status");
+define("ANTELAN_CASHM_I_07", "Type");
+define("ANTELAN_CASHM_I_08", "Amount");
+define("ANTELAN_CASHM_I_09", "Fee");
+define("ANTELAN_CASHM_I_10", "Total");
+
+define("ANTELAN_CASHM_I_11", "Initial balance");
+define("ANTELAN_CASHM_I_12", "Save");
+
+define("ANTELAN_CASHM_I_13", "Edit");
+define("ANTELAN_CASHM_I_14", "Delete"); // TODO: not used yet, delete not functioning?
+define("ANTELAN_CASHM_I_15", "Are you sure you want to delete this entry?");
+
+define("ANTELAN_CASHM_I_16", "There are no entries to display during the selected time periods.");
+
+define("ANTELAN_CASHM_I_17", "Entry successfully edited.");
+define("ANTELAN_CASHM_I_18", "Error deleting entry."); 
+
 
 
 //------------------------------------------------------------------------------------------------------------+
@@ -94,7 +145,16 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_P_24", "Fixes payment value, blank allows donor to set the amount.");
 	define("ANTELAN_CONFIG_P_25", "Tax:");
 	define("ANTELAN_CONFIG_P_26", "Override any tax settings that are part of a donors profile.");
+
 	
+//------------------------------------------------------------------------------------------------------------+
+// admin_menu.php
+define("ANTELAN_MMENU_00", "Ante Up!");
+
+define("ANTELAN_MMENU_01", "Configuration");
+define("ANTELAN_MMENU_02", "Cash Manager");
+define("ANTELAN_MMENU_03", "Readme");
+
 
 //------------------------------------------------------------------------------------------------------------+
 // admin_readme.php
@@ -126,13 +186,17 @@ define("ANTELAN_DONATIONS_08", "Total:");
 define("ANTELAN_DONATIONS_09", "Want to be a part of this elite club of donators? Guess what! You can be! <a href='".e_PLUGIN."anteup/donate.php'>Click here</a> to send us a very welcome donation!");
 
 
+//------------------------------------------------------------------------------------------------------------+
+// return.php
+define("ANTELAN_CANCEL_01", "Cancelled Payment");
+define("ANTELAN_CANCEL_02", "You have cancelled your transaction. Please consider making a donation in the future or try again now.");
+define("ANTELAN_THANKS_01", "Thanks!");
+define("ANTELAN_THANKS_02", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");
 
 
 
 
-
-
-
+/* ===  JUST LEAVING IT HERE FOR BACKUP, WILL BE REMOVED SOON ===
 define("LAN_TRACK_CONFIG_01", "Menu Title:");
 define("LAN_TRACK_CONFIG_02", "Currency to display on Menu:");
 define("LAN_TRACK_CONFIG_03", "Full Progress Bar Color:");
@@ -260,6 +324,7 @@ define("LAN_TRACK_M3", "Successful upddated");
 define("LAN_TRACK_M4", "Update failed");
 define("LAN_TRACK_M7", "Invalid");
 define("LAN_TRACK_M8", "E-mail");
+
 //-----------------------------------------------------------------------------------------------------------+
 
 define("LAN_TRACK_MENU_01",  "RECEIVED!");
@@ -272,13 +337,8 @@ define("LAN_TRACK_MENU_07",  "Admin configure");
 define("LAN_TRACK_MENU_08",  "Total:");
 define("LAN_TRACK_MENU_09",  "Spent/Allocated:");
 
-// return.php
-define("ANTELAN_CANCEL_01", "Cancelled Payment");
-define("ANTELAN_CANCEL_02", "You have cancelled your transaction. Please consider making a donation in the future or try again now.");
-define("ANTELAN_THANKS_01", "Thanks!");
-define("ANTELAN_THANKS_02", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");
-
-
 define("LAN_PAL_BUTTON_POPUP_DEFAULT", "Click here to donate with PayPal");
+
+*/
 
 ?>
