@@ -83,14 +83,7 @@ foreach(array("default", "AT", "AU", "BE", "C2", "CH", "CN", "DE", "ES", "FR", "
 }
 $locale_dropbox .= "</select>";
 
-$donate_icon_div = "<select class='tbox' name='icon'>";
-foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon){
-	$icon = str_replace(e_PLUGIN."anteup/images/icons/", "", $icon);
-	$donate_icon_div .= "<option value='".$icon."'>".$icon."</option>";
-}
-$donate_icon_div .= "</select>";
-
-$donate_icon_div = "<select class='tbox' name='icon'>";
+$donate_icon_div = "<select class='tbox' name='pal_button_image'>";
 foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon){
 	$icon = str_replace(e_PLUGIN."anteup/images/icons/", "", $icon);
 	$donate_icon_div .= "<option value='".$icon."'".($icon == $pref['pal_button_image'] ? " selected" : "").">".$icon."</option>";
