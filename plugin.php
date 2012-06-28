@@ -3,9 +3,9 @@ include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
 
 // -- [ PLUGIN INFO ]  //TODO LANGUAGE?
 $eplug_name			= "Ante Up!";
-$eplug_version		= "1.0.0";
+$eplug_version		= "0.1.0";
 $eplug_author		= "Patrick Weaver";
-$eplug_url			= "http://painswitch.com/";
+$eplug_url			= "http://trickmod.com/";
 $eplug_email		= "patrickweaver@gmail.com";
 $eplug_description	= "An extensive Donation Tracker with PayPal integration.";
 $eplug_compatible	= "e107 v1.0+";
@@ -51,29 +51,6 @@ $eplug_prefs = array(
 	
 // -- [ MYSQL TABLES ]
 
-$anteup_cur = array(
-	array('&#36;AU','AUD', 'Australian Dollar', 'front'),
-	array('C&#36;', 'CAD', 'Canadian Dollar', 'front'),
-	array('SFr.', 'CHF', 'Swiss Franc', 'front'),
-	array('K&#196;', 'CZK', 'Czech Koruna', 'front'),
-	array('Dkr.', 'DKK', 'Danish Krone', 'front'),
-	array('&#8364;', 'EUR', 'Euro', 'front'),
-	array('&#163;', 'GBP', 'Pound Sterling', 'front'),
-	array('HK&#36;', 'HKD', 'Hong Kong Dollar', 'front'),
-	array('Ft', 'HUF', 'Hungarian Forint', 'front'),
-	array('&#165;', 'JPY', 'Japanese Yen', 'front'),
-	array('Mex&#36;', 'MXN', 'Mexican Peso', 'front'),
-	array('Nkr.', 'NOK', 'Norwegian Krone', 'front'),
-	array('NZ&#36;', 'NZD', 'New Zealand Dollar', 'front'),
-	array('&#8369;', 'PHP', 'Philippine Peso', 'back'),
-	array('P&#142;', 'PLN', 'Polish Zloty', 'front'),
-	array('Skr.', 'SEK', 'Swedish Krona', 'front'),
-	array('S&#36;', 'SGD', 'Singapore Dollar', 'front'),
-	array('&#3647;', 'THB', 'Thai Baht', 'front'),
-	array('T&#36;', 'TWD', 'Taiwan New Dollar', 'back'),
-	array('&#36;', 'USD', 'U.S. Dollar', 'front')
-);
-
 $eplug_table_names = array("anteup_ipn", "anteup_currency");
 
 $eplug_tables = array(
@@ -103,6 +80,29 @@ $eplug_tables = array(
 		location varchar(250) NOT NULL,
 		PRIMARY KEY  (id)
 	) ENGINE=MyISAM AUTO_INCREMENT=1;"
+);
+
+$anteup_cur = array(
+	array('&#36;AU','AUD', 'Australian Dollar', 'front'),
+	array('C&#36;', 'CAD', 'Canadian Dollar', 'front'),
+	array('SFr.', 'CHF', 'Swiss Franc', 'front'),
+	array('K&#196;', 'CZK', 'Czech Koruna', 'front'),
+	array('Dkr.', 'DKK', 'Danish Krone', 'front'),
+	array('&#8364;', 'EUR', 'Euro', 'front'),
+	array('&#163;', 'GBP', 'Pound Sterling', 'front'),
+	array('HK&#36;', 'HKD', 'Hong Kong Dollar', 'front'),
+	array('Ft', 'HUF', 'Hungarian Forint', 'front'),
+	array('&#165;', 'JPY', 'Japanese Yen', 'front'),
+	array('Mex&#36;', 'MXN', 'Mexican Peso', 'front'),
+	array('Nkr.', 'NOK', 'Norwegian Krone', 'front'),
+	array('NZ&#36;', 'NZD', 'New Zealand Dollar', 'front'),
+	array('&#8369;', 'PHP', 'Philippine Peso', 'back'),
+	array('P&#142;', 'PLN', 'Polish Zloty', 'front'),
+	array('Skr.', 'SEK', 'Swedish Krona', 'front'),
+	array('S&#36;', 'SGD', 'Singapore Dollar', 'front'),
+	array('&#3647;', 'THB', 'Thai Baht', 'front'),
+	array('T&#36;', 'TWD', 'Taiwan New Dollar', 'back'),
+	array('&#36;', 'USD', 'U.S. Dollar', 'front')
 );
 
 foreach($anteup_cur as $cur){

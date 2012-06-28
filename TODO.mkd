@@ -1,7 +1,0 @@
-# Ante Up! To Do List
-
-THIS FILE IS NO LONGER NEEDED -- IT WILL BE REMOVED IN A FUTURE COMMIT
-ALL TASKS THAT NEED DONE ARE NOW IN THE [ISSUE TRACKER](https://github.com/septor/anteup/issues)
-
-
-If you wish to help out with any of this [fork the repo](https://github.com/septor/anteup/fork), make the changes, and then send a [pull request](https://github.com/septor/anteup/pull/new/master).

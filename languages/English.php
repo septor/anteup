@@ -123,7 +123,7 @@ define("ANTELAN_DONATIONS_05", "Date donated");
 define("ANTELAN_DONATIONS_06", "Amount");
 define("ANTELAN_DONATIONS_07", "No donations found during that time period.");
 define("ANTELAN_DONATIONS_08", "Total:");
-define("ANTELAN_DONATIONS_09", "Want to be a part of this elite club of donators? Guess what! You can be! <a href='".ANTEUP."donate.php'>Click here</a> to send us a very welcome donation!");
+define("ANTELAN_DONATIONS_09", "Want to be a part of this elite club of donators? Guess what! You can be! <a href='".e_PLUGIN."anteup/donate.php'>Click here</a> to send us a very welcome donation!");
 
 
 

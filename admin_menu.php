@@ -11,11 +11,11 @@ $action = basename($_SERVER['PHP_SELF'], ".php");
 $var['admin_menu_01']['text'] = ANTELAN_MMENU_01;
 $var['admin_menu_01']['link'] = "admin_config.php";
 
-$var['admin_menu_04']['text'] = ANTELAN_MMENU_02;
-$var['admin_menu_04']['link'] = "admin_cash.php";
+$var['admin_menu_02']['text'] = ANTELAN_MMENU_02;
+$var['admin_menu_02']['link'] = "admin_cash.php";
 
-$var['admin_menu_05']['text'] = ANTELAN_MMENU_03;
-$var['admin_menu_05']['link'] = "admin_readme.php";
+$var['admin_menu_03']['text'] = ANTELAN_MMENU_03;
+$var['admin_menu_03']['link'] = "admin_readme.php";
 
 show_admin_menu(ANTELAN_MMENU_00, $pageid, $var);
 ?>

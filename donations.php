@@ -56,9 +56,9 @@ while($row = $sql->db_Fetch()){
 	<td class='forumheader3' style='text-align:center;'>".$row['item_name']."</td>
 	<td class='forumheader3' style='text-align:center;'>".$row['comment']."</td>
 	<td class='forumheader3' style='text-align:center;'>".$gen->convert_date($row['payment_date'], $pref['anteup_dformat'])."</td>
-	<td class='forumheader3' style='text-align:center;'>".format_currency($row['mc_gross'], $pref['anteup_currency'])."</td>
+	<td class='forumheader3' style='text-align:center;'>".format_currency(($row['mc_gross']-$row['mc_fee']), $pref['anteup_currency'])."</td>
 	</tr>";
-	$total += $row['mc_gross'];
+	$total += ($row['mc_gross']-$row['mc_fee']);
 	$donations++;
 }
 

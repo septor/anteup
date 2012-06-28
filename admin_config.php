@@ -8,20 +8,8 @@ require_once(e_PLUGIN."anteup/_class.php");
 require_once(e_HANDLER."calendar/calendar_class.php");
 $cal = new DHTML_Calendar(true);
 $gen = new convert();
-
-$script = "<script type='text/javascript' src='".e_PLUGIN."anteup/js/jscolor.js'></script>
-<script type=\"text/javascript\">
-function addtext_us(sc){
-	document.getElementById('dataform').image.value = sc;
-}
-</script>
-<script type='text/javascript'>
-function addtext(sc){
-	document.forms.paypal_donate_form.pal_button_image.value=sc;
-}
-</script>".$cal->load_files();
 	
-$pageid = 'admin_menu_01';
+$pageid = "admin_menu_01";
 
 if(isset($_POST['updatesettings'])){
 	if(!empty($_POST['anteup_due']) && !empty($_POST['anteup_goal'])){
@@ -36,7 +24,7 @@ if(isset($_POST['updatesettings'])){
 		$pref['anteup_showdue'] 		= $_POST['anteup_showdue'];
 		$pref['anteup_showtotal']  		= $_POST['anteup_showtotal'];
 		$pref['anteup_dformat'] 		= $_POST['anteup_dformat'];
-		$pref['anteup_description'] 	= $tp -> toDB($_POST['data']);
+		$pref['anteup_description'] 	= $tp->toDB($_POST['anteup_description']);
 		$pref['anteup_mtitle']   		= $_POST['anteup_mtitle'];
 		$pref['anteup_full']     		= str_replace("#","",$_POST['anteup_full']);
 		$pref['anteup_empty']    		= str_replace("#","",$_POST['anteup_empty']);
@@ -72,7 +60,7 @@ $_POST['data'] = $tp->toForm($pref['anteup_description']);
 
 if(isset($message)){ $ns->tablerender("", "<div style='text-align:center'><b>".$message."</b></div>"); }
 
-$text = $script."
+$text = $cal->load_files()."
 <div style='text-align:center'>
 <form method='post' action='".e_SELF."' id='tracker_form'>";
 
@@ -95,12 +83,20 @@ foreach(array("default", "AT", "AU", "BE", "C2", "CH", "CN", "DE", "ES", "FR", "
 }
 $locale_dropbox .= "</select>";
 
-$donate_icon_div = "<div style='display:none'>";
+$donate_icon_div = "<select class='tbox' name='icon'>";
 foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon){
 	$icon = str_replace(e_PLUGIN."anteup/images/icons/", "", $icon);
-	$donate_icon_div .= " <a href='javascript:addtext(\"$icon\")'><img src='".e_PLUGIN."anteup/images/icons/".$icon."' /></a>";
+	$donate_icon_div .= "<option value='".$icon."'>".$icon."</option>";
 }
-$donate_icon_div .= "</div>";
+$donate_icon_div .= "</select>";
+
+$donate_icon_div = "<select class='tbox' name='icon'>";
+foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon){
+	$icon = str_replace(e_PLUGIN."anteup/images/icons/", "", $icon);
+	$donate_icon_div .= "<option value='".$icon."'".($icon == $pref['pal_button_image'] ? " selected" : "").">".$icon."</option>";
+}
+$donate_icon_div .= "</select>";
+
 
 $text .= "<input class='button' type='submit' name='updatesettings' value='".ANTELAN_CONFIG_01."' />
 <br />
@@ -110,9 +106,9 @@ $text .= "<input class='button' type='submit' name='updatesettings' value='".ANT
 	".config_block(format_currency("<input class='tbox' type='text' name='anteup_goal' value='".$pref['anteup_goal']."' />", $pref['anteup_currency'], false), ANTELAN_CONFIG_G_03, ANTELAN_CONFIG_G_04)."
 	".config_block("<a href='#' id='f-calendar-trigger-1'>".CALENDAR_IMG."</a> <input class='tbox' type='text' id='anteup_due' name='anteup_due' value='".$pref['anteup_due']."' />\n<script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'anteup_due','button':'f-calendar-trigger-1'});</script>", ANTELAN_CONFIG_G_05, ANTELAN_CONFIG_G_06)."
 	".config_block($format_dropbox, ANTELAN_CONFIG_G_07, ANTELAN_CONFIG_G_08)."
-	".config_block("<textarea class='tbox' style='width:200px; height:140px' name='anteup_textbar'>".(strstr($tp->post_toForm($_POST['data']), "[img]http") ? $tp->post_toForm($_POST['data']) : str_replace("[img]../", "[img]", $tp->post_toForm($_POST['data'])))."</textarea>", ANTELAN_CONFIG_G_09, ANTELAN_CONFIG_G_10)."
+	".config_block("<textarea class='tbox' style='width:200px; height:140px' name='anteup_description'>".(strstr($tp->post_toForm($pref['anteup_description']), "[img]http") ? $tp->post_toForm($pref['anteup_description']) : str_replace("[img]../", "[img]", $tp->post_toForm($pref['anteup_description'])))."</textarea>", ANTELAN_CONFIG_G_09, ANTELAN_CONFIG_G_10)."
 </table>
-
+<br />
 <div onclick='expandit(\"showhide\");' class='fcaption' style='cursor: pointer;'>".ANTELAN_CONFIG_CAPTION02."</div>
 <table style='width:85%; display:none;' class='fborder' id='showhide'>
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showibalance'".($pref['anteup_showibalance'] ? " checked" : "").">", ANTELAN_CONFIG_I_01, ANTELAN_CONFIG_I_02)."
@@ -121,7 +117,7 @@ $text .= "<input class='button' type='submit' name='updatesettings' value='".ANT
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showgoal'".($pref['anteup_showgoal'] ? " checked" : "").">", ANTELAN_CONFIG_I_07, ANTELAN_CONFIG_I_08)."
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showdue'".($pref['anteup_showdue'] ? " checked" : "").">", ANTELAN_CONFIG_I_09, ANTELAN_CONFIG_I_10)."
 </table>
-
+<br />
 <div onclick='expandit(\"menu\");' class='fcaption' style='cursor: pointer;'>".ANTELAN_CONFIG_CAPTION03."</div>
 <table style='width:85%; display:none;' class='fborder' id='menu'>
 	".config_block("<input class='tbox' type='text' name='anteup_mtitle' value='".$pref['anteup_mtitle']."'>", ANTELAN_CONFIG_M_01, ANTELAN_CONFIG_M_02)."
@@ -132,13 +128,13 @@ $text .= "<input class='button' type='submit' name='updatesettings' value='".ANT
 	".config_block("#<input class='tbox jscolor' type='text' name='anteup_border' value='".$pref['anteup_border']."' />", ANTELAN_CONFIG_M_11, ANTELAN_CONFIG_M_12)."
 	".config_block("<input class='tbox' type='text' name='anteup_height' value='".$pref['anteup_height']."' />", ANTELAN_CONFIG_M_13, ANTELAN_CONFIG_M_14)."
 </table>
-
+<br />
 <div onclick='expandit(\"paypal\");' class='fcaption' style='cursor: pointer;'>".ANTELAN_CONFIG_CAPTION04."</div>
 <table style='width:85%; display:none;' class='fborder' id='paypal'>
 <tr>
 <td class='forumheader' colspan='2'>".ANTELAN_CONFIG_P_C_01."</td>
 </tr>
-	".config_block("<input class='tbox' style='width:200px' type='text' name='pal_button_image' value='".$pref['pal_button_image']."' /> <input class='button' type='button' value='".ANTELAN_CONFIG_P_B_01."' onclick='expandit(this)' />".$donate_icon_div , ANTELAN_CONFIG_P_01, ANTELAN_CONFIG_P_02)."
+	".config_block($donate_icon_div , ANTELAN_CONFIG_P_01, ANTELAN_CONFIG_P_02)."
 	".config_block("<input class='tbox' type='text' name='pal_business' value='".$pref['pal_business']."' />", ANTELAN_CONFIG_P_03, ANTELAN_CONFIG_P_04)."
 	".config_block("<input class='tbox' type='text' name='pal_item_name' value='".$pref['pal_item_name']."' maxlength='127' />", ANTELAN_CONFIG_P_05, ANTELAN_CONFIG_P_06)."
 <tr>

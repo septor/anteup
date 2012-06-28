@@ -1,9 +1,30 @@
-# Ante Up!
+# NOTE -- ALPHA TESTING
 
-**THIS IS A PRE-ALPHA RELEASE.**
-**IT IS BEING COMMITTED TO GIVE ANYONE THAT WISHES TO HELP FINALIZE THINGS THE ABILITY TO DO SO.**
-**TO SEE WHAT NEEDS FINISHED, VISIT THE [ISSUE TRACKER](https://github.com/septor/anteup/issues)!**
-**IT IS RECOMMENDED THAT YOU DO NOT USE THIS ON A PRODUCTION WEBSITE AS THERE ARE INCOMPLETE THINGS!!**
+This is an **ALPHA RELEASE**. It has bugs. It has missing features and some of the features that do exist **will probably not function to their fullest!!** If you are
+downloading this plugin you are doing so **to help test it and find bugs**. You are not downloading this plugin expecting it to work 100%. Report your issues and bugs.
+If you have a feature request **save it until this goes into beta**.
+
+## Reporting Issues
+
+The **best** method is by using the [issue tracker](https://github.com/septor/anteup/issues). The second best method is by posting on the newly created
+[forum thread](http://e107.org/e107_plugins/forum/forum_viewtopic.php?236838).
+
+## What needs tested.
+
+I have done some pre-testing, but it's likely I missed things. Double check these.
+
+* Donation features (`donate.php`). I need people to test to make sure placing a donation actually gets recorded.
+* Add Entry (`admin_cash.php`). Make sure you can manually add an entry. Make sure all fields work as they should (I have no idea how or what they were previously, so..).
+* Edit Entry (`admin_cash.php`). Make sure everything updates correctly. Let me know if something needs to be editable (eg: payment date, etc).
+* Menu Item (`anteup_menu.php`). Make sure everything displays correctly. Formatting, etc. Make sure the progress bar functions correctly.
+* Language File Errors (*). Make sure everything renders correctly. Make sure there is no broken English. Make sure things make sense.
+
+## When will this be pushed into beta?
+
+When I am satisfied everything mentioned above works correctly.
+
+
+# Ante Up!
 
 An extensive Donation Tracker with PayPal integration.
 

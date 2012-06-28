@@ -5,7 +5,12 @@ require_once(e_PLUGIN."anteup/_class.php");
 $gen = new convert();
 
 $cd = explode("/", $pref['anteup_due']);
-$ld = explode("/", $pref['anteup_lastdue']);
+if(!empty($pref['anteup_lastdue'])){
+	$ld = explode("/", $pref['anteup_lastdue']);
+}else{
+	// if the lastdue date isn't set, make it the first day of last month
+	$ld = explode("/", date("m/d/Y", strtotime("first day of last month")));
+}
 $due_ts = mktime(0, 0, 0, $cd[0], $cd[1], $cd[2]);
 $due = date('m/d/Y', $due_ts);
 $lastdue_ts = mktime(0, 0, 0, $ld[0], $ld[1], $ld[2]);
@@ -30,18 +35,22 @@ $pct_left = round(($current / $goal) * 100, 0);
 
 
 if(varsettrue($pref['anteup_showbar'])){
-	$showbar = $pct_left."% ".LAN_TRACK_MENU_01."<br />
-	<script type='text/javascript'>
-		function DoNav(theUrl) {
-		document.location.href = theUrl;}
-	</script>
-	<table cellspacing='0' cellpadding='0' style='border:#".$pref['anteup_border']." 1px solid; width:100%;'>
-	  <tr onclick=\"DoNav('".e_PLUGIN."anteup/donations.php');\" title='See who has donated!'>
-		<td style='width:".$pct_left."%; height: ".$pref['anteup_height']."px; background-color:#".$pref['anteup_full'].";'></td>
-		<td style='width:".(100 - $pct_left)."%; height: ".$pref['anteup_height']."; background-color:#".$pref['anteup_empty'].";'></td>
-	  </tr>
-	</table>
-	<br />";
+	if($pct_left < 100){
+		$showbar = $pct_left."% ".LAN_TRACK_MENU_01."<br />
+		<script type='text/javascript'>
+			function DoNav(theUrl) {
+			document.location.href = theUrl;}
+		</script>
+		<table cellspacing='0' cellpadding='0' style='border:#".$pref['anteup_border']." 1px solid; width:100%;'>
+		  <tr onclick=\"DoNav('".e_PLUGIN."anteup/donations.php');\" title='See who has donated!'>
+			<td style='width:".$pct_left."%; height: ".$pref['anteup_height']."px; background-color:#".$pref['anteup_full'].";'></td>
+			<td style='width:".(100 - $pct_left)."%; height: ".$pref['anteup_height']."; background-color:#".$pref['anteup_empty'].";'></td>
+		  </tr>
+		</table>
+		<br />";
+	}else{
+		$showbar = "We have met our goal! Thanks a lot!<br /><br />";
+	}
 }else{
 	$showbar = "";
 }

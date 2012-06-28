@@ -4,7 +4,7 @@ require_once(e_ADMIN."auth.php");
 if(!getperms("P")){ header("location:".e_BASE."index.php"); exit;}
 include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
 
-$pageid = 'admin_menu_05';
+$pageid = "admin_menu_03";
 
 $text = "<pre>\n".file_get_contents(e_PLUGIN."anteup/README.mkd")."</pre>";
 

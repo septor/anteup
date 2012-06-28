@@ -4,7 +4,7 @@ require_once("../../class2.php");
 $req = 'cmd=_notify-validate';
 foreach ($_POST as $key => $value) {
 	$value = urlencode(stripslashes($value));
-	$req .= "&$key=$value";
+	$req .= "&".$key."=".$value;
 }
 
 $header = "
