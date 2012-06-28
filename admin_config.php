@@ -54,7 +54,7 @@ if(isset($_POST['updatesettings'])){
 }
 
 if(!isset($pref['anteup_description'])) {
-   $pref['anteup_description'] = LAN_TRACK_17;
+   $pref['anteup_description'] = ANTELAN_DONATIONS_09;
 }
 $_POST['data'] = $tp->toForm($pref['anteup_description']);
 
