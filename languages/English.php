@@ -49,19 +49,16 @@ define("ANTELAN_CASHM_I_10", "Total");
 define("ANTELAN_CASHM_I_11", "Initial balance");
 define("ANTELAN_CASHM_I_12", "Save");
 
-define("ANTELAN_CASHM_I_13", "Edit"); // we can utilize LAN_EDIT (I swapped it out in admin_cash.php already) instead of defining it again
-define("ANTELAN_CASHM_I_14", "Delete"); // this is a core delete function -- e107_languages/English/admin/lan_admin.php -- line 208
-define("ANTELAN_CASHM_I_15", "Are you sure you want to delete this entry?");
+define("ANTELAN_CASHM_I_13", "Are you sure you want to delete this entry?");
 
-define("ANTELAN_CASHM_I_16", "There are no entries to display during the selected time periods.");
+define("ANTELAN_CASHM_I_14", "There are no entries to display during the selected time periods.");
 
-define("ANTELAN_CASHM_I_17", "Entry successfully edited.");
-define("ANTELAN_CASHM_I_18", "Error deleting entry."); 
-define("ANTELAN_CASHM_I_19", "Entry successfully deleted."); 
-define("ANTELAN_CASHM_I_20", "Entry successfully added.");
+define("ANTELAN_CASHM_I_15", "Entry successfully edited.");
+define("ANTELAN_CASHM_I_16", "Entry successfully deleted."); 
+define("ANTELAN_CASHM_I_17", "Error deleting entry.");
+define("ANTELAN_CASHM_I_18", "Entry successfully added.");
 
-define("ANTELAN_CASHM_I_21", "Not Supplied."); // default username if Other is selected but left blank
-
+define("ANTELAN_CASHM_I_19", "Not Supplied.");
 
 
 //------------------------------------------------------------------------------------------------------------+
@@ -188,6 +185,15 @@ define("ANTELAN_DONATIONS_06", "Amount");
 define("ANTELAN_DONATIONS_07", "No donations found during that time period.");
 define("ANTELAN_DONATIONS_08", "Total:");
 define("ANTELAN_DONATIONS_09", "Want to be a part of this elite club of donators? Guess what! You can be! <a href='".e_PLUGIN."anteup/donate.php'>Click here</a> to send us a very welcome donation!");
+
+
+//------------------------------------------------------------------------------------------------------------+
+// index.php
+define("ANTELAN_INDEX_CAPTION00", "Ante Up!");
+
+define("ANTELAN_INDEX_01", "To prevent spam from reaching the PayPal address, please answer the following:");
+define("ANTELAN_INDEX_02", "Submit");
+define("ANTELAN_INDEX_03", "Click below to make your donation.");
 
 
 //------------------------------------------------------------------------------------------------------------+

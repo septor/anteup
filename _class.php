@@ -1,6 +1,6 @@
 ﻿<?php
 
-// -- [ FUNCTIONS]
+// -- [ Functions ]
 
 function format_currency($input, $id, $commify = true){
 	$sql = new db();
@@ -11,40 +11,6 @@ function format_currency($input, $id, $commify = true){
     }
 	$input = (($commify) ? number_format($input, 2) : $input);
 	return ($loc == "back" ? $input.$symbol : $symbol.$input);
-}
-
-function get_currency_code($id = "20"){
-	$sql = new db();
-	$sql->db_Select("anteup_currency", "*", "id='".intval($id)."'");
-    while ($row = $sql->db_Fetch()) {
-		$code = $row['code'];
-    }
-	return $code;
-}
-
-function get_currency_symbol($id = "20"){
-	$sql = new db();
-	$sql->db_Select("anteup_currency", "*", "id='".intval($id)."'");
-    while ($row = $sql->db_Fetch()) {
-		$symbol = $row['symbol'];
-    }
-	return $symbol;
-}
-	
-function in_string($needle, $haystack) {
-  if (is_array($needle)) {
-    foreach ($needle as $n) {
-      if(strpos($haystack, $n) !== false){
-        return true;
-      }
-    }
-    return false;
-  }else{
-    if (strpos($haystack, $needle) !== false) {
-       return true;
-    }
-    return false;
-  }
 }
 
 function config_block($data, $text, $subtext = ""){
@@ -59,7 +25,7 @@ function config_block($data, $text, $subtext = ""){
 	</tr>";
 }
 
-// -- [ HI ]
+// -- [ Ante Up Constants ]
 
 define("ANTEUP", e_PLUGIN."anteup/");
 define("ANTEUP_ABS", SITEURLBASE.e_PLUGIN_ABS."anteup/");

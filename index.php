@@ -16,16 +16,14 @@ if(!USER && $pal_key_check != $_POST['cap_key'] && !$pref['pal_no_protection']){
 	<div style='text-align:center'>
 	<br />
 	<br />
-	".RD_TRACK_PROTECTION_01."<br />
-	<br />
-	".RD_TRACK_PROTECTION_02." ".$cap_number_one." + ".$cap_number_two." =
-	<input class='tbox' type='text'   name='cap_answer' value='' size='5' maxlength='5' />
-	<input class='tbox' type='submit' name='submit'     value='".RD_TRACK_PROTECTION_03."' />
-	<input type='hidden' name='cap_key'    value='".$pal_key_public."' />
+	".ANTELAN_INDEX_01." ".$cap_number_one." + ".$cap_number_two." =
+	<input class='tbox' type='text' name='cap_answer' value='' size='5' maxlength='5' />
+	<input class='tbox' type='submit' name='submit' value='".ANTELAN_INDEX_02."' />
+	<input type='hidden' name='cap_key' value='".$pal_key_public."' />
 	</div>
     </form>";
 }else{
-	$text = "<div style='text-align:center'><br />".RD_TRACK_PROTECTION_04."<br /><br /></div>
+	$text = "<div style='text-align:center'><br />".ANTELAN_INDEX_03."<br /><br /></div>
 	<form method='post' action='https://www.paypal.com/cgi-bin/webscr' id='paypal_donate_form'>
 	<div style='width:100%; margin-left:auto; margin-right:auto; text-align:center;'>
 	<input type='hidden' name='cmd' value='_xclick' />
@@ -49,6 +47,6 @@ if(!USER && $pal_key_check != $_POST['cap_key'] && !$pref['pal_no_protection']){
 	</div>
 	</form>";
 }
-$ns -> tablerender("Ante Up!",  "<div align='center'>\n".$text."\n</div>", 'rdtrack');
+$ns -> tablerender(ANTELAN_INDEX_CAPTION00, "<div style='text-align:center;'>".$text."</div>", 'anteup');
 require_once(FOOTERF);
 ?>

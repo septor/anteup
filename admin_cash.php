@@ -28,11 +28,11 @@ if(e_QUERY){
 
 if(isset($_POST['main_delete'])){
 	$delete_id = array_keys($_POST['main_delete']);
-	$message = ($sql2->db_Delete("anteup_ipn", "ipn_id=".intval($delete_id[0]))) ? ANTELAN_CASHM_I_19 : ANTELAN_CASHM_I_17;
+	$message = ($sql2->db_Delete("anteup_ipn", "ipn_id=".intval($delete_id[0]))) ? ANTELAN_CASHM_I_16 : ANTELAN_CASHM_I_17;
 }
 
 if(isset($_POST['addentry'])){
-	$item_name = ($_POST['item_name'] == "--Other--" ? ($_POST['other'] == "" ? ANTELAN_CASHM_I_21 : $_POST['other']) : $_POST['item_name']);
+	$item_name = ($_POST['item_name'] == "--Other--" ? ($_POST['other'] == "" ? ANTELAN_CASHM_I_19 : $_POST['other']) : $_POST['item_name']);
 	
 	if($sql2->db_Select("user","*", "user_name='".$tp->toDB($item_name)."'")){
 		$row = $sql2->db_Fetch();
@@ -46,12 +46,16 @@ if(isset($_POST['addentry'])){
 	$pd_ts = mktime(0, 0, 0, $pd[0], $pd[1], $pd[2]);
 
 	$sql->db_Insert("anteup_ipn", "'', '".$tp->toDB($item_name)."', '".$tp->toDB($_POST['payment_status'])."', '".$tp->toDB($_POST['mc_gross'])."', '".intval($_POST['mc_currency'])."', '".$tp->toDB($_POST['txn_id'])."', '".intval($user_id)."', '".$buyer_email."', '".$pd_ts."', '".$tp->toDB($_POST['mc_fee'])."', '', '".intval($_POST['type'])."', '".$tp->toDB($_POST['comment'])."', '".$tp->toDB($_POST['custom'])."'") or $message = mysql_error();
-	$message = ($message ? $message : ANTELAN_CASHM_I_17);
+	$message = ($message ? $message : ANTELAN_CASHM_I_18);
 }
 
-if(isset($_POST['editentry'])){	
-	$sql->db_Update("anteup_ipn", "item_name='".$tp->toDB($_POST['item_name'])."', payment_status='".$tp->toDB($_POST['payment_status'])."', mc_gross='".$tp->toDB($_POST['gross'])."', txn_id='".$tp->toDB($_POST['txn_id'])."', mc_fee='".$tp->toDB($_POST['fee'])."', type=".intval($_POST['type']).", comment='".$tp->toDB($_POST['comment'])."', custom='".$tp->toDB($_POST['custom'])."' WHERE ipn_id=".intval($_POST['id'])) or $message = mysql_error();
-	$message = ($message ? $message : ANTELAN_CASHM_I_20);
+if(isset($_POST['editentry'])){
+
+	$pd = explode("/", $_POST['payment_date']);
+	$pd_ts = mktime(0, 0, 0, $pd[0], $pd[1], $pd[2]);
+	
+	$sql->db_Update("anteup_ipn", "item_name='".$tp->toDB($_POST['item_name'])."', payment_status='".$tp->toDB($_POST['payment_status'])."', mc_gross='".$tp->toDB($_POST['gross'])."', txn_id='".$tp->toDB($_POST['txn_id'])."', payment_date='".$pd_ts."', mc_fee='".$tp->toDB($_POST['fee'])."', type=".intval($_POST['type']).", comment='".$tp->toDB($_POST['comment'])."', custom='".$tp->toDB($_POST['custom'])."' WHERE ipn_id=".intval($_POST['id'])) or $message = mysql_error();
+	$message = ($message ? $message : ANTELAN_CASHM_I_15);
 }
 
 if(isset($message)){
@@ -238,7 +242,7 @@ while($row = $sql->db_Fetch()){
 		$text .= "<form method='post' action='".e_SELF."'>
 		<tr>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$ipn_id."</td>
-			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$gen->convert_date(strtotime($payment_date), $pref['anteup_dformat'])."</td>
+			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='payment_date' id='edit_payment_date' value='".date("m/d/Y", $payment_date)."' /><a href='#' id='f-calendar-trigger-4'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'edit_payment_date','button':'f-calendar-trigger-4'});</script></td>
 			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='item_name' value='".$item_name."' /><br /><input class='tbox' type='text' name='custom' value='".$custom."' /></td>
 			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='comment' value='".trim($comment)."' /><br /><input class='tbox' type='text' name='txn_id' value='".$txn_id."' /></td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>
@@ -278,7 +282,7 @@ while($row = $sql->db_Fetch()){
 			<td style='text-align:right; background-color: ".$bgc.";' class='forumheader'>".format_currency($mc_fee, $pref['anteup_currency'])."</td>
 			<td style='text-align:right; background-color: ".$bgc."; color: ".$ppc.";' class='forumheader'>".format_currency(($mc_gross-$mc_fee), $pref['anteup_currency'])."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>
-			<a href='".e_SELF."?edit.".$ipn_id.".".$sd_ts.".".$ed_ts."'>".ADMIN_EDIT_ICON."</a><input type='image' title='".LAN_EDIT."' name='main_delete[".$ipn_id."]' src='".e_PLUGIN."anteup/images/admin/delete_16.png' onclick=\"return jsconfirm('".ANTELAN_CASHM_I_15." [ID: ".$ipn_id." ]')\"/>
+			<a href='".e_SELF."?edit.".$ipn_id.".".$sd_ts.".".$ed_ts."'>".ADMIN_EDIT_ICON."</a><input type='image' title='".LAN_EDIT."' name='main_delete[".$ipn_id."]' src='".e_PLUGIN."anteup/images/admin/delete_16.png' onclick=\"return jsconfirm('".ANTELAN_CASHM_I_13." [ID: ".$ipn_id." ]')\"/>
 			</td>
 		</tr>";
 	}
@@ -286,7 +290,7 @@ while($row = $sql->db_Fetch()){
 	$countl += 1;
 	$flag++;
 }
-$text .= ($flag == 0  ? "<tr><td colspan='10' style='text-align:center;' class='forumheader'>".ANTELAN_CASHM_I_13."</td></tr>" : "")."
+$text .= ($flag == 0  ? "<tr><td colspan='10' style='text-align:center;' class='forumheader'>".ANTELAN_CASHM_I_14."</td></tr>" : "")."
 </table>
 </div>";
 
