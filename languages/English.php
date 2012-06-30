@@ -163,6 +163,21 @@ define("ANTELAN_README_CAPTION00", "Readme");
 
 
 //------------------------------------------------------------------------------------------------------------+
+// anteup_menu.php
+define("ANTELAN_MENU_01",  "Received!");
+define("ANTELAN_MENU_02",  "See who has donated!");
+define("ANTELAN_MENU_03",  "We have met our goal! Thanks a lot!");
+
+define("ANTELAN_MENU_04",  "Current:");
+define("ANTELAN_MENU_05",  "Remaining:");
+define("ANTELAN_MENU_06",  "Target:");
+define("ANTELAN_MENU_07",  "Total:");
+define("ANTELAN_MENU_08",  "Due date:");
+
+define("ANTELAN_MENU_09",  "Admin configure");
+
+
+//------------------------------------------------------------------------------------------------------------+
 // donate.php
 define("ANTELAN_DONATE_CAPTION00", "Donate");
 
@@ -207,8 +222,7 @@ define("ANTELAN_THANKS_02", "Thank you for your donation!<br /><br />Be on the l
 
 
 // ===  JUST LEAVING IT HERE FOR BACKUP, WILL BE REMOVED SOON ===
-
-// uncommented the anteup_menu.php defines until they can be converted
+/*
 define("LAN_TRACK_MENU_01",  "RECEIVED!");
 define("LAN_TRACK_MENU_02",  "Current:");
 define("LAN_TRACK_MENU_03",  "Remaining:");
@@ -219,7 +233,6 @@ define("LAN_TRACK_MENU_07",  "Admin configure");
 define("LAN_TRACK_MENU_08",  "Total:");
 define("LAN_TRACK_MENU_09",  "Spent/Allocated:");
 
-/*
 define("LAN_TRACK_CONFIG_01", "Menu Title:");
 define("LAN_TRACK_CONFIG_02", "Currency to display on Menu:");
 define("LAN_TRACK_CONFIG_03", "Full Progress Bar Color:");

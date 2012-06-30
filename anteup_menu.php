@@ -36,30 +36,30 @@ $pct_left = round(($current / $goal) * 100, 0);
 
 if(varsettrue($pref['anteup_showbar'])){
 	if($pct_left < 100){
-		$showbar = $pct_left."% ".LAN_TRACK_MENU_01."<br />
+		$showbar = $pct_left."% ".ANTELAN_MENU_01."<br />
 		<script type='text/javascript'>
 			function DoNav(theUrl) {
 			document.location.href = theUrl;}
 		</script>
 		<table cellspacing='0' cellpadding='0' style='border:#".$pref['anteup_border']." 1px solid; width:100%;'>
-		  <tr onclick=\"DoNav('".e_PLUGIN."anteup/donations.php');\" title='See who has donated!'>
+		  <tr onclick=\"DoNav('".e_PLUGIN."anteup/donations.php');\" title='".ANTELAN_MENU_02."'>
 			<td style='width:".$pct_left."%; height: ".$pref['anteup_height']."px; background-color:#".$pref['anteup_full'].";'></td>
 			<td style='width:".(100 - $pct_left)."%; height: ".$pref['anteup_height']."; background-color:#".$pref['anteup_empty'].";'></td>
 		  </tr>
 		</table>
 		<br />";
 	}else{
-		$showbar = "We have met our goal! Thanks a lot!<br /><br />";
+		$showbar = ANTELAN_MENU_03."<br /><br />";
 	}
 }else{
 	$showbar = "";
 }
 
-$showcurrent = (varsettrue($pref['anteup_showcurrent']) ? LAN_TRACK_MENU_02." ".format_currency($current, $currency)."<br />" : "");
-$showleft = (varsettrue($pref['anteup_showleft']) ? LAN_TRACK_MENU_03." ".format_currency($amt_left, $currency)."<br />" : "");
-$showgoal = (varsettrue($pref['anteup_showgoal']) ? LAN_TRACK_MENU_04." ".format_currency($goal, $currency)."<br />" : "");
-$showtotal = (varsettrue($pref['anteup_showtotal']) ? "Total: ".format_currency($total, $currency)."<br />" : "");
-$showdue = (varsettrue($pref['anteup_showdue']) ? LAN_TRACK_MENU_05." ".$gen->convert_date(strtotime($due), $pref['anteup_dformat'])."<br />" : "");
+$showcurrent = (varsettrue($pref['anteup_showcurrent']) ? ANTELAN_MENU_04." ".format_currency($current, $currency)."<br />" : "");
+$showleft = (varsettrue($pref['anteup_showleft']) ? ANTELAN_MENU_05." ".format_currency($amt_left, $currency)."<br />" : "");
+$showgoal = (varsettrue($pref['anteup_showgoal']) ? ANTELAN_MENU_06." ".format_currency($goal, $currency)."<br />" : "");
+$showtotal = (varsettrue($pref['anteup_showtotal']) ? ANTELAN_MENU_07." ".format_currency($total, $currency)."<br />" : "");
+$showdue = (varsettrue($pref['anteup_showdue']) ? ANTELAN_MENU_08." ".$gen->convert_date(strtotime($due), $pref['anteup_dformat'])."<br />" : "");
 $textbar = (varsettrue($pref['anteup_textbar']) ? $pref['anteup_textbar']."<br /></br />" : "");
 
 $text = $showbar.$textbar.$showcurrent.$showleft.$showgoal.$showtotal.$showdue."
@@ -67,7 +67,7 @@ $text = $showbar.$textbar.$showcurrent.$showleft.$showgoal.$showtotal.$showdue."
 <a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$pref['pal_button_image']."' title='".$pref['pal_button_popup']."' style='border:none' /></a>
 </div>";
 
-if(ADMIN){ $text .= "<br /><a href='".e_PLUGIN."anteup/admin_config.php'>".LAN_TRACK_MENU_07."</a>"; }
+if(ADMIN){ $text .= "<br /><a href='".e_PLUGIN."anteup/admin_config.php'>".ANTELAN_MENU_09."</a>"; }
 
 $ns -> tablerender($pref['anteup_mtitle'],  "<div style='text-align:center;'>\n".$text."\n</div>", 'anteup');
 
