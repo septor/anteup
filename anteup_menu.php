@@ -8,7 +8,6 @@ $cd = explode("/", $pref['anteup_due']);
 if(!empty($pref['anteup_lastdue'])){
 	$ld = explode("/", $pref['anteup_lastdue']);
 }else{
-	// if the lastdue date isn't set, make it the first day of last month
 	$ld = explode("/", date("m/d/Y", strtotime("first day of last month")));
 }
 $due_ts = mktime(0, 0, 0, $cd[0], $cd[1], $cd[2]);
@@ -29,27 +28,24 @@ while($row = $sql->db_Fetch()){
 	$total += ($row['mc_gross'] - $row['mc_fee']);
 }
 
-
 $amt_left = round($goal - $current, 2);
 $pct_left = round(($current / $goal) * 100, 0);
 
+$text = "<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js'></script>
+<script>
+$(document).ready(function() {
+	$('#progressbar').progressbar({ value: ".$pct_left." });
+});
+</script>";
 
 if(varsettrue($pref['anteup_showbar'])){
 	if($pct_left < 100){
 		$showbar = $pct_left."% ".ANTELAN_MENU_01."<br />
-		<script type='text/javascript'>
-			function DoNav(theUrl) {
-			document.location.href = theUrl;}
-		</script>
-		<table cellspacing='0' cellpadding='0' style='border:#".$pref['anteup_border']." 1px solid; width:100%;'>
-		  <tr onclick=\"DoNav('".e_PLUGIN."anteup/donations.php');\" title='".ANTELAN_MENU_02."'>
-			<td style='width:".$pct_left."%; height: ".$pref['anteup_height']."px; background-color:#".$pref['anteup_full'].";'></td>
-			<td style='width:".(100 - $pct_left)."%; height: ".$pref['anteup_height']."; background-color:#".$pref['anteup_empty'].";'></td>
-		  </tr>
-		</table>
+		<a href='".e_PLUGIN."anteup/donations.php' title='".ANTELAN_MENU_02."'><div id='progressbar'></div></a>
 		<br />";
 	}else{
-		$showbar = ANTELAN_MENU_03."<br /><br />";
+		$showbar = "<a href='".e_PLUGIN."anteup/donations.php' title='".ANTELAN_MENU_02."'>".ANTELAN_MENU_03."</a><br /><br />";
 	}
 }else{
 	$showbar = "";
@@ -62,7 +58,7 @@ $showtotal = (varsettrue($pref['anteup_showtotal']) ? ANTELAN_MENU_07." ".format
 $showdue = (varsettrue($pref['anteup_showdue']) ? ANTELAN_MENU_08." ".$gen->convert_date(strtotime($due), $pref['anteup_dformat'])."<br />" : "");
 $textbar = (varsettrue($pref['anteup_textbar']) ? $pref['anteup_textbar']."<br /></br />" : "");
 
-$text = $showbar.$textbar.$showcurrent.$showleft.$showgoal.$showtotal.$showdue."
+$text .= $showbar.$textbar.$showcurrent.$showleft.$showgoal.$showtotal.$showdue."
 <div style='padding-top:5px'>
 <a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$pref['pal_button_image']."' title='".$pref['pal_button_popup']."' style='border:none' /></a>
 </div>";

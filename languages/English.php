@@ -98,6 +98,8 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_I_08", "Displays the goal donation amount.");	
 	define("ANTELAN_CONFIG_I_09", "Show due date?");
 	define("ANTELAN_CONFIG_I_10", "Displays the due date.");
+	define("ANTELAN_CONFIG_I_11", "Show amount left?");
+	define("ANTELAN_CONFIG_I_12", "Displays the amount of money you need to get before you met your goal.");
 	
 	// Menu Configuration
 	define("ANTELAN_CONFIG_M_01", "Menu Title:");
@@ -105,7 +107,7 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_M_03", "Display Bar?");
 	define("ANTELAN_CONFIG_M_04", "Uncheck to disable progress bar.");	
 	define("ANTELAN_CONFIG_M_05", "Menu Text:");	
-	define("ANTELAN_CONFIG_M_06", "Text under the graphic's bar, should be formatted using XHTML such as &lt;br /&gt; for new lines.");	
+	define("ANTELAN_CONFIG_M_06", "Text to display under the progress bar. This will display even if the progress bar does not.");	
 	define("ANTELAN_CONFIG_M_07", "Full Progress Bar Color:");
 	define("ANTELAN_CONFIG_M_08", "The color of the full progress bar. Enter the 6 digit hex code.");	
 	define("ANTELAN_CONFIG_M_09", "Empty Progress Bar Color: ");
@@ -172,7 +174,7 @@ define("ANTELAN_MENU_03",  "We have met our goal! Thanks a lot!");
 define("ANTELAN_MENU_04",  "Current:");
 define("ANTELAN_MENU_05",  "Remaining:");
 define("ANTELAN_MENU_06",  "Target:");
-define("ANTELAN_MENU_07",  "Total:");
+define("ANTELAN_MENU_07",  "Grand Total:");
 define("ANTELAN_MENU_08",  "Due date:");
 
 define("ANTELAN_MENU_09",  "Admin configure");

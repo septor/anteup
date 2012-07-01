@@ -11,11 +11,7 @@ $cal = new DHTML_Calendar(true);
 $pageid = "admin_menu_02";
 
 $text = "<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' type='text/javascript'></script>
-<script src='".e_PLUGIN."anteup/js/addentry.js' type='text/javascript'></script>
-<style>
-.addentry { display:none; }
-</style>";
-
+<script src='".e_PLUGIN."anteup/js/addentry.js' type='text/javascript'></script>";
 
 if(e_QUERY){
 	$tmp = explode('.', e_QUERY);
@@ -121,7 +117,7 @@ $text .= $cal->load_files()."
 </table>
 </form>
 
-<div class='addentry'>
+<div class='addentry' style='display:none;'>
 
 <form method='post' action='".e_SELF."'>
 <table style='width:100%;' class='fborder' cellspacing='0' cellpadding='0'>

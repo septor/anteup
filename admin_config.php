@@ -61,6 +61,7 @@ $_POST['data'] = $tp->toForm($pref['anteup_description']);
 if(isset($message)){ $ns->tablerender("", "<div style='text-align:center'><b>".$message."</b></div>"); }
 
 $text = $cal->load_files()."
+<script src='".e_PLUGIN."anteup/js/jscolor.js' type='text/javascript'></script>
 <div style='text-align:center'>
 <form method='post' action='".e_SELF."' id='tracker_form'>";
 
@@ -109,6 +110,7 @@ $text .= "<input class='button' type='submit' name='updatesettings' value='".ANT
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showtotal'".($pref['anteup_showtotal'] ? " checked" : "").">", ANTELAN_CONFIG_I_05, ANTELAN_CONFIG_I_06)."
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showgoal'".($pref['anteup_showgoal'] ? " checked" : "").">", ANTELAN_CONFIG_I_07, ANTELAN_CONFIG_I_08)."
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showdue'".($pref['anteup_showdue'] ? " checked" : "").">", ANTELAN_CONFIG_I_09, ANTELAN_CONFIG_I_10)."
+	".config_block("<input class='tbox' type='checkbox' name='anteup_showleft'".($pref['anteup_showleft'] ? " checked" : "").">", ANTELAN_CONFIG_I_11, ANTELAN_CONFIG_I_12)."
 </table>
 <br />
 <div onclick='expandit(\"menu\");' class='fcaption' style='cursor: pointer;'>".ANTELAN_CONFIG_CAPTION03."</div>
