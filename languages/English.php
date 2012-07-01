@@ -36,29 +36,30 @@ define("ANTELAN_CASHM_E_17", "Cancel");
 // donation invoice
 define("ANTELAN_CASHM_I_01", "Donation Invoice");
 
-define("ANTELAN_CASHM_I_02", "ID");
-define("ANTELAN_CASHM_I_03", "Date");
-define("ANTELAN_CASHM_I_04", "Description");
-define("ANTELAN_CASHM_I_05", "Transaction ID");
-define("ANTELAN_CASHM_I_06", "Status");
-define("ANTELAN_CASHM_I_07", "Type");
-define("ANTELAN_CASHM_I_08", "Amount");
-define("ANTELAN_CASHM_I_09", "Fee");
-define("ANTELAN_CASHM_I_10", "Total");
+define("ANTELAN_CASHM_I_02", "Date");
+define("ANTELAN_CASHM_I_03", "Donator");
+define("ANTELAN_CASHM_I_04", "Transaction ID");
+define("ANTELAN_CASHM_I_05", "Custom");
+define("ANTELAN_CASHM_I_06", "Comment");
+define("ANTELAN_CASHM_I_07", "Status");
+define("ANTELAN_CASHM_I_08", "Type");
+define("ANTELAN_CASHM_I_09", "Amount");
+define("ANTELAN_CASHM_I_10", "Fee");
+define("ANTELAN_CASHM_I_11", "Total");
 
-define("ANTELAN_CASHM_I_11", "Initial balance");
-define("ANTELAN_CASHM_I_12", "Save");
+define("ANTELAN_CASHM_I_12", "Initial balance");
+define("ANTELAN_CASHM_I_14", "Save");
 
-define("ANTELAN_CASHM_I_13", "Are you sure you want to delete this entry?");
+define("ANTELAN_CASHM_I_14", "Are you sure you want to delete this entry?");
 
-define("ANTELAN_CASHM_I_14", "There are no entries to display during the selected time periods.");
+define("ANTELAN_CASHM_I_15", "There are no entries to display during the selected time periods.");
 
-define("ANTELAN_CASHM_I_15", "Entry successfully edited.");
-define("ANTELAN_CASHM_I_16", "Entry successfully deleted."); 
-define("ANTELAN_CASHM_I_17", "Error deleting entry.");
-define("ANTELAN_CASHM_I_18", "Entry successfully added.");
+define("ANTELAN_CASHM_I_16", "Entry successfully edited.");
+define("ANTELAN_CASHM_I_17", "Entry successfully deleted."); 
+define("ANTELAN_CASHM_I_18", "Error deleting entry.");
+define("ANTELAN_CASHM_I_19", "Entry successfully added.");
 
-define("ANTELAN_CASHM_I_19", "Not Supplied.");
+define("ANTELAN_CASHM_I_20", "Not Supplied.");
 
 
 //------------------------------------------------------------------------------------------------------------+

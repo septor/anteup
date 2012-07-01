@@ -28,11 +28,11 @@ if(e_QUERY){
 
 if(isset($_POST['main_delete'])){
 	$delete_id = array_keys($_POST['main_delete']);
-	$message = ($sql2->db_Delete("anteup_ipn", "ipn_id=".intval($delete_id[0]))) ? ANTELAN_CASHM_I_16 : ANTELAN_CASHM_I_17;
+	$message = ($sql2->db_Delete("anteup_ipn", "ipn_id=".intval($delete_id[0]))) ? ANTELAN_CASHM_I_17 : ANTELAN_CASHM_I_18;
 }
 
 if(isset($_POST['addentry'])){
-	$item_name = ($_POST['item_name'] == "--Other--" ? ($_POST['other'] == "" ? ANTELAN_CASHM_I_19 : $_POST['other']) : $_POST['item_name']);
+	$item_name = ($_POST['item_name'] == "--Other--" ? ($_POST['other'] == "" ? ANTELAN_CASHM_I_20 : $_POST['other']) : $_POST['item_name']);
 	
 	if($sql2->db_Select("user","*", "user_name='".$tp->toDB($item_name)."'")){
 		$row = $sql2->db_Fetch();
@@ -46,7 +46,7 @@ if(isset($_POST['addentry'])){
 	$pd_ts = mktime(0, 0, 0, $pd[0], $pd[1], $pd[2]);
 
 	$sql->db_Insert("anteup_ipn", "'', '".$tp->toDB($item_name)."', '".$tp->toDB($_POST['payment_status'])."', '".$tp->toDB($_POST['mc_gross'])."', '".intval($_POST['mc_currency'])."', '".$tp->toDB($_POST['txn_id'])."', '".intval($user_id)."', '".$buyer_email."', '".$pd_ts."', '".$tp->toDB($_POST['mc_fee'])."', '', '".intval($_POST['type'])."', '".$tp->toDB($_POST['comment'])."', '".$tp->toDB($_POST['custom'])."'") or $message = mysql_error();
-	$message = ($message ? $message : ANTELAN_CASHM_I_18);
+	$message = ($message ? $message : ANTELAN_CASHM_I_19);
 }
 
 if(isset($_POST['editentry'])){
@@ -55,7 +55,7 @@ if(isset($_POST['editentry'])){
 	$pd_ts = mktime(0, 0, 0, $pd[0], $pd[1], $pd[2]);
 	
 	$sql->db_Update("anteup_ipn", "item_name='".$tp->toDB($_POST['item_name'])."', payment_status='".$tp->toDB($_POST['payment_status'])."', mc_gross='".$tp->toDB($_POST['gross'])."', txn_id='".$tp->toDB($_POST['txn_id'])."', payment_date='".$pd_ts."', mc_fee='".$tp->toDB($_POST['fee'])."', type=".intval($_POST['type']).", comment='".$tp->toDB($_POST['comment'])."', custom='".$tp->toDB($_POST['custom'])."' WHERE ipn_id=".intval($_POST['id'])) or $message = mysql_error();
-	$message = ($message ? $message : ANTELAN_CASHM_I_15);
+	$message = ($message ? $message : ANTELAN_CASHM_I_16);
 }
 
 if(isset($message)){
@@ -188,25 +188,26 @@ $text .= $cal->load_files()."
 
 <table style='width:100%; border:1px;' class='fborder' cellspacing='0' cellpadding='0'>
 	<tr>
-		<td colspan=10 class='fcaption' style='text-align: center;'><b>".ANTELAN_CASHM_I_01."</b></td>
+		<td colspan='11' class='fcaption' style='text-align: center;'><b>".ANTELAN_CASHM_I_01."</b></td>
 	</tr>
 	<tr>
-		<td style='width:5; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_02."</td>
-		<td style='width:10%; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_03."</td>
-		<td style='width:15%; text-align:left;' class='forumheader3'>".ANTELAN_CASHM_I_04."</td>
-		<td style='width:20%; text-align:left;' class='forumheader3'>".ANTELAN_CASHM_I_05."</td>
-		<td style='width:10%; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_06."</td>
-		<td style='width:10%; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_07."</td>
-		<td style='width:5%; text-align:right;' class='forumheader3'>".ANTELAN_CASHM_I_08."</td>
-		<td style='width:10%; text-align:right;' class='forumheader3'>".ANTELAN_CASHM_I_09."</td>
-		<td style='width:10%; text-align:right;' class='forumheader3'>".ANTELAN_CASHM_I_10."</td>
+		<td style='width:11%; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_02."</td>
+		<td style='width:11%; text-align:left;' class='forumheader3'>".ANTELAN_CASHM_I_03."</td>
+		<td style='width:11%; text-align:left;' class='forumheader3'>".ANTELAN_CASHM_I_04."</td>
+		<td style='width:11; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_05."</td>
+		<td style='width:11; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_06."</td>
+		<td style='width:8%; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_07."</td>
+		<td style='width:8%; text-align:center;' class='forumheader3'>".ANTELAN_CASHM_I_08."</td>
+		<td style='width:8%; text-align:right;' class='forumheader3'>".ANTELAN_CASHM_I_09."</td>
+		<td style='width:8%; text-align:right;' class='forumheader3'>".ANTELAN_CASHM_I_10."</td>
+		<td style='width:8%; text-align:right;' class='forumheader3'>".ANTELAN_CASHM_I_11."</td>
 		<td style='width:5%; text-align:center;' class='forumheader3'>&nbsp;</td>
 	</tr>";
  
 $countl += 5;
 if($pref['anteup_ibalance'] != 0){
 	$text .= "<tr>
-		<td colspan='8' class='fcaption' style='text-align: center;'>".ANTELAN_CASHM_I_11."</td>
+		<td colspan='9' class='fcaption' style='text-align: center;'>".ANTELAN_CASHM_I_12."</td>
 		<td style='width:10%; text-align:right;' class='fcaption'>".format_currency($partial, $pref['anteup_currency'])."</td>
 		<td class='fcaption'>&nbsp;</td>
 	</tr>";
@@ -231,7 +232,7 @@ while($row = $sql->db_Fetch()){
 		$typex = "<span style='color:#009900;'>".ANTELAN_CASHM_E_03."</span>";
 	}else{
 		$partial -= ($mc_gross-$mc_fee);
-		$typex = "<span style='color:#ff0000;'>".ANTELAN_CASHM_I_04."</span>";
+		$typex = "<span style='color:#ff0000;'>".ANTELAN_CASHM_E_04."</span>";
 	}
 	
 	$bgn = ($bgn == 1 ? 0 : 1);
@@ -241,10 +242,11 @@ while($row = $sql->db_Fetch()){
 	if($action == "edit" && $id == $ipn_id){
 		$text .= "<form method='post' action='".e_SELF."'>
 		<tr>
-			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$ipn_id."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='payment_date' id='edit_payment_date' value='".date("m/d/Y", $payment_date)."' /><a href='#' id='f-calendar-trigger-4'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'edit_payment_date','button':'f-calendar-trigger-4'});</script></td>
-			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='item_name' value='".$item_name."' /><br /><input class='tbox' type='text' name='custom' value='".$custom."' /></td>
-			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='comment' value='".trim($comment)."' /><br /><input class='tbox' type='text' name='txn_id' value='".$txn_id."' /></td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='item_name' value='".$item_name."' /></td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='txn_id' value='".$txn_id."' /></td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>input class='tbox' type='text' name='custom' value='".$custom."' /></td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='comment' value='".trim($comment)."' /></td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>
 			<select class='tbox' name='payment_status'>
 			   <option".(($payment_status == "Completed") ? " selected ='selected'" : "")." value='Completed'>".ANTELAN_CASHM_E_06."</option>
@@ -265,17 +267,18 @@ while($row = $sql->db_Fetch()){
 			<input type='hidden' name='sd' value='".$esd."' />
 			<input type='hidden' name='ed' value='".$eed."' />
 			<input type='hidden' name='id' value='".$id."' />
-			<input class='button' type='submit' name='editentry' value='".ANTELAN_CASHM_I_12."' />
+			<input class='button' type='submit' name='editentry' value='".ANTELAN_CASHM_I_13."' />
 			</td>
 		</tr>
 		</form>";
 	}else{
 		$text .= "
 		<tr>
-			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$ipn_id."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$gen->convert_date(strtotime($payment_date), $pref['anteup_dformat'])."</td>
-			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".$item_name.($custom !=" "? "<br>".$custom:"")."</td>
-			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".trim($comment." ".$txn_id)."</td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".$item_name."</td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".$txn_id."</td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".(!empty($custom) ? $custom : "---")."</td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".(!empty($comment) ? $comment : "---")."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$payment_status."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$typex."</td>
 			<td style='text-align:right; background-color: ".$bgc.";' class='forumheader'>".format_currency($mc_gross, $pref['anteup_currency'])."</td>
@@ -290,7 +293,7 @@ while($row = $sql->db_Fetch()){
 	$countl += 1;
 	$flag++;
 }
-$text .= ($flag == 0  ? "<tr><td colspan='10' style='text-align:center;' class='forumheader'>".ANTELAN_CASHM_I_14."</td></tr>" : "")."
+$text .= ($flag == 0  ? "<tr><td colspan='11' style='text-align:center;' class='forumheader'>".ANTELAN_CASHM_I_15."</td></tr>" : "")."
 </table>
 </div>";
 
