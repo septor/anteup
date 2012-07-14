@@ -2,6 +2,18 @@ Ante Up's changelog
 ===================
 
 
+0.1.1 (July 13th, 2012)
+-------------------------------------------------
+* Cash Manager now has full multilanguage support.
+* You can now edit a donation's date.
+* Fixed an issue where updating the donate image caused it to not display.
+* You can now specify a donator that is not part of your site's userbase.
+* The columns in in the invoice table now correctly display all field types. No more sharing!
+* Table based progress bar has been removed. jQuery progress bar is used in it's place.
+* You can now toggle the "show amount left" preference in the configuration area (Oops!).
+* Various other coding tweaks have taken place.
+
+
 0.1.0 (June 28th, 2012)
 -------------------------------------------------
 * **ALPHA** release.
