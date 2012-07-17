@@ -31,20 +31,19 @@ if(USER){
 	}
 	</script>";
 	$paypal_donate_jscript_onclick = "onclick='paypal_donate_set()'";
-	$paypal_donate_action          = ANTEUP;
-	$paypal_donate_email           = "JAVASCRIPT_REQUIRED"; // TODO LANGUAGE??
+	$paypal_donate_action = ANTEUP;
 }
 
-$text = $pref['anteup_description']."
-<table width='75%'>
-<tr>
+$text = "<div style='text-align:center;'>".$pref['anteup_description']."</div>
 <form action='".$paypal_donate_action."' id='paypal_donate_form' method='post'>
+<table class='fborder' style='width: 100%;'>
+<tr>
 ";
 if(USER){
 	$text .= "<input type='hidden' name='item_name' value='".USERNAME."' />";
 }else{
-	$text .= "<td width='30%'>".ANTELAN_DONATE_01."<br>
-	<input name='item_name' type='text' class='tbox' id='item_name' value='' maxlength='50' />";
+	$text .= "<td class='forumheader3' style='width:50%; text-align:right;'>".ANTELAN_DONATE_01."</td><br />
+	<td class='forumheader3'><input name='item_name' type='text' class='tbox' id='item_name' value='' maxlength='50' />";
 }
 
 $text .= "<input type='hidden' name='cmd' value='_xclick' />\n
@@ -63,15 +62,20 @@ $text .= "<input type='hidden' name='cmd' value='_xclick' />\n
 ".(($pref['pal_amount']) ? "<input type='hidden' name='amount' value='".$pref['pal_amount']."' />\n" : "")."
 ".(($pref['pal_tax']) ? "<input type='hidden' name='tax' value='".$pref['pal_tax']."' />\n" : "")."
 </td>
-<td width='25%'>".ANTELAN_DONATE_02."<br>
-<select class='tbox' name='currency_code'>";
+</tr>
+<tr>
+<td class='forumheader3' style='width:50%; text-align:right;'>".ANTELAN_DONATE_02."</td>
+<td class='forumheader3'><select class='tbox' name='currency_code'>";
 $sql->db_Select("anteup_currency", "*");
 while($row = $sql->db_Fetch()){
 	$text .= "<option value='".$row['code']."'".($row['id'] == $pref['anteup_currency'] ? " selected" : "").">".$row['description']." (".$row['symbol'].")</option>";
 }
 $text .= "</select>
 </td>
-<td width='20%'>".ANTELAN_DONATE_03."<br>
+</tr>
+<tr>
+<td class='forumheader3' style='width:50%; text-align:right;'>".ANTELAN_DONATE_03."</td>
+<td class='forumheader3'>
 <select class='tbox' name='amount'>
 <option value='0.00'>".ANTELAN_DONATE_04."</option>
 <option value='1.00'>1.00</option>
@@ -88,17 +92,13 @@ $text .= "</select>
 </td>
 </tr>
 <tr>
-<td colspan=3>
-<center>
+<td class='forumheader3' style='text-align:center;' colspan='2'>
 <input ".$paypal_donate_jscript_onclick." name='submit' type='image' src='".ANTEUP."images/icons/".$pref['pal_button_image']."' title='".$pref['pal_button_popup']."' style='border:none' />
-</center>
 </td>
-</form>
 </tr>
 </table>
-<br><br>
-";
+</form>";
 
-$ns -> tablerender(ANTELAN_DONATE_CAPTION00, $tp->toHTML($text, true));
+$ns->tablerender(ANTELAN_DONATE_CAPTION00, $tp->toHTML($text, true));
 require_once(FOOTERF);
 ?>
