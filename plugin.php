@@ -1,9 +1,13 @@
 <?php
+// TODO: Trim out unneeded PayPal specific preferences? How many can safely be hardcoded in?
+// TODO: Once Ante Up hits beta hardcoded text should be converted to LANs.
+
+
 include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
 
 // -- [ PLUGIN INFO ]  //TODO LANGUAGE?
 $eplug_name			= "Ante Up!";
-$eplug_version		= "0.1.0";
+$eplug_version		= "0.1.2";
 $eplug_author		= "Patrick Weaver";
 $eplug_url			= "http://trickmod.com/";
 $eplug_email		= "patrickweaver@gmail.com";
@@ -12,7 +16,7 @@ $eplug_compatible	= "e107 v1.0+";
 $eplug_readme		= "admin_readme.php";
 $eplug_compliant	= TRUE;
 $eplug_folder		= "anteup";
-$eplug_menu_name	= "anteup";
+$eplug_menu_name	= "anteup_menu";
 $eplug_conffile		= "admin_config.php";
 $eplug_icon			= $eplug_folder."/images/icon.png";
 $eplug_icon_small	= $eplug_icon;

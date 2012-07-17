@@ -1,4 +1,6 @@
 <?php
+// TODO: Rewrite this file (again!). I think it should feel similar to the PayPal statement/invoice area.
+
 require_once("../../class2.php");
 require_once(e_ADMIN."auth.php");
 if(!getperms("P")){ header("location:".e_BASE."index.php"); exit;}
