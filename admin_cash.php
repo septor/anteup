@@ -104,7 +104,7 @@ $text .= $cal->load_files()."
 	<tr>
 		<td style='width:40%; font-size:1.4em;'>
 			<b>".ANTELAN_CASHM_01."</b>: ".format_currency($total, $pref['anteup_currency'])."
-			<span style='padding-left:10px;'><a href='#' class='toggleadd'><img src='".e_PLUGIN."anteup/images/admin/money_add.png' title='".ANTELAN_CASHM_05."' style='border: 0px;'></a></span>
+			<span style='padding-left:10px;'><a href='#' class='toggleadd'><img src='".e_PLUGIN."anteup/images/admin/money_add.png' style='border: 0px;'> ".ANTELAN_CASHM_05."</span></a></span>
 		</td>
 		<td style='width:25%; text-align:right;'>
 			".ANTELAN_CASHM_02." <input type='text' class='tbox' name='sd' id='sd' value='".$sd."' /> <a href='#' id='f-calendar-trigger-1'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'sd','button':'f-calendar-trigger-1'});</script>
@@ -114,7 +114,7 @@ $text .= $cal->load_files()."
 		</td>
 		<td style='width:10%; text-align:right;'>
 			<input class='button' type='submit' name='setdates' value='".ANTELAN_CASHM_04."' />
-		</td>
+		</td
 	</tr>
 </table>
 </form>
@@ -240,11 +240,11 @@ while($row = $sql->db_Fetch()){
 	if($action == "edit" && $id == $ipn_id){
 		$text .= "<form method='post' action='".e_SELF."'>
 		<tr>
-			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='payment_date' id='edit_payment_date' value='".date("m/d/Y", $payment_date)."' /><a href='#' id='f-calendar-trigger-4'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'edit_payment_date','button':'f-calendar-trigger-4'});</script></td>
-			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='item_name' value='".$item_name."' /></td>
-			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='txn_id' value='".$txn_id."' /></td>
-			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>input class='tbox' type='text' name='custom' value='".$custom."' /></td>
-			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='comment' value='".trim($comment)."' /></td>
+			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'><input class='tbox' style='width: 75px;' type='text' name='payment_date' id='edit_payment_date' value='".date("m/d/Y", $payment_date)."' /><a href='#' id='f-calendar-trigger-4'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'edit_payment_date','button':'f-calendar-trigger-4'});</script></td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' style='width: 75px;' type='text' name='item_name' value='".$item_name."' /></td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' style='width: 75px;' type='text' name='txn_id' value='".$txn_id."' /></td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox style='width: 75px;'' type='text' name='custom' value='".$custom."' /></td>
+			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'><input class='tbox' style='width: 75px;' type='text' name='comment' value='".trim($comment)."' /></td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>
 			<select class='tbox' name='payment_status'>
 			   <option".(($payment_status == "Completed") ? " selected ='selected'" : "")." value='Completed'>".ANTELAN_CASHM_E_06."</option>
@@ -258,8 +258,8 @@ while($row = $sql->db_Fetch()){
 			   <option ".(($type == 1) ? " selected ='selected'" : "")." value='1'>".ANTELAN_CASHM_E_04."</option> 
 			</select>
 			</td>
-			<td style='text-align:right; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='gross' value='".$mc_gross."' /></td>
-			<td style='text-align:right; background-color: ".$bgc.";' class='forumheader'><input class='tbox' type='text' name='fee' value='".$mc_fee."' /></td>
+			<td style='text-align:right; background-color: ".$bgc.";' class='forumheader'><input class='tbox' style='width: 75px;' type='text' name='gross' value='".$mc_gross."' /></td>
+			<td style='text-align:right; background-color: ".$bgc.";' class='forumheader'><input class='tbox' style='width: 75px;' type='text' name='fee' value='".$mc_fee."' /></td>
 			<td style='text-align:right; background-color: ".$bgc."; color: ".$ppc.";' class='forumheader'>".format_currency(($mc_gross-$mc_fee), $pref['anteup_currency'])."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>
 			<input type='hidden' name='sd' value='".$esd."' />
@@ -283,7 +283,7 @@ while($row = $sql->db_Fetch()){
 			<td style='text-align:right; background-color: ".$bgc.";' class='forumheader'>".format_currency($mc_fee, $pref['anteup_currency'])."</td>
 			<td style='text-align:right; background-color: ".$bgc."; color: ".$ppc.";' class='forumheader'>".format_currency(($mc_gross-$mc_fee), $pref['anteup_currency'])."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>
-			<a href='".e_SELF."?edit.".$ipn_id.".".$sd_ts.".".$ed_ts."'>".ADMIN_EDIT_ICON."</a><input type='image' title='".LAN_EDIT."' name='main_delete[".$ipn_id."]' src='".e_PLUGIN."anteup/images/admin/delete_16.png' onclick=\"return jsconfirm('".ANTELAN_CASHM_I_13." [ID: ".$ipn_id." ]')\"/>
+			<a href='".e_SELF."?edit.".$ipn_id.".".$sd_ts.".".$ed_ts."'>".ADMIN_EDIT_ICON."</a><input type='image' title='".LAN_EDIT."' name='main_delete[".$ipn_id."]' src='".e_PLUGIN."anteup/images/admin/delete_16.png' onclick=\"return jsconfirm('".ANTELAN_CASHM_I_14." [ID: ".$ipn_id." ]')\"/>
 			</td>
 		</tr>";
 	}
