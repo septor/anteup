@@ -114,7 +114,7 @@ $text .= $cal->load_files()."
 		</td>
 		<td style='width:10%; text-align:right;'>
 			<input class='button' type='submit' name='setdates' value='".ANTELAN_CASHM_04."' />
-		</td
+		</td>
 	</tr>
 </table>
 </form>
