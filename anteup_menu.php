@@ -15,7 +15,7 @@ if(!empty($pref['anteup_lastdue'])){
 $due_ts = mktime(0, 0, 0, $cd[0], $cd[1], $cd[2]);
 $due = date('m/d/Y', $due_ts);
 $lastdue_ts = mktime(0, 0, 0, $ld[0], $ld[1], $ld[2]);
-$due = date('m/d/Y', $lastdue_ts);
+$lastdue = date('m/d/Y', $lastdue_ts);
 
 $currency = $pref['anteup_currency'];
 $goal = (!empty($pref['anteup_goal']) ? $pref['anteup_goal'] : "0");
