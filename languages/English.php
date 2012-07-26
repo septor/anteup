@@ -2,7 +2,7 @@
 
 //------------------------------------------------------------------------------------------------------------+
 // admin_cash.php
-define("ANTELAN_CASHM_CAPTION00", "Donation invoice");
+define("ANTELAN_CASHM_CAPTION00", "Cash Manager");
 
 define("ANTELAN_CASHM_01", "Balance");
 define("ANTELAN_CASHM_02", "Start Date:");
