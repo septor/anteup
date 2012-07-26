@@ -5,13 +5,13 @@
 
 include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
 
-// -- [ PLUGIN INFO ]  //TODO LANGUAGE?
+// -- [ PLUGIN INFO ]
 $eplug_name			= "Ante Up!";
-$eplug_version		= "0.1.2";
+$eplug_version		= "0.2.0";
 $eplug_author		= "Patrick Weaver";
 $eplug_url			= "http://trickmod.com/";
 $eplug_email		= "patrickweaver@gmail.com";
-$eplug_description	= "An extensive Donation Tracker with PayPal integration.";
+$eplug_description	= ANTELAN_PLUGIN_01;
 $eplug_compatible	= "e107 v1.0+";
 $eplug_readme		= "admin_readme.php";
 $eplug_compliant	= TRUE;
@@ -20,7 +20,7 @@ $eplug_menu_name	= "anteup_menu";
 $eplug_conffile		= "admin_config.php";
 $eplug_icon			= $eplug_folder."/images/icon.png";
 $eplug_icon_small	= $eplug_icon;
-$eplug_caption		= ANTELAN_CONFIG_CAPTION00; 
+$eplug_caption		= ANTELAN_PLUGIN_02; 
 
 // -- [ DEFAULT PREFERENCES ]
 $eplug_prefs = array(
@@ -36,6 +36,7 @@ $eplug_prefs = array(
     "anteup_dformat" => "short",
     "anteup_showibalance" => "0",
     "anteup_showtotal" => "0",
+	"anteup_showconfiglink" => "0",
 	
     "pal_button_image" => "donate.gif",
     "pal_business" => "",
@@ -115,16 +116,18 @@ foreach($anteup_cur as $cur){
 
 // -- [ MAIN SITE LINK ]
 $eplug_link			= TRUE;
-$eplug_link_name	= ANTELAN_MMENU_00;
+$eplug_link_name	= ANTELAN_PLUGIN_03;
 $eplug_link_url		= e_PLUGIN."anteup/donations.php";
 
 // -- [ INSTALLED MESSAGE ]
-$eplug_done = $eplug_name." has been successfully installed."; //TODO LANGUAGE?
+$eplug_done = $eplug_name.ANTELAN_PLUGIN_04;
 
 // -- [ UPGRADE INFORMATION ]
-$upgrade_add_prefs    = "";
+$upgrade_add_prefs    = array(
+	"anteup_showconfiglink" => "0"
+);
 $upgrade_remove_prefs = "";
 $upgrade_alter_tables = "";
-$eplug_upgrade_done   = $eplug_name." has been successfully upgraded."; //TODO LANGUAGE?
+$eplug_upgrade_done   = $eplug_name.ANTELAN_PLUGIN_05;
 
 ?>

@@ -23,6 +23,7 @@ if(isset($_POST['updatesettings'])){
 		$pref['anteup_showgoal'] 		= $_POST['anteup_showgoal'];
 		$pref['anteup_showdue'] 		= $_POST['anteup_showdue'];
 		$pref['anteup_showtotal']  		= $_POST['anteup_showtotal'];
+		$pref['anteup_showconfiglink']  = $_POST['anteup_showconfiglink'];
 		$pref['anteup_dformat'] 		= $_POST['anteup_dformat'];
 		$pref['anteup_description'] 	= $tp->toDB($_POST['anteup_description']);
 		$pref['anteup_mtitle']   		= $_POST['anteup_mtitle'];
@@ -111,6 +112,7 @@ $text .= "<input class='button' type='submit' name='updatesettings' value='".ANT
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showgoal'".($pref['anteup_showgoal'] ? " checked" : "").">", ANTELAN_CONFIG_I_07, ANTELAN_CONFIG_I_08)."
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showdue'".($pref['anteup_showdue'] ? " checked" : "").">", ANTELAN_CONFIG_I_09, ANTELAN_CONFIG_I_10)."
 	".config_block("<input class='tbox' type='checkbox' name='anteup_showleft'".($pref['anteup_showleft'] ? " checked" : "").">", ANTELAN_CONFIG_I_11, ANTELAN_CONFIG_I_12)."
+	".config_block("<input class='tbox' type='checkbox' name='anteup_showconfiglink'".($pref['anteup_showconfiglink'] ? " checked" : "").">", ANTELAN_CONFIG_I_13, ANTELAN_CONFIG_I_14)."
 </table>
 <br />
 <div onclick='expandit(\"menu\");' class='fcaption' style='cursor: pointer;'>".ANTELAN_CONFIG_CAPTION03."</div>

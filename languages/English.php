@@ -81,7 +81,7 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_G_03", "Goal Donation Amount:");
 	define("ANTELAN_CONFIG_G_04", "The amount of money you are requesting.");
 	define("ANTELAN_CONFIG_G_05", "Due Date:");
-	define("ANTELAN_CONFIG_G_06", "The date by which you want to recieve your target donation.<br />If not defined, the due date is set on the last day of the current month.");	
+	define("ANTELAN_CONFIG_G_06", "The date by which you want to receive your target donation.<br />If not defined, the due date is set on the last day of the current month.");	
 	define("ANTELAN_CONFIG_G_07", "Date Format:");
 	define("ANTELAN_CONFIG_G_08", "Format you would like dates to be displayed on the plugin.");
 	define("ANTELAN_CONFIG_G_09", "Donation Request Blurb");
@@ -100,12 +100,14 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_I_10", "Displays the due date.");
 	define("ANTELAN_CONFIG_I_11", "Show amount left?");
 	define("ANTELAN_CONFIG_I_12", "Displays the amount of money you need to get before you met your goal.");
+	define("ANTELAN_CONFIG_I_13", "Show configuration link?");
+	define("ANTELAN_CONFIG_I_14", "Displays the link to this page on the menu item.");
 	
 	// Menu Configuration
 	define("ANTELAN_CONFIG_M_01", "Menu Title:");
 	define("ANTELAN_CONFIG_M_02", "The title of your donation tracker menu.");	
 	define("ANTELAN_CONFIG_M_03", "Display Bar?");
-	define("ANTELAN_CONFIG_M_04", "Uncheck to disable progress bar.");	
+	define("ANTELAN_CONFIG_M_04", "Uncheck to disable the progress bar.");	
 	define("ANTELAN_CONFIG_M_05", "Menu Text:");	
 	define("ANTELAN_CONFIG_M_06", "Text to display under the progress bar. This will display even if the progress bar does not.");	
 	define("ANTELAN_CONFIG_M_07", "Full Progress Bar Color:");
@@ -117,8 +119,8 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_M_13", "Progress Bar Height: ");
 	define("ANTELAN_CONFIG_M_14", "The height of the progress bar. Enter your value in pixels.");
 
-	// Paypal Configuration
-	define("ANTELAN_CONFIG_P_C_01", "Paypal settings");
+	// PayPal Configuration
+	define("ANTELAN_CONFIG_P_C_01", "PayPal settings");
 	define("ANTELAN_CONFIG_P_C_02", "Optional settings");
 	define("ANTELAN_CONFIG_P_C_03", "Extra settings");	
 	define("ANTELAN_CONFIG_P_B_01", "Choose");
@@ -202,7 +204,7 @@ define("ANTELAN_DONATIONS_05", "Date donated");
 define("ANTELAN_DONATIONS_06", "Amount");
 define("ANTELAN_DONATIONS_07", "No donations found during that time period.");
 define("ANTELAN_DONATIONS_08", "Total:");
-define("ANTELAN_DONATIONS_09", "Want to be a part of this elite club of donators? Guess what! You can be! <a href='".e_PLUGIN."anteup/donate.php'>Click here</a> to send us a very welcome donation!");
+define("ANTELAN_DONATIONS_09", "Want to be a part of this elite club of donators? Guess what! You can be! <a href='donate.php'>Click here</a> to send us a very welcome donation!");
 
 
 //------------------------------------------------------------------------------------------------------------+
@@ -215,9 +217,18 @@ define("ANTELAN_INDEX_03", "Click below to make your donation.");
 
 
 //------------------------------------------------------------------------------------------------------------+
+// plugin.php
+define("ANTELAN_PLUGIN_01", "An extensive Donation Tracker with PayPal integration.");
+define("ANTELAN_PLUGIN_02", "Configure Ante Up!");
+define("ANTELAN_PLUGIN_03", "Donations");
+define("ANTELAN_PLUGIN_04", " has been successfully installed!");
+define("ANTELAN_PLUGIN_05", " has been successfully upgraded!");
+
+
+//------------------------------------------------------------------------------------------------------------+
 // return.php
 define("ANTELAN_CANCEL_01", "Cancelled Payment");
-define("ANTELAN_CANCEL_02", "You have cancelled your transaction. Please consider making a donation in the future or try again now.");
+define("ANTELAN_CANCEL_02", "You have cancelled your transaction. Please consider making a donation in the future, we would really appreciate it!.");
 define("ANTELAN_THANKS_01", "Thanks!");
 define("ANTELAN_THANKS_02", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");
 

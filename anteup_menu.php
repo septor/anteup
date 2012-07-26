@@ -65,7 +65,7 @@ $text .= $showbar.$textbar.$showcurrent.$showleft.$showgoal.$showtotal.$showdue.
 <a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$pref['pal_button_image']."' title='".$pref['pal_button_popup']."' style='border:none' /></a>
 </div>";
 
-if(ADMIN){ $text .= "<br /><a href='".e_PLUGIN."anteup/admin_config.php'>".ANTELAN_MENU_09."</a>"; }
+if(ADMIN && varsettrue($pref['anteup_showconfiglink'])){ $text .= "<br /><a href='".e_PLUGIN."anteup/admin_config.php'>".ANTELAN_MENU_09."</a>"; }
 
 $ns -> tablerender($pref['anteup_mtitle'],  "<div style='text-align:center;'>\n".$text."\n</div>", 'anteup');
 
