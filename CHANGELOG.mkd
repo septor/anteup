@@ -2,6 +2,17 @@ Ante Up's changelog
 ===================
 
 
+0.1.2 (July 26th, 2012)
+-------------------------------------------------
+* `donate.php` has been restylized to fit in with the rest of your site.
+* Fixed an issue where some LAN defines were not being converted correctly.
+* The opening bracket on the custom input field has been found and is back to work.
+* Swapped the "Add New Entry" image title out for text next to the image. Should clear things up.
+* Fixed an issue where the due date was not displaying correctly on the menu item. [#8](https://github.com/septor/anteup/issues/8)
+* Trimmed the size of the input fields on the Donation Invoice so it's not so long.
+* Changed the text in the admin area menu. Cash Manager is now Donation Invoice.
+
+
 0.1.1 (July 13th, 2012)
 -------------------------------------------------
 * Cash Manager now has full multilanguage support.
