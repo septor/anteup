@@ -33,18 +33,10 @@ while($row = $sql->db_Fetch()){
 $amt_left = round($goal - $current, 2);
 $pct_left = round(($current / $goal) * 100, 0);
 
-$text = "<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js'></script>
-<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js'></script>
-<script>
-$(document).ready(function() {
-	$('#progressbar').progressbar({ value: ".$pct_left." });
-});
-</script>";
-
 if(varsettrue($pref['anteup_showbar'])){
 	if($pct_left < 100){
 		$showbar = $pct_left."% ".ANTELAN_MENU_01."<br />
-		<a href='".e_PLUGIN."anteup/donations.php' title='".ANTELAN_MENU_02."'><div id='progressbar'></div></a>
+		<a href='".e_PLUGIN."anteup/donations.php' title='".ANTELAN_MENU_02."'><progress value='".$pct_left."' max='100'></progress></a>
 		<br />";
 	}else{
 		$showbar = "<a href='".e_PLUGIN."anteup/donations.php' title='".ANTELAN_MENU_02."'>".ANTELAN_MENU_03."</a><br /><br />";
@@ -60,7 +52,7 @@ $showtotal = (varsettrue($pref['anteup_showtotal']) ? ANTELAN_MENU_07." ".format
 $showdue = (varsettrue($pref['anteup_showdue']) ? ANTELAN_MENU_08." ".$gen->convert_date(strtotime($due), $pref['anteup_dformat'])."<br />" : "");
 $textbar = (varsettrue($pref['anteup_textbar']) ? $pref['anteup_textbar']."<br /></br />" : "");
 
-$text .= $showbar.$textbar.$showcurrent.$showleft.$showgoal.$showtotal.$showdue."
+$text = $showbar.$textbar.$showcurrent.$showleft.$showgoal.$showtotal.$showdue."
 <div style='padding-top:5px'>
 <a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$pref['pal_button_image']."' title='".$pref['pal_button_popup']."' style='border:none' /></a>
 </div>";

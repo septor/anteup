@@ -2,16 +2,34 @@
 
 if (!defined('e107_INIT')) { exit; }
 
-echo "<link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'/>
-<style>
-.ui-widget-content {
-	background: #".$pref['anteup_empty']." repeat-x 50% 50%;
+echo "<style>
+progress, progress[role] {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
 	border: 1px solid #".$pref['anteup_border'].";
-	border-radius: 0;
-	height: ".$pref['anteup_height'].";
+	height: ".$pref['anteup_height']."
 }
-.ui-widget-header {
-	background: #".$pref['anteup_full']." repeat-x 50% 50%;
+progress[role] strong {
+	display: none;
+}
+progress, progress[role][aria-valuenow] {
+   background: #".$pref['anteup_empty']." !important;
+}
+progress::-webkit-progress-bar {
+    background: #".$pref['anteup_empty'].";
+}
+progress {
+    color: #".$pref['anteup_full'].";
+}
+progress::-moz-progress-bar {
+    background: #".$pref['anteup_full'].";
+}
+progress::-webkit-progress-value {
+    background: #".$pref['anteup_full'].";
+}
+progress[aria-valuenow]:before  {
+    background: #".$pref['anteup_full'].";
 }
 </style>";
 
