@@ -19,8 +19,8 @@ include('ipnlistener.php');
 $listener = new IpnListener();
 
 
-// test mode enabled
-$listener->use_sandbox = true;
+// Sandbox mode - when developing only
+//$listener->use_sandbox = true;
 
 // try to process the IPN POST
 try {
@@ -110,11 +110,11 @@ if($verified)
                         "custom"            => $_POST['custom']
                     )
                 );      
-                // TODO - Notify 
+                // TODO - Notify succesfull donation 
                 //$body .= $listener->getTextReport();
-                //mail('YOUR@EMAIL.COM', 'IPN', $body);
+                //mail('YOUR@EMAIL.COM', 'VERIFIED TRANSACTION', $body);
             }else{
-                // TODO - Notify 
+                // TODO - Notify duplicate transaction
                 //mail("YOUR@EMAIL.COM", "VERIFIED DUPLICATED TRANSACTION", $txn_id);
             }
     }
@@ -124,6 +124,6 @@ if($verified)
 
     // TODO - Notify 
     //$body .= $listener->getTextReport();
-    //mail('YOUR@EMAIL.COM', 'IPN', $body);
+    //mail('YOUR@EMAIL.COM', 'INVALID IPN', $body);
 }
 ?>

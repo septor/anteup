@@ -4,7 +4,7 @@ require_once(HEADERF);
 include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
 require_once(e_PLUGIN."anteup/_class.php");
 
-/*
+/* 
 if(USER){
 	$paypal_donate_jscript = "";
 	$paypal_donate_jscript_onclick = "";
@@ -46,14 +46,10 @@ if(USER){
 ".(($pref['pal_amount']) ? "<input type='hidden' name='amount' value='".$pref['pal_amount']."' />\n" : "")."
 ".(($pref['pal_tax']) ? "<input type='hidden' name='tax' value='".$pref['pal_tax']."' />\n" : "")."*/
 
-if($pref['pal_custom'] == '0') {
-	$pref['pal_custom'] = USERID;
-}
-
 $text = "<div style='text-align:center;'>".$pref['anteup_description']."</div>";
 
 $text .=
-"<form action='https://www.sandbox.paypal.com/cgi-bin/webscr' id='paypal_donate_form' method='post'>
+"<form action='https://www.paypal.com/cgi-bin/webscr' id='paypal_donate_form' method='post'>
 <table class='fborder' style='width: 100%;'>
 <tr>
 ";
@@ -72,7 +68,7 @@ $text .= "<input type='hidden' name='cmd' value='_xclick' />
 <input type='hidden' name='return' value='".ANTEUP_ABS."return.php?thanks' />
 <input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />
 <input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />
-<input type='hidden' name='custom' value='".$pref['pal_custom']."' />
+<input type='hidden' name='custom' value='".USERID."' />
 </tr>
 <tr>
 <td class='forumheader3' style='width:50%; text-align:right;'>".ANTELAN_DONATE_02."</td>
