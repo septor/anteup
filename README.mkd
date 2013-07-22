@@ -4,24 +4,24 @@ This is an **ALPHA RELEASE**. It has bugs. It has missing features and some of t
 downloading this plugin you are doing so **to help test it and find bugs**. You are not downloading this plugin expecting it to work 100%. Report your issues and bugs.
 If you have a feature request **save it until this goes into beta**.
 
-## Reporting Issues
-
-The **best** method is by using the [issue tracker](https://github.com/septor/anteup/issues). The second best method is by posting on the newly created
-[forum thread](http://e107.org/e107_plugins/forum/forum_viewtopic.php?236838).
-
 ## What needs tested.
 
-I have done some pre-testing, but it's likely I missed things. Double check these.
+It's been decided that this plugin will be getting stripped down more than previously. The Cash Manager will be stripped down a lot. Previous unused, or senseless, prefreneces are being removed. **If you use something that gets removed let me know or it will be lost forever**.
 
-* Donation features (`donate.php`). I need people to test to make sure placing a donation actually gets recorded.
-* Add Entry (`admin_cash.php`). Make sure you can manually add an entry. Make sure all fields work as they should (I have no idea how or what they were previously, so..).
-* Edit Entry (`admin_cash.php`). Make sure everything updates correctly. Let me know if something needs to be editable (eg: payment date, etc).
+* Donation features (`donate.php`). I need people to test to make sure placing a donation actually gets recorded. *Note: This should be fixed. Awaiting feedback.*
 * Menu Item (`anteup_menu.php`). Make sure everything displays correctly. Formatting, etc. Make sure the progress bar functions correctly.
 * Language File Errors (*). Make sure everything renders correctly. Make sure there is no broken English. Make sure things make sense.
+
+As mentioned previously, the Cash Manager is getting reworked. It's expected to have issues, so be prepared to test it.
+
 
 ## When will this be pushed into beta?
 
 When I am satisfied everything mentioned above works correctly.
+
+## Reporting Issues
+
+If you encounter a problem that **is not user error** please report it in the [issue tracker](https://github.com/septor/anteup/issues). When in doubt, use this [forum thread](http://e107.org/e107_plugins/forum/forum_viewtopic.php?236838).
 
 
 # Ante Up!
@@ -41,7 +41,9 @@ You will also need a webhosting provider that supports PHP5+
 
 ## Translations
 
-It's advised that you do not translate this plugin yet. It's still in the alpha stages. Multilanguage support is being implemented as we go, but it's possible things will get changed around.
+**!! DO NOT TRANSLATE THIS PLUGIN YET. !!**
+
+The langauge file is going to be rewritten *several times*. If you translate it, you will have wasted your time.
 
 ## Credits
 

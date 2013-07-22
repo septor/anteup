@@ -41,17 +41,7 @@ $eplug_prefs = array(
     "pal_button_image" => "donate.gif",
     "pal_business" => "",
     "pal_item_name" => "",
-    "pal_key_private" => md5(rand(0,rand(100,100000)).time()),
-    "pal_no_shipping" => "1",
-    "pal_no_note" => "",
-    "pal_cn" => "",
-    "pal_page_style" => "",
-    "pal_lc" => "default",
-    "pal_item_number" => "",
-    "pal_custom" => "",
-    "pal_invoice" => "",
-    "pal_amount" => "",
-    "pal_tax" => "" 
+    "pal_key_private" => md5(rand(0,rand(100,100000)).time())
 );
 	
 // -- [ MYSQL TABLES ]

@@ -37,17 +37,7 @@ if(isset($_POST['updatesettings'])){
 		$pref['pal_business']       	= $_POST['pal_business'];
 		$pref['pal_item_name']      	= $_POST['pal_item_name'];
 		$pref['pal_key_private']    	= md5(rand(0,rand(100,100000)).time());
-		$pref['pal_no_shipping']    	= $_POST['pal_no_shipping'];
-		$pref['pal_no_note']        	= $_POST['pal_no_note'];
-		$pref['pal_cn']             	= $_POST['pal_cn'];
-		$pref['pal_page_style']     	= $_POST['pal_page_style'];
-		$pref['pal_lc']            		= $_POST['pal_lc'];
-		$pref['pal_item_number']    	= $_POST['pal_item_number'];
-		$pref['pal_custom']         	= $_POST['pal_custom'];
-		$pref['pal_invoice']        	= $_POST['pal_invoice'];
-		$pref['pal_amount']         	= $_POST['pal_amount'];
-		$pref['pal_tax']            	= $_POST['pal_tax'];
-			save_prefs();
+		save_prefs();
 		$message = ANTELAN_CONFIG_02;
 	}else{
 		$message = ANTELAN_CONFIG_03;
@@ -134,22 +124,6 @@ $text .= "<input class='button' type='submit' name='updatesettings' value='".ANT
 	".config_block($donate_icon_div , ANTELAN_CONFIG_P_01, ANTELAN_CONFIG_P_02)."
 	".config_block("<input class='tbox' type='text' name='pal_business' value='".$pref['pal_business']."' />", ANTELAN_CONFIG_P_03, ANTELAN_CONFIG_P_04)."
 	".config_block("<input class='tbox' type='text' name='pal_item_name' value='".$pref['pal_item_name']."' maxlength='127' />", ANTELAN_CONFIG_P_05, ANTELAN_CONFIG_P_06)."
-<tr>
-<td class='forumheader' colspan='2'>".ANTELAN_CONFIG_P_C_02."</td>
-</tr>
-	".config_block("<input class='tbox' type='checkbox' name='pal_no_shipping'".($pref['pal_no_shipping'] ? " checked" : "").">",ANTELAN_CONFIG_P_07, ANTELAN_CONFIG_P_08)."
-	".config_block("<input class='tbox' type='checkbox' name='pal_no_note'".($pref['pal_no_note'] ? " checked" : "").">", ANTELAN_CONFIG_P_09, ANTELAN_CONFIG_P_10)."
-	".config_block("<input class='tbox' type='text' name='pal_cn' value='".$pref['pal_cn']."' maxlength='30' />", ANTELAN_CONFIG_P_11, ANTELAN_CONFIG_P_12)."
-	".config_block("<input class='tbox' type='text' name='pal_page_style' value='".$pref['pal_page_style']."' maxlength='127' />", ANTELAN_CONFIG_P_13, ANTELAN_CONFIG_P_14)."
-<tr>
-<td class='forumheader' colspan='2'>".ANTELAN_CONFIG_P_C_03."</td>
-</tr>
-	".config_block($locale_dropbox, ANTELAN_CONFIG_P_15, ANTELAN_CONFIG_P_16)."
-	".config_block("<input class='tbox' type='text' name='pal_item_number' value='".$pref['pal_item_number']."' maxlength='127' />", ANTELAN_CONFIG_P_17, ANTELAN_CONFIG_P_18)."
-	".config_block("<input class='tbox' type='text' name='pal_custom' value='".$pref['pal_custom']."' maxlength='127' />", ANTELAN_CONFIG_P_19, ANTELAN_CONFIG_P_20)."
-	".config_block("<input class='tbox' type='text' name='pal_invoice' value='".$pref['pal_invoice']."' maxlength='127' />", ANTELAN_CONFIG_P_21, ANTELAN_CONFIG_P_22)."
-	".config_block("<input class='tbox' type='text' name='pal_amount' value='".$pref['pal_amount']."' />", ANTELAN_CONFIG_P_23, ANTELAN_CONFIG_P_24)."
-	".config_block("<input class='tbox' type='text' name='pal_tax' value='".$pref['pal_tax']."' />", ANTELAN_CONFIG_P_25, ANTELAN_CONFIG_P_26)."
 </table>
 <input class='button' type='submit' name='updatesettings' value='".ANTELAN_CONFIG_01."' />
 <input type='hidden' value='".$pref['anteup_due']." name='anteup_lastdue' />

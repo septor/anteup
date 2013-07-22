@@ -121,8 +121,6 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 
 	// PayPal Configuration
 	define("ANTELAN_CONFIG_P_C_01", "PayPal settings");
-	define("ANTELAN_CONFIG_P_C_02", "Optional settings");
-	define("ANTELAN_CONFIG_P_C_03", "Extra settings");	
 	define("ANTELAN_CONFIG_P_B_01", "Choose");
 	
 	define("ANTELAN_CONFIG_P_01", "Button image:");
@@ -131,26 +129,7 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_P_04", "This must be a valid PayPal account.");	
 	define("ANTELAN_CONFIG_P_05", "Donation Description:");	
 	define("ANTELAN_CONFIG_P_06", "If left blank, the donor will see a field which they can fill in themselves.");	
-	define("ANTELAN_CONFIG_P_07", "Request a Postal Address:");
-	define("ANTELAN_CONFIG_P_08", "Asks the donor to provide a postal address.");	
-	define("ANTELAN_CONFIG_P_09", "Request a Note:");
-	define("ANTELAN_CONFIG_P_10", "Asks the donor to provide a short note with the payment.");
-	define("ANTELAN_CONFIG_P_11", "Custom Note Caption:");
-	define("ANTELAN_CONFIG_P_12", "Text that is shown above the note.");	
-	define("ANTELAN_CONFIG_P_13", "Page Style Name:");
-	define("ANTELAN_CONFIG_P_14", "Log into PayPal to create styles. My Account, Profile, Custom Payment Pages.");
-	define("ANTELAN_CONFIG_P_15", "Locale:");
-	define("ANTELAN_CONFIG_P_16", "Defaults to US English, use a two digit 'ISO 3166-1 Code' to change.");
-	define("ANTELAN_CONFIG_P_17", "Item Number:");
-	define("ANTELAN_CONFIG_P_18", "If set is shown below the item name.");
-	define("ANTELAN_CONFIG_P_19", "Custom: ");
-	define("ANTELAN_CONFIG_P_20", "Not shown to donor, passed back for tracking payments.");
-	define("ANTELAN_CONFIG_P_21", "Invoice:");
-	define("ANTELAN_CONFIG_P_22", "Not shown to donor, passed back for tracking payments.");
-	define("ANTELAN_CONFIG_P_23", "Amount:");
-	define("ANTELAN_CONFIG_P_24", "Fixes payment value, blank allows donor to set the amount.");
-	define("ANTELAN_CONFIG_P_25", "Tax:");
-	define("ANTELAN_CONFIG_P_26", "Override any tax settings that are part of a donors profile.");
+
 
 	
 //------------------------------------------------------------------------------------------------------------+

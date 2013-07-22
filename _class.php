@@ -2,10 +2,12 @@
 
 // -- [ Functions ]
 
-function format_currency($input, $id, $commify = true){
+function format_currency($input, $id, $commify = true)
+{
 	$sql = new db();
 	$sql->db_Select("anteup_currency", "*", "id='".intval($id)."'");
-    while ($row = $sql->db_Fetch()) {
+    while($row = $sql->db_Fetch())
+    {
 		$symbol = $row['symbol'];
         $loc = $row['location'];
     }
@@ -13,7 +15,8 @@ function format_currency($input, $id, $commify = true){
 	return ($loc == "back" ? $input.$symbol : $symbol.$input);
 }
 
-function config_block($data, $text, $subtext = ""){
+function config_block($data, $text, $subtext = "")
+{
 	return "<tr>
 	<td style='width:50%;vertical-align:top' class='forumheader3'>
 	<b>".$text."</b>
