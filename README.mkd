@@ -36,6 +36,7 @@ of the previous plugin still exists. With that said, however, the functionality 
 ## Prerequisites
 
 You will need to have a verified PayPal account for this plugin to function at all.
+You will also need a webhosting provider that supports PHP5+
 
 
 ## Translations

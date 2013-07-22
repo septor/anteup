@@ -4,6 +4,7 @@ require_once(HEADERF);
 include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
 require_once(e_PLUGIN."anteup/_class.php");
 
+/*
 if(USER){
 	$paypal_donate_jscript = "";
 	$paypal_donate_jscript_onclick = "";
@@ -32,26 +33,9 @@ if(USER){
 	</script>";
 	$paypal_donate_jscript_onclick = "onclick='paypal_donate_set()'";
 	$paypal_donate_action = ANTEUP;
-}
+}*/
 
-$text = "<div style='text-align:center;'>".$pref['anteup_description']."</div>
-<form action='".$paypal_donate_action."' id='paypal_donate_form' method='post'>
-<table class='fborder' style='width: 100%;'>
-<tr>
-";
-if(USER){
-	$text .= "<input type='hidden' name='item_name' value='".USERNAME."' />";
-}else{
-	$text .= "<td class='forumheader3' style='width:50%; text-align:right;'>".ANTELAN_DONATE_01."</td><br />
-	<td class='forumheader3'><input name='item_name' type='text' class='tbox' id='item_name' value='' maxlength='50' />";
-}
-
-$text .= "<input type='hidden' name='cmd' value='_xclick' />\n
-<input type='hidden' name='business' value='".$paypal_donate_email."' id='paypal_donate_email' />\n
-<input type='hidden' name='notify_url' value='".ANTEUP_ABS."ipn_validate.php' />\n
-<input type='hidden' name='return' value='".ANTEUP_ABS."return.php?thanks' />\n
-<input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />\n
-".(($pref['pal_no_shipping']) ? "<input type='hidden' name='no_shipping' value='".$pref['pal_no_shipping']."' />\n" : "")."
+/*.(($pref['pal_no_shipping']) ? "<input type='hidden' name='no_shipping' value='".$pref['pal_no_shipping']."' />\n" : "")."
 ".(($pref['pal_no_note']) ? "<input type='hidden' name='no_note' value='".$pref['pal_no_note']."' />\n" : "")."
 ".(($pref['pal_cn']) ? "<input type='hidden' name='cn' value='".$pref['pal_cn']."' />" : "")."
 ".(($pref['pal_page_style']) ? "<input type='hidden' name='page_style' value='".$pref['pal_page_style']."' />\n" : "")."
@@ -60,8 +44,35 @@ $text .= "<input type='hidden' name='cmd' value='_xclick' />\n
 ".(($pref['pal_custom']) ? "<input type='hidden' name='custom' value='".$pref['pal_custom']."' />\n" : "")."
 ".(($pref['pal_invoice']) ? "<input type='hidden' name='invoice' value='".$pref['pal_invoice']."' />\n" : "")."
 ".(($pref['pal_amount']) ? "<input type='hidden' name='amount' value='".$pref['pal_amount']."' />\n" : "")."
-".(($pref['pal_tax']) ? "<input type='hidden' name='tax' value='".$pref['pal_tax']."' />\n" : "")."
-</td>
+".(($pref['pal_tax']) ? "<input type='hidden' name='tax' value='".$pref['pal_tax']."' />\n" : "")."*/
+
+if($pref['pal_custom'] == '0') {
+	$pref['pal_custom'] = USERID;
+}
+
+$text = "<div style='text-align:center;'>".$pref['anteup_description']."</div>";
+
+$text .=
+"<form action='https://www.sandbox.paypal.com/cgi-bin/webscr' id='paypal_donate_form' method='post'>
+<table class='fborder' style='width: 100%;'>
+<tr>
+";
+if(USER){
+	$text .= "<input type='hidden' name='item_name' value='".USERNAME."' />";
+}else{
+	$text .= "<td class='forumheader3' style='width:50%; text-align:right;'>".ANTELAN_DONATE_01."</td><br />
+	<td class='forumheader3'>
+	<input name='item_name' type='text' class='tbox' id='item_name' value='' maxlength='50' />";
+}
+
+
+$text .= "<input type='hidden' name='cmd' value='_xclick' />
+<input type='hidden' name='business' value='".$pref['pal_business']."' id='paypal_donate_email' />
+<input type='hidden' name='notify_url' value='".ANTEUP_ABS."ipn.php' />
+<input type='hidden' name='return' value='".ANTEUP_ABS."return.php?thanks' />
+<input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />
+<input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />
+<input type='hidden' name='custom' value='".$pref['pal_custom']."' />
 </tr>
 <tr>
 <td class='forumheader3' style='width:50%; text-align:right;'>".ANTELAN_DONATE_02."</td>
@@ -93,7 +104,7 @@ $text .= "</select>
 </tr>
 <tr>
 <td class='forumheader3' style='text-align:center;' colspan='2'>
-<input ".$paypal_donate_jscript_onclick." name='submit' type='image' src='".ANTEUP."images/icons/".$pref['pal_button_image']."' title='".$pref['pal_button_popup']."' style='border:none' />
+<input name='submit' type='image' src='".ANTEUP."images/icons/".$pref['pal_button_image']."' title='".$pref['pal_button_popup']."' style='border:none' />
 </td>
 </tr>
 </table>

@@ -1,5 +1,8 @@
 <?php
-require_once("../../class2.php");
+// DEPRECATED, USING NEW PAYPAL CLASS IN ipn.php AND iplistener.php
+// THIS FILE WILL BE REMOVED SOON.
+
+/*require_once("../../class2.php");
 
 $req = 'cmd=_notify-validate';
 foreach ($_POST as $key => $value) {
@@ -106,5 +109,5 @@ if (!$fp) {
 		}
 	}
 	fclose ($fp);
-}
+}*/
 ?>
