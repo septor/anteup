@@ -109,6 +109,8 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_M_12", "The color of the border. Enter the 6 digit hex code.");	
 	define("ANTELAN_CONFIG_M_13", "Progress Bar Height: ");
 	define("ANTELAN_CONFIG_M_14", "The height of the progress bar. Enter your value in pixels.");
+	define("ANTELAN_CONFIG_M_15", "Progress Bar Width: ");
+	define("ANTELAN_CONFIG_M_16", "The width of the progress bar. Use either a static number (12px) or a percentage (90%).");
 
 	// PayPal Configuration
 	define("ANTELAN_CONFIG_P_C_01", "PayPal settings");
@@ -118,9 +120,6 @@ define("ANTELAN_CONFIG_03", "You are required to set a due date and a goal amoun
 	define("ANTELAN_CONFIG_P_02", "Choose an image or upload your own into '/anteup/images/icons/'");	
 	define("ANTELAN_CONFIG_P_03", "PayPal Email or PayPal Business ID:");
 	define("ANTELAN_CONFIG_P_04", "This must be a valid PayPal account.");	
-	define("ANTELAN_CONFIG_P_05", "Donation Description:");	
-	define("ANTELAN_CONFIG_P_06", "If left blank, the donor will see a field which they can fill in themselves.");	
-
 
 	
 //------------------------------------------------------------------------------------------------------------+
@@ -174,16 +173,7 @@ define("ANTELAN_DONATIONS_05", "Date donated");
 define("ANTELAN_DONATIONS_06", "Amount");
 define("ANTELAN_DONATIONS_07", "No donations found during that time period.");
 define("ANTELAN_DONATIONS_08", "Total:");
-define("ANTELAN_DONATIONS_09", "Want to be a part of this elite club of donators? Guess what! You can be! <a href='donate.php'>Click here</a> to send us a very welcome donation!");
-
-
-//------------------------------------------------------------------------------------------------------------+
-// index.php
-define("ANTELAN_INDEX_CAPTION00", "Ante Up!");
-
-define("ANTELAN_INDEX_01", "To prevent spam from reaching the PayPal address, please answer the following:");
-define("ANTELAN_INDEX_02", "Submit");
-define("ANTELAN_INDEX_03", "Click below to make your donation.");
+define("ANTELAN_DONATIONS_09", "We sincerely appreciate your kind donation!");
 
 
 //------------------------------------------------------------------------------------------------------------+

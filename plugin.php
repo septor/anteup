@@ -29,6 +29,7 @@ $eplug_prefs = array(
     "anteup_empty" => '888888',
     "anteup_border" => '000000',
     "anteup_height" => '12px',
+    "anteup_width" => '90%',
     "anteup_goal" => '0',
     "anteup_lastdue" => date("m/d/Y"),
 	"anteup_due" => date("m/d/Y", strtotime("last day of this month")),
@@ -36,12 +37,13 @@ $eplug_prefs = array(
     "anteup_dformat" => "short",
     "anteup_showibalance" => "0",
     "anteup_showtotal" => "0",
+    "anteup_showcurrent" => "0",
+    "anteup_showleft" => "0",
+    "anteup_showdue" => "0",
 	"anteup_showconfiglink" => "0",
 	
     "pal_button_image" => "donate.gif",
-    "pal_business" => "",
-    "pal_item_name" => "",
-    "pal_key_private" => md5(rand(0,rand(100,100000)).time())
+    "pal_business" => ""
 );
 	
 // -- [ MYSQL TABLES ]

@@ -4,8 +4,7 @@ require_once(HEADERF);
 include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
 require_once(e_PLUGIN."anteup/_class.php");
 
-$text = "<div style='text-align:center;'>".$pref['anteup_description']."</div>
-<form action='https://www.paypal.com/cgi-bin/webscr' id='paypal_donate_form' method='post'>
+$text = "<form action='https://www.paypal.com/cgi-bin/webscr' id='paypal_donate_form' method='post'>
 <table class='fborder' style='width: 100%;'>
 <tr>";
 
@@ -27,7 +26,6 @@ $text .= "<input type='hidden' name='cmd' value='_xclick' />
 <input type='hidden' name='return' value='".ANTEUP_ABS."return.php?thanks' />
 <input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />
 <input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />
-<input type='hidden' name='custom' value='".USERID."' />
 </tr>
 <tr>
 <td class='forumheader3' style='width:50%; text-align:right;'>".ANTELAN_DONATE_02."</td>

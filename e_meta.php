@@ -8,7 +8,8 @@ progress, progress[role] {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	border: 1px solid #".$pref['anteup_border'].";
-	height: ".$pref['anteup_height']."
+	height: ".$pref['anteup_height'].";
+	width: ".$pref['anteup_width'].";
 }
 progress[role] strong {
 	display: none;

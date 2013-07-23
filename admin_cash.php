@@ -15,7 +15,8 @@ $pageid = "admin_menu_02";
 $text = "<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' type='text/javascript'></script>
 <script src='".e_PLUGIN."anteup/js/addentry.js' type='text/javascript'></script>";
 
-if(e_QUERY){
+if (e_QUERY)
+{
 	$tmp = explode('.', e_QUERY);
 	$action = $tmp[0];
 	$id = $tmp[1];
@@ -24,30 +25,50 @@ if(e_QUERY){
 	unset($tmp);
 }
 
-if(isset($_POST['main_delete'])){
+if (isset($_POST['main_delete']))
+{
 	$delete_id = array_keys($_POST['main_delete']);
 	$message = ($sql2->db_Delete("anteup_ipn", "ipn_id=".intval($delete_id[0]))) ? ANTELAN_CASHM_I_17 : ANTELAN_CASHM_I_18;
 }
 
-if(isset($_POST['addentry'])){
+if (isset($_POST['addentry']))
+{
 	$item_name = ($_POST['item_name'] == "--Other--" ? ($_POST['other'] == "" ? ANTELAN_CASHM_I_20 : $_POST['other']) : $_POST['item_name']);
 	
-	if($sql2->db_Select("user","*", "user_name='".$tp->toDB($item_name)."'")){
+	if ($sql2->db_Select("user","*", "user_name='".$tp->toDB($item_name)."'"))
+	{
 		$row = $sql2->db_Fetch();
 		$buyer_email = $row['user_email'];
 		$user_id = $row['user_id'];
-	}else{
+	}
+	else
+	{
 		$buyer_email = "";
 		$user_id = "";
 	}
+
 	$pd = explode("/", $_POST['payment_date']);
 	$pd_ts = mktime(0, 0, 0, $pd[0], $pd[1], $pd[2]);
 
-	$sql->db_Insert("anteup_ipn", "'', '".$tp->toDB($item_name)."', '".$tp->toDB($_POST['payment_status'])."', '".$tp->toDB($_POST['mc_gross'])."', '".intval($_POST['mc_currency'])."', '".$tp->toDB($_POST['txn_id'])."', '".intval($user_id)."', '".$buyer_email."', '".$pd_ts."', '', '".$tp->toDB($_POST['comment'])."'") or $message = mysql_error();
+	$sql->db_Insert("anteup_ipn", 
+        array(
+            "item_name"         => $tp->toDB($item_name),
+            "payment_status"    => $tp->toDB($_POST['payment_status']),
+            "mc_gross"          => $tp->toDB($_POST['mc_gross']),
+            "mc_currency"       => intval($_POST['mc_currency']),
+            "txn_id"            => $tp->toDB($_POST['txn_id']),
+            "user_id"           => intval($user_id),
+            "buyer_email"       => $buyer_email,
+            "payment_date"      => $pd_ts,
+            "comment"           => $tp->toDB($_POST['comment'])
+        )
+    ) or $message = mysql_error();
+
 	$message = ($message ? $message : ANTELAN_CASHM_I_19);
 }
 
-if(isset($_POST['editentry'])){
+if (isset($_POST['editentry']))
+{
 
 	$pd = explode("/", $_POST['payment_date']);
 	$pd_ts = mktime(0, 0, 0, $pd[0], $pd[1], $pd[2]);
@@ -85,14 +106,14 @@ if($pref['anteup_ibalance'] != 0)
    $partial = $pref['anteup_ibalance'];
    $total = $pref['anteup_ibalance'];
 }
-$sql -> db_Select("anteup_ipn", "*", "payment_date > '0' ORDER BY payment_date ASC, type ASC, ipn_id ASC");
+
+$sql->db_Select("anteup_ipn", "*", "payment_date > '0' ORDER BY payment_date ASC, ipn_id ASC");
 while($row = $sql->db_Fetch())
 {
-	extract($row);
-	$total += $mc_gross;
-	if($payment_date < $sd_ts)
+	$total += $row['mc_gross'];
+	if($row['payment_date'] < $sd_ts)
 	{
-		$partial += $mc_gross;
+		$partial += $row['mc_gross'];
 	}
 }
 $countl = 0;
@@ -130,7 +151,8 @@ $text .= $cal->load_files()."
 		<td style='width:20%' class='forumheader3'><input class='tbox' style='width:40%;' type='text' name='mc_gross' />
 			<select style='width:40%;' class='tbox' name='mc_currency'>";
 			$sql->db_Select("anteup_currency", "*");
-			while($row = $sql->db_Fetch()){
+			while ($row = $sql->db_Fetch())
+			{
 				$text .= "<option value='".$row['id']."'".($row['id'] == $pref['anteup_currency'] ? " selected" : "").">".$row['code']."</option>";
 			}
 			$text .= "</select>
@@ -151,7 +173,8 @@ $text .= $cal->load_files()."
 		<td style='width:20%' class='forumheader3'>
 		<select class='tbox' id='item_name' name='item_name'>";
 		$sql->db_Select("user", "*", "ORDER BY user_name ASC", "no-where");
-		while($row = $sql->db_Fetch()){
+		while ($row = $sql->db_Fetch())
+		{
 			$text .= "<option value='".$row['user_name']."'>".$row['user_name']."</option>";
 		}
 		$text .= "<option value='--Other--'>".ANTELAN_CASHM_E_13."</option>
@@ -186,7 +209,8 @@ $text .= $cal->load_files()."
 	</tr>";
  
 $countl += 5;
-if($pref['anteup_ibalance'] != 0){
+if ($pref['anteup_ibalance'] != 0)
+{
 	$text .= "<tr>
 		<td colspan='9' class='fcaption' style='text-align: center;'>".ANTELAN_CASHM_I_12."</td>
 		<td style='width:10%; text-align:right;' class='fcaption'>".format_currency($partial, $pref['anteup_currency'])."</td>
@@ -199,21 +223,28 @@ $flag = 0;
 $bgn = 1;
 
 // make sure we keep the date filtering active, even if we're editing an entry
-if($action == "edit"){
+if ($action == "edit")
+{
 	$sql -> db_Select("anteup_ipn", "*", "payment_date > '".$esd."' AND payment_date < '".$eed."' ORDER BY payment_date DESC");
-}else if(isset($_POST['editentry'])){
+}
+else if (isset($_POST['editentry']))
+{
 	$sql -> db_Select("anteup_ipn", "*", "payment_date > '".$_POST['sd']."' AND payment_date < '".$_POST['ed']."' ORDER BY payment_date DESC");
-}else{
+}
+else
+{
 	$sql -> db_Select("anteup_ipn", "*", "payment_date > '".$sd_ts."' AND payment_date < '".$ed_ts."' ORDER BY payment_date DESC");
 }
-while($row = $sql->db_Fetch()){
+while ($row = $sql->db_Fetch())
+{
 	extract($row);
 	$partial += $mc_gross;
 	$bgn = ($bgn == 1 ? 0 : 1);
 	$bgc = ($bgn == 1 ? "#f2f2f2": "#fff");
 	$ppc = ($partial < 0 ? "#009900" : "#000");
 	
-	if($action == "edit" && $id == $ipn_id){
+	if ($action == "edit" && $id == $ipn_id)
+	{
 		$text .= "<form method='post' action='".e_SELF."'>
 		<tr>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'><input class='tbox' style='width: 75px;' type='text' name='payment_date' id='edit_payment_date' value='".date("m/d/Y", $payment_date)."' /><a href='#' id='f-calendar-trigger-4'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'edit_payment_date','button':'f-calendar-trigger-4'});</script></td>
@@ -236,7 +267,9 @@ while($row = $sql->db_Fetch()){
 			</td>
 		</tr>
 		</form>";
-	}else{
+	}
+	else
+	{
 		$text .= "
 		<tr>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$gen->convert_date(strtotime($payment_date), $pref['anteup_dformat'])."</td>

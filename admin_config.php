@@ -13,30 +13,29 @@ $pageid = "admin_menu_01";
 
 if(isset($_POST['updatesettings'])){
 	if(!empty($_POST['anteup_due']) && !empty($_POST['anteup_goal'])){
-		$pref['anteup_currency'] 		= $_POST['anteup_currency'];
-		$pref['anteup_goal'] 			= $_POST['anteup_goal'];
-		$pref['anteup_due'] 			= $_POST['anteup_due'];
-		$pref['anteup_lastdue'] 		= $_POST['anteup_lastdue'];
-		$pref['anteup_showcurrent'] 	= $_POST['anteup_showcurrent'];
-		$pref['anteup_showibalance']	= $_POST['anteup_showibalance'];
-		$pref['anteup_showleft'] 		= $_POST['anteup_showleft'];
-		$pref['anteup_showgoal'] 		= $_POST['anteup_showgoal'];
-		$pref['anteup_showdue'] 		= $_POST['anteup_showdue'];
-		$pref['anteup_showtotal']  		= $_POST['anteup_showtotal'];
-		$pref['anteup_showconfiglink']  = $_POST['anteup_showconfiglink'];
-		$pref['anteup_dformat'] 		= $_POST['anteup_dformat'];
+		$pref['anteup_currency'] 		= $tp->toDB($_POST['anteup_currency']);
+		$pref['anteup_goal'] 			= $tp->toDB($_POST['anteup_goal']);
+		$pref['anteup_due'] 			= $tp->toDB($_POST['anteup_due']);
+		$pref['anteup_lastdue'] 		= intval($_POST['anteup_lastdue']);
+		$pref['anteup_showcurrent'] 	= intval($_POST['anteup_showcurrent']);
+		$pref['anteup_showibalance']	= intval($_POST['anteup_showibalance']);
+		$pref['anteup_showleft'] 		= intval($_POST['anteup_showleft']);
+		$pref['anteup_showgoal'] 		= intval($_POST['anteup_showgoal']);
+		$pref['anteup_showdue'] 		= intval($_POST['anteup_showdue']);
+		$pref['anteup_showtotal']  		= intval($_POST['anteup_showtotal']);
+		$pref['anteup_showconfiglink']  = intval($_POST['anteup_showconfiglink']);
+		$pref['anteup_dformat'] 		= $tp->toDB($_POST['anteup_dformat']);
 		$pref['anteup_description'] 	= $tp->toDB($_POST['anteup_description']);
 		$pref['anteup_mtitle']   		= $tp->toDB($_POST['anteup_mtitle']);
-		$pref['anteup_full']     		= str_replace("#","",$_POST['anteup_full']);
-		$pref['anteup_empty']    		= str_replace("#","",$_POST['anteup_empty']);
-		$pref['anteup_border']   		= str_replace("#","",$_POST['anteup_border']);
-		$pref['anteup_height']   		= $_POST['anteup_height'];
-		$pref['anteup_showbar']  		= $_POST['anteup_showbar'];
-		$pref['anteup_textbar']  		= $_POST['anteup_textbar'];
-		$pref['pal_button_image']   	= $_POST['pal_button_image'];
-		$pref['pal_business']       	= $_POST['pal_business'];
-		$pref['pal_item_name']      	= $_POST['pal_item_name'];
-		$pref['pal_key_private']    	= md5(rand(0,rand(100,100000)).time());
+		$pref['anteup_full']     		= $tp->toDB(str_replace("#","",$_POST['anteup_full']));
+		$pref['anteup_empty']    		= $tp->toDB(str_replace("#","",$_POST['anteup_empty']));
+		$pref['anteup_border']   		= $tp->toDB(str_replace("#","",$_POST['anteup_border']));
+		$pref['anteup_height']   		= $tp->toDB($_POST['anteup_height']);
+		$pref['anteup_width']   		= $tp->toDB($_POST['anteup_width']);
+		$pref['anteup_showbar']  		= $tp->toDB($_POST['anteup_showbar']);
+		$pref['anteup_textbar']  		= $tp->toDB($_POST['anteup_textbar']);
+		$pref['pal_button_image']   	= $tp->toDB($_POST['pal_button_image']);
+		$pref['pal_business']       	= $tp->toDB($_POST['pal_business']);
 		save_prefs();
 		$message = ANTELAN_CONFIG_02;
 	}else{
@@ -68,12 +67,6 @@ foreach(array('long', 'short', 'forum') as $format){
 	$format_dropbox .= "<option value='".$format."'".($format == $pref['anteup_dformat'] ? " selected" : "").">".$gen->convert_date(time(), $format)." (".$format.")</option>";
 }
 $format_dropbox .= "</select>";
-
-$locale_dropbox = "<select name='pal_lc' class='tbox'>";
-foreach(array("default", "AT", "AU", "BE", "C2", "CH", "CN", "DE", "ES", "FR", "GB", "GF", "GI", "GP", "IE", "IT", "JP", "MQ", "NL", "PL", "RE", "US") as $locale){
-	$locale_dropbox .= "<option value='".$locale."'".($locale == $pref['pal_lc'] ? " selected" : "").">".$locale."</option>";
-}
-$locale_dropbox .= "</select>";
 
 $donate_icon_div = "<select class='tbox' name='pal_button_image'>";
 foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon){
@@ -114,6 +107,7 @@ $text .= "<input class='button' type='submit' name='updatesettings' value='".ANT
 	".config_block("#<input class='tbox jscolor' type='text' name='anteup_empty' value='".$pref['anteup_empty']."' />", ANTELAN_CONFIG_M_09, ANTELAN_CONFIG_M_10)."
 	".config_block("#<input class='tbox jscolor' type='text' name='anteup_border' value='".$pref['anteup_border']."' />", ANTELAN_CONFIG_M_11, ANTELAN_CONFIG_M_12)."
 	".config_block("<input class='tbox' type='text' name='anteup_height' value='".$pref['anteup_height']."' />", ANTELAN_CONFIG_M_13, ANTELAN_CONFIG_M_14)."
+	".config_block("<input class='tbox' type='text' name='anteup_width' value='".$pref['anteup_width']."' />", ANTELAN_CONFIG_M_15, ANTELAN_CONFIG_M_16)."
 </table>
 <br />
 <div onclick='expandit(\"paypal\");' class='fcaption' style='cursor: pointer;'>".ANTELAN_CONFIG_CAPTION04."</div>
@@ -123,7 +117,6 @@ $text .= "<input class='button' type='submit' name='updatesettings' value='".ANT
 </tr>
 	".config_block($donate_icon_div , ANTELAN_CONFIG_P_01, ANTELAN_CONFIG_P_02)."
 	".config_block("<input class='tbox' type='text' name='pal_business' value='".$pref['pal_business']."' />", ANTELAN_CONFIG_P_03, ANTELAN_CONFIG_P_04)."
-	".config_block("<input class='tbox' type='text' name='pal_item_name' value='".$pref['pal_item_name']."' maxlength='127' />", ANTELAN_CONFIG_P_05, ANTELAN_CONFIG_P_06)."
 </table>
 <input class='button' type='submit' name='updatesettings' value='".ANTELAN_CONFIG_01."' />
 <input type='hidden' value='".$pref['anteup_due']." name='anteup_lastdue' />
