@@ -23,10 +23,13 @@ $listener = new IpnListener();
 //$listener->use_sandbox = true;
 
 // try to process the IPN POST
-try {
+try
+{
     $listener->requirePostMethod();
     $verified = $listener->processIpn();
-} catch (Exception $e) {
+}
+catch (Exception $e)
+{
     error_log($e->getMessage());
     exit(0);
 }
@@ -36,18 +39,18 @@ The processIpn() method returned true if the IPN was "VERIFIED" and false if it
 was "INVALID".
 */
 
-if($verified) 
+if ($verified) 
 {
     $errmsg = '';   // stores errors from fraud checks
     
     // 1. Make sure the payment status is "Completed" 
-    if ($_POST['payment_status'] != 'Completed') { 
+    if ($_POST['payment_status'] != 'Completed')
         // simply ignore any IPN that is not completed
         exit(0); 
-    }
 
     // 2. Make sure seller email matches your primary account email.
-    if ($_POST['receiver_email'] != $pref['pal_business']) {
+    if ($_POST['receiver_email'] != $pref['pal_business'])
+    {
         $errmsg .= "'receiver_email' does not match: ";
         $errmsg .= $_POST['receiver_email']."\n";
     }
@@ -68,7 +71,8 @@ if($verified)
     }
     */
     
-    if (!empty($errmsg)) {
+    if (!empty($errmsg))
+    {
     
         // manually investigate errors from the fraud checking
 
@@ -78,18 +82,25 @@ if($verified)
         //mail('YOUR@EMAIL.COM', 'IPN Fraud Warning', $body);
         exit;
         
-    } else {
+    }
+    else
+    {
     
        //check if transaction ID has been processed before
             $txn_id = $_POST['txn_id'];
             $nm = $sql->db_Count("anteup_ipn", "(txn_id)", "WHERE txn_id='".intval($txn_id)."'");
-            if (!$nm){
-                $user_id = $_POST['custom'];
-                if($user_id){
+            if (!$nm)
+            {
+                if ($user_id)
+                {
                     //Reads the actual user_name for the user
                     $sql2->db_Select("user","*", "WHERE user_id='".$user_id."'");
                     $row = $sql2 -> db_Fetch();
                     $username = $row['user_name'];
+                }
+                else
+                {
+                    $user_id = 0;
                 }
                 $payment_date = strtotime($_POST['payment_date']);
 
@@ -103,23 +114,23 @@ if($verified)
                         "user_id"           => $user_id,
                         "buyer_email"       => $_POST['payer_email'],
                         "payment_date"      => $payment_date,
-                        "mc_fee"            => $_POST['mc_fee'],
-                        "payment_fee"       => $_POST['payment_fee'],
-                        "type"              => $_POST['type'],
-                        "comment"           => $_POST['memo'],
-                        "custom"            => $_POST['custom']
+                        "comment"           => $_POST['memo']
                     )
                 );      
                 // TODO - Notify succesfull donation 
                 //$body .= $listener->getTextReport();
                 //mail('YOUR@EMAIL.COM', 'VERIFIED TRANSACTION', $body);
-            }else{
+            }
+            else
+            {
                 // TODO - Notify duplicate transaction
                 //mail("YOUR@EMAIL.COM", "VERIFIED DUPLICATED TRANSACTION", $txn_id);
             }
     }
     
-} else {
+}
+else
+{
     // manually investigate the invalid IPN
 
     // TODO - Notify 

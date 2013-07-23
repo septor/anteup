@@ -9,10 +9,13 @@ require_once(e_HANDLER."calendar/calendar_class.php");
 $cal = new DHTML_Calendar(true);
 $gen = new convert();
 
-if(isset($_POST['setdates'])){
+if (isset($_POST['setdates']))
+{
 	$sdt = explode("/", $_POST['sd']);
 	$edt = explode("/", $_POST['ed']);
-}else{
+}
+else
+{
 	$sdt = explode("/", date("m/d/Y", strtotime("first day of last month")));
 	$edt = explode("/", date("m/d/Y", strtotime("last day of this month")));
 }
@@ -53,22 +56,26 @@ $total = 0;
 $donations = 0;
 
 $sql -> db_Select("anteup_ipn", "*", "payment_date > '".$sd_ts."' AND payment_date < '".$ed_ts."' ORDER BY payment_date DESC");
-while($row = $sql->db_Fetch()){
+while ($row = $sql->db_Fetch())
+{
 	$text .= "<tr>
 	<td class='forumheader3' style='text-align:center;'>".$row['item_name']."</td>
 	<td class='forumheader3' style='text-align:center;'>".$row['comment']."</td>
 	<td class='forumheader3' style='text-align:center;'>".$gen->convert_date($row['payment_date'], $pref['anteup_dformat'])."</td>
-	<td class='forumheader3' style='text-align:center;'>".format_currency(($row['mc_gross']-$row['mc_fee']), $pref['anteup_currency'])."</td>
+	<td class='forumheader3' style='text-align:center;'>".format_currency($row['mc_gross'], $pref['anteup_currency'])."</td>
 	</tr>";
-	$total += ($row['mc_gross']-$row['mc_fee']);
+	$total += $row['mc_gross'];
 	$donations++;
 }
 
-if($donations == 0){
+if ($donations == 0)
+{
 	$text .= "<tr>
 	<td colspan='4' class='forumheader3' style='text-align:center;'>".ANTELAN_DONATIONS_07."</td>
 	</tr>";
-}else{
+}
+else
+{
 	$text .= "
 	<tr>
 	<td colspan='4'>&nbsp;</td>

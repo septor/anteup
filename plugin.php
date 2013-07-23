@@ -59,11 +59,7 @@ $eplug_tables = array(
 		user_id varchar(250) NOT NULL default '',
 		buyer_email varchar(250) NOT NULL default '',
 		payment_date varchar(250)  NOT NULL default '',
-		mc_fee varchar(250)   NOT NULL default '',
-		payment_fee varchar(250)   NOT NULL default '',
-		type tinyint(1) NOT NULL default '0',
 		comment text,
-		custom varchar(50) NOT NULL default '',
 		PRIMARY KEY (ipn_id)
 	) ENGINE=MyISAM;",
 	

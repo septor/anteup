@@ -4,16 +4,16 @@ This is an **ALPHA RELEASE**. It has bugs. It has missing features and some of t
 downloading this plugin you are doing so **to help test it and find bugs**. You are not downloading this plugin expecting it to work 100%. Report your issues and bugs.
 If you have a feature request **save it until this goes into beta**.
 
+**NOTE:** As of July, 22nd 2013 at roughly 9:45PM EST the plugin has undergone changes that require a complete reinstall. There will be no conversion scripts written to adapt your database. **IF** you wish to use your current database you need to manually remove the following fields from the `anteup_ipn` table: `mc_fee`, `payment_fee`, `type`, and `custom`. The use of these fields is beyond the scope of this plugin.
+
 ## What needs tested.
 
 It's been decided that this plugin will be getting stripped down more than previously. The Cash Manager will be stripped down a lot. Previous unused, or senseless, prefreneces are being removed. **If you use something that gets removed let me know or it will be lost forever**.
 
 * Donation features (`donate.php`). I need people to test to make sure placing a donation actually gets recorded. *Note: This should be fixed. Awaiting feedback.*
 * Menu Item (`anteup_menu.php`). Make sure everything displays correctly. Formatting, etc. Make sure the progress bar functions correctly.
+* Cash Manager has been trimmed down significantly. Test it to make sure it works properly.
 * Language File Errors (*). Make sure everything renders correctly. Make sure there is no broken English. Make sure things make sense.
-
-As mentioned previously, the Cash Manager is getting reworked. It's expected to have issues, so be prepared to test it.
-
 
 ## When will this be pushed into beta?
 

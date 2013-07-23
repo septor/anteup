@@ -26,7 +26,7 @@ if(isset($_POST['updatesettings'])){
 		$pref['anteup_showconfiglink']  = $_POST['anteup_showconfiglink'];
 		$pref['anteup_dformat'] 		= $_POST['anteup_dformat'];
 		$pref['anteup_description'] 	= $tp->toDB($_POST['anteup_description']);
-		$pref['anteup_mtitle']   		= $_POST['anteup_mtitle'];
+		$pref['anteup_mtitle']   		= $tp->toDB($_POST['anteup_mtitle']);
 		$pref['anteup_full']     		= str_replace("#","",$_POST['anteup_full']);
 		$pref['anteup_empty']    		= str_replace("#","",$_POST['anteup_empty']);
 		$pref['anteup_border']   		= str_replace("#","",$_POST['anteup_border']);

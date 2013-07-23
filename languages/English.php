@@ -12,9 +12,6 @@ define("ANTELAN_CASHM_05", "Add New Entry");
 
 // add entry
 define("ANTELAN_CASHM_E_01", "Transaction ID:");
-define("ANTELAN_CASHM_E_02", "Payment Type:");
-define("ANTELAN_CASHM_E_03", "Credit");
-define("ANTELAN_CASHM_E_04", "Debit");
 
 define("ANTELAN_CASHM_E_05", "Payment Status:");
 define("ANTELAN_CASHM_E_06", "Completed");
@@ -23,12 +20,10 @@ define("ANTELAN_CASHM_E_08", "Denied");
 
 define("ANTELAN_CASHM_E_09", "Payment Date:");
 define("ANTELAN_CASHM_E_10", "Payment Amount:");
-define("ANTELAN_CASHM_E_11", "Fee:");
 
 define("ANTELAN_CASHM_E_12", "Donator:");
 define("ANTELAN_CASHM_E_13", "Other, not listed:");
 define("ANTELAN_CASHM_E_14", "Comment:");
-define("ANTELAN_CASHM_E_15", "Custom:");
 
 define("ANTELAN_CASHM_E_16", "Add Entry");
 define("ANTELAN_CASHM_E_17", "Cancel");
@@ -39,13 +34,9 @@ define("ANTELAN_CASHM_I_01", "Donation Invoice");
 define("ANTELAN_CASHM_I_02", "Date");
 define("ANTELAN_CASHM_I_03", "Donator");
 define("ANTELAN_CASHM_I_04", "Transaction ID");
-define("ANTELAN_CASHM_I_05", "Custom");
 define("ANTELAN_CASHM_I_06", "Comment");
 define("ANTELAN_CASHM_I_07", "Status");
-define("ANTELAN_CASHM_I_08", "Type");
 define("ANTELAN_CASHM_I_09", "Amount");
-define("ANTELAN_CASHM_I_10", "Fee");
-define("ANTELAN_CASHM_I_11", "Total");
 
 define("ANTELAN_CASHM_I_12", "Initial balance");
 define("ANTELAN_CASHM_I_13", "Save");
