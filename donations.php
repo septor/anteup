@@ -25,25 +25,16 @@ $sd = date('m/d/Y', $sd_ts);
 $ed_ts = mktime(23, 59, 59, $edt[0], $edt[1], $edt[2]);
 $ed = date('m/d/Y', $ed_ts);
 
-$script = "
-<script type=\"text/javascript\">
-function addtext_us(sc){
-  document.getElementById('dataform').image.value = sc;
-}
-</script>\n".
-$cal->load_files();
-
 $text .= "<form action='".e_SELF."' method='post'>
-".$script."
+".$cal->load_files()."
 
-<div align='center'>
 ".ANTELAN_DONATIONS_01." <td style='text-align:center;'><input type='text' class='tbox' name='sd' id='sd' value='".$sd."' /> <a href='#' id='f-calendar-trigger-1'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'sd','button':'f-calendar-trigger-1'});</script>
  - ".ANTELAN_DONATIONS_02." <input type='text' class='tbox' name='ed' id='ed' value='".$ed."' /> <a href='#' id='f-calendar-trigger-2'>".CALENDAR_IMG."</a><script type='text/javascript'>Calendar.setup({'ifFormat':'%m/%d/%Y','daFormat':'%m/%d/%Y','inputField':'ed','button':'f-calendar-trigger-2'});</script>
 <input class='button' type='submit' name='setdates' value='Filter' />
 
 </form>
 
-<table style='width:90%' class='fborder'>
+<table style='width:100%' class='fborder'>
 <tr>
 <td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_03."</td>
 <td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_04."</td>
@@ -88,8 +79,7 @@ else
 
 $text .= "</table>
 <br /><br />
-".ANTELAN_DONATIONS_09."
-</div>";
+".ANTELAN_DONATIONS_09;
 
 $ns -> tablerender(ANTELAN_DONATIONS_CAPTION00, $text);
 require_once(FOOTERF);
