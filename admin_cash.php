@@ -25,10 +25,9 @@ if (e_QUERY)
 	unset($tmp);
 }
 
-if (isset($_POST['main_delete']))
+if ($action == "del")
 {
-	$delete_id = array_keys($_POST['main_delete']);
-	$message = ($sql2->db_Delete("anteup_ipn", "ipn_id=".intval($delete_id[0]))) ? ANTELAN_CASHM_I_17 : ANTELAN_CASHM_I_18;
+	$message = ($sql2->db_Delete("anteup_ipn", "ipn_id=".intval($id))) ? ANTELAN_CASHM_I_17 : ANTELAN_CASHM_I_18;
 }
 
 if (isset($_POST['addentry']))
@@ -272,14 +271,14 @@ while ($row = $sql->db_Fetch())
 	{
 		$text .= "
 		<tr>
-			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$gen->convert_date(strtotime($payment_date), $pref['anteup_dformat'])."</td>
+			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$gen->convert_date($payment_date, $pref['anteup_dformat'])."</td>
 			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".$item_name."</td>
 			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".$txn_id."</td>
 			<td style='text-align:left; background-color: ".$bgc.";' class='forumheader'>".(!empty($comment) ? $comment : "---")."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>".$payment_status."</td>
 			<td style='text-align:right; background-color: ".$bgc.";' class='forumheader'>".format_currency($mc_gross, $pref['anteup_currency'])."</td>
 			<td style='text-align:center; background-color: ".$bgc.";' class='forumheader'>
-			<a href='".e_SELF."?edit.".$ipn_id.".".$sd_ts.".".$ed_ts."'>".ADMIN_EDIT_ICON."</a><input type='image' title='".LAN_EDIT."' name='main_delete[".$ipn_id."]' src='".e_PLUGIN."anteup/images/admin/delete_16.png' onclick=\"return jsconfirm('".ANTELAN_CASHM_I_14." [ID: ".$ipn_id." ]')\"/>
+			<a href='".e_SELF."?edit.".$ipn_id.".".$sd_ts.".".$ed_ts."'>".ADMIN_EDIT_ICON."</a> <a href='".e_SELF."?del.".$ipn_id."'>".ADMIN_DELETE_ICON."</a>
 			</td>
 		</tr>";
 	}
