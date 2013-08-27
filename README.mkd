@@ -1,27 +1,12 @@
 # NOTE -- ALPHA TESTING
 
-This is an **ALPHA RELEASE**. It has bugs. It has missing features and some of the features that do exist **will probably not function to their fullest!!** If you are
-downloading this plugin you are doing so **to help test it and find bugs**. You are not downloading this plugin expecting it to work 100%. Report your issues and bugs.
-If you have a feature request **save it until this goes into beta**.
+**INCOMING FINAL ALPHA RELEASE**
 
-**NOTE:** As of July, 22nd 2013 at roughly 9:45PM EST the plugin has undergone changes that require a complete reinstall. There will be no conversion scripts written to adapt your database. **IF** you wish to use your current database you need to manually remove the following fields from the `anteup_ipn` table: `mc_fee`, `payment_fee`, `type`, and `custom`. The use of these fields is beyond the scope of this plugin.
-
-## What needs tested.
-
-It's been decided that this plugin will be getting stripped down more than previously. The Cash Manager will be stripped down a lot. Previous unused, or senseless, prefreneces are being removed. **If you use something that gets removed let me know or it will be lost forever**.
-
-* Donation features (`donate.php`). I need people to test to make sure placing a donation actually gets recorded. *Note: This should be fixed. Awaiting feedback.*
-* Menu Item (`anteup_menu.php`). Make sure everything displays correctly. Formatting, etc. Make sure the progress bar functions correctly.
-* Cash Manager has been trimmed down significantly. Test it to make sure it works properly.
-* Language File Errors (*). Make sure everything renders correctly. Make sure there is no broken English. Make sure things make sense.
-
-## When will this be pushed into beta?
-
-When I am satisfied everything mentioned above works correctly.
+Over the next few days I will be wrapping up the cleanup and releasing a final alpha release. If you are interested in using this plugin you need to install this release and test it to the best of your ability. Once I am happy with everything the beta release will be pushed out and I'll shove this to the back burner while the rewrite for v2 is focused on. This means I need you, the people using AnteUp!, to report any issues you're having so I can get them resolved before the beta is released.
 
 ## Reporting Issues
 
-If you encounter a problem that **is not user error** please report it in the [issue tracker](https://github.com/septor/anteup/issues). When in doubt, use this [forum thread](http://e107.org/e107_plugins/forum/forum_viewtopic.php?236838).
+If you encounter a problem please report it in the [issue tracker](https://github.com/septor/anteup/issues). Bugs posted on the e107.org forums will only result in me directing you to the issue tracker, so save us both time!
 
 
 # Ante Up!
@@ -43,7 +28,9 @@ You will also need a webhosting provider that supports PHP5+
 
 **!! DO NOT TRANSLATE THIS PLUGIN YET. !!**
 
-The langauge file is going to be rewritten *several times*. If you translate it, you will have wasted your time.
+The language file is going to be rewritten *several times*. If you translate it, you will have wasted your time.
+
+**Note:** Translations will open up after the next alpha release.
 
 ## Credits
 
