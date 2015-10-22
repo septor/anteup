@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e107Plugin name="Antup" lan="LAN_ANTEUP_NAME" version="1.0" date="2015-10-22" compatibility="2.0" installRequired="true" />
+	<author name="Patrick Weaver" url="http://trickmod.com/" />
+	<summery lan="LAN_ANTEUP_SUMMARY">An extensive Donation Tracker with PayPal integration</summary>
+	<description lan="LAN_ANTEUP_DESC">Provide users with an easy way to donate and view your total donations received.</description>
+	<keywords>
+		<word>donation</word>
+		<word>tracker</word>
+		<word>paypal</word>
+	</keywords>
+	<category>finance</category>
+	<copyright>2015</copyright>
+	<adminLinks>
+		<link url="admin_config.php" description="" icon="" iconSmall="" primary="true">LAN_CONFIGURE</link>
+	</adminLinks>
+	<pluginPrefs>
+		<pref name="anteup_currency">20</pref>
+		<pref name="anteup_full">63f577</pref>
+		<pref name="anteup_empty">888888</pref>
+		<pref name="anteup_border">000000</pref>
+		<pref name="anteup_height">12px</pref>
+		<pref name="anteup_width">90%</pref>
+		<pref name="anteup_goal">0</pref>
+		<pref name="anteup_lastdue">date("m/d/Y")</pref>
+		<pref name="anteup_due">date("m/d/Y", strtotime("last day of this month"))</pref>
+		<pref name="anteup_description">ANTELAN_DONATIONS_09</pref>
+		<pref name="anteup_dformat">short</pref>
+		<pref name="anteup_showibalance">0</pref>
+		<pref name="anteup_showtotal">0</pref>
+		<pref name="anteup_showcurrent">0</pref>
+		<pref name="anteup_showleft">0</pref>
+		<pref name="anteup_showdue">0</pref>
+		<pref name="anteup_showconfiglink">0</pref>
+		<pref name="pal_button_image">donate.gif</pref>
+		<pref name="pal_business" />
+	</pluginPrefs>
+</e107Plugin>
