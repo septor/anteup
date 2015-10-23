@@ -11,7 +11,7 @@
 	<category>tools</category>
 	<copyright>2015</copyright>
 	<adminLinks>
-		<link url="admin_config.php" description="" icon="" iconSmall="" primary="true" >LAN_CONFIGURE</link>
+		<link url="admin_config.php" description="" icon="images/icon.png" iconSmall="images/icon.png" primary="true" >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
 		<pref name='anteup_currency'>20</pref>
@@ -22,7 +22,7 @@
 		<pref name='anteup_width'>90%</pref>
 		<pref name='anteup_goal'>0</pref>
 		<pref name='anteup_due'>10/31/2015</pref>
-		<pref name='anteup_lastdue'>10/22/2015</pref>
+		<pref name='anteup_lastdue'>10/23/2015</pref>
 		<pref name='anteup_description'>ANTELAN_DESCRIPTIONS_09</pref>
 		<pref name='anteup_dformat'>short</pref>
 		<pref name='anteup_showibalance'>false</pref>

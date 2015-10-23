@@ -1,8 +1,6 @@
 # NOTE -- ALPHA TESTING
 
-**INCOMING FINAL ALPHA RELEASE**
-
-Over the next few days I will be wrapping up the cleanup and releasing a final alpha release. If you are interested in using this plugin you need to install this release and test it to the best of your ability. Once I am happy with everything the beta release will be pushed out and I'll shove this to the back burner while the rewrite for v2 is focused on. This means I need you, the people using AnteUp!, to report any issues you're having so I can get them resolved before the beta is released.
+**I'm currently working on updating AnteUp to work with v2+ of e107. Due to my work schedule, I am working between my laptop and my desktop. This means there will likely be several commits made that don't have any meat to them.**
 
 ## Reporting Issues
 
