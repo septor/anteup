@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e107Plugin name="Ante Up" lan="" version="1.0" compatiblity="2.0" date="2015-10-22" installRequired="true" >
-	<author name="Patrick Weaver" url="http://trickmod.com/" />
+<e107Plugin name="Ante Up" lan="" version="1.0" date="2015-10-23" compatibility="2.0" installRequired="true" >
+	<author name="Patrick Weaver" url="http://trickmod.com" />
 	<summary lan="">An extensive Donation Tracker with PayPal integration</summary>
-	<description lan="">Donation Tracker with logging and PayPal integration</description>
+	<description lan="">Keep track of all your incoming donations with an extensive list of donations, who gave them to you, and how much they provided. Also contains a menu for displaying the amount of donations you'd like to receive for a given time and your progress towards it.</description>
 	<keywords>
-		<word>donation</word>
+		<word>donations</word>
 		<word>tracker</word>
 		<word>paypal</word>
 	</keywords>
-	<category>misc</category>
+	<category>tools</category>
+	<copyright>2015</copyright>
 	<adminLinks>
-		<link url="admin_config.php" description="" icon="images/icon.png" iconSmall="images/icon.png" primary="true" >LAN_CONFIGURE</link>
+		<link url="admin_config.php" description="" icon="" iconSmall="" primary="true" >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
 		<pref name='anteup_currency'>20</pref>
-		<pref name='anteup_full'>63f577</pref>
+		<pref name='anteup_full'>63f578</pref>
 		<pref name='anteup_empty'>888888</pref>
 		<pref name='anteup_border'>000000</pref>
 		<pref name='anteup_height'>12px</pref>
 		<pref name='anteup_width'>90%</pref>
 		<pref name='anteup_goal'>0</pref>
-		<pref name='anteup_lastdue'>10/22/2015</pref>
 		<pref name='anteup_due'>10/31/2015</pref>
+		<pref name='anteup_lastdue'>10/22/2015</pref>
 		<pref name='anteup_description'>ANTELAN_DESCRIPTIONS_09</pref>
 		<pref name='anteup_dformat'>short</pref>
-		<pref name='anteup_showibalance'>0</pref>
-		<pref name='anteup_showtotal'>0</pref>
-		<pref name='anteup_showcurrent'>0</pref>
-		<pref name='anteup_showleft'>0</pref>
-		<pref name='anteup_showdue'>0</pref>
-		<pref name='anteup_showleft'>0</pref>
-		<pref name='anteup_showconfiglink'>0</pref>
+		<pref name='anteup_showibalance'>false</pref>
+		<pref name='anteup_showtotal'>false</pref>
+		<pref name='anteup_showcurrent'>false</pref>
+		<pref name='anteup_showleft'>false</pref>
+		<pref name='anteup_showdue'>false</pref>
+		<pref name='anteup_showleft'>false</pref>
+		<pref name='anteup_showconfiglink'>false</pref>
 		<pref name='pal_button_image'>donate.gif</pref>
 		<pref name='pal_business'></pref>
 	</pluginPrefs>
