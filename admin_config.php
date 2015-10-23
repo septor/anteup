@@ -196,8 +196,113 @@ class anteup_ipn_ui extends e_admin_ui
  			   	'forced' => '1', 
  		   	),
 		);		
-		
-		protected $fieldpref = array('item_name', 'payment_date');
+
+		protected $fieldpref = array('payment_date', 'user_id', 'txn_id', 'comment', 'payment_status', 'mc_gross');
+
+		protected $prefs = array(
+			'anteup_currency'	=> array(
+				'title' => 'Default Currency',
+				'type' => 'text',
+				'data' => 'integer',
+				'help' => 'The default currency for accepting donations'
+			),
+			'anteup_full' = array(
+				'title' => 'Full Color',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The hex color code for the full progress bar color'
+			),
+			'anteup_empty' = array(
+				'title' => 'Empty Color',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The hex color code for the empty progress bar color'
+			),
+			'anteup_border' = array(
+				'title' => 'Border Color',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The hex color code for the progress bar border color'
+			),
+			'anteup_height' = array(
+				'title' => 'Progress Bar Height',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The height, in pixels, of the progress bar'
+			),
+			'anteup_width' = array(
+				'title' => 'Progress Bar Width',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The width, in percent, of the progress bar'
+			),
+			'anteup_goal' = array(
+				'title' => 'Donation Goal',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The current donation goal'
+			),
+			'anteup_due' = array(
+				'title' => 'Due Date',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The date in which you want the donations by'
+			),
+			'anteup_lastdue' = array(
+				'title' => 'Previous Due Date',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The previous due date'
+			),
+			'anteup_description' = array(
+				'title' => LAN_DESCRIPTION,
+				'type' => 'text',
+				'data' => 'str',
+				'help' => ANTELAN_DONATIONS_09
+			),
+			'anteup_dformat' = array(
+				'title' => 'Date Format',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The format used for dates, refer to the e107 forum date format'
+			),
+			'anteup_showibalance' = array(
+				'title' => 'Show Initial Balance',
+				'type' => 'boolean',
+				'data' => 'integer',
+				'help' => 'Displays the balance prior to the current due date'
+			),
+			'anteup_showtotal' = array(
+				'title' => 'Show current donation amount?',
+				'type' => 'boolean',
+				'data' => 'integer',
+				'help' => 'Displays teh amount of donations received so far'
+			),
+			'anteup_showcurrent' = array(
+				'title' => 'Show total balance?',
+				'type' => 'boolean',
+				'data' => 'integer',
+				'help' => 'Displays the entire donation balance'
+			),
+			'anteup_showleft' = array(
+				'title' => 'Show goal amount?',
+				'type' => 'boolean',
+				'data' => 'integer',
+				'help' => 'Displays the amount of donations you need/want'
+			),
+			'anteup_showdue' = array(
+				'title' => 'Show due date?',
+				'type' => 'boolean',
+				'data' => 'integer',
+				'help' => 'Displays the date you would like the donations by'
+			),
+			'anteup_showconfiglink' = array(
+				'title' => 'Show configuration link?',
+				'type' => 'boolean',
+				'data' => 'integer',
+				'help' => 'Displays the link to this page on the menu item'
+			),
+		);
 
 		public function init()
 		{
