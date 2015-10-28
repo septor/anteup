@@ -101,6 +101,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'type' => 'text', 
 				'data' => 'str', 
 				'width' => 'auto', 
+				'inline' => true, 
 				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 
@@ -112,6 +113,8 @@ class anteup_ipn_ui extends e_admin_ui
 				'type' => 'text', 
 				'data' => 'str', 
 				'width' => 'auto', 
+				'inline' => true, 
+				'help' => '', 
 				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 
@@ -123,6 +126,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'type' => 'text', 
 				'data' => 'str', 
 				'width' => 'auto', 
+				'inline' => true, 
 				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 
@@ -134,6 +138,7 @@ class anteup_ipn_ui extends e_admin_ui
  			   	'type' => 'text', 
 				'data' => 'str', 
 				'width' => '5%', 
+				'inline' => true, 
 				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 
@@ -145,6 +150,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'type' => 'number', 
 				'data' => 'str',
  			   	'width' => '5%', 
+				'inline' => true, 
 				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 
@@ -168,6 +174,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'type' => 'text', 
 				'data' => 'str',
  			   	'width' => 'auto',
+				'inline' => true, 
  			   	'filter' => true,
  			   	'help' => '',
  			   	'readParms' => '',
@@ -180,6 +187,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'type' => 'textarea', 
 				'data' => 'str', 
 				'width' => '40%', 
+				'inline' => true, 
 				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 
@@ -197,7 +205,7 @@ class anteup_ipn_ui extends e_admin_ui
  		   	),
 		);		
 
-		protected $fieldpref = array('payment_date', 'user_id', 'txn_id', 'comment', 'payment_status', 'mc_gross');
+		protected $fieldpref = array('payment_date', 'user_id', 'txn_id', 'buyer_email', 'comment', 'payment_status', 'mc_gross');
 
 		protected $prefs = array(
 			'anteup_currency'	=> array(
@@ -411,7 +419,7 @@ class anteup_currency_ui extends e_admin_ui
  		   	),
 		  	'code' =>   array ( 
 				'title' => 'Code', 
-				'type' => 'number', 
+				'type' => 'text', 
 				'data' => 'str', 
 				'width' => 'auto', 
 				'inline' => true, 
@@ -426,6 +434,7 @@ class anteup_currency_ui extends e_admin_ui
 				'type' => 'text', 
 				'data' => 'str', 
 				'width' => '40%', 
+				'inline' => true,
 				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 
@@ -436,7 +445,8 @@ class anteup_currency_ui extends e_admin_ui
 				'title' => 'Symbol Location',
  			   	'type' => 'text', 
 				'data' => 'str', 
-				'width' => 'auto', 
+				'width' => 'auto',
+				'inline' => true,	
 				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 

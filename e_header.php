@@ -2,7 +2,7 @@
 
 if (!defined('e107_INIT')) { exit; }
 
-echo "<style>
+e107::css('inline', "
 progress, progress[role] {
 	appearance: none;
 	-moz-appearance: none;
@@ -32,6 +32,6 @@ progress::-webkit-progress-value {
 progress[aria-valuenow]:before  {
     background: #".$pref['anteup_full'].";
 }
-</style>";
+");
 
 ?>
