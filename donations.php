@@ -3,7 +3,7 @@
 
 require_once("../../class2.php");
 require_once(HEADERF);
-include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
+e107::lan('anteup');
 require_once(e_PLUGIN."anteup/_class.php");
 require_once(e_HANDLER."calendar/calendar_class.php");
 $cal = new DHTML_Calendar(true);

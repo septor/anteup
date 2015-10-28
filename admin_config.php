@@ -18,7 +18,7 @@ class anteup_adminArea extends e_admin_dispatcher
 			'uipath' 		=> null
 		),
 
-		'other1'	=> array(
+		'currency'	=> array(
 			'controller' 	=> 'anteup_currency_ui',
 			'path' 			=> null,
 			'ui' 			=> 'anteup_currency_form_ui',

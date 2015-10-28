@@ -1,7 +1,7 @@
 <?php
 require_once("../../class2.php");
 require_once(HEADERF);
-include_lan(e_PLUGIN."anteup/languages/".e_LANGUAGE.".php");
+e107::lan('anteup');
 
 if(e_QUERY == "cancel" || e_QUERY == "thanks"){
 	if(e_QUERY == "cancel"){
