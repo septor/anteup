@@ -115,7 +115,6 @@ class anteup_ipn_ui extends e_admin_ui
 				'width' => 'auto', 
 				'inline' => true, 
 				'help' => '', 
-				'help' => '', 
 				'readParms' => '', 
 				'writeParms' => '', 
 				'class' => 'left', 
