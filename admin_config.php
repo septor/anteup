@@ -267,6 +267,13 @@ class anteup_ipn_ui extends e_admin_ui
 				'data' => 'str',
 				'help' => ANTELAN_DONATIONS_09,
 			),
+			'pal_button_image' => array(
+				'title' => 'Donation Image',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'Donation image to use',
+			),
+
 			'anteup_dformat' => array(
 				'title' => 'Date Format',
 				'type' => 'text',
@@ -527,5 +534,3 @@ e107::getAdminUI()->runPage();
 
 require_once(e_ADMIN."footer.php");
 exit;
-
-?>
