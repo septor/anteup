@@ -3,6 +3,7 @@ require_once("../../class2.php");
 require_once(HEADERF);
 e107::lan('anteup');
 require_once(e_PLUGIN."anteup/_class.php");
+$pref = e107::getPlugPref('anteup');
 
 $text = "<form action='https://www.paypal.com/cgi-bin/webscr' id='paypal_donate_form' method='post'>
 <table class='fborder' style='width: 100%;'>

@@ -6,13 +6,13 @@ e107::lan('anteup');
 require_once(e_PLUGIN."anteup/_class.php");
 $gen = new convert();
 
-$gp = e107::getPlugPref('anteup');
+$pref = e107::getPlugPref('anteup');
 
-$cd = explode("/", $gp['anteup_due']);
+$cd = explode("/", $pref['anteup_due']);
 
-if (!empty($gp['anteup_lastdue']))
+if (!empty($pref['anteup_lastdue']))
 {
-	$ld = explode("/", $gp['anteup_lastdue']);
+	$ld = explode("/", $pref['anteup_lastdue']);
 }
 else
 {
@@ -24,8 +24,8 @@ $due = date('m/d/Y', $due_ts);
 $lastdue_ts = mktime(0, 0, 0, $ld[0], $ld[1], $ld[2]);
 $lastdue = date('m/d/Y', $lastdue_ts);
 
-$currency = $gp['anteup_currency'];
-$goal = (!empty($gp['anteup_goal']) ? $gp['anteup_goal'] : "0");
+$currency = $pref['anteup_currency'];
+$goal = (!empty($pref['anteup_goal']) ? $pref['anteup_goal'] : "0");
 $current = 0;
 $total = 0;
 
@@ -43,7 +43,7 @@ while ($row = $sql->db_Fetch())
 $amt_left = round($goal - $current, 2);
 $pct_left = round(($current / $goal) * 100, 0);
 
-if (varsettrue($gp['anteup_showbar']))
+if (varsettrue($pref['anteup_showbar']))
 {
 	if ($pct_left < 100)
 	{
@@ -61,20 +61,20 @@ else
 	$showbar = "";
 }
 
-$showcurrent = (varsettrue($gp['anteup_showcurrent']) ? ANTELAN_MENU_04." ".format_currency($current, $currency)."<br />" : "");
-$showleft = (varsettrue($gp['anteup_showleft']) ? ANTELAN_MENU_05." ".format_currency($amt_left, $currency)."<br />" : "");
-$showgoal = (varsettrue($gp['anteup_showgoal']) ? ANTELAN_MENU_06." ".format_currency($goal, $currency)."<br />" : "");
-$showtotal = (varsettrue($gp['anteup_showtotal']) ? ANTELAN_MENU_07." ".format_currency($total, $currency)."<br />" : "");
-$showdue = (varsettrue($gp['anteup_showdue']) ? ANTELAN_MENU_08." ".$gen->convert_date(strtotime($due), $gp['anteup_dformat'])."<br />" : "");
-$textbar = (varsettrue($gp['anteup_textbar']) ? $gp['anteup_textbar']."<br /></br />" : "");
+$showcurrent = (varsettrue($pref['anteup_showcurrent']) ? ANTELAN_MENU_04." ".format_currency($current, $currency)."<br />" : "");
+$showleft = (varsettrue($pref['anteup_showleft']) ? ANTELAN_MENU_05." ".format_currency($amt_left, $currency)."<br />" : "");
+$showgoal = (varsettrue($pref['anteup_showgoal']) ? ANTELAN_MENU_06." ".format_currency($goal, $currency)."<br />" : "");
+$showtotal = (varsettrue($pref['anteup_showtotal']) ? ANTELAN_MENU_07." ".format_currency($total, $currency)."<br />" : "");
+$showdue = (varsettrue($pref['anteup_showdue']) ? ANTELAN_MENU_08." ".$gen->convert_date(strtotime($due), $pref['anteup_dformat'])."<br />" : "");
+$textbar = (varsettrue($pref['anteup_textbar']) ? $pref['anteup_textbar']."<br /></br />" : "");
 
 $text = $showbar.$textbar.$showcurrent.$showleft.$showgoal.$showtotal.$showdue."
 <div style='padding-top:5px'>
-<a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$gp['pal_button_image']."' style='border:none' /></a>
+<a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$pref['pal_button_image']."' style='border:none' /></a>
 </div>";
 
-if(ADMIN && varsettrue($gp['anteup_showconfiglink'])){ $text .= "<br /><a href='".e_PLUGIN."anteup/admin_config.php'>".ANTELAN_MENU_09."</a>"; }
+if(ADMIN && varsettrue($pref['anteup_showconfiglink'])){ $text .= "<br /><a href='".e_PLUGIN."anteup/admin_config.php'>".ANTELAN_MENU_09."</a>"; }
 
-$ns->tablerender($gp['anteup_mtitle'],  "<div style='text-align:center;'>\n".$text."\n</div>", 'anteup');
+$ns->tablerender($pref['anteup_mtitle'],  "<div style='text-align:center;'>\n".$text."\n</div>", 'anteup');
 
 ?>
