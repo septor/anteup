@@ -7,7 +7,7 @@
  */
 
 require_once("../../class2.php");
-
+$pref = e107::getPlugPrefs('anteup');
 
  // tell PHP to log errors to ipn_errors.log in this directory
 ini_set('log_errors', true);

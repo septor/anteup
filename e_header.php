@@ -2,6 +2,8 @@
 
 if (!defined('e107_INIT')) { exit; }
 
+$pref = e107::getPlugPrefs('anteup');
+
 e107::css('inline', "
 progress, progress[role] {
 	appearance: none;

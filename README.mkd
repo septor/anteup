@@ -4,14 +4,13 @@
 
 ## Reporting Issues
 
-If you encounter a problem please report it in the [issue tracker](https://github.com/septor/anteup/issues). Bugs posted on the e107.org forums will only result in me directing you to the issue tracker, so save us both time!
-
+If you encounter a problem please report it in the [issue tracker](https://github.com/septor/anteup/issues).
 
 # Ante Up!
 
 An extensive Donation Tracker with PayPal integration.
 
-## Note
+#
 
 While this is being published as a rewrite of the Roofdog Donation Tracker it should be noted that there have been massive changes to the code and very little, code wise,
 of the previous plugin still exists. With that said, however, the functionality and feel of the plugin will be very similar to the previously mentioned plugin.
@@ -19,16 +18,15 @@ of the previous plugin still exists. With that said, however, the functionality 
 ## Prerequisites
 
 You will need to have a verified PayPal account for this plugin to function at all.
-You will also need a webhosting provider that supports PHP5+
-
+You will need to be running e107 v2+.
 
 ## Translations
 
 **!! DO NOT TRANSLATE THIS PLUGIN YET. !!**
 
-The language file is going to be rewritten *several times*. If you translate it, you will have wasted your time.
+Once a LAN freeze takes place, I'll be accepting translations. The easiest way to get your translations added is by forking this repo and submitting a pull request with your translations. Documentation on how to fork and submit a pull request are easily found on the GitHub website.
 
-**Note:** Translations will open up after the next alpha release.
+The LAN files will be getting another overhaul (not the one previously mentioned) to utilize the new LAN structure in v2 of e107. Translations will not be accepted until after **THIS** line gets removed from the README file!
 
 ## Credits
 
@@ -36,4 +34,4 @@ This plugin is a rewrite of version 2.7 of the Roofdog Donation Tracker by DelTr
 
 That plugin was based on my first Donation Tracker coupled with features from the Donate Menu by Lolo Irie, Cameron, Barry Keal (Father Barry), and Richard Perry (whoisrich).
 
-Please **do not** contact any of the previously mentioned authors for support with this plugin as they cannot assist you.
+Please **do not** contact any of the previously mentioned authors for support with this plugin as they cannot  assist you.

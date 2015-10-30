@@ -19,4 +19,4 @@ function format_currency($input, $id, $commify = true)
 
 define("ANTEUP", e_PLUGIN."anteup/");
 define("ANTEUP_ABS", SITEURLBASE.e_PLUGIN_ABS."anteup/");
-define("CALENDAR_IMG", "<img style='vertical-align: middle;' src='".e_PLUGIN."anteup/images/admin/calendar.png' />");
+define("CALENDAR_IMG", "<img style='vertical-align: middle;' src='".ANTEUP."images/admin/calendar.png' />");

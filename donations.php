@@ -8,6 +8,7 @@ require_once(e_PLUGIN."anteup/_class.php");
 require_once(e_HANDLER."calendar/calendar_class.php");
 $cal = new DHTML_Calendar(true);
 $gen = new convert();
+$pref = e107::getPlugPrefs('anteup');
 
 if (isset($_POST['setdates']))
 {
