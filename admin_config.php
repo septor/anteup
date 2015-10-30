@@ -27,11 +27,11 @@ class anteup_adminArea extends e_admin_dispatcher
 	);	
 	
 	protected $adminMenu = array(
-		'main/list'			=> array('caption'=> "Manage Donations", 'perm' => 'P'),
-		'main/create'		=> array('caption'=> "Create Donation", 'perm' => 'P'),
-		'currency/list'		=> array('caption'=> "Manage Currencies", 'perm' => 'P'),
-		'currency/create'	=> array('caption'=> "Create Currency", 'perm' => 'P'),
-		'main/prefs' 		=> array('caption'=> "Preferences", 'perm' => 'P'),	
+		'main/list'			=> array('caption'=> LAN_ANTEUP_MANAGE_DONATIONS, 'perm' => 'P'),
+		'main/create'		=> array('caption'=> LAN_ANTEUP_CREATE_DONATIONS, 'perm' => 'P'),
+		'currency/list'		=> array('caption'=> LAN_ANTEUP_MANAGE_CURRENCIES, 'perm' => 'P'),
+		'currency/create'	=> array('caption'=> LAN_ANTEUP_CREATE_CURRENCIES, 'perm' => 'P'),
+		'main/prefs' 		=> array('caption'=> LAN_ANTEUP_PREFERENCES, 'perm' => 'P'),	
 	);
 
 	protected $adminMenuAliases = array(

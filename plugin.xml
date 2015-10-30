@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e107Plugin name="Ante Up" lan="" version="1.0" date="2015-10-23" compatibility="2.0" installRequired="true" >
+<e107Plugin name="Ante Up" lan="LAN_ANTEUP_NAME" version="1.0" date="2015-10-23" compatibility="2.0" installRequired="true" >
 	<author name="Patrick Weaver" url="http://trickmod.com" />
-	<summary lan="">An extensive Donation Tracker with PayPal integration</summary>
-	<description lan="">Keep track of all your incoming donations with an extensive list of donations, who gave them to you, and how much they provided. Also contains a menu for displaying the amount of donations you'd like to receive for a given time and your progress towards it.</description>
+	<summary lan="LAN_ANTEUP_SUMM">An extensive Donation Tracker with PayPal integration</summary>
+	<description lan="LAN_ANTEUP_DESC">Keep track of all your incoming donations with an extensive list of donations, who gave them to you, and how much they provided. Also contains a menu for displaying the amount of donations you'd like to receive for a given time and your progress towards it.</description>
 	<keywords>
 		<word>donations</word>
 		<word>tracker</word>
