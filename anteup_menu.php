@@ -25,7 +25,7 @@ $lastdue_ts = mktime(0, 0, 0, $ld[0], $ld[1], $ld[2]);
 $lastdue = date('m/d/Y', $lastdue_ts);
 
 $currency = $pref['anteup_currency'];
-$goal = (!empty($pref['anteup_goal']) ? $pref['anteup_goal'] : "0");
+$goal = (!empty($pref['anteup_goal']) ? $pref['anteup_goal'] : 0);
 $current = 0;
 $total = 0;
 

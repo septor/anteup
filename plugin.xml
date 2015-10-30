@@ -25,6 +25,7 @@
 		<pref name='anteup_lastdue'>10/23/2015</pref>
 		<pref name='anteup_description'>ANTELAN_DONATIONS_09</pref>
 		<pref name='anteup_dformat'>short</pref>
+		<pref name='anteup_showbar'>true</pref>
 		<pref name='anteup_showibalance'>false</pref>
 		<pref name='anteup_showtotal'>false</pref>
 		<pref name='anteup_showcurrent'>false</pref>

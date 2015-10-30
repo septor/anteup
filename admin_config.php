@@ -273,12 +273,17 @@ class anteup_ipn_ui extends e_admin_ui
 				'data' => 'str',
 				'help' => 'Donation image to use',
 			),
-
 			'anteup_dformat' => array(
 				'title' => 'Date Format',
 				'type' => 'text',
 				'data' => 'str',
 				'help' => 'The format used for dates, refer to the e107 forum date format',
+			),
+			'anteup_showbar' => array(
+				'title' => 'Show progress bar?',
+				'type' => 'boolean',
+				'data' => 'integer',
+				'help' => 'Displays a progress bar comparing your current to total donations received',
 			),
 			'anteup_showibalance' => array(
 				'title' => 'Show Initial Balance',
