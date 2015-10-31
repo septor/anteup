@@ -5,19 +5,17 @@ if (!getperms('P'))
 	header('location:'.e_BASE.'index.php');
 	exit;
 }
+e107::lan('anteup', 'admin', true);
 
 class anteup_adminArea extends e_admin_dispatcher
 {
-
 	protected $modes = array(	
-	
 		'main'	=> array(
 			'controller' 	=> 'anteup_ipn_ui',
 			'path' 			=> null,
 			'ui' 			=> 'anteup_ipn_form_ui',
 			'uipath' 		=> null
 		),
-
 		'currency'	=> array(
 			'controller' 	=> 'anteup_currency_ui',
 			'path' 			=> null,
@@ -43,7 +41,6 @@ class anteup_adminArea extends e_admin_dispatcher
 
 class anteup_ipn_ui extends e_admin_ui
 {
-			
 		protected $pluginTitle		= 'AnteUp';
 		protected $pluginName		= 'anteup';
 	//	protected $eventName		= 'anteup-anteup_ipn'; // remove comment to enable event triggers in admin. 		
@@ -72,7 +69,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'toggle' => 'e-multiselect',  
 			),
 		  	'ipn_id' =>   array ( 
-				'title' => 'IPN ID', 
+				'title' => LAN_ID,
 				'data' => 'int', 
 				'width' => '5%', 
 				'help' => '', 
@@ -142,7 +139,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'thclass' => 'left', 
  		   	),
 		  	'user_id' =>   array ( 
-				'title' => 'e107 User', 
+				'title' => LAN_USER, 
 				'type' => 'user', 
 				'data' => 'str',
  			   	'width' => '5%', 
@@ -154,7 +151,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'thclass' => 'left',  
 			),
 		  	'buyer_email' =>   array ( 
-				'title' => 'User Email', 
+				'title' => LAN_EMAIL, 
 				'type' => 'email', 
 				'data' => 'str', 
 				'width' => 'auto', 
@@ -179,7 +176,7 @@ class anteup_ipn_ui extends e_admin_ui
  			   	'thclass' => 'left', 
  		   	),
 		  	'comment' =>   array ( 
-				'title' => 'Comment', 
+				'title' => LAN_COMMENT, 
 				'type' => 'textarea', 
 				'data' => 'str', 
 				'width' => '40%', 
@@ -204,7 +201,13 @@ class anteup_ipn_ui extends e_admin_ui
 		protected $fieldpref = array('payment_date', 'user_id', 'txn_id', 'buyer_email', 'comment', 'payment_status', 'mc_gross');
 
 		protected $prefs = array(
-			'anteup_currency'	=> array(
+			'anteup_mtitle' => array(
+				'title' => 'Menu Title',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'The text you want displayed as your menu item',
+			),
+			'anteup_currency' => array(
 				'title' => 'Default Currency',
 				'type' => 'dropdown',
 				'data' => 'str',
@@ -283,7 +286,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'help' => 'Displays a progress bar comparing your current to total donations received',
 			),
 			'anteup_showibalance' => array(
-				'title' => 'Show Initial Balance',
+				'title' => 'Show initial balance?',
 				'type' => 'boolean',
 				'data' => 'integer',
 				'help' => 'Displays the balance prior to the current due date',
@@ -292,7 +295,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'title' => 'Show current donation amount?',
 				'type' => 'boolean',
 				'data' => 'integer',
-				'help' => 'Displays teh amount of donations received so far',
+				'help' => 'Displays the amount of donations received so far',
 			),
 			'anteup_showcurrent' => array(
 				'title' => 'Show total balance?',
@@ -336,23 +339,23 @@ class anteup_ipn_ui extends e_admin_ui
 
 			$this->fields['mc_currency']['writeParms'] = $this->currency;
 
-			$this->status = array( "Pending", "Completed", "Denied" );
+			$this->status = array('Pending' => 'Pending', 'Completed' => 'Completed', 'Denied' => 'Denied');
 			$this->fields['payment_status']['writeParms'] = $this->status;
 
 			// preferences
 			$this->prefs['anteup_currency']['writeParms'] = $this->currency;
 
-			$this->dformat = array('short', 'long', 'forum');
+			$this->dformat = array('short' => 'short', 'long' => 'long', 'forum' => 'forum');
 			$this->prefs['anteup_dformat']['writeParms'] = $this->dformat;
 			
-			$this->donateImage[0] = e107::pref('anteup', 'pal_button_image');
+			$this->donateImage[e107::pref('anteup', 'pal_button_image')] = e107::pref('anteup', 'pal_button_image');
 			foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon)
 			{
 				$icon = str_replace(e_PLUGIN."anteup/images/icons/", "", $icon);
 
 				if($icon != e107::pref('anteup', 'pal_button_image'))
 				{
-					$this->donateImage[] = $icon;
+					$this->donateImage[$icon] = $icon;
 				}
 			}
 			$this->prefs['pal_button_image']['writeParms'] = $this->donateImage;	
@@ -376,7 +379,6 @@ class anteup_ipn_ui extends e_admin_ui
 		}	
 		
 		// ------- Customize Update --------
-		
 		public function beforeUpdate($new_data, $old_data, $id)
 		{
 			return $new_data;
@@ -409,8 +411,7 @@ class anteup_ipn_form_ui extends e_admin_form_ui
 				
 class anteup_currency_ui extends e_admin_ui
 {
-			
-		protected $pluginTitle		= 'Ante Up';
+		protected $pluginTitle		= 'AnteUp';
 		protected $pluginName		= 'anteup';
 	//	protected $eventName		= 'anteup-anteup_currency'; // remove comment to enable event triggers in admin. 		
 		protected $table			= 'anteup_currency';
@@ -507,10 +508,9 @@ class anteup_currency_ui extends e_admin_ui
 		
 		protected $fieldpref = array();
 		
-	
 		public function init()
 		{
-			$this->symLoc = array('front', 'back');
+			$this->symLoc = array('front' => 'front', 'back' => 'back');
 			$this->fields['location']['writeParms'] = $this->symLoc;
 		}
 		
@@ -530,7 +530,6 @@ class anteup_currency_ui extends e_admin_ui
 			// do something		
 		}		
 		
-		
 		// ------- Customize Update --------
 		public function beforeUpdate($new_data, $old_data, $id)
 		{
@@ -546,7 +545,7 @@ class anteup_currency_ui extends e_admin_ui
 		{
 			// do something		
 		}		
-	/*	
+		/*	
 		// optional - a custom page.  
 		public function customPage()
 		{
@@ -554,8 +553,7 @@ class anteup_currency_ui extends e_admin_ui
 			return $text;
 			
 		}
-	*/
-			
+		*/
 }
 
 class anteup_currency_form_ui extends e_admin_form_ui
