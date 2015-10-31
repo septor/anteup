@@ -1,10 +1,10 @@
 # NOTE -- ALPHA TESTING
 
-**I'm currently working on updating AnteUp to work with v2+ of e107. Due to my work schedule, I am working between my laptop and my desktop. This means there will likely be several commits made that don't have any meat to them.**
+**A lot of this plugin is going to change. Tons of things may be changing. If you are interested in testing this plugin, please be aware that you may have to uninstall and reinstall it several times if you are pulling files directly from the repo. I apologize, and I don't anticipate this to stall the update to work with v2 too much, since a great deal of what does exist (frontend wise) needs to be rewritten anyways.**
 
-## Reporting Issues
+## Reporting Bugs & Requesting Features
 
-If you encounter a problem please report it in the [issue tracker](https://github.com/septor/anteup/issues).
+If you have an issue, bug, or you would like to request something be added utilize the [issue tracker](https://github.com/septor/anteup/issues). It's the most effective way to get my attention.
 
 # Ante Up!
 

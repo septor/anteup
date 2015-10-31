@@ -14,16 +14,13 @@
 		<link url="admin_config.php" description="" icon="images/icon.png" iconSmall="images/icon.png" primary="true" >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
+		<pref name='anteup_mtitle'>LAN_ANTEUP_MENU_TITLE</pref>
 		<pref name='anteup_currency'>20</pref>
-		<pref name='anteup_full'>63f578</pref>
-		<pref name='anteup_empty'>888888</pref>
-		<pref name='anteup_border'>000000</pref>
-		<pref name='anteup_height'>12px</pref>
-		<pref name='anteup_width'>90%</pref>
 		<pref name='anteup_goal'>0</pref>
 		<pref name='anteup_due'>10/31/2015</pref>
 		<pref name='anteup_lastdue'>10/23/2015</pref>
-		<pref name='anteup_description'>ANTELAN_DONATIONS_09</pref>
+		<pref name='anteup_description'>LAN_ANTEUP_DEFAULT_DESC</pref>
+		<pref name='anteup_textbar'>LAN_ANTEUP_DEFAULT_DONATE_BLURB</pref>
 		<pref name='anteup_dformat'>short</pref>
 		<pref name='anteup_showbar'>true</pref>
 		<pref name='anteup_showibalance'>false</pref>

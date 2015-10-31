@@ -213,36 +213,6 @@ class anteup_ipn_ui extends e_admin_ui
 				'data' => 'str',
 				'help' => 'The default currency for accepting donations',
 			),
-			'anteup_full' => array(
-				'title' => 'Full Color',
-				'type' => 'text',
-				'data' => 'str',
-				'help' => 'The hex color code for the full progress bar color',
-			),
-			'anteup_empty' => array(
-				'title' => 'Empty Color',
-				'type' => 'text',
-				'data' => 'str',
-				'help' => 'The hex color code for the empty progress bar color',
-			),
-			'anteup_border' => array(
-				'title' => 'Border Color',
-				'type' => 'text',
-				'data' => 'str',
-				'help' => 'The hex color code for the progress bar border color',
-			),
-			'anteup_height' => array(
-				'title' => 'Progress Bar Height',
-				'type' => 'text',
-				'data' => 'str',
-				'help' => 'The height, in pixels, of the progress bar',
-			),
-			'anteup_width' => array(
-				'title' => 'Progress Bar Width',
-				'type' => 'text',
-				'data' => 'str',
-				'help' => 'The width, in percent, of the progress bar',
-			),
 			'anteup_goal' => array(
 				'title' => 'Donation Goal',
 				'type' => 'text',
@@ -359,9 +329,7 @@ class anteup_ipn_ui extends e_admin_ui
 				}
 			}
 			$this->prefs['pal_button_image']['writeParms'] = $this->donateImage;	
-
-		}
-		
+		}	
 		// ------- Customize Create --------
 		public function beforeCreate($new_data)
 		{
