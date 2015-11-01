@@ -17,18 +17,12 @@
 		<pref name='anteup_mtitle'>LAN_ANTEUP_MENU_TITLE</pref>
 		<pref name='anteup_currency'>20</pref>
 		<pref name='anteup_goal'>0</pref>
-		<pref name='anteup_due'>10/31/2015</pref>
-		<pref name='anteup_lastdue'>10/23/2015</pref>
+		<pref name='anteup_due'>Thursday, 1 January, 2015</pref>
+		<pref name='anteup_lastdue'>Thursday, 31 December, 2015</pref>
 		<pref name='anteup_description'>LAN_ANTEUP_DEFAULT_DESC</pref>
 		<pref name='anteup_textbar'>LAN_ANTEUP_DEFAULT_DONATE_BLURB</pref>
 		<pref name='anteup_dformat'>short</pref>
-		<pref name='anteup_showbar'>true</pref>
-		<pref name='anteup_showibalance'>false</pref>
-		<pref name='anteup_showtotal'>false</pref>
-		<pref name='anteup_showcurrent'>false</pref>
-		<pref name='anteup_showleft'>false</pref>
-		<pref name='anteup_showdue'>false</pref>
-		<pref name='anteup_showconfiglink'>false</pref>
+
 		<pref name='pal_button_image'>donate.gif</pref>
 		<pref name='pal_business'></pref>
 	</pluginPrefs>

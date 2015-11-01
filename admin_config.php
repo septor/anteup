@@ -249,48 +249,6 @@ class anteup_ipn_ui extends e_admin_ui
 				'data' => 'str',
 				'help' => 'The format used for dates, refer to the e107 forum date format',
 			),
-			'anteup_showbar' => array(
-				'title' => 'Show progress bar?',
-				'type' => 'boolean',
-				'data' => 'integer',
-				'help' => 'Displays a progress bar comparing your current to total donations received',
-			),
-			'anteup_showibalance' => array(
-				'title' => 'Show initial balance?',
-				'type' => 'boolean',
-				'data' => 'integer',
-				'help' => 'Displays the balance prior to the current due date',
-			),
-			'anteup_showtotal' => array(
-				'title' => 'Show current donation amount?',
-				'type' => 'boolean',
-				'data' => 'integer',
-				'help' => 'Displays the amount of donations received so far',
-			),
-			'anteup_showcurrent' => array(
-				'title' => 'Show total balance?',
-				'type' => 'boolean',
-				'data' => 'integer',
-				'help' => 'Displays the entire donation balance',
-			),
-			'anteup_showleft' => array(
-				'title' => 'Show goal amount?',
-				'type' => 'boolean',
-				'data' => 'integer',
-				'help' => 'Displays the amount of donations you need/want',
-			),
-			'anteup_showdue' => array(
-				'title' => 'Show due date?',
-				'type' => 'boolean',
-				'data' => 'integer',
-				'help' => 'Displays the date you would like the donations by',
-			),
-			'anteup_showconfiglink' => array(
-				'title' => 'Show configuration link?',
-				'type' => 'boolean',
-				'data' => 'integer',
-				'help' => 'Displays the link to this page on the menu item',
-			),
 		);
 
 		public function init()
@@ -332,7 +290,7 @@ class anteup_ipn_ui extends e_admin_ui
 		}	
 		// ------- Customize Create --------
 		public function beforeCreate($new_data)
-		{
+		{	
 			return $new_data;
 		}
 	
