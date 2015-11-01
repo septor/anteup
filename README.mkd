@@ -1,6 +1,8 @@
 # NOTE -- ALPHA TESTING
 
-**A lot of this plugin is going to change. Tons of things may be changing. If you are interested in testing this plugin, please be aware that you may have to uninstall and reinstall it several times if you are pulling files directly from the repo. I apologize, and I don't anticipate this to stall the update to work with v2 too much, since a great deal of what does exist (frontend wise) needs to be rewritten anyways.**
+**Lots of settings are about to get thrown out. Tons of pages are about to get rewritten. Instead of writing up and using toggles to allow you to display various information on the menu item, for example, I've decided to use the template/shortcode system. This will allow you to customize the look of your menu the way you see fit. This will also allow for the donations.php page to get far more customizable and will let me reuse code which should speed things up (and allows me to kill off a lot of the issues in the tracker right now)!
+
+Stay tuned! (PS: I hope this is the last README update until the beta)**
 
 ## Reporting Bugs & Requesting Features
 
