@@ -34,4 +34,31 @@ function currency_info($id, $type = 'symbol')
 	{
 		return "";
 	}
+}
+
+function get_info($type)
+{
+	$sql = e107::getDb();
+	$pref = e107::pref('anteup');
+	
+	$lastDue = strtotime($pref['anteup_lastdue']);
+	$currDue = strtotime($pref['anteup_due']);
+	$current = 0;
+	$total = 0;
+
+	$sql->select("anteup_ipn");
+
+	while($row = $sql->fetch())
+	{
+		$payDate = $row['payment_date'];
+
+		if($payDate > $lastDue && $payDate < $currDue)
+		{
+			$current += $row['mc_gross'];
+		}
+		$total += $row['mc_gross'];
+	}
+
+	if($type == "current"){		return $current; }
+	elseif($type == "total"){	return $total; }
 }	

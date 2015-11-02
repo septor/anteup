@@ -16,5 +16,12 @@ $sc	= e107::getScBatch('anteup', true);
 $template = e107::getTemplate('anteup');
 $text = $tp->parseTemplate($template['menu'], false, $sc);
 
-$ns->tablerender(e107::pref('anteup', 'anteup_mtitle'), $text, 'anteup');
+$caption = e107::pref('anteup', 'anteup_mtitle');
+
+if($caption == "LAN_ANTEUP_MENU_TITLE")
+	$caption = LAN_ANTEUP_MENU_TITLE;
+else
+	$caption = $caption;
+
+$ns->tablerender($caption, $text, 'anteup');
 ?>

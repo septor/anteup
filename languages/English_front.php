@@ -1,4 +1,6 @@
 <?php
+
+define("LAN_ANTEUP_MENU_TITLE", "Donations");
 //------------------------------------------------------------------------------------------------------------+
 // anteup_menu.php
 define("ANTELAN_MENU_01",  "Received!");
@@ -13,8 +15,6 @@ define("ANTELAN_MENU_08",  "Due date:");
 
 define("ANTELAN_MENU_09",  "Admin configure");
 
-
-//------------------------------------------------------------------------------------------------------------+
 // donate.php
 define("ANTELAN_DONATE_CAPTION00", "Donate");
 
@@ -24,7 +24,6 @@ define("ANTELAN_DONATE_03", "Amount:");
 define("ANTELAN_DONATE_04", "-- other --");
 
 
-//------------------------------------------------------------------------------------------------------------+
 // donations.php
 define("ANTELAN_DONATIONS_CAPTION00", "Donations");
 
@@ -38,17 +37,6 @@ define("ANTELAN_DONATIONS_07", "No donations found during that time period.");
 define("ANTELAN_DONATIONS_08", "Total:");
 define("ANTELAN_DONATIONS_09", "We sincerely appreciate your kind donation!");
 
-
-//------------------------------------------------------------------------------------------------------------+
-// plugin.php
-define("ANTELAN_PLUGIN_01", "An extensive Donation Tracker with PayPal integration.");
-define("ANTELAN_PLUGIN_02", "Configure Ante Up!");
-define("ANTELAN_PLUGIN_03", "Donations");
-define("ANTELAN_PLUGIN_04", " has been successfully installed!");
-define("ANTELAN_PLUGIN_05", " has been successfully upgraded!");
-
-
-//------------------------------------------------------------------------------------------------------------+
 // return.php
 define("ANTELAN_CANCEL_01", "Cancelled Payment");
 define("ANTELAN_CANCEL_02", "You have cancelled your transaction. Please consider making a donation in the future, we would really appreciate it!.");
