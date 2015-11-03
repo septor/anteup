@@ -11,7 +11,7 @@
 	<category>tools</category>
 	<copyright>2015</copyright>
 	<adminLinks>
-		<link url="admin_config.php" description="" icon="images/icon.png" iconSmall="images/icon.png" primary="true" >LAN_CONFIGURE</link>
+		<link url="admin_config.php" description="" icon="images/icon.png" iconSmall="images/icon.png" primary="true" >LAN_SETTINGS</link>
 	</adminLinks>
 	<pluginPrefs>
 		<pref name='anteup_mtitle'>LAN_ANTEUP_MENU_TITLE</pref>
@@ -22,8 +22,7 @@
 		<pref name='anteup_description'>LAN_ANTEUP_DEFAULT_DESC</pref>
 		<pref name='anteup_textbar'>LAN_ANTEUP_DEFAULT_DONATE_BLURB</pref>
 		<pref name='anteup_dformat'>short</pref>
-
-		<pref name='pal_button_image'>donate.gif</pref>
-		<pref name='pal_business'></pref>
+		<pref name='anteup_paypal'>yourpaypal@email.com</pref>
+		<pref name='anteup_button'>donate.gif</pref>
 	</pluginPrefs>
 </e107Plugin>

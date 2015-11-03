@@ -237,11 +237,17 @@ class anteup_ipn_ui extends e_admin_ui
 				'data' => 'str',
 				'help' => ANTELAN_DONATIONS_09,
 			),
-			'pal_button_image' => array(
+			'anteup_button' => array(
 				'title' => 'Donation Image',
 				'type' => 'dropdown',
 				'data' => 'str',
 				'help' => 'Donation image to use',
+			),
+			'anteup_paypal' => array(
+				'title' => 'PayPal Address',
+				'type' => 'text',
+				'data' => 'str',
+				'help' => 'Your PayPal email address. Donations cannot be accepted without it!',
 			),
 			'anteup_dformat' => array(
 				'title' => 'Date Format',
@@ -276,17 +282,17 @@ class anteup_ipn_ui extends e_admin_ui
 			$this->dformat = array('short' => 'short', 'long' => 'long', 'forum' => 'forum');
 			$this->prefs['anteup_dformat']['writeParms'] = $this->dformat;
 			
-			$this->donateImage[e107::pref('anteup', 'pal_button_image')] = e107::pref('anteup', 'pal_button_image');
+			$this->donateImage[e107::pref('anteup', 'anteup_button')] = e107::pref('anteup', 'anteup_button');
 			foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon)
 			{
 				$icon = str_replace(e_PLUGIN."anteup/images/icons/", "", $icon);
 
-				if($icon != e107::pref('anteup', 'pal_button_image'))
+				if($icon != e107::pref('anteup', 'anteup_button'))
 				{
 					$this->donateImage[$icon] = $icon;
 				}
 			}
-			$this->prefs['pal_button_image']['writeParms'] = $this->donateImage;	
+			$this->prefs['anteup_button']['writeParms'] = $this->donateImage;	
 		}	
 		// ------- Customize Create --------
 		public function beforeCreate($new_data)

@@ -1,8 +1,6 @@
-# NOTE -- ALPHA TESTING
+# NOTE -- THE FILES IN THIS REPO SHOULD BE CONSIDERED ALPHA QUALITY
 
-**Lots of settings are about to get thrown out. Tons of pages are about to get rewritten. Instead of writing up and using toggles to allow you to display various information on the menu item, for example, I've decided to use the template/shortcode system. This will allow you to customize the look of your menu the way you see fit. This will also allow for the donations.php page to get far more customizable and will let me reuse code which should speed things up (and allows me to kill off a lot of the issues in the tracker right now)!
-
-Stay tuned! (PS: I hope this is the last README update until the beta)**
+Refer to the [TODO file](https://github.com/septor/anteup/blob/master/TODO.md) for a list of things that need to happen before the beta is released.
 
 ## Reporting Bugs & Requesting Features
 
@@ -12,15 +10,17 @@ If you have an issue, bug, or you would like to request something be added utili
 
 An extensive Donation Tracker with PayPal integration.
 
-#
+## Rewrite or New Plugin?
 
-While this is being published as a rewrite of the Roofdog Donation Tracker it should be noted that there have been massive changes to the code and very little, code wise,
-of the previous plugin still exists. With that said, however, the functionality and feel of the plugin will be very similar to the previously mentioned plugin.
+While this is being published as a rewrite of the Roofdog Donation Tracker it should be noted that there have been massive changes to the code and very little, code wise, of the previous plugin still exists. With that said, however, the functionality and feel of the plugin will be very similar to the previously mentioned plugin.
+
+In all honesty, you should consider AnteUp as a brand new plugin based on the Roofdog Donation Tracker plugin. With that said it's likely to be your only option as a replacement for now. Using your old tables, preferences, etc is not an option though. You'll have to start fresh.
 
 ## Prerequisites
+Using AnteUp requires the following. Plus a pizza:
 
-You will need to have a verified PayPal account for this plugin to function at all.
-You will need to be running e107 v2+.
+* You will need to have a verified PayPal account for this plugin to function at all.
+* You will need to be running e107 v2+.
 
 ## Translations
 
