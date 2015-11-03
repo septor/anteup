@@ -142,6 +142,26 @@ class anteup_shortcodes extends e_shortcode
 
 		return "<input name='submit' type='image' src='".e_PLUGIN."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' />";
 	}
+
+	function sc_anteup_donation_name($parm='')
+	{
+		return $this->var['item_name'];
+	}
+	
+	function sc_anteup_donation_comment($parm='')
+	{
+		return $this->var['comment'];
+	}
+
+	function sc_anteup_donation_date($parm='')
+	{
+		return $this->var['payment_date'];
+	}
+
+	function sc_anteup_donation_amount($parm='')
+	{
+		return $this->var['mc_gross'];
+	}
 }
 
 ?>

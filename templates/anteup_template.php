@@ -46,6 +46,24 @@ $ANTEUP_TEMPLATE['donate'] = "
 ";
 
 
-$ANTEUP_TEMPLATE['donations'] = "";
+$ANTEUP_TEMPLATE['donations']['start'] = "
+<table style='width:100%' class='fborder'>
+<tr>
+<td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_03."</td>
+<td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_04."</td>
+<td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_05."</td>
+<td class='fcaption' style='text-align:center; width:25%;'>".ANTELAN_DONATIONS_06."</td>
+</tr>
+";
+
+$ANTEUP_TEMPLATE['donations']['entry'] = "
+<tr>
+<td class='forumheader3' style='text-align:center;'>{ANTEUP_DONATION_NAME}</td>
+<td class='forumheader3' style='text-align:center;'>{ANTEUP_DONATION_COMMENT}</td>
+<td class='forumheader3' style='text-align:center;'>{ANTEUP_DONATION_DATE}</td>
+<td class='forumheader3' style='text-align:center;'>{ANTEUP_DONATION_AMOUNT}</td>
+</tr>";
+
+$ANTEUP_TEMPLATE['donations']['end'] = "</table>";
 
 ?>
