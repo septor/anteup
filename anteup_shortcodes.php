@@ -88,12 +88,13 @@ class anteup_shortcodes extends e_shortcode
 	{
 		if(USER)
 		{
-			$output = "<input type='hidden' name='item_name' value='".USERNAME."' />\n".USERNAME."";
+			$output = e107::getForm()->hidden('item_name', USERNAME);
+			$output .= USERNAME;
 		}
 		else
 		{
 			$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
-			$output = "<input name='item_name' type='text' class='".$class."' id='item_name' value='' maxlength='50' />";
+			$output = e107::getForm()->text('item_name', '', 50, array('class', $class));
 		}
 
 		return $output;
@@ -102,46 +103,42 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_currencyselector($parm)
 	{
 		$sql = e107::getDb();
-		$pref = e107::pref('anteup');
-
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
-		$output = "<select class='".$class."' name='currency_code'>";
 
 		$sql->select("anteup_currency", "*");
 		while($row = $sql->fetch())
 		{
-			$output .= "<option value='".$row['code']."'".($row['id'] == $pref['anteup_currency'] ? " selected" : "").">".$row['description']." (".$row['symbol'].")</option>";
+			$selectArray[$row['code']] = $row['description']." (".$row['symbol'].")";
 		}
 
-		$output .= "</select>";
-
-		return $output;
+		return e107::getForm()->select('currency_code', $selectArray, array('class', $class));
 	}
 	
 	function sc_anteup_amountselector($parm)
 	{
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
-		$output = "<select class='".$class."' name='amount'>
-		<option value='0.00'>".ANTELAN_DONATE_04."</option>
-		<option value='1.00'>1.00</option>
-		<option value='5.00' selected>5.00</option>
-		<option value='10.00'>10.00</option>
-		<option value='15.00'>15.00</option>
-		<option value='20.00'>20.00</option>
-		<option value='30.00'>30.00</option>
-		<option value='40.00'>40.00</option>
-		<option value='50.00'>50.00</option>
-		<option value='100.00'>100.00</option>
-		<option value='500.00'>500.00</option>
-		</select>";
+		$frm = e107::getForm();
+
+		if($parm['textbox'])
+		{
+			$output = $frm->text('amount', '5.00', array('class' => $class));
+		}
+		else
+		{
+			for($i=1; $i<101; $i++)
+			{
+				$amountArray[$i.'.00'] = $i.'.00';
+			}
+
+			$output = $frm->select('amount', $amountArray, array('class', $class));
+		}
 
 		return $output;
 	}
 
 	function sc_anteup_anonbox($parm='')
 	{
-		// TODO: Add checkbox code!
-		return $output;
+		return e107::getForm()->checkbox('anonymous', 'true');
 	}
 
 	function sc_anteup_submitdonation($parm='')
