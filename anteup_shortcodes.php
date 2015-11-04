@@ -7,6 +7,8 @@
  *
  */
 
+//TODO: Convert all form elements to e107::getForm()
+
 if(!defined('e107_INIT')){ exit; }
 
 class anteup_shortcodes extends e_shortcode
@@ -136,11 +138,29 @@ class anteup_shortcodes extends e_shortcode
 		return $output;
 	}
 
+	function sc_anteup_anonbox($parm='')
+	{
+		// TODO: Add checkbox code!
+		return $output;
+	}
+
 	function sc_anteup_submitdonation($parm='')
 	{
 		$pref = e107::pref('anteup');
 
 		return "<input name='submit' type='image' src='".e_PLUGIN."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' />";
+	}
+
+	function sc_anteup_donation_filter($parm)
+	{
+		$frm = e107::getForm();
+
+		$output = $frm->open('filter');
+		$output .= $frm->datepicker('startDate', $this->var[0], 'type=date&format=DD, dd MM, yyyy&size=small')." ".$frm->datepicker('endDate', $this->var[1], 'type=date&format=DD, dd MM, yyyy&size=small');
+		$output .= $frm->button('filterDates', 'Filter', 'submit');
+		$output .= $frm->close();
+
+		return $output;
 	}
 
 	function sc_anteup_donation_name($parm='')
@@ -155,12 +175,27 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_donation_date($parm='')
 	{
-		return $this->var['payment_date'];
+		return e107::getParser()->toDate($this->var['payment_date'], relative);
 	}
 
 	function sc_anteup_donation_amount($parm='')
 	{
-		return $this->var['mc_gross'];
+		return (isset($parm['format']) ? format_currency($this->var['mc_gross'], e107::pref('anteup', 'anteup_currency')) : $this->var['mc_gross']);
+	}
+
+	function sc_anteup_donation_txnid($parm='')
+	{
+		return $this->var['txn_id'];
+	}
+
+	function sc_anteup_donation_status($parm='')
+	{
+		return $this->var['payment_status'];
+	}
+
+	function sc_anteup_donation_donator($parm='')
+	{
+		return $this->var['user_id'];
 	}
 }
 

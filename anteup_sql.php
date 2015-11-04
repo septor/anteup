@@ -4,10 +4,11 @@ CREATE TABLE anteup_ipn (
 	`payment_status` varchar(15) NOT NULL default '',
 	`mc_gross` varchar(250) NOT NULL default '',
 	`mc_currency` varchar(250) NOT NULL default '',
-	`txn_id` varchar(250)  NOT NULL default '',
+	`txn_id` varchar(250) NOT NULL default '',
 	`user_id` varchar(250) NOT NULL default '',
 	`buyer_email` varchar(250) NOT NULL default '',
-	`payment_date` varchar(250)  NOT NULL default '',
+	`payment_date` varchar(250) NOT NULL default '',
+	`anonymous` varchar(25) NOT NULL default '',
 	`comment` text,
 	PRIMARY KEY (`ipn_id`)
 ) ENGINE=MyISAM;

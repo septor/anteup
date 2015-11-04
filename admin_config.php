@@ -175,6 +175,18 @@ class anteup_ipn_ui extends e_admin_ui
  			   	'class' => 'left',
  			   	'thclass' => 'left', 
  		   	),
+			'anonymous' => array (
+				'title' => 'Anonymous',
+				'type' => 'checkbox',
+				'data' => 'int',
+				'width' => auto,
+				'inline' => true,
+				'help' => '',
+				'readParms' => '',
+				'writeParms' => '',
+				'class' => 'center',
+				'thclass' => 'center',
+			),
 		  	'comment' =>   array ( 
 				'title' => LAN_COMMENT, 
 				'type' => 'textarea', 

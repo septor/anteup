@@ -6,29 +6,38 @@
  * For additional information refer to the README.mkd file.
  *
  */
-
-// TODO: Date selection.
-
 require_once("../../class2.php");
 require_once(HEADERF);
 require_once(e_PLUGIN."anteup/_class.php");
 e107::lan('anteup');
 $pref = e107::pref('anteup');
 
+if(isset($_POST['filterDates']))
+{
+	$startDate = strtotime($_POST['startDate']);
+	$endDate = strtotime($_POST['endDate']);
+}
+else
+{
+	$startDate = strtotime($pref['anteup_lastdue']);
+	$endDate = strtotime($pref['anteup_due']);
+}
+
 $sql = e107::getDb();
 $tp = e107::getParser();
 $sc = e107::getScBatch('anteup', true);
+$frm = e107::getForm();
 $template = e107::getTemplate('anteup');
 $template = array_change_key_case($template);
 
-$startDate = strtotime($pref['anteup_lastdue']);
-$endDate = strtotime($pref['anteup_due']);
-
 $entries = $sql->retrieve('anteup_ipn', '*', 'payment_date > '.$startDate.' AND payment_date < '.$endDate, true);
+
+$sc->setVars(array($startDate, $endDate));
+$text = $tp->parseTemplate($template['donations']['filter'], false, $sc);
 
 if($entries)
 {
-	$text = $tp->parseTemplate($template['donations']['start'], false, $sc);
+	$text .= $tp->parseTemplate($template['donations']['start'], false, $sc);
 	foreach($entries as $entry)
 	{
 		$sc->setVars($entry);
@@ -38,7 +47,7 @@ if($entries)
 }
 else
 {
-	$text = "There were no donations made in that time frame.";
+	$text .= "There were no donations made in that time frame.";
 }
 
 e107::getRender()->tablerender("Donations", $text);
