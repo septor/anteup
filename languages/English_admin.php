@@ -55,3 +55,4 @@ define("LAN_ANTEUP_PREFS_23", "Show amount left?");
 define("LAN_ANTEUP_PREFS_24", "Displays the amount of money you need to get before you met your goal.");
 define("LAN_ANTEUP_PREFS_25", "Show configuration link?");
 define("LAN_ANTEUP_PREFS_26", "Displays the link to this page on the menu item.");
+?>

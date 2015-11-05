@@ -6,9 +6,6 @@
  * For additional information refer to the README.mkd file.
  *
  */
-
-//TODO: Convert all form elements to e107::getForm()
-
 if(!defined('e107_INIT')){ exit; }
 
 class anteup_shortcodes extends e_shortcode
@@ -88,8 +85,8 @@ class anteup_shortcodes extends e_shortcode
 	{
 		if($this->var['anon'] == true)
 		{
-			$output = e107::getForm()->hidden('item_name', 'Anonymous');
-			$output .= "Anonymous";
+			$output = e107::getForm()->hidden('item_name', LAN_ANTEUP_DONATIONS_ANONYMOUS);
+			$output .= LAN_ANTEUP_DONATIONS_ANONYMOUS;
 		}
 		else
 		{
@@ -106,6 +103,18 @@ class anteup_shortcodes extends e_shortcode
 		}
 
 		return $output;
+	}
+
+	function sc_anteup_menutext($parm='')
+	{
+		$text = e107::pref('anteup', 'anteup_menutext');
+		return ($text == "LAN_ANTEUP_MENU_TEXT" ? LAN_ANTEUP_MENU_TEXT : $text);
+	}
+
+	function sc_anteup_donatelink($parm='')
+	{
+		$pref = e107::pref('anteup');
+		return "<a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
 	}
 
 	function sc_anteup_currencyselector($parm)
@@ -196,6 +205,12 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_donation_donator($parm='')
 	{
 		return $this->var['user_id'];
+	}
+
+	function sc_anteup_pagetext($parm='')
+	{
+		$text = e107::pref('anteup', 'anteup_pagetext');
+		return ($text == "LAN_ANTEUP_PAGE_TEXT" ? LAN_ANTEUP_PAGE_TEXT : $text);
 	}
 }
 

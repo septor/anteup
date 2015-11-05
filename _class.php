@@ -1,4 +1,11 @@
 ﻿<?php
+/* 
+ * AnteUp - A Donation Tracking Plugin for e107
+ *
+ * Copyright (C) 2012-2015 Patrick Weaver (http://trickmod.com/)
+ * For additional information refer to the README.mkd file.
+ *
+ */
 define("ANTEUP", e_PLUGIN."anteup/");
 define("ANTEUP_ABS", SITEURLBASE.e_PLUGIN_ABS."anteup/");
 
@@ -13,27 +20,6 @@ function format_currency($input, $id, $commify = true)
     }
 	$input = (($commify) ? number_format($input, 2) : $input);
 	return ($loc == "back" ? $input.$symbol : $symbol.$input);
-}
-
-function currency_info($id, $type = 'symbol')
-{
-	$sql = e107::getDb();
-	if($type == "symbol")
-	{
-		return $sql->retrieve('anteup_currency',  'symbol', 'id = '.intval($id));
-	}
-	elseif($type == "code")
-	{
-		return $sql->retrieve('anteup_currency',  'code', 'id = '.intval($id));
-	}
-	elseif($type == "desc")
-	{
-		return $sql->retrieve('anteup_currency',  'description', 'id = '.intval($id));
-	}
-	else
-	{
-		return "";
-	}
 }
 
 function get_info($type)

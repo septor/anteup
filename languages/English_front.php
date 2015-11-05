@@ -1,19 +1,9 @@
 <?php
 
+// general
 define("LAN_ANTEUP_MENU_TITLE", "Donations");
-//------------------------------------------------------------------------------------------------------------+
-// anteup_menu.php
-define("ANTELAN_MENU_01",  "Received!");
-define("ANTELAN_MENU_02",  "See who has donated!");
-define("ANTELAN_MENU_03",  "We have met our goal! Thanks a lot!");
-
-define("ANTELAN_MENU_04",  "Current:");
-define("ANTELAN_MENU_05",  "Remaining:");
-define("ANTELAN_MENU_06",  "Target:");
-define("ANTELAN_MENU_07",  "Grand Total:");
-define("ANTELAN_MENU_08",  "Due date:");
-
-define("ANTELAN_MENU_09",  "Admin configure");
+define("LAN_ANTEUP_MENU_TEXT", "Thanks for all your donations, we greatly appreciate it!");
+define("LAN_ANTEUP_PAGE_TEXT", "Thanks for considering to send us a donation. We appreciate your contribution and will use it to better your experience on the site");
 
 // donate.php
 define("ANTELAN_DONATE_CAPTION00", "Donate");
@@ -25,7 +15,8 @@ define("ANTELAN_DONATE_04", "-- other --");
 
 
 // donations.php
-define("ANTELAN_DONATIONS_CAPTION00", "Donations");
+define("LAN_ANTEUP_DONATIONS_CAPTION", "Donations");
+define("LAN_ANTEUP_DONATIONS_ANONYMOUS", "Anonymous");
 
 define("ANTELAN_DONATIONS_01", "Start Date:");
 define("ANTELAN_DONATIONS_02", "End Date:");

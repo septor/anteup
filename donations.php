@@ -49,12 +49,12 @@ if(check_class($pref['anteup_pageviewclass']))
 	}
 	else
 	{
-		$text .= "There were no donations made in that time frame.";
+		$text .= "<div style='text-align:center;'>There were no donations made in that time frame.</div>";
 	}
 }
 else
 {
-	$text = "Sorry, friend, but you can't view this page based on your userclass.";
+	$text = "<div style='text-align:center;'>Sorry, friend, but you can't view this page based on your userclass.</div>";
 }
 
 e107::getRender()->tablerender("Donations", $text);

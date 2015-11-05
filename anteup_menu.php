@@ -23,6 +23,6 @@ if(check_class(e107::pref('anteup', 'anteup_menuviewclass')))
 	else
 		$caption = $caption;
 
-	$ns->tablerender($caption, $text, 'anteup');
+	e107::getRender()->tablerender($caption, $text, 'anteup');
 }
 ?>

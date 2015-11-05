@@ -9,38 +9,45 @@
 if(!defined('e107_INIT')){ exit; }
 
 $ANTEUP_TEMPLATE['menu'] = "
-Due on: {ANTEUP_DUE}<br />
-<a href='".e_PLUGIN."anteup/donations.php'>{ANTEUP_BAR}</a>
-Status (in {ANTEUP_CODE}): {ANTEUP_CURRENT}/{ANTEUP_GOAL}<br />
-Remaining: {ANTEUP_REMAINING: format}<br />
-Lifetime Donation Total: {ANTEUP_TOTAL: format}<br />
-{ANTEUP_ADMIN}
+<div style='text-align:center;'>
+	{ANTEUP_MENUTEXT}
+	<br />
+	Due on: {ANTEUP_DUE}<br />
+	<a href='".e_PLUGIN."anteup/donations.php'>{ANTEUP_BAR}</a>
+	Status (in {ANTEUP_CODE}): {ANTEUP_CURRENT}/{ANTEUP_GOAL}<br />
+	Remaining: {ANTEUP_REMAINING: format}<br />
+	Lifetime Donation Total: {ANTEUP_TOTAL: format}<br />
+	<br	/>
+	{ANTEUP_DONATELINK}
+	<br />
+	{ANTEUP_ADMIN}
+</div>
 ";
 
 $ANTEUP_TEMPLATE['donate'] = "
+	{ANTEUP_PAGETEXT}
+	<br /><br />
 	<table class='table table-bordered table-hover'>
 		<tbody>
 			<tr>
 				<td>".ANTELAN_DONATE_01."</td>
-				<td>{ANTEUP_DONATOR: class=tbox}</td>
+				<td>{ANTEUP_DONATOR}</td>
 			</tr>
 			<tr>
 				<td>".ANTELAN_DONATE_02."</td>
-				<td>{ANTEUP_CURRENCYSELECTOR: class=tbox}</td>
+				<td>{ANTEUP_CURRENCYSELECTOR}</td>
 			</tr>
 			<tr>
 				<td>".ANTELAN_DONATE_03."</td>
-				<td>{ANTEUP_AMOUNTSELECTOR: class=tbox}</td>
+				<td>{ANTEUP_AMOUNTSELECTOR}</td>
 			</tr>
 			<tr>
-				<td>Donate Anonymously</td>
-				<td>{ANTEUP_ANONBOX}</td>
-			</tr>
-			<tr>
-				<td colspan='2'>{ANTEUP_SUBMITDONATION}</td>
+				<td class='center' colspan='2'>{ANTEUP_SUBMITDONATION}</td>
 			</tr>
 		</tbody>
 	</table>
+	<br />
+	If you would rather donate anonymously, <a href='?anonymously'>click here</a>.
 ";
 
 $ANTEUP_TEMPLATE['donations']['filter'] = "
