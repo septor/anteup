@@ -33,7 +33,7 @@ if(!empty($pref['anteup_paypal']) || $pref['anteup_paypal'] != "youremail@email.
 }
 else
 {
-	$text = "<div class='center'>".LAN_ANTEUP_DONATE_05."</div>";
+	$text = "<div class='center'>".LAN_ANTEUP_DONATE_04."</div>";
 }
 
 e107::getRender()->tablerender(LAN_ANTEUP_DONATE_TITLE, $text);
