@@ -35,9 +35,9 @@ if(!empty($pref['anteup_paypal']) || $pref['anteup_paypal'] != "youremail@email.
 }
 else
 {
-	$text = "Unable to accept donations because there is no PayPal address setup.";
+	$text = "<div class='center'>".LAN_ANTEUP_DONATE_05."</div>";
 }
 
-$ns->tablerender(ANTELAN_DONATE_CAPTION00, $tp->toHTML($text, true));
+e107::getRender()->tablerender(LAN_ANTEUP_DONATE_TITLE, $tp->toHTML($text, true));
 require_once(FOOTERF);
 ?>

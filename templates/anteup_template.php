@@ -24,21 +24,23 @@ $ANTEUP_TEMPLATE['menu'] = "
 </div>
 ";
 
+$ANON_LINK = str_replace(array("[", "]"), array("<a href='?anonymous'>", "</a>"), LAN_ANTEUP_DONATE_04);
+
 $ANTEUP_TEMPLATE['donate'] = "
 	{ANTEUP_PAGETEXT}
 	<br /><br />
 	<table class='table table-bordered table-hover'>
 		<tbody>
 			<tr>
-				<td>".ANTELAN_DONATE_01."</td>
+				<td>".LAN_ANTEUP_DONATE_01."</td>
 				<td>{ANTEUP_DONATOR}</td>
 			</tr>
 			<tr>
-				<td>".ANTELAN_DONATE_02."</td>
+				<td>".LAN_ANTEUP_DONATE_02."</td>
 				<td>{ANTEUP_CURRENCYSELECTOR}</td>
 			</tr>
 			<tr>
-				<td>".ANTELAN_DONATE_03."</td>
+				<td>".LAN_ANTEUP_DONATE_03."</td>
 				<td>{ANTEUP_AMOUNTSELECTOR}</td>
 			</tr>
 			<tr>
@@ -47,7 +49,7 @@ $ANTEUP_TEMPLATE['donate'] = "
 		</tbody>
 	</table>
 	<br />
-	If you would rather donate anonymously, <a href='?anonymously'>click here</a>.
+	".$ANON_LINK."
 ";
 
 $ANTEUP_TEMPLATE['donations']['filter'] = "
@@ -58,11 +60,11 @@ $ANTEUP_TEMPLATE['donations']['start'] = "
 	<table class='table table-bordered table-hover'>
 		<thead>
 			<tr>
-				<th>".ANTELAN_DONATIONS_03."</th>
-				<th>".ANTELAN_DONATIONS_04."</th>
-				<th>".ANTELAN_DONATIONS_05."</th>
-				<th>".ANTELAN_DONATIONS_06."</th>
-				<th>Status</th>
+				<th>".LAN_ANTEUP_DONATIONS_01."</th>
+				<th>".LAN_ANTEUP_DONATIONS_02."</th>
+				<th>".LAN_ANTEUP_DONATIONS_03."</th>
+				<th>".LAN_ANTEUP_DONATIONS_04."</th>
+				<th>".LAN_ANTEUP_DONATIONS_05."</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -80,7 +82,7 @@ $ANTEUP_TEMPLATE['donations']['entry'] = "
 
 $ANTEUP_TEMPLATE['donations']['end'] = "
 			<tr>
-				<td style='text-align:right;' colspan='5'>Total Lifetime Donations Received: {ANTEUP_TOTAL: format}</td>
+				<td style='text-align:right;' colspan='5'>".LAN_ANTEUP_DONATIONS_06." {ANTEUP_TOTAL: format}</td>
 			</tr>
 		</tbody>
 	</table>

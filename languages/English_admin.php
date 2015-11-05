@@ -7,52 +7,53 @@ define("LAN_ANTEUP_MANAGE_CURRENCIES", "Manage Currencies");
 define("LAN_ANTEUP_CREATE_CURRENCIES", "Create Currencies");
 define("LAN_ANTEUP_PREFERENCES", "Preferences");
 
-// Menu Configuration
-define("LAN_ANTEUP_CONFIG_M_01", "Menu Title:");
-define("LAN_ANTEUP_CONFIG_M_02", "The title of your donation tracker menu.");	
-define("LAN_ANTEUP_CONFIG_M_05", "Menu Text:");	
-define("LAN_ANTEUP_CONFIG_M_06", "Text to display under the progress bar. This will display even if the progress bar does not.");	
-define("LAN_ANTEUP_CONFIG_M_07", "Full Progress Bar Color:");
-define("LAN_ANTEUP_CONFIG_M_08", "The color of the full progress bar. Enter the 6 digit hex code.");	
-define("LAN_ANTEUP_CONFIG_M_09", "Empty Progress Bar Color: ");
-define("LAN_ANTEUP_CONFIG_M_10", "The background color of the progress bar. Enter the 6 digit hex code.");
-define("LAN_ANTEUP_CONFIG_M_11", "Progress Bar Border Color:");
-define("LAN_ANTEUP_CONFIG_M_12", "The color of the border. Enter the 6 digit hex code.");	
-define("LAN_ANTEUP_CONFIG_M_13", "Progress Bar Height: ");
-define("LAN_ANTEUP_CONFIG_M_14", "The height of the progress bar. Enter your value in pixels.");
-define("LAN_ANTEUP_CONFIG_M_15", "Progress Bar Width: ");
-define("LAN_ANTEUP_CONFIG_M_16", "The width of the progress bar. Use either a static number (12px) or a percentage (90%).");
+// Donations/IPN
+define("LAN_ANTEUP_IPN_01", "Item Name");
+define("LAN_ANTEUP_IPN_02", "Payment Status");
+define("LAN_ANTEUP_IPN_03", "Gross Income");
+define("LAN_ANTEUP_IPN_04", "Currency");
+define("LAN_ANTEUP_IPN_05", "Transaction ID");
+define("LAN_ANTEUP_IPN_06", "Payment Date");
+define("LAN_ANTEUP_IPN_07", "Comment");
 
-define("LAN_ANTEUP_CONFIG_P_01", "Button image:");
-define("LAN_ANTEUP_CONFIG_P_02", "Choose an image or upload your own into '/anteup/images/icons/'");	
-define("LAN_ANTEUP_CONFIG_P_03", "PayPal Email or PayPal Business ID:");
-define("LAN_ANTEUP_CONFIG_P_04", "This must be a valid PayPal account.");	
+define("LAN_ANTEUP_IPN_08", "Pending");
+define("LAN_ANTEUP_IPN_09", "Completed");
+define("LAN_ANTEUP_IPN_10", "Denied");
+define("LAN_ANTEUP_IPN_11", "");
 
 // Preferences
-define("LAN_ANTEUP_PREFS_01", "Currency to display on menu:");
-define("LAN_ANTEUP_PREFS_02", "Select the currency symbol to display in the menu.");	
-define("LAN_ANTEUP_PREFS_03", "Goal Donation Amount:");
-define("LAN_ANTEUP_PREFS_04", "The amount of money you are requesting.");
-define("LAN_ANTEUP_PREFS_05", "Due Date:");
-define("LAN_ANTEUP_PREFS_06", "The date by which you want to receive your target donation. Defaults to the last day of the month.");	
-define("LAN_ANTEUP_PREFS_07", "Date Format:");
-define("LAN_ANTEUP_PREFS_08", "Format you would like dates to be displayed on the plugin.");
-define("LAN_ANTEUP_PREFS_09", "Donation Request Blurb");
-define("LAN_ANTEUP_PREFS_10", "Text to convince people to donate. Displayed on the donations page.");
-define("LAN_ANTEUP_PREFS_11", "Show progress bar?");
-define("LAN_ANTEUP_PREFS_12", "Displays a progress bar of your current donations to your goal.");
-define("LAN_ANTEUP_PREFS_13", "Show initial balance?");
-define("LAN_ANTEUP_PREFS_14", "Displays the balance prior to the current due date.");	
-define("LAN_ANTEUP_PREFS_15", "Show current donation amount?");
-define("LAN_ANTEUP_PREFS_16", "Displays the amount of donations received so far.");	
-define("LAN_ANTEUP_PREFS_17", "Show total balance?");	
-define("LAN_ANTEUP_PREFS_18", "Displays the entire donation balance.");	
-define("LAN_ANTEUP_PREFS_19", "Show goal amount?");
-define("LAN_ANTEUP_PREFS_20", "Displays the goal donation amount.");	
-define("LAN_ANTEUP_PREFS_21", "Show due date?");
-define("LAN_ANTEUP_PREFS_22", "Displays the due date.");
-define("LAN_ANTEUP_PREFS_23", "Show amount left?");
-define("LAN_ANTEUP_PREFS_24", "Displays the amount of money you need to get before you met your goal.");
-define("LAN_ANTEUP_PREFS_25", "Show configuration link?");
-define("LAN_ANTEUP_PREFS_26", "Displays the link to this page on the menu item.");
+define("LAN_ANTEUP_PREFS_01_A", "Menu Title");
+define("LAN_ANTEUP_PREFS_01_B", "The caption for your menu item.");
+define("LAN_ANTEUP_PREFS_02_A", "Default Currency");
+define("LAN_ANTEUP_PREFS_02_B", "The currency you want displayed around your site.");
+define("LAN_ANTEUP_PREFS_03_A", "Donation Goal");
+define("LAN_ANTEUP_PREFS_03_B", "Your goal donation amount.");
+define("LAN_ANTEUP_PREFS_04_A", "Due Date");
+define("LAN_ANTEUP_PREFS_04_B", "The date you would like to get your donation goal.");
+define("LAN_ANTEUP_PREFS_05_A", "Previous Due Date");
+define("LAN_ANTEUP_PREFS_05_B", "Your last due date.");
+define("LAN_ANTEUP_PREFS_06_A", "Menu Text");
+define("LAN_ANTEUP_PREFS_06_B", "The text you want to display on your donation menu.");
+define("LAN_ANTEUP_PREFS_07_A", "Donate Page Text");
+define("LAN_ANTEUP_PREFS_07_B", "The text you want on your donate page. Make it romantic.");
+define("LAN_ANTEUP_PREFS_08_A", "Donations Page Viewclass");
+define("LAN_ANTEUP_PREFS_08_B", "Select the userclass that can view your donations page. This should not be confused with donate.php!");
+define("LAN_ANTEUP_PREFS_09_A", "Donate Menu Viewclass");
+define("LAN_ANTEUP_PREFS_09_B", "Select the userclass that can view your donation menu.");
+define("LAN_ANTEUP_PREFS_10_A", "Donation Button Image");
+define("LAN_ANTEUP_PREFS_10_B", "Image to use on your donate page and donation menu.");
+define("LAN_ANTEUP_PREFS_11_A", "PayPal Address");
+define("LAN_ANTEUP_PREFS_11_B", "Your PayPal email address. Donations cannot be accepted without it!");
+define("LAN_ANTEUP_PREFS_12_A", "Date Format");
+define("LAN_ANTEUP_PREFS_12_B", "Refer to the toDate() parser function in the developers manual on e107.org");
+define("LAN_ANTEUP_PREFS_13", "short");
+define("LAN_ANTEUP_PREFS_14", "long");
+define("LAN_ANTEUP_PREFS_15", "relative");
+
+// Currencies
+define("LAN_ANTEUP_CURR_01", "Currency Symbol");
+define("LAN_ANTEUP_CURR_02", "Code");
+define("LAN_ANTEUP_CURR_03", "Symbol Location");
+define("LAN_ANTEUP_CURR_04", "front");
+define("LAN_ANTEUP_CURR_05", "back");
 ?>

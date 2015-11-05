@@ -49,14 +49,14 @@ if(check_class($pref['anteup_pageviewclass']))
 	}
 	else
 	{
-		$text .= "<div style='text-align:center;'>There were no donations made in that time frame.</div>";
+		$text .= "<div style='text-align:center;'>".LAN_ANTEUP_DONATIONS_07."</div>";
 	}
 }
 else
 {
-	$text = "<div style='text-align:center;'>Sorry, friend, but you can't view this page based on your userclass.</div>";
+	$text = "<div style='text-align:center;'>".LAN_ANTEUP_DONATIONS_08."</div>";
 }
 
-e107::getRender()->tablerender("Donations", $text);
+e107::getRender()->tablerender(LAN_ANTEUP_DONATIONS_TITLE, $text);
 require_once(FOOTERF);
 ?>

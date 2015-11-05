@@ -1,11 +1,3 @@
-# NOTE -- THE FILES IN THIS REPO SHOULD BE CONSIDERED ALPHA QUALITY
-
-Refer to the [TODO file](https://github.com/septor/anteup/blob/master/TODO.md) for a list of things that need to happen before the beta is released.
-
-## Reporting Bugs & Requesting Features
-
-If you have an issue, bug, or you would like to request something be added utilize the [issue tracker](https://github.com/septor/anteup/issues). It's the most effective way to get my attention.
-
 # Ante Up!
 
 An extensive Donation Tracker with PayPal integration.
@@ -16,6 +8,11 @@ While this is being published as a rewrite of the Roofdog Donation Tracker it sh
 
 In all honesty, you should consider AnteUp as a brand new plugin based on the Roofdog Donation Tracker plugin. With that said it's likely to be your only option as a replacement for now. Using your old tables, preferences, etc is not an option though. You'll have to start fresh.
 
+## Reporting Bugs & Requesting Features
+
+If you have an issue, bug, or you would like to request something be added utilize the [issue tracker](https://github.com/septor/anteup/issues). It's the most effective way to get my attention.
+
+
 ## Prerequisites
 Using AnteUp requires the following. Plus a pizza:
 
@@ -24,11 +21,7 @@ Using AnteUp requires the following. Plus a pizza:
 
 ## Translations
 
-**!! DO NOT TRANSLATE THIS PLUGIN YET. !!**
-
-Once a LAN freeze takes place, I'll be accepting translations. The easiest way to get your translations added is by forking this repo and submitting a pull request with your translations. Documentation on how to fork and submit a pull request are easily found on the GitHub website.
-
-The LAN files will be getting another overhaul (not the one previously mentioned) to utilize the new LAN structure in v2 of e107. Translations will not be accepted until after **THIS** line gets removed from the README file!
+You can translate AnteUp easily by [forking](https://help.github.com/articles/fork-a-repo/) this repo, and then submitting a [pull request](https://help.github.com/articles/creating-a-pull-request/) with your translations.
 
 ## Credits
 

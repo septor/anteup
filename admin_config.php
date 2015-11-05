@@ -86,7 +86,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'thclass' => 'left',  
 			),
 		  	'item_name' =>   array ( 
-				'title' => 'Item Name', 
+				'title' => LAN_ANTEUP_IPN_01, 
 				'type' => 'text', 
 				'data' => 'str', 
 				'width' => 'auto', 
@@ -98,7 +98,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'thclass' => 'left',  
 			),
 		  	'payment_status' =>   array ( 
-				'title' => 'Payment Status', 
+				'title' => LAN_ANTEUP_IPN_02, 
 				'type' => 'dropdown', 
 				'data' => 'str', 
 				'width' => 'auto', 
@@ -110,7 +110,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'thclass' => 'left',  
 			),
 		  	'mc_gross' =>   array ( 
-				'title' => 'Gross Income', 
+				'title' => LAN_ANTEUP_IPN_03, 
 				'type' => 'text', 
 				'data' => 'str', 
 				'width' => 'auto', 
@@ -122,7 +122,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'thclass' => 'left',  
 			),
 		  	'mc_currency' =>   array ( 
-				'title' => 'Currency', 
+				'title' => LAN_ANTEUP_IPN_04, 
 				'type' => 'dropdown', 
 				'data' => 'str', 
 				'width' => 'auto', 
@@ -134,7 +134,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'thclass' => 'left',  
 			),
 		  	'txn_id' =>   array ( 
-				'title' => 'Transaction ID',
+				'title' => LAN_ANTEUP_IPN_05,
  			   	'type' => 'text', 
 				'data' => 'str', 
 				'width' => '5%', 
@@ -170,7 +170,7 @@ class anteup_ipn_ui extends e_admin_ui
 				'thclass' => 'left', 
  		   	),
 		  	'payment_date' =>   array (
- 			   	'title' => 'Payment Date', 
+ 			   	'title' => LAN_ANTEUP_IPN_06, 
 				'type' => 'datestamp', 
 				'data' => 'str',
  			   	'width' => 'auto',
@@ -183,7 +183,7 @@ class anteup_ipn_ui extends e_admin_ui
  			   	'thclass' => 'left', 
  		   	),
 		  	'comment' =>   array ( 
-				'title' => LAN_COMMENT, 
+				'title' => LAN_ANTEUP_IPN_07, 
 				'type' => 'textarea', 
 				'data' => 'str', 
 				'width' => '40%', 
@@ -209,76 +209,76 @@ class anteup_ipn_ui extends e_admin_ui
 
 		protected $prefs = array(
 			'anteup_mtitle' => array(
-				'title' => 'Menu Title',
+				'title' => LAN_ANTEUP_PREFS_01_A,
 				'type' => 'text',
 				'data' => 'str',
-				'help' => 'The text you want displayed as your menu item',
+				'help' => LAN_ANTEUP_PREFS_01_B,
 			),
 			'anteup_currency' => array(
-				'title' => 'Default Currency',
+				'title' => LAN_ANTEUP_PREFS_02_A,
 				'type' => 'dropdown',
 				'data' => 'str',
-				'help' => 'The default currency for accepting donations',
+				'help' => LAN_ANTEUP_PREFS_02_B,
 			),
 			'anteup_goal' => array(
-				'title' => 'Donation Goal',
+				'title' => LAN_ANTEUP_PREFS_03_A,
 				'type' => 'text',
 				'data' => 'str',
-				'help' => 'The current donation goal',
+				'help' => LAN_ANTEUP_PREFS_03_B,
 			),
 			'anteup_due' => array(
-				'title' => 'Due Date',
+				'title' => LAN_ANTEUP_PREFS_04_A,
 				'type' => 'datestamp',
 				'data' => 'str',
-				'help' => 'The date in which you want the donations by',
+				'help' => LAN_ANTEUP_PREFS_04_B,
 			),
 			'anteup_lastdue' => array(
-				'title' => 'Previous Due Date',
+				'title' => LAN_ANTEUP_PREFS_05_A,
 				'type' => 'datestamp',
 				'data' => 'str',
-				'help' => 'The previous due date',
+				'help' => LAN_ANTEUP_PREFS_05_B,
 			),
 			'anteup_menutext' => array(
-				'title' => 'Menu Text',
+				'title' => LAN_ANTEUP_PREFS_06_A,
 				'type' => 'text',
 				'data' => 'str',
-				'help' => 'The text you want to display on the donation menu.',
+				'help' => LAN_ANTEUP_PREFS_06_B,
 			),
 			'anteup_pagetext' => array(
-				'title' => 'Donate Page Text',
+				'title' => LAN_ANTEUP_PREFS_07_A,
 				'type' => 'textarea',
 				'data' => 'str',
-				'help' => 'The text you want on your donate page. Make it romantic.',
+				'help' => LAN_ANTEUP_PREFS_07_B,
 			),
 			'anteup_pageviewclass' => array(
-				'title' => 'Who can see your donations page?',
+				'title' => LAN_ANTEUP_PREFS_08_A,
 				'type' => 'userclass',
 				'data' => 'str',
-				'help' => 'Select a userclass that can view your donations page.',
+				'help' => LAN_ANTEUP_PREFS_08_B,
 			),
 			'anteup_menuviewclass' => array(
-				'title' => 'Who can see your donation menu?',
+				'title' => LAN_ANTEUP_PREFS_09_A,
 				'type' => 'userclass',
 				'data' => 'str',
-				'help' => 'Select a userclass that can view your donation menu.',
+				'help' => LAN_ANTEUP_PREFS_09_B,
 			),
 			'anteup_button' => array(
-				'title' => 'Donation Image',
+				'title' => LAN_ANTEUP_PREFS_10_A,
 				'type' => 'dropdown',
 				'data' => 'str',
-				'help' => 'Donation image to use',
+				'help' => LAN_ANTEUP_PREFS_10_B,
 			),
 			'anteup_paypal' => array(
-				'title' => 'PayPal Address',
+				'title' => LAN_ANTEUP_PREFS_11_A,
 				'type' => 'text',
 				'data' => 'str',
-				'help' => 'Your PayPal email address. Donations cannot be accepted without it!',
+				'help' => LAN_ANTEUP_PREFS_11_B,
 			),
 			'anteup_dateformat' => array(
-				'title' => 'Date Format',
+				'title' => LAN_ANTEUP_PREFS_12_A,
 				'type' => 'dropdown',
 				'data' => 'str',
-				'help' => 'Refer to the toDate() parser function in the developers manual on e107.org',
+				'help' => LAN_ANTEUP_PREFS_12_B,
 			),
 		);
 
@@ -298,13 +298,13 @@ class anteup_ipn_ui extends e_admin_ui
 
 			$this->fields['mc_currency']['writeParms'] = $this->currency;
 
-			$this->status = array('Pending' => 'Pending', 'Completed' => 'Completed', 'Denied' => 'Denied');
+			$this->status = array('Pending' => LAN_ANTEUP_IPN_08, 'Completed' => LAN_ANTEUP_IPN_09, 'Denied' => LAN_ANTEUP_IPN_10);
 			$this->fields['payment_status']['writeParms'] = $this->status;
 
 			// preferences
 			$this->prefs['anteup_currency']['writeParms'] = $this->currency;
 
-			$this->dateformat = array('short' => 'short', 'long' => 'long', 'relative' => 'relative');
+			$this->dateformat = array('short' => LAN_ANTEUP_PREFS_13, 'long' => LAN_ANTEUP_PREFS_14, 'relative' => LAN_ANTEUP_PREFS_15);
 			$this->prefs['anteup_dateformat']['writeParms'] = $this->dateformat;
 			
 			$this->donateImage[e107::pref('anteup', 'anteup_button')] = e107::pref('anteup', 'anteup_button');
@@ -406,7 +406,7 @@ class anteup_currency_ui extends e_admin_ui
 				'thclass' => 'left',  
 			),
 		  	'symbol' =>   array ( 
-				'title' => 'Currency Symbol',
+				'title' => LAN_ANTEUP_CURR_01,
  			   	'type' => 'text',
  			   	'data' => 'str',
  			   	'width' => 'auto',
@@ -417,7 +417,7 @@ class anteup_currency_ui extends e_admin_ui
  			   	'thclass' => 'left', 
  		   	),
 		  	'code' =>   array ( 
-				'title' => 'Code', 
+				'title' => LAN_ANTEUP_CURR_02, 
 				'type' => 'text', 
 				'data' => 'str', 
 				'width' => 'auto', 
@@ -441,7 +441,7 @@ class anteup_currency_ui extends e_admin_ui
 				'thclass' => 'left', 
  		   	),
 		  	'location' =>   array ( 
-				'title' => 'Symbol Location',
+				'title' => LAN_ANTEUP_CURR_03,
  			   	'type' => 'dropdown', 
 				'data' => 'str', 
 				'width' => 'auto',
@@ -467,7 +467,7 @@ class anteup_currency_ui extends e_admin_ui
 		
 		public function init()
 		{
-			$this->symLoc = array('front' => 'front', 'back' => 'back');
+			$this->symLoc = array('front' => LAN_ANTEUP_CURR_04, 'back' => LAN_ANTEUP_CURR_05);
 			$this->fields['location']['writeParms'] = $this->symLoc;
 		}
 		
