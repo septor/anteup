@@ -38,6 +38,6 @@ else
 	$text = "<div class='center'>".LAN_ANTEUP_DONATE_05."</div>";
 }
 
-e107::getRender()->tablerender(LAN_ANTEUP_DONATE_TITLE, $tp->toHTML($text, true));
+e107::getRender()->tablerender(LAN_ANTEUP_DONATE_TITLE, $text);
 require_once(FOOTERF);
 ?>
