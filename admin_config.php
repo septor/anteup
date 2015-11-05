@@ -1,4 +1,11 @@
 <?php
+/* 
+ * AnteUp - A Donation Tracking Plugin for e107
+ *
+ * Copyright (C) 2012-2015 Patrick Weaver (http://trickmod.com/)
+ * For additional information refer to the README.mkd file.
+ *
+ */
 require_once('../../class2.php');
 if (!getperms('P')) 
 {
@@ -175,18 +182,6 @@ class anteup_ipn_ui extends e_admin_ui
  			   	'class' => 'left',
  			   	'thclass' => 'left', 
  		   	),
-			'anonymous' => array (
-				'title' => 'Anonymous',
-				'type' => 'checkbox',
-				'data' => 'int',
-				'width' => auto,
-				'inline' => true,
-				'help' => '',
-				'readParms' => '',
-				'writeParms' => '',
-				'class' => 'center',
-				'thclass' => 'center',
-			),
 		  	'comment' =>   array ( 
 				'title' => LAN_COMMENT, 
 				'type' => 'textarea', 
@@ -243,11 +238,29 @@ class anteup_ipn_ui extends e_admin_ui
 				'data' => 'str',
 				'help' => 'The previous due date',
 			),
-			'anteup_description' => array(
-				'title' => LAN_DESCRIPTION,
+			'anteup_menutext' => array(
+				'title' => 'Menu Text',
 				'type' => 'text',
 				'data' => 'str',
-				'help' => ANTELAN_DONATIONS_09,
+				'help' => 'The text you want to display on the donation menu.',
+			),
+			'anteup_pagetext' => array(
+				'title' => 'Donate Page Text',
+				'type' => 'textarea',
+				'data' => 'str',
+				'help' => 'The text you want on your donate page. Make it romantic.',
+			),
+			'anteup_pageviewclass' => array(
+				'title' => 'Who can see your donations page?',
+				'type' => 'userclass',
+				'data' => 'str',
+				'help' => 'Select a userclass that can view your donations page.',
+			),
+			'anteup_menuviewclass' => array(
+				'title' => 'Who can see your donation menu?',
+				'type' => 'userclass',
+				'data' => 'str',
+				'help' => 'Select a userclass that can view your donation menu.',
 			),
 			'anteup_button' => array(
 				'title' => 'Donation Image',
@@ -261,11 +274,11 @@ class anteup_ipn_ui extends e_admin_ui
 				'data' => 'str',
 				'help' => 'Your PayPal email address. Donations cannot be accepted without it!',
 			),
-			'anteup_dformat' => array(
+			'anteup_dateformat' => array(
 				'title' => 'Date Format',
 				'type' => 'dropdown',
 				'data' => 'str',
-				'help' => 'The format used for dates, refer to the e107 forum date format',
+				'help' => 'Refer to the toDate() parser function in the developers manual on e107.org',
 			),
 		);
 
@@ -291,8 +304,8 @@ class anteup_ipn_ui extends e_admin_ui
 			// preferences
 			$this->prefs['anteup_currency']['writeParms'] = $this->currency;
 
-			$this->dformat = array('short' => 'short', 'long' => 'long', 'forum' => 'forum');
-			$this->prefs['anteup_dformat']['writeParms'] = $this->dformat;
+			$this->dateformat = array('short' => 'short', 'long' => 'long', 'relative' => 'relative');
+			$this->prefs['anteup_dateformat']['writeParms'] = $this->dateformat;
 			
 			$this->donateImage[e107::pref('anteup', 'anteup_button')] = e107::pref('anteup', 'anteup_button');
 			foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon)

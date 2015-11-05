@@ -86,15 +86,23 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_donator($parm)
 	{
-		if(USER)
+		if($this->var['anon'] == true)
 		{
-			$output = e107::getForm()->hidden('item_name', USERNAME);
-			$output .= USERNAME;
+			$output = e107::getForm()->hidden('item_name', 'Anonymous');
+			$output .= "Anonymous";
 		}
 		else
 		{
-			$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
-			$output = e107::getForm()->text('item_name', '', 50, array('class', $class));
+			if(USER)
+			{
+				$output = e107::getForm()->hidden('item_name', USERNAME);
+				$output .= USERNAME;
+			}
+			else
+			{
+				$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
+				$output = e107::getForm()->text('item_name', '', 50, array('class', $class));
+			}
 		}
 
 		return $output;
@@ -134,11 +142,6 @@ class anteup_shortcodes extends e_shortcode
 		}
 
 		return $output;
-	}
-
-	function sc_anteup_anonbox($parm='')
-	{
-		return e107::getForm()->checkbox('anonymous', 'true');
 	}
 
 	function sc_anteup_submitdonation($parm='')

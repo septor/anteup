@@ -8,7 +8,6 @@ CREATE TABLE anteup_ipn (
 	`user_id` varchar(250) NOT NULL default '',
 	`buyer_email` varchar(250) NOT NULL default '',
 	`payment_date` varchar(250) NOT NULL default '',
-	`anonymous` varchar(25) NOT NULL default '',
 	`comment` text,
 	PRIMARY KEY (`ipn_id`)
 ) ENGINE=MyISAM;

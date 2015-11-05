@@ -4,7 +4,7 @@
 	<summary lan="LAN_ANTEUP_SUMM">An extensive Donation Tracker with PayPal integration</summary>
 	<description lan="LAN_ANTEUP_DESC">Keep track of all your incoming donations with an extensive list of donations, who gave them to you, and how much they provided. Also contains a menu for displaying the amount of donations you'd like to receive for a given time and your progress towards it.</description>
 	<keywords>
-		<word>donations</word>
+		<word>donation</word>
 		<word>tracker</word>
 		<word>paypal</word>
 	</keywords>
@@ -17,12 +17,14 @@
 		<pref name='anteup_mtitle'>LAN_ANTEUP_MENU_TITLE</pref>
 		<pref name='anteup_currency'>20</pref>
 		<pref name='anteup_goal'>0</pref>
-		<pref name='anteup_due'>Thursday, 1 January, 2015</pref>
-		<pref name='anteup_lastdue'>Thursday, 31 December, 2015</pref>
-		<pref name='anteup_description'>LAN_ANTEUP_DEFAULT_DESC</pref>
-		<pref name='anteup_textbar'>LAN_ANTEUP_DEFAULT_DONATE_BLURB</pref>
-		<pref name='anteup_dformat'>short</pref>
+		<pref name='anteup_due'>Thursday, 31 December, 2015</pref>
+		<pref name='anteup_lastdue'>Thursday, 1 January, 2015</pref>
+		<pref name='anteup_menutext'>LAN_ANTEUP_DEFAULT_DESC</pref>
+		<pref name='anteup_pagetext'>LAN_ANTEUP_DEFAULT_DONATE_BLURB</pref>
+		<pref name='anteup_dateformat'>short</pref>
 		<pref name='anteup_paypal'>yourpaypal@email.com</pref>
 		<pref name='anteup_button'>donate.gif</pref>
+		<pref name='anteup_pageviewclass'></pref>
+		<pref name='anteup_menuviewclass'></pref>
 	</pluginPrefs>
 </e107Plugin>
