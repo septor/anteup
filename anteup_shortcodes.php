@@ -81,30 +81,6 @@ class anteup_shortcodes extends e_shortcode
 			return "<a href='".e_PLUGIN."anteup/admin_config.php'>".LAN_SETTINGS."</a>";
 	}
 
-	function sc_anteup_donator($parm)
-	{
-		if($this->var['anon'] == true)
-		{
-			$output = e107::getForm()->hidden('item_name', LAN_ANTEUP_DONATIONS_ANONYMOUS);
-			$output .= LAN_ANTEUP_DONATIONS_ANONYMOUS;
-		}
-		else
-		{
-			if(USER)
-			{
-				$output = e107::getForm()->hidden('item_name', USERNAME);
-				$output .= USERNAME;
-			}
-			else
-			{
-				$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
-				$output = e107::getForm()->text('item_name', '', 50, array('class', $class));
-			}
-		}
-
-		return $output;
-	}
-
 	function sc_anteup_menutext($parm='')
 	{
 		$text = e107::pref('anteup', 'anteup_menutext');
@@ -117,10 +93,34 @@ class anteup_shortcodes extends e_shortcode
 		return "<a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
 	}
 
+	function sc_anteup_reasonselector($parm)
+	{
+		$frm = e107::getForm();
+
+		$reasons = array(
+			'thanks' => LAN_ANTEUP_DONATE_REASON_01,
+			'noreason' => LAN_ANTEUP_DONATE_REASON_02,
+			'costs' => LAN_ANTEUP_DONATE_REASON_03,
+			'anonymous' => LAN_ANTEUP_DONATE_REASON_04
+		);
+
+		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
+
+		$output = $frm->select('item_name', $reasons, array('class', $class));
+		if(USER)
+			$output .= $frm->hidden('user_id', USERNAME);
+		else
+			$output .= $frm->hidden('user_id', LAN_ANTEUP_DONATE_ANONYMOUS);
+
+		return $output;
+	}
+
+
 	function sc_anteup_currencyselector($parm)
 	{
 		$sql = e107::getDb();
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
+		$defaultCode = $sql->retrieve('anteup_currency',  'code', 'id = '.e107::pref('anteup', 'anteup_currency'));
 
 		$sql->select("anteup_currency", "*");
 		while($row = $sql->fetch())
@@ -128,7 +128,7 @@ class anteup_shortcodes extends e_shortcode
 			$selectArray[$row['code']] = $row['description']." (".$row['symbol'].")";
 		}
 
-		return e107::getForm()->select('currency_code', $selectArray, array('class', $class));
+		return e107::getForm()->select('currency_code', $selectArray, $defaultCode, array('class', $class));
 	}
 	
 	function sc_anteup_amountselector($parm)

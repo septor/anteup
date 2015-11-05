@@ -15,12 +15,10 @@ $pref = e107::pref('anteup');
 
 if(!empty($pref['anteup_paypal']) || $pref['anteup_paypal'] != "youremail@email.com")
 {
-	$anon = (isset($_GET['anonymously']) ? true : false);
 	$frm = e107::getForm();
 	$tp	= e107::getParser();
 	$sc	= e107::getScBatch('anteup', true);
 	$template = e107::getTemplate('anteup');
-	$sc->setVars(array('anon' => $anon));
 
 	$text = $frm->open('donate_form', 'post', 'https://www.paypal.com/cgi-bin/webscr');
 

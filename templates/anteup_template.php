@@ -19,12 +19,10 @@ $ANTEUP_TEMPLATE['menu'] = "
 	Lifetime Donation Total: {ANTEUP_TOTAL: format}<br />
 	<br	/>
 	{ANTEUP_DONATELINK}
-	<br />
+	<br /><br />
 	{ANTEUP_ADMIN}
 </div>
 ";
-
-$ANON_LINK = str_replace(array("[", "]"), array("<a href='?anonymous'>", "</a>"), LAN_ANTEUP_DONATE_04);
 
 $ANTEUP_TEMPLATE['donate'] = "
 	{ANTEUP_PAGETEXT}
@@ -33,7 +31,7 @@ $ANTEUP_TEMPLATE['donate'] = "
 		<tbody>
 			<tr>
 				<td>".LAN_ANTEUP_DONATE_01."</td>
-				<td>{ANTEUP_DONATOR}</td>
+				<td>{ANTEUP_REASONSELECTOR}</td>
 			</tr>
 			<tr>
 				<td>".LAN_ANTEUP_DONATE_02."</td>
@@ -48,8 +46,6 @@ $ANTEUP_TEMPLATE['donate'] = "
 			</tr>
 		</tbody>
 	</table>
-	<br />
-	".$ANON_LINK."
 ";
 
 $ANTEUP_TEMPLATE['donations']['filter'] = "
