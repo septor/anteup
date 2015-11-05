@@ -16,22 +16,22 @@ $pref = e107::pref('anteup');
 if(!empty($pref['anteup_paypal']) || $pref['anteup_paypal'] != "youremail@email.com")
 {
 	$anon = (isset($_GET['anonymously']) ? true : false);
+	$frm = e107::getForm();
 	$tp	= e107::getParser();
 	$sc	= e107::getScBatch('anteup', true);
 	$template = e107::getTemplate('anteup');
-
-	$text = "<form action='https://www.paypal.com/cgi-bin/webscr' id='paypal_donate_form' method='post'>";
-	
 	$sc->setVars(array('anon' => $anon));
+
+	$text = $frm->open('donate_form', 'post', 'https://www.paypal.com/cgi-bin/webscr');
+
 	$text .= $tp->parseTemplate($template['donate'], false, $sc);
 
-	$text .= "<input type='hidden' name='cmd' value='_xclick' />
-	<input type='hidden' name='business' value='".$pref['anteup_paypal']."' id='paypal_donate_email' />
-	<input type='hidden' name='notify_url' value='".ANTEUP_ABS."ipn.php' />
-	<input type='hidden' name='return' value='".ANTEUP_ABS."return.php?thanks' />
-	<input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />
-	<input type='hidden' name='cancel_return' value='".ANTEUP_ABS."return.php?cancel' />
-	</form>";
+	$text .= $frm->hidden('cmd', '_xclick');
+	$text .= $frm->hidden('business', $pref['anteup_paypal']);
+	$text .= $frm->hidden('notify_url', ANTEUP_ABS.'ipn.php');
+	$text .= $frm->hidden('return', ANTEUP_ABS.'return.php?thanks');
+	$text .= $frm->hidden('cancel_return', ANTEUP_ABS.'return.php?cancel');
+	$text .= $frm->close();
 }
 else
 {
