@@ -147,7 +147,7 @@ class anteup_shortcodes extends e_shortcode
 				$amountArray[$i.'.00'] = $i.'.00';
 			}
 
-			$output = $frm->select('amount', $amountArray, array('class', $class));
+			$output = $frm->select('amount', $amountArray, '5.00', array('class', $class));
 		}
 
 		return $output;
@@ -165,8 +165,14 @@ class anteup_shortcodes extends e_shortcode
 		$frm = e107::getForm();
 
 		$output = $frm->open('filter');
-		$output .= $frm->datepicker('startDate', $this->var[0], 'type=date&format=DD, dd MM, yyyy&size=small')." ".$frm->datepicker('endDate', $this->var[1], 'type=date&format=DD, dd MM, yyyy&size=small');
-		$output .= $frm->button('filterDates', 'Filter', 'submit');
+		$output = "
+		<table class='table'>
+			<tr>
+				<td>".$frm->datepicker('startDate', $this->var[0], 'type=date&format=DD, dd MM, yyyy&size=medium')."</td>
+				<td>".$frm->datepicker('endDate', $this->var[1], 'type=date&format=DD, dd MM, yyyy&size=medium')."</td>
+				<td class='right'>".$frm->button('filterDates', 'Filter', 'submit')."</td>
+			</tr>
+		</table>";
 		$output .= $frm->close();
 
 		return $output;
