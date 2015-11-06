@@ -7,7 +7,7 @@
  */
 
 require_once("../../class2.php");
-$pref = e107::getPlugPrefs('anteup');
+$pref = e107::pref('anteup');
 
  // tell PHP to log errors to ipn_errors.log in this directory
 ini_set('log_errors', true);
@@ -49,13 +49,13 @@ if ($verified)
         exit(0); 
 
     // 2. Make sure seller email matches your primary account email.
-    if ($_POST['receiver_email'] != $pref['pal_business'])
+    if ($_POST['receiver_email'] != $pref['anteup_paypal'])
     {
         $errmsg .= "'receiver_email' does not match: ";
         $errmsg .= $_POST['receiver_email']."\n";
     }
     
-    /* As Ante Up! is a donation plugin, it doesn't really matter what amount and in what currency it is donated. 
+    /* As AnteUp is a donation plugin, it doesn't really matter what amount and in what currency it is donated. 
     These checks might be included at a later stage. 
 
     / 3. Make sure the amount(s) paid match
@@ -113,12 +113,13 @@ if ($verified)
                         "txn_id"            => $_POST['txn_id'],
                         "user_id"           => $user_id,
                         "buyer_email"       => $_POST['payer_email'],
-                        "payment_date"      => $payment_date,
+						"payment_date"      => $payment_date,
                         "comment"           => $_POST['memo']
                     )
-                );      
+				);
                 // TODO - Notify succesfull donation 
                 //$body .= $listener->getTextReport();
+				e107::getEvent()->trigger('anteup_trigger', $listener->getTextReport());	
                 //mail('YOUR@EMAIL.COM', 'VERIFIED TRANSACTION', $body);
             }
             else
