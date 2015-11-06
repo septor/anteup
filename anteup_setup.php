@@ -9,7 +9,6 @@ class anteup_setup
 
 	function install_post($var)
 	{
-		$sql = e107::getDb();
 		$query_currencies = "
 		INSERT INTO `#anteup_currency` (`id`, `symbol`, `code`, `description`, `location`) VALUES
 			(1, '&#36;AU','AUD', 'Australian Dollar', 'front'),
@@ -34,8 +33,8 @@ class anteup_setup
 			(20, '&#36;', 'USD', 'U.S. Dollar', 'front')
 		";
 
-		$status = ($sql->gen($query_currencies)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;
-		$mes->add("Adding currencies", $status);
+		$status = (e107::getDb()->gen($query_currencies)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;
+		e107::getMessage()->add("Adding currencies", $status);
 	}
 
 	function uninstall_pre($var)
@@ -48,5 +47,3 @@ class anteup_setup
 		//
 	}
 }
-
-?>
