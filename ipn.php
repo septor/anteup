@@ -13,7 +13,6 @@ $pref = e107::pref('anteup');
 ini_set('log_errors', true);
 ini_set('error_log', dirname(__FILE__).'/ipn_errors.log');
 
-
 // instantiate the IpnListener class
 include('ipnlistener.php');
 $listener = new IpnListener();
@@ -38,7 +37,6 @@ catch (Exception $e)
 The processIpn() method returned true if the IPN was "VERIFIED" and false if it
 was "INVALID".
 */
-
 if ($verified) 
 {
     $errmsg = '';   // stores errors from fraud checks
@@ -73,7 +71,6 @@ if ($verified)
     
     if (!empty($errmsg))
     {
-    
         // manually investigate errors from the fraud checking
 
         // TODO NOTIFY
@@ -87,48 +84,47 @@ if ($verified)
     {
     
        //check if transaction ID has been processed before
-            $txn_id = $_POST['txn_id'];
-            $nm = $sql->db_Count("anteup_ipn", "(txn_id)", "WHERE txn_id='".intval($txn_id)."'");
-            if (!$nm)
+        $txn_id = $_POST['txn_id'];
+        $nm = $sql->count("anteup_ipn", "(txn_id)", "WHERE txn_id='".intval($txn_id)."'");
+        
+        if(!$nm)
+        {
+            if($user_id)
             {
-                if ($user_id)
-                {
-                    //Reads the actual user_name for the user
-                    $sql2->db_Select("user","*", "WHERE user_id='".$user_id."'");
-                    $row = $sql2 -> db_Fetch();
-                    $username = $row['user_name'];
-                }
-                else
-                {
-                    $user_id = 0;
-                }
-                $payment_date = strtotime($_POST['payment_date']);
-
-                $sql->db_Insert("anteup_ipn", 
-                    array(
-                        "item_name"         => $_POST['item_name'],
-                        "payment_status"    => $_POST['payment_status'],
-                        "mc_gross"          => $_POST['mc_gross'],
-                        "mc_currency"       => $_POST['mc_currency'],
-                        "txn_id"            => $_POST['txn_id'],
-                        "user_id"           => $user_id,
-                        "buyer_email"       => $_POST['payer_email'],
-						"payment_date"      => $payment_date,
-                        "comment"           => $_POST['memo']
-                    )
-				);
-                // TODO - Notify succesfull donation 
-                //$body .= $listener->getTextReport();
-				e107::getEvent()->trigger('anteup_trigger', $listener->getTextReport());	
-                //mail('YOUR@EMAIL.COM', 'VERIFIED TRANSACTION', $body);
+                //Reads the actual user_name for the user
+                $username - $sql->retrieve("user","*", "WHERE user_id='".$user_id."'");
             }
             else
             {
-                // TODO - Notify duplicate transaction
-                //mail("YOUR@EMAIL.COM", "VERIFIED DUPLICATED TRANSACTION", $txn_id);
+                $user_id = 0;
             }
+            
+            $payment_date = strtotime($_POST['payment_date']);
+
+            $sql->insert("anteup_ipn", 
+                array(
+                    "item_name"         => $_POST['item_name'],
+                    "payment_status"    => $_POST['payment_status'],
+                    "mc_gross"          => $_POST['mc_gross'],
+                    "mc_currency"       => $_POST['mc_currency'],
+                    "txn_id"            => $_POST['txn_id'],
+                    "user_id"           => $user_id,
+                    "buyer_email"       => $_POST['payer_email'],
+					"payment_date"      => $payment_date,
+                    "comment"           => $_POST['memo']
+                )
+			);
+            // TODO - Notify succesfull donation 
+            //$body .= $listener->getTextReport();
+			e107::getEvent()->trigger('anteup_trigger', $listener->getTextReport());	
+            //mail('YOUR@EMAIL.COM', 'VERIFIED TRANSACTION', $body);
+        }
+        else
+        {
+            // TODO - Notify duplicate transaction
+            //mail("YOUR@EMAIL.COM", "VERIFIED DUPLICATED TRANSACTION", $txn_id);
+        }
     }
-    
 }
 else
 {
@@ -138,4 +134,3 @@ else
     //$body .= $listener->getTextReport();
     //mail('YOUR@EMAIL.COM', 'INVALID IPN', $body);
 }
-?>
