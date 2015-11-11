@@ -67,8 +67,9 @@ class anteup_shortcodes extends e_shortcode
 		return (isset($parm['format']) ? format_currency($output, $pref['anteup_currency']) : $output);
 	}
 	function sc_anteup_bar($parm='')
-	{
-		$goal = (!empty(e107::pref('anteup', 'anteup_goal')) ? e107::pref('anteup', 'anteup_goal') : 0);
+	{	
+		$goal = e107::pref('anteup', 'anteup_goal'); // fix for PHP < 5.5 
+		$goal = (!empty($goal) ? $goal : 0);
 		$current = get_info("current");
 		$percent = round(($current / $goal) * 100, 0);
 		
