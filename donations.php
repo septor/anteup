@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * AnteUp - A Donation Tracking Plugin for e107
  *
  * Copyright (C) 2012-2015 Patrick Weaver (http://trickmod.com/)

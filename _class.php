@@ -1,5 +1,5 @@
 ﻿<?php
-/* 
+/*
  * AnteUp - A Donation Tracking Plugin for e107
  *
  * Copyright (C) 2012-2015 Patrick Weaver (http://trickmod.com/)
@@ -26,7 +26,7 @@ function get_info($type)
 {
 	$sql = e107::getDb();
 	$pref = e107::pref('anteup');
-	
+
 	$lastDue = strtotime($pref['anteup_lastdue']);
 	$currDue = strtotime($pref['anteup_due']);
 	$current = 0;
@@ -47,4 +47,4 @@ function get_info($type)
 
 	if($type == "current"){		return $current; }
 	elseif($type == "total"){	return $total; }
-}	
+}

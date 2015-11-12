@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * AnteUp - A Donation Tracking Plugin for e107
  *
  * Copyright (C) 2012-2015 Patrick Weaver (http://trickmod.com/)
@@ -67,12 +67,12 @@ class anteup_shortcodes extends e_shortcode
 		return (isset($parm['format']) ? format_currency($output, $pref['anteup_currency']) : $output);
 	}
 	function sc_anteup_bar($parm='')
-	{	
-		$goal = e107::pref('anteup', 'anteup_goal'); // fix for PHP < 5.5 
+	{
+		$goal = e107::pref('anteup', 'anteup_goal'); // fix for PHP < 5.5
 		$goal = (!empty($goal) ? $goal : 0);
 		$current = get_info("current");
 		$percent = round(($current / $goal) * 100, 0);
-		
+
 		return "<div class='progress'>\n\t<div class='progress-bar' role='progressbar' aria-valuenow='".$percent."' aria-valuemin='0' aria-valuemax='100' style='width:".$percent."%'>\n\t\t<span class='sr-only'>".$percent."% donated</span>\n\t</div>\n</div>";
 	}
 
@@ -131,7 +131,7 @@ class anteup_shortcodes extends e_shortcode
 
 		return e107::getForm()->select('currency_code', $selectArray, $defaultCode, array('class', $class));
 	}
-	
+
 	function sc_anteup_amountselector($parm)
 	{
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
@@ -179,11 +179,11 @@ class anteup_shortcodes extends e_shortcode
 		return $output;
 	}
 
-	function sc_anteup_donation_name($parm='')
+	function sc_anteup_donation_reason($parm='')
 	{
 		return $this->var['item_name'];
 	}
-	
+
 	function sc_anteup_donation_comment($parm='')
 	{
 		return $this->var['comment'];
@@ -211,7 +211,9 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_donation_donator($parm='')
 	{
-		return $this->var['user_id'];
+		$userInfo = e107::user($this->var['user_id']);
+
+		return $userInfo['user_name'];
 	}
 
 	function sc_anteup_pagetext($parm='')

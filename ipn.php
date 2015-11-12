@@ -1,7 +1,7 @@
 <?php
 /**
  *  Based on PayPal IPN Listener
- *  by Micah Carrick. 
+ *  by Micah Carrick.
  *  https://github.com/Quixotix/PHP-PayPal-IPN
  *
  */
@@ -37,14 +37,14 @@ catch (Exception $e)
 The processIpn() method returned true if the IPN was "VERIFIED" and false if it
 was "INVALID".
 */
-if ($verified) 
+if ($verified)
 {
     $errmsg = '';   // stores errors from fraud checks
-    
-    // 1. Make sure the payment status is "Completed" 
+
+    // 1. Make sure the payment status is "Completed"
     if ($_POST['payment_status'] != 'Completed')
         // simply ignore any IPN that is not completed
-        exit(0); 
+        exit(0);
 
     // 2. Make sure seller email matches your primary account email.
     if ($_POST['receiver_email'] != $pref['anteup_paypal'])
@@ -52,23 +52,23 @@ if ($verified)
         $errmsg .= "'receiver_email' does not match: ";
         $errmsg .= $_POST['receiver_email']."\n";
     }
-    
-    /* As AnteUp is a donation plugin, it doesn't really matter what amount and in what currency it is donated. 
-    These checks might be included at a later stage. 
+
+    /* As AnteUp is a donation plugin, it doesn't really matter what amount and in what currency it is donated.
+    These checks might be included at a later stage.
 
     / 3. Make sure the amount(s) paid match
     if ($_POST['mc_gross'] != '9.99') {
         $errmsg .= "'mc_gross' does not match: ";
         $errmsg .= $_POST['mc_gross']."\n";
     }
-    
+
     // 4. Make sure the currency code matches
     if ($_POST['mc_currency'] != 'USD') {
         $errmsg .= "'mc_currency' does not match: ";
         $errmsg .= $_POST['mc_currency']."\n";
     }
     */
-    
+
     if (!empty($errmsg))
     {
         // manually investigate errors from the fraud checking
@@ -78,15 +78,15 @@ if ($verified)
         //$body .= $listener->getTextReport();
         //mail('YOUR@EMAIL.COM', 'IPN Fraud Warning', $body);
         exit;
-        
+
     }
     else
     {
-    
+
        //check if transaction ID has been processed before
         $txn_id = $_POST['txn_id'];
         $nm = $sql->count("anteup_ipn", "(txn_id)", "WHERE txn_id='".intval($txn_id)."'");
-        
+
         if(!$nm)
         {
             if($user_id)
@@ -98,10 +98,10 @@ if ($verified)
             {
                 $user_id = 0;
             }
-            
+
             $payment_date = strtotime($_POST['payment_date']);
 
-            $sql->insert("anteup_ipn", 
+            $sql->insert("anteup_ipn",
                 array(
                     "item_name"         => $_POST['item_name'],
                     "payment_status"    => $_POST['payment_status'],
@@ -114,9 +114,9 @@ if ($verified)
                     "comment"           => $_POST['memo']
                 )
 			);
-            // TODO - Notify succesfull donation 
+            // TODO - Notify succesfull donation
             //$body .= $listener->getTextReport();
-			e107::getEvent()->trigger('anteup_trigger', $listener->getTextReport());	
+			e107::getEvent()->trigger('anteup_trigger', $listener->getTextReport();
             //mail('YOUR@EMAIL.COM', 'VERIFIED TRANSACTION', $body);
         }
         else
@@ -130,7 +130,7 @@ else
 {
     // manually investigate the invalid IPN
 
-    // TODO - Notify 
+    // TODO - Notify
     //$body .= $listener->getTextReport();
     //mail('YOUR@EMAIL.COM', 'INVALID IPN', $body);
 }

@@ -19,7 +19,11 @@ define("LAN_ANTEUP_IPN_07", "Comment");
 define("LAN_ANTEUP_IPN_08", "Pending");
 define("LAN_ANTEUP_IPN_09", "Completed");
 define("LAN_ANTEUP_IPN_10", "Denied");
-define("LAN_ANTEUP_IPN_11", "");
+
+define("LAN_ANTEUP_IPN_11", "Thanks for your work!");
+define("LAN_ANTEUP_IPN_12", "A generous donation for no reason.");
+define("LAN_ANTEUP_IPN_13", "Hosting, server, whatever costs.");
+define("LAN_ANTEUP_IPN_14", "An anonymous donation.");
 
 // Preferences
 define("LAN_ANTEUP_PREFS_01_A", "Menu Title");

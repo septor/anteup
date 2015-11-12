@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 * AnteUp - A Donation Tracking Plugin for e107
 *
 * Copyright (C) 2012-2015 Patrick Weaver (http://trickmod.com/)
@@ -68,8 +68,8 @@ $ANTEUP_TEMPLATE['donations']['start'] = "
 
 $ANTEUP_TEMPLATE['donations']['entry'] = "
 			<tr>
-				<td>{ANTEUP_DONATION_NAME}</td>
-				<td>{ANTEUP_DONATION_COMMENT}</td>
+				<td>{ANTEUP_DONATION_DONATOR}</td>
+				<td>{ANTEUP_DONATION_REASON}</td>
 				<td>{ANTEUP_DONATION_DATE}</td>
 				<td>{ANTEUP_DONATION_AMOUNT: format}</td>
 				<td>{ANTEUP_DONATION_STATUS}</td>

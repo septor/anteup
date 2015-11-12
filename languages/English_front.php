@@ -23,7 +23,7 @@ define("LAN_ANTEUP_DONATE_04", "Unable to accept donations because there is no P
 define("LAN_ANTEUP_DONATIONS_TITLE", "Donations");
 
 define("LAN_ANTEUP_DONATIONS_01", "Donator");
-define("LAN_ANTEUP_DONATIONS_02", "Message");
+define("LAN_ANTEUP_DONATIONS_02", "Reason");
 define("LAN_ANTEUP_DONATIONS_03", "Date Donated");
 define("LAN_ANTEUP_DONATIONS_04", "Amount");
 define("LAN_ANTEUP_DONATIONS_05", "Status");
@@ -37,4 +37,4 @@ define("LAN_ANTEUP_RETURN_02", "You have cancelled your transaction. Please cons
 define("LAN_ANTEUP_RETURN_03", "Thanks!");
 define("LAN_ANTEUP_RETURN_04", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");
 
-?>
+>
