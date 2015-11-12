@@ -181,7 +181,13 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_donation_reason($parm='')
 	{
-		return $this->var['item_name'];
+		$reasons = array(
+			'thanks' => LAN_ANTEUP_DONATE_REASON_01,
+			'noreason' => LAN_ANTEUP_DONATE_REASON_02,
+			'costs' => LAN_ANTEUP_DONATE_REASON_03,
+			'anonymous' => LAN_ANTEUP_DONATE_REASON_04
+		);
+		return $reasons[$this->var['item_name']];
 	}
 
 	function sc_anteup_donation_comment($parm='')

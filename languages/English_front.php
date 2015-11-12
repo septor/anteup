@@ -37,4 +37,4 @@ define("LAN_ANTEUP_RETURN_02", "You have cancelled your transaction. Please cons
 define("LAN_ANTEUP_RETURN_03", "Thanks!");
 define("LAN_ANTEUP_RETURN_04", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");
 
->
+?>
