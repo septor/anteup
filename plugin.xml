@@ -13,6 +13,9 @@
 	<adminLinks>
 		<link url="admin_config.php" description="" icon="images/icon.png" iconSmall="images/icon.png" primary="true" >LAN_SETTINGS</link>
 	</adminLinks>
+	<siteLinks>
+		<link url="e107_plugins/anteup/donations.php" description="Donations" icon="" iconSmall="" function="">LAN_ANTEUP_DONATIONSLINK</link>
+	</siteLinks>
 	<pluginPrefs>
 		<pref name='anteup_mtitle'>LAN_ANTEUP_MENU_TITLE</pref>
 		<pref name='anteup_currency'>20</pref>
