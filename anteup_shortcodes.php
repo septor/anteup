@@ -125,9 +125,7 @@ class anteup_shortcodes extends e_shortcode
 
 		$sql->select("anteup_currency", "*");
 		while($row = $sql->fetch())
-		{
 			$selectArray[$row['code']] = $row['description']." (".$row['symbol'].")";
-		}
 
 		return e107::getForm()->select('currency_code', $selectArray, $defaultCode, array('class', $class));
 	}
@@ -144,9 +142,7 @@ class anteup_shortcodes extends e_shortcode
 		else
 		{
 			for($i=1; $i<101; $i++)
-			{
 				$amountArray[$i.'.00'] = $i.'.00';
-			}
 
 			$output = $frm->select('amount', $amountArray, '5.00', array('class', $class));
 		}

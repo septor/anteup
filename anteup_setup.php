@@ -1,10 +1,15 @@
 <?php
-
+/*
+ * AnteUp - A Donation Tracking Plugin for e107
+ *
+ * Copyright (C) 2012-2015 Patrick Weaver (http://trickmod.com/)
+ * For additional information refer to the README.mkd file.
+ *
+ */
 class anteup_setup
 {
 	function install_pre($var)
 	{
-		//
 	}
 
 	function install_post($var)
@@ -39,11 +44,9 @@ class anteup_setup
 
 	function uninstall_pre($var)
 	{
-		//
 	}
 
 	function upgrade_post($needed)
 	{
-		//
 	}
 }
