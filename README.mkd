@@ -30,3 +30,5 @@ This plugin is a rewrite of version 2.7 of the Roofdog Donation Tracker by DelTr
 That plugin was based on my first Donation Tracker coupled with features from the Donate Menu by Lolo Irie, Cameron, Barry Keal (Father Barry), and Richard Perry (whoisrich).
 
 Please **do not** contact any of the previously mentioned authors for support with this plugin as they cannot  assist you.
+
+Join the chat at https://gitter.im/septor/anteup
