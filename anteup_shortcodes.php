@@ -79,7 +79,7 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_admin($parm='')
 	{
 		if(ADMIN)
-			return "<a href='".e_PLUGIN."anteup/admin_config.php'>".LAN_SETTINGS."</a>";
+			return "<a href='".e_PLUGIN_ABS."anteup/admin_config.php'>".LAN_SETTINGS."</a>";
 	}
 
 	function sc_anteup_menutext($parm='')
@@ -91,7 +91,7 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_donatelink($parm='')
 	{
 		$pref = e107::pref('anteup');
-		return "<a href='".e_PLUGIN."anteup/donate.php'><img src='".e_PLUGIN."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
+		return "<a href='".e_PLUGIN_ABS."anteup/donate.php'><img src='".e_PLUGIN_ABS."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
 	}
 
 	function sc_anteup_reasonselector($parm)
@@ -154,7 +154,7 @@ class anteup_shortcodes extends e_shortcode
 	{
 		$pref = e107::pref('anteup');
 
-		return "<input name='submit' type='image' src='".e_PLUGIN."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' />";
+		return "<input name='submit' type='image' src='".e_PLUGIN_ABS."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' />";
 	}
 
 	function sc_anteup_donation_filter($parm)
