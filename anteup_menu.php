@@ -6,6 +6,7 @@
  * For additional information refer to the README.mkd file.
  *
  */
+
 if (!defined('e107_INIT')) { exit; }
 if(check_class(e107::pref('anteup', 'anteup_menuviewclass')))
 {
@@ -19,10 +20,13 @@ if(check_class(e107::pref('anteup', 'anteup_menuviewclass')))
 	$caption = e107::pref('anteup', 'anteup_mtitle');
 
 	if($caption == "LAN_ANTEUP_MENU_TITLE")
+	{
 		$caption = LAN_ANTEUP_MENU_TITLE;
+	}	
 	else
+	{
 		$caption = $caption;
+	}
 
 	e107::getRender()->tablerender($caption, $text, 'anteup');
 }
-?>
