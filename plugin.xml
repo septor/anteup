@@ -8,7 +8,7 @@
 		<word>tracker</word>
 		<word>paypal</word>
 	</keywords>
-	<category>tools</category>
+	<category>misc</category>
 	<copyright>2015</copyright>
 	<adminLinks>
 		<link url="admin_config.php" description="" icon="images/icon.png" iconSmall="images/icon.png" primary="true" >LAN_SETTINGS</link>
