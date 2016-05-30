@@ -20,8 +20,8 @@
 		<pref name='anteup_mtitle'>LAN_ANTEUP_MENU_TITLE</pref>
 		<pref name='anteup_currency'>20</pref>
 		<pref name='anteup_goal'>0</pref>
-		<pref name='anteup_due'>Thursday, 31 December, 2015</pref>
-		<pref name='anteup_lastdue'>Thursday, 1 January, 2015</pref>
+		<pref name='anteup_due'>1464782400</pref>
+		<pref name='anteup_lastdue'>1462104000</pref>
 		<pref name='anteup_menutext'>LAN_ANTEUP_MENU_TEXT</pref>
 		<pref name='anteup_pagetext'>LAN_ANTEUP_PAGE_TEXT</pref>
 		<pref name='anteup_dateformat'>short</pref>

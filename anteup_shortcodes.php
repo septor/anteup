@@ -30,12 +30,18 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_lastdue($parm='')
 	{
-		return e107::pref('anteup', 'anteup_lastdue');
+		$lastdue = e107::pref('anteup', 'anteup_lastdue');
+		$dateformat = e107::pref('anteup', 'anteup_dateformat'); 
+		
+		return e107::getDate()->convert_date($lastdue, $dateformat);
 	}
 
 	function sc_anteup_due($parm='')
 	{
-		return e107::pref('anteup', 'anteup_due');
+		$due = e107::pref('anteup', 'anteup_due');
+		$dateformat = e107::pref('anteup', 'anteup_dateformat'); 
+		
+		return e107::getDate()->convert_date($due, $dateformat);
 	}
 
 	function sc_anteup_remaining($parm)
