@@ -6,6 +6,7 @@
  * For additional information refer to the README.mkd file.
  *
  */
+
 class anteup_notify extends notify
 {
 	function config()
