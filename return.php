@@ -6,21 +6,28 @@
  * For additional information refer to the README.mkd file.
  *
  */
+
 require_once("../../class2.php");
 require_once(HEADERF);
 e107::lan('anteup');
 
-if(e_QUERY == "cancel" || e_QUERY == "thanks"){
-	if(e_QUERY == "cancel"){
-		$caption = LAN_ANTEUP_RETURN_01;
-		$text = LAN_ANTEUP_RETURN_02;
-	}else if(e_QUERY == "thanks"){
-		$caption = LAN_ANTEUP_RETURN_03;
-		$text = LAN_ANTEUP_RETURN_04;
+if(e_QUERY == "cancel" || e_QUERY == "thanks")
+{
+	if(e_QUERY == "cancel")
+	{
+		$caption 	= LAN_ANTEUP_RETURN_01;
+		$text 		= LAN_ANTEUP_RETURN_02;
+	}
+	elseif(e_QUERY == "thanks")
+	{
+		$caption 	= LAN_ANTEUP_RETURN_03;
+		$text 		= LAN_ANTEUP_RETURN_04;
 	}
 	e107::getRender()->tablerender($caption, "<div style='text-align:center;'>".$text."</div>");
-}else{
-	header("location: ".e_BASE);
+}
+else
+{
+	e107::redirect();
 }
 
 require_once(FOOTERF);
