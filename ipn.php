@@ -1,10 +1,14 @@
 <?php
-/**
- *  Based on PayPal IPN Listener
- *  by Micah Carrick.
- *  https://github.com/Quixotix/PHP-PayPal-IPN
+/*
+ * AnteUp - A Donation Tracking Plugin for e107
  *
- */
+ * Copyright (C) 2012-2017 Patrick Weaver (http://trickmod.com/)
+ * For additional information refer to the README.mkd file.
+ *
+ * Based on PayPal IPN Listener
+ * by Micah Carrick.
+ * https://github.com/Quixotix/PHP-PayPal-IPN
+*/
 
 require_once("../../class2.php");
 $pref = e107::pref('anteup');

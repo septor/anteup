@@ -2,7 +2,7 @@
 /*
  * AnteUp - A Donation Tracking Plugin for e107
  *
- * Copyright (C) 2012-2015 Patrick Weaver (http://trickmod.com/)
+ * Copyright (C) 2012-2017 Patrick Weaver (http://trickmod.com/)
  * For additional information refer to the README.mkd file.
  *
  */
