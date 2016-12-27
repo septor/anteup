@@ -12,6 +12,17 @@ require_once(e_PLUGIN."anteup/_class.php");
 e107::lan('anteup');
 
 $pref = e107::pref('anteup');
+$mes = e107::getMessage();
+
+// Check for sandbox mode 
+$sandbox = e107::pref('anteup', 'anteup_sandbox'); 
+if(vartrue($sandbox))
+{
+	$sandbox_mode = true; 
+	$mes->addWarning(LAN_ANTEUP_SANDBOX_ON);
+}
+
+$url = ($sandbox_mode ? "https://www.sandbox.paypal.com/cgi-bin/webscr" : "https://www.paypal.com/cgi-bin/webscr"); 
 
 if(!empty($pref['anteup_paypal']) || $pref['anteup_paypal'] != "youremail@email.com")
 {
@@ -20,7 +31,7 @@ if(!empty($pref['anteup_paypal']) || $pref['anteup_paypal'] != "youremail@email.
 	$sc	= e107::getScBatch('anteup', true);
 	$template = e107::getTemplate('anteup');
 
-	$text = $frm->open('donate_form', 'post', 'https://www.paypal.com/cgi-bin/webscr');
+	$text = $frm->open('donate_form', 'post', $url);
 
 	$text .= $tp->parseTemplate($template['donate'], false, $sc);
 
@@ -36,6 +47,6 @@ else
 	$text = "<div class='center'>".LAN_ANTEUP_DONATE_04."</div>";
 }
 
-e107::getRender()->tablerender(LAN_ANTEUP_DONATE_TITLE, $text);
+e107::getRender()->tablerender(LAN_ANTEUP_DONATE_TITLE, $mes->render().$text);
 require_once(FOOTERF);
 ?>

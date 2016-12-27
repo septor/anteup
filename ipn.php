@@ -17,9 +17,12 @@ ini_set('error_log', dirname(__FILE__).'/ipn_errors.log');
 include('ipnlistener.php');
 $listener = new IpnListener();
 
-
-// Sandbox mode - when developing only
-//$listener->use_sandbox = true;
+// Check for sandbox mode 
+$sandbox = e107::pref('anteup', 'anteup_sandbox'); 
+if(vartrue($sandbox))
+{
+    $listener->use_sandbox = true;
+}
 
 // try to process the IPN POST
 try

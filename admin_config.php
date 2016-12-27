@@ -281,11 +281,24 @@ class anteup_ipn_ui extends e_admin_ui
 			'data' => 'str',
 			'help' => LAN_ANTEUP_PREFS_12_B,
 		),
+		'anteup_sandbox' => array(
+			'title' => LAN_ANTEUP_PREFS_13_A,
+			'type' => 'boolean',
+			'data' => 'integer',
+			'help' => LAN_ANTEUP_PREFS_13_B,
+		),
 	);
 
 	public function init()
 	{
 		$sql = e107::getDb();
+
+		// Check for sandbox mode 
+		$sandbox = e107::pref('anteup', 'anteup_sandbox'); 
+		if(vartrue($sandbox))
+		{
+			e107::getMessage()->addWarning(LAN_ANTEUP_SANDBOX_ON);
+		}
 
 		$this->currency[0] = "default";
 		if($sql->select('anteup_currency'))
@@ -436,6 +449,12 @@ class anteup_currency_ui extends e_admin_ui
 
 	public function init()
 	{
+		// Check for sandbox mode 
+		$sandbox = e107::pref('anteup', 'anteup_sandbox'); 
+		if(vartrue($sandbox))
+		{
+			e107::getMessage()->addWarning(LAN_ANTEUP_SANDBOX_ON);
+		}
 	}
 
 	public function beforeCreate($new_data)

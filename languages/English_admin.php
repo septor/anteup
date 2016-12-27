@@ -53,6 +53,8 @@ define("LAN_ANTEUP_PREFS_12_B", "Refer to the toDate() parser function in the de
 define("LAN_ANTEUP_PREFS_12_C", "short");
 define("LAN_ANTEUP_PREFS_12_D", "long");
 define("LAN_ANTEUP_PREFS_12_E", "relative");
+define("LAN_ANTEUP_PREFS_13_A", "Sandbox mode");
+define("LAN_ANTEUP_PREFS_13_B", "Enable for testing purposes. PayPal payment process is then simulated in a fake environment.");
 
 // Currencies
 define("LAN_ANTEUP_CURR_01", "Currency Symbol");
