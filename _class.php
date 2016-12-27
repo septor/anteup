@@ -28,8 +28,8 @@ function get_info($type)
 	$sql = e107::getDb();
 	$pref = e107::pref('anteup');
 
-	$lastDue = strtotime($pref['anteup_lastdue']);
-	$currDue = strtotime($pref['anteup_due']);
+	$lastDue = $pref['anteup_lastdue'];
+	$currDue = $pref['anteup_due'];
 	$current = 0;
 	$total = 0;
 
@@ -46,6 +46,12 @@ function get_info($type)
 		$total += $row['mc_gross'];
 	}
 
-	if($type == "current"){		return $current; }
-	elseif($type == "total"){	return $total; }
+	if($type == "current")
+	{		
+		return $current; 
+	}
+	elseif($type == "total")
+	{	
+		return $total; 
+	}
 }
