@@ -40,7 +40,7 @@ catch (Exception $e)
 The processIpn() method returned true if the IPN was "VERIFIED" and false if it
 was "INVALID".
 */
-if ($verified)
+if($verified)
 {
     $errmsg = '';   // stores errors from fraud checks
 
@@ -72,7 +72,7 @@ if ($verified)
     }
     */
 
-    if (!empty($errmsg))
+    if(!empty($errmsg))
     {
         // manually investigate errors from the fraud checking
 
