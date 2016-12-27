@@ -295,7 +295,7 @@ class anteup_ipn_ui extends e_admin_ui
 		$this->fields['mc_currency']['writeParms'] = $this->currency;
 		$this->prefs['anteup_currency']['writeParms'] = $this->currency;
 
-		$this->dateformat = array('short' => LAN_ANTEUP_PREFS_13, 'long' => LAN_ANTEUP_PREFS_14, 'relative' => LAN_ANTEUP_PREFS_15);
+		$this->dateformat = array('short' => LAN_ANTEUP_PREFS_12_C, 'long' => LAN_ANTEUP_PREFS_12_D, 'relative' => LAN_ANTEUP_PREFS_12_E);
 		$this->prefs['anteup_dateformat']['writeParms'] = $this->dateformat;
 
 		$this->donateImage[e107::pref('anteup', 'anteup_button')] = e107::pref('anteup', 'anteup_button');

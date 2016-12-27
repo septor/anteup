@@ -50,9 +50,9 @@ define("LAN_ANTEUP_PREFS_11_A", "PayPal Address");
 define("LAN_ANTEUP_PREFS_11_B", "Your PayPal email address. Donations cannot be accepted without it!");
 define("LAN_ANTEUP_PREFS_12_A", "Date Format");
 define("LAN_ANTEUP_PREFS_12_B", "Refer to the toDate() parser function in the developers manual on e107.org");
-define("LAN_ANTEUP_PREFS_13", "short");
-define("LAN_ANTEUP_PREFS_14", "long");
-define("LAN_ANTEUP_PREFS_15", "relative");
+define("LAN_ANTEUP_PREFS_12_C", "short");
+define("LAN_ANTEUP_PREFS_12_D", "long");
+define("LAN_ANTEUP_PREFS_12_E", "relative");
 
 // Currencies
 define("LAN_ANTEUP_CURR_01", "Currency Symbol");
