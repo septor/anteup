@@ -26,7 +26,7 @@ $ANTEUP_TEMPLATE['menu'] = "
 
 $ANTEUP_TEMPLATE['donate'] = "
 	{ANTEUP_PAGETEXT}
-	<br /><br />
+	<br />
 	<table class='table table-bordered table-hover'>
 		<tbody>
 			<tr>

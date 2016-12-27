@@ -223,8 +223,8 @@ class anteup_ipn_ui extends e_admin_ui
 		),
 		'anteup_goal' => array(
 			'title' => LAN_ANTEUP_PREFS_03_A,
-			'type' => 'text',
-			'data' => 'str',
+			'type' => 'number',
+			'data' => 'int',
 			'help' => LAN_ANTEUP_PREFS_03_B,
 		),
 		'anteup_due' => array(
@@ -241,13 +241,13 @@ class anteup_ipn_ui extends e_admin_ui
 		),
 		'anteup_menutext' => array(
 			'title' => LAN_ANTEUP_PREFS_06_A,
-			'type' => 'text',
+			'type' => 'bbarea',
 			'data' => 'str',
 			'help' => LAN_ANTEUP_PREFS_06_B,
 		),
 		'anteup_pagetext' => array(
 			'title' => LAN_ANTEUP_PREFS_07_A,
-			'type' => 'textarea',
+			'type' => 'bbarea',
 			'data' => 'str',
 			'help' => LAN_ANTEUP_PREFS_07_B,
 		),
