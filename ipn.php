@@ -123,7 +123,7 @@ if($verified)
 			);
             // TODO - Notify succesfull donation
             //$body .= $listener->getTextReport();
-			e107::getEvent()->trigger('anteup_trigger', $listener->getTextReport();
+			e107::getEvent()->trigger('anteup_trigger', $listener->getTextReport());
             //mail('YOUR@EMAIL.COM', 'VERIFIED TRANSACTION', $body);
         }
         else
