@@ -54,8 +54,8 @@ define("LAN_ANTEUP_PREFS_12_D", "long");
 define("LAN_ANTEUP_PREFS_12_E", "relative");
 define("LAN_ANTEUP_PREFS_13_A", "Sandbox mode");
 define("LAN_ANTEUP_PREFS_13_B", "Enable for testing purposes. PayPal payment process is then simulated in a fake environment.");
-define("LAN_ANTEUP_PREFS_13_A", "Logging");
-define("LAN_ANTEUP_PREFS_13_B", "Enable for testing purposes or if recommended by a developer. Allows for debugging.");
+define("LAN_ANTEUP_PREFS_14_A", "Logging");
+define("LAN_ANTEUP_PREFS_14_B", "Enable for testing purposes or if recommended by a developer. Allows for debugging.");
 
 // Currencies
 define("LAN_ANTEUP_CURR_01", "Currency Symbol");
