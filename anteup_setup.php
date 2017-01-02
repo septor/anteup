@@ -48,5 +48,29 @@ class anteup_setup
 
 	function upgrade_post($needed)
 	{
+
+		// Files that can cause conflicts and problems.
+		$deprecated = array(
+			e_PLUGIN."anteup/cert/",
+			e_PLUGIN."anteup/cert/api_cert_chain.crt",
+			e_PLUGIN."anteup/ipn.php",
+			e_PLUGIN."anteup/ipnlistener.php"
+		);
+
+		foreach($deprecated as $file)
+		{
+			if(!file_exists($file))
+			{
+				continue;
+			}
+			if(@unlink($file))
+			{
+				e107::getMessage()->addSuccess("Deleted old file: ".$file);
+			}
+			else
+			{
+				e107::getMessage()->addError("Unable to delete ".$file.". Please remove the file manually.");
+			}
+		}
 	}
 }
