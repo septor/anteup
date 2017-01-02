@@ -70,7 +70,7 @@ $ANTEUP_TEMPLATE['donations']['entry'] = "
 			<tr>
 				<td>{ANTEUP_DONATION_DONATOR}</td>
 				<td>{ANTEUP_DONATION_REASON}</td>
-				<td>{ANTEUP_DONATION_DATE}</td>
+				<td>{ANTEUP_DONATION_DATE: format=relative}</td>
 				<td>{ANTEUP_DONATION_AMOUNT: format}</td>
 				<td>{ANTEUP_DONATION_STATUS}</td>
 			</tr>

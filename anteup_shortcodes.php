@@ -200,7 +200,13 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_donation_date($parm='')
 	{
-		return e107::getParser()->toDate($this->var['payment_date'], relative);
+		if($parm['format'] == 'relative')
+		{
+			return e107::getParser()->toDate($this->var['payment_date'], relative);
+		}
+
+		$dateformat = e107::pref('anteup', 'anteup_dateformat'); 
+		return e107::getParser()->toDate($this->var['payment_date'], $dateformat);	
 	}
 
 	function sc_anteup_donation_amount($parm='')
