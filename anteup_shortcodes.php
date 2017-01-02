@@ -127,7 +127,9 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_admin($parm='')
 	{
 		if(ADMIN)
+		{
 			return "<a href='".e_PLUGIN_ABS."anteup/admin_config.php'>".LAN_SETTINGS."</a>";
+		}
 	}
 
 	function sc_anteup_menutext($parm='')
@@ -189,7 +191,9 @@ class anteup_shortcodes extends e_shortcode
 		else
 		{
 			for($i=1; $i<101; $i++)
+			{
 				$amountArray[$i.'.00'] = $i.'.00';
+			}
 
 			$output = $frm->select('amount', $amountArray, '5.00', array('class', $class));
 		}
