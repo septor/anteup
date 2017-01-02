@@ -7,6 +7,7 @@
  *
  */
 require_once('../../class2.php');
+
 if (!getperms('P'))
 {
 	header('location:'.e_BASE.'index.php');

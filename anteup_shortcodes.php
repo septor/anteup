@@ -167,8 +167,8 @@ class anteup_shortcodes extends e_shortcode
 	{
 		$frm = e107::getForm();
 
-		$output = $frm->open('filter');
-		$output = "
+		$output = $frm->open('filter', 'post', e_REQUEST_URI);
+		$output .= "
 		<table class='table'>
 			<tr>
 				<td>".$frm->datepicker('startDate', $this->var[0], 'type=date&format=DD, dd MM, yyyy&size=medium')."</td>
@@ -184,11 +184,12 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_donation_reason($parm='')
 	{
 		$reasons = array(
-			'thanks' => LAN_ANTEUP_DONATE_REASON_01,
-			'noreason' => LAN_ANTEUP_DONATE_REASON_02,
-			'costs' => LAN_ANTEUP_DONATE_REASON_03,
+			'thanks' 	=> LAN_ANTEUP_DONATE_REASON_01,
+			'noreason' 	=> LAN_ANTEUP_DONATE_REASON_02,
+			'costs' 	=> LAN_ANTEUP_DONATE_REASON_03,
 			'anonymous' => LAN_ANTEUP_DONATE_REASON_04
 		);
+		
 		return $reasons[$this->var['item_name']];
 	}
 
@@ -219,7 +220,15 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_donation_donator($parm='')
 	{
-		$userInfo = e107::user($this->var['user_id']);
+		// Check if donation was done anonymously, else lookup the username of the donator
+		if($this->var['user_id'] == 0)
+		{
+			return LAN_ANONYMOUS;
+		}
+		else
+		{
+			$userInfo = e107::user($this->var['user_id']);
+		}
 
 		return $userInfo['user_name'];
 	}
@@ -231,5 +240,3 @@ class anteup_shortcodes extends e_shortcode
 		//($text == "LAN_ANTEUP_PAGE_TEXT" ? LAN_ANTEUP_PAGE_TEXT : $text);
 	}
 }
-
-?>

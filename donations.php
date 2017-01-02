@@ -7,23 +7,29 @@
  *
  */
 
-require_once("../../class2.php");
+if(!defined('e107_INIT'))
+{
+	require_once('../../class2.php');
+}
+
 require_once(HEADERF);
 require_once(e_PLUGIN."anteup/_class.php");
+
 e107::lan('anteup');
-$pref = e107::pref('anteup');
+$pref = e107::getPlugPref('anteup');
+$mes = e107::getMessage(); 
 
 if(check_class($pref['anteup_pageviewclass']))
 {
 	if(isset($_POST['filterDates']))
 	{
-		$startDate = strtotime($_POST['startDate']);
-		$endDate = strtotime($_POST['endDate']);
+		$startDate 	= (int) $_POST['startDate'];
+		$endDate 	= (int) $_POST['endDate'];
 	}
 	else
 	{
-		$startDate = strtotime($pref['anteup_lastdue']);
-		$endDate = strtotime($pref['anteup_due']);
+		$startDate 	= $pref['anteup_lastdue'];
+		$endDate 	= $pref['anteup_due'];
 	}
 
 	$sql = e107::getDb();
@@ -33,11 +39,12 @@ if(check_class($pref['anteup_pageviewclass']))
 	$template = e107::getTemplate('anteup');
 	$template = array_change_key_case($template);
 
-	$entries = $sql->retrieve('anteup_ipn', '*', 'payment_date > '.$startDate.' AND payment_date < '.$endDate, true);
-
 	$sc->setVars(array($startDate, $endDate));
 	$text = $tp->parseTemplate($template['donations']['filter'], false, $sc);
 
+
+	$entries = $sql->retrieve('anteup_ipn', '*', 'payment_date > '.$startDate.' AND payment_date < '.$endDate, true);
+	
 	if($entries)
 	{
 		$text .= $tp->parseTemplate($template['donations']['start'], false, $sc);
@@ -50,14 +57,13 @@ if(check_class($pref['anteup_pageviewclass']))
 	}
 	else
 	{
-		$text .= "<div style='text-align:center;'>".LAN_ANTEUP_DONATIONS_07."</div>";
+		$mes->addInfo(LAN_ANTEUP_DONATIONS_07);
 	}
 }
 else
 {
-	$text = "<div style='text-align:center;'>".LAN_ANTEUP_DONATIONS_08."</div>";
+	$mes->addWarning(LAN_ANTEUP_DONATIONS_08); 
 }
 
-e107::getRender()->tablerender(LAN_ANTEUP_DONATIONS_TITLE, $text);
+e107::getRender()->tablerender(LAN_ANTEUP_DONATIONS_TITLE, $mes->render().$text);
 require_once(FOOTERF);
-?>
