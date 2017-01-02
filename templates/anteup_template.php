@@ -12,13 +12,15 @@ $ANTEUP_TEMPLATE['menu'] = "
 <div style='text-align:center;'>
 	{ANTEUP_MENUTEXT}
 	<br />
-	Due on: {ANTEUP_DUE}<br />
+	".LAN_ANTEUP_MENU_01.": {ANTEUP_DUE}<br />
 	<a href='".e_PLUGIN."anteup/donations.php'>{ANTEUP_BAR}</a>
-	Status (in {ANTEUP_CODE}): {ANTEUP_CURRENT}/{ANTEUP_GOAL}<br />
-	Remaining: {ANTEUP_REMAINING: format}<br />
-	Lifetime Donation Total: {ANTEUP_TOTAL: format}<br />
+	".LAN_ANTEUP_MENU_02." ({ANTEUP_CODE}): {ANTEUP_CURRENT}/{ANTEUP_GOAL}<br />
+	".LAN_ANTEUP_MENU_03.": {ANTEUP_REMAINING: format}<br />
+	".LAN_ANTEUP_DONATIONS_06.": {ANTEUP_TOTAL: format}<br />
 	<br	/>
 	{ANTEUP_DONATELINK}
+	<br /><br />
+	".LAN_ANTEUP_MENU_04.": {ANTEUP_MOSTRECENT}
 	<br /><br />
 	{ANTEUP_ADMIN}
 </div>

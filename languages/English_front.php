@@ -34,4 +34,8 @@ define("LAN_ANTEUP_DONATIONS_08", "Sorry, friend, but you can't view this page b
 define("LAN_ANTEUP_RETURN_01", "Cancelled Payment");
 define("LAN_ANTEUP_RETURN_02", "You have cancelled your transaction. Please consider making a donation in the future, we would really appreciate it!.");
 define("LAN_ANTEUP_RETURN_03", "Thanks!");
-define("LAN_ANTEUP_RETURN_04", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");
+define("LAN_ANTEUP_RETURN_04", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");// anteup_menu.php
+define("LAN_ANTEUP_MENU_01", "Due on");
+define("LAN_ANTEUP_MENU_02", "Status");
+define("LAN_ANTEUP_MENU_03", "Remaining");
+define("LAN_ANTEUP_MENU_04", "Most recent donator(s)");

@@ -83,6 +83,47 @@ class anteup_shortcodes extends e_shortcode
 		return "<div class='progress'>\n\t<div class='progress-bar' role='progressbar' aria-valuenow='".$percent."' aria-valuemin='0' aria-valuemax='100' style='width:".$percent."%'>\n\t\t<span class='sr-only'>".$percent."% donated</span>\n\t</div>\n</div>";
 	}
 
+	function sc_anteup_mostrecent($parm='')
+	{
+		//$is_admin = ($user['permissions'] == 'admin') ? true : false;
+		$amount = (isset($parm['amount'])) ? (int) $parm['amount'] : 5;
+
+		$data = e107::getDb()->retrieve('anteup_ipn', 'user_id', 'ORDER BY payment_date LIMIT 0,'.$amount.'', true); 
+				
+		if($data)
+		{
+			// flatten array	
+			$userids = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($data)), FALSE);
+			
+			// remove duplicates
+			$userids =  array_unique($userids);
+			
+			$donators_array = array();
+			
+			// loop through each and find username or set as anonymous 
+			foreach($userids as $userid)
+			{
+				if($userid == 0)
+				{
+					$donators_array[] = LAN_ANONYMOUS;
+				}
+				else
+				{
+					$userInfo = e107::user($this->var['user_id']);
+					$donators_array[] = $userInfo['user_name'];
+				}
+			}
+
+			$donators = implode(', ', $donators_array);
+
+			return $donators; 
+		}
+		else
+		{
+			return LAN_NONE;
+		}
+	}
+
 	function sc_anteup_admin($parm='')
 	{
 		if(ADMIN)
