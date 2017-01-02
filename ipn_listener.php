@@ -195,25 +195,24 @@ class ipn_listener
 			exit;
 		}
 
-		// Prepare custom fields (used for username and such)
-		$custom 	= vartrue($_POST['custom'], '');
-		$segments 	= explode('|', $custom);
-
-		// Prepare other fields
-		$pdi_user 			= vartrue($segments[1], 0);
-		$pdi_mc_gross 		= vartrue($_POST['mc_gross'], 0);
-		$pdi_mc_fee 		= vartrue($_POST['mc_fee'], 0);
-		$pdi_mc_currency 	= vartrue($_POST['mc_currency'], '');
-		$pdi_payment_date 	= vartrue($_POST['payment_date'], '');
-		$pdi_serialized_ipn = serialize($_POST);
+		// Prepare fields
+		$userid			= vartrue($_POST['custom'], '');
+		$mc_gross 		= vartrue($_POST['mc_gross'], 0);
+		$mc_currency 	= vartrue($_POST['mc_currency'], '');
+		$payment_date 	= vartrue($_POST['payment_date'], '');
+		$buyer_email    = vartrue($_POST['payer_email'], '');
 
 		// Process IPN
 		$data = array(
-			'user_id'		=> (int) $pdi_user,
-			'txn_id'		=> $tp->toDB($txn_id),
-			'mc_gross'      => (float) $pdi_mc_gross,
-			'mc_currency'   => $tp->toDB($pdi_mc_currency),
-			'payment_date'  => strtotime($pdi_payment_date),
+			"item_name"    		=> $tp->toDB($_POST['item_name']),
+			"payment_status"    => $tp->toDB($payment_status),
+			"mc_gross"      	=> (float) $mc_gross,
+			"mc_currency"   	=> $tp->toDB($mc_currency),
+			"txn_id"			=> $tp->toDB($txn_id),
+			"user_id"			=> (int) $userid,
+			"buyer_email"		=> $tp->toDB($buyer_email),
+			'payment_date'  	=> strtotime($payment_date),
+			"comment"           => $tp->toDB($_POST['memo']),
 		);
 
 		// In sandbox mode, only acknowledge the donation in the logs but do not add to database
