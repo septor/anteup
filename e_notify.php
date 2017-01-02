@@ -14,17 +14,16 @@ class anteup_notify extends notify
 		$config = array();
 		$config[] = array(
 			'name'		=> 'New Donation Notification',
-			'function'	=> 'anteup_trigger',
+			'function'	=> 'anteup_new_donation',
 			'category'	=> ''
 		);
 
 		return $config;
 	}
 
-	function anteup_trigger($data)
+	function anteup_new_donation($data)
 	{
 		$message = print_a($data, true);
-		$this->send('anteup_trigger', 'New Donation Notification', $message);
+		$this->send('anteup_new_donation', 'New Donation Notification', $message);
 	}
 }
-?>

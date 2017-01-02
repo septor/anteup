@@ -230,7 +230,7 @@ class ipn_listener
 			if($id)
 			{
 				$event = e107::getEvent();
-				$event->trigger('anteup-donation-ipn-insert', $id);
+				$event->trigger('anteup_new_donation', $data);
 				exit;
 			}
 			// Some error occured during the insertion process. Log it. 
