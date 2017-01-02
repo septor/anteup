@@ -286,6 +286,12 @@ class anteup_ipn_ui extends e_admin_ui
 			'type' => 'boolean',
 			'data' => 'integer',
 			'help' => LAN_ANTEUP_PREFS_13_B,
+		'anteup_logging' => array(
+			'title'			=> LAN_ANTEUP_PREFS_14_A, 
+			'type'        	=> 'boolean',
+			'writeParms'	=> 'label=yesno',
+			'data'        	=> 'int',
+			'help'		  	=> LAN_ANTEUP_PREFS_14_B,
 		),
 	);
 

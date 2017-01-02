@@ -30,5 +30,6 @@
 		<pref name='anteup_pageviewclass'></pref>
 		<pref name='anteup_menuviewclass'></pref>
 		<pref name='anteup_sandbox'>0</pref>
+		<pref name="anteup_logging">0</pref>
 	</pluginPrefs>
 </e107Plugin>
