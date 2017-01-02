@@ -30,15 +30,15 @@ $ANTEUP_TEMPLATE['donate'] = "
 	<table class='table table-bordered table-hover'>
 		<tbody>
 			<tr>
-				<td>".LAN_ANTEUP_DONATE_01."</td>
+				<td>".LAN_ANTEUP_DONATE_01.":</td>
 				<td>{ANTEUP_REASONSELECTOR}</td>
 			</tr>
 			<tr>
-				<td>".LAN_ANTEUP_DONATE_02."</td>
+				<td>".LAN_ANTEUP_DONATE_02.":</td>
 				<td>{ANTEUP_CURRENCYSELECTOR}</td>
 			</tr>
 			<tr>
-				<td>".LAN_ANTEUP_DONATE_03."</td>
+				<td>".LAN_ANTEUP_DONATE_03.":</td>
 				<td>{ANTEUP_AMOUNTSELECTOR}</td>
 			</tr>
 			<tr>

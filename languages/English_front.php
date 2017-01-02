@@ -7,16 +7,15 @@ define("LAN_ANTEUP_PAGE_TEXT", "Thanks for considering to send us a donation. We
 
 // donate.php
 define("LAN_ANTEUP_DONATE_TITLE", "Donate");
-define("LAN_ANTEUP_DONATE_ANONYMOUS", "Anonymous");
 
 define("LAN_ANTEUP_DONATE_REASON_01", "Thanks for your work!");
 define("LAN_ANTEUP_DONATE_REASON_02", "A generous donation for no reason.");
 define("LAN_ANTEUP_DONATE_REASON_03", "Hosting, server, whatever costs.");
 define("LAN_ANTEUP_DONATE_REASON_04", "An anonymous donation.");
 
-define("LAN_ANTEUP_DONATE_01", "Donation Reason:");
-define("LAN_ANTEUP_DONATE_02", "Currency:");
-define("LAN_ANTEUP_DONATE_03", "Amount:");
+define("LAN_ANTEUP_DONATE_01", "Donation reason");
+define("LAN_ANTEUP_DONATE_02", "Currency");
+define("LAN_ANTEUP_DONATE_03", "Amount");
 define("LAN_ANTEUP_DONATE_04", "Unable to accept donations because there is no PayPal address setup.");
 
 // donations.php
@@ -36,5 +35,3 @@ define("LAN_ANTEUP_RETURN_01", "Cancelled Payment");
 define("LAN_ANTEUP_RETURN_02", "You have cancelled your transaction. Please consider making a donation in the future, we would really appreciate it!.");
 define("LAN_ANTEUP_RETURN_03", "Thanks!");
 define("LAN_ANTEUP_RETURN_04", "Thank you for your donation!<br /><br />Be on the look out for a confirmation email from PayPal!<br />");
-
-?>

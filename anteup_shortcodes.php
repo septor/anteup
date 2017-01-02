@@ -107,19 +107,15 @@ class anteup_shortcodes extends e_shortcode
 		$frm = e107::getForm();
 
 		$reasons = array(
-			'thanks' => LAN_ANTEUP_DONATE_REASON_01,
-			'noreason' => LAN_ANTEUP_DONATE_REASON_02,
-			'costs' => LAN_ANTEUP_DONATE_REASON_03,
+			'thanks' 	=> LAN_ANTEUP_DONATE_REASON_01,
+			'noreason'	=> LAN_ANTEUP_DONATE_REASON_02,
+			'costs' 	=> LAN_ANTEUP_DONATE_REASON_03,
 			'anonymous' => LAN_ANTEUP_DONATE_REASON_04
 		);
 
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
 
 		$output = $frm->select('item_name', $reasons, array('class', $class));
-		if(USER)
-			$output .= $frm->hidden('user_id', USERNAME);
-		else
-			$output .= $frm->hidden('user_id', LAN_ANTEUP_DONATE_ANONYMOUS);
 
 		return $output;
 	}
@@ -133,7 +129,9 @@ class anteup_shortcodes extends e_shortcode
 
 		$sql->select("anteup_currency", "*");
 		while($row = $sql->fetch())
+		{
 			$selectArray[$row['code']] = $row['description']." (".$row['symbol'].")";
+		}
 
 		return e107::getForm()->select('currency_code', $selectArray, $defaultCode, array('class', $class));
 	}
