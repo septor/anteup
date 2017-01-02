@@ -125,7 +125,7 @@ class ipn_listener
 			// curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
 			if(!($res = curl_exec($ch)))
 			{
-				if($logging
+				if($logging)
 				{
 					e107::getLog()->add('cURL error', curl_error($ch), E_LOG_WARNING, 'ANTEUP');
 				}
@@ -219,7 +219,7 @@ class ipn_listener
 		// In sandbox mode, only acknowledge the donation in the logs but do not add to database
 		if((int) $this->plugPrefs['anteup_sandbox'] === 1)
 		{
-			$log->add('Sandbox donation data added', $data, E_LOG_INFORMATIVE, 'ANTEUP');
+			$log->add('Sandbox donation data', $data, E_LOG_INFORMATIVE, 'ANTEUP');
 		}
 		else
 		{
