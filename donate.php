@@ -34,12 +34,22 @@ if(!empty($pref['anteup_paypal']) && $pref['anteup_paypal'] != "yourpaypal@email
 	$text = $frm->open('donate_form', 'post', $url);
 
 	$text .= $tp->parseTemplate($template['donate'], false, $sc);
-
-	$text .= $frm->hidden('cmd', '_xclick');
+		
+	$text .= $frm->hidden('cmd', '_donations');
 	$text .= $frm->hidden('business', $pref['anteup_paypal']);
-	$text .= $frm->hidden('notify_url', ANTEUP_ABS.'ipn.php');
+	$text .= $frm->hidden('notify_url', ANTEUP_ABS.'ipn_listener.php');
 	$text .= $frm->hidden('return', ANTEUP_ABS.'return.php?thanks');
 	$text .= $frm->hidden('cancel_return', ANTEUP_ABS.'return.php?cancel');
+
+	if(USER)
+	{
+		$text .= $frm->hidden('custom', USERID);
+	}	
+	else
+	{
+		$text .= $frm->hidden('custom', "0");
+	}
+
 	$text .= $frm->close();
 }
 else
@@ -49,4 +59,3 @@ else
 
 e107::getRender()->tablerender(LAN_ANTEUP_DONATE_TITLE, $mes->render().$text);
 require_once(FOOTERF);
-?>
