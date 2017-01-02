@@ -107,10 +107,10 @@ class anteup_shortcodes extends e_shortcode
 		$frm = e107::getForm();
 
 		$reasons = array(
-			'thanks' 	=> LAN_ANTEUP_DONATE_REASON_01,
-			'noreason'	=> LAN_ANTEUP_DONATE_REASON_02,
-			'costs' 	=> LAN_ANTEUP_DONATE_REASON_03,
-			'anonymous' => LAN_ANTEUP_DONATE_REASON_04
+			LAN_ANTEUP_DONATE_REASON_01,
+			LAN_ANTEUP_DONATE_REASON_02,
+			LAN_ANTEUP_DONATE_REASON_03,
+			LAN_ANTEUP_DONATE_REASON_04
 		);
 
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");

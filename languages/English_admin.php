@@ -7,7 +7,7 @@ define("LAN_ANTEUP_MANAGE_CURRENCIES", "Manage Currencies");
 define("LAN_ANTEUP_CREATE_CURRENCIES", "Create Currencies");
 
 // Donations/IPN
-define("LAN_ANTEUP_IPN_01", "Item Name");
+define("LAN_ANTEUP_IPN_01", "Reason");
 define("LAN_ANTEUP_IPN_02", "Payment Status");
 define("LAN_ANTEUP_IPN_03", "Gross Income");
 define("LAN_ANTEUP_IPN_04", "Currency");
