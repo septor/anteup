@@ -223,23 +223,26 @@ class ipn_listener
 		}
 		else
 		{
+			// Insert data in database
 			$id = $db->insert('anteup_ipn', $data);
-		}
 
-		// Check if database insert worked and trigger event if it did
-		if($id)
-		{
-			$event = e107::getEvent();
-			$event->trigger('anteup-donation-ipn-insert', $id);
-			exit;
-		}
-		else
-		{
-			if($logging)
+			// Check if insert was successful and trigger event if it was
+			if($id)
 			{
-				$log->add('SQL Insert Error', $_POST, E_LOG_WARNING, 'ANTEUP');
+				$event = e107::getEvent();
+				$event->trigger('anteup-donation-ipn-insert', $id);
+				exit;
 			}
-			exit;
+			// Some error occured during the insertion process. Log it. 
+			else
+			{
+				if($logging)
+				{
+					$error = $db->getLastErrorText(); 
+					$log->add('SQL Insert Error', "SQL error: ".$error, E_LOG_WARNING, 'ANTEUP');
+				}
+				exit;
+			}
 		}
 	}
 }
