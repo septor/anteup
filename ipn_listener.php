@@ -175,9 +175,10 @@ class ipn_listener
 
 		if(strtoupper($payment_status) != 'COMPLETED')
 		{
+			// TODO NOTIFY
 			if($logging)
 			{
-				$log->add('Status is not completed', $_POST, E_LOG_INFORMATIVE, 'ANTEUP');
+				$log->add('Donation not completed', $_POST, E_LOG_WARNING, 'ANTEUP');
 			}
 			exit;
 		}
