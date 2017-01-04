@@ -5,6 +5,7 @@ define("LAN_ANTEUP_MANAGE_DONATIONS", "Manage Donations");
 define("LAN_ANTEUP_CREATE_DONATIONS", "Create Donations");
 define("LAN_ANTEUP_MANAGE_CURRENCIES", "Manage Currencies");
 define("LAN_ANTEUP_CREATE_CURRENCIES", "Create Currencies");
+define("LAN_ANTEUP_CSV_EXPORT", "Export to .CSV");
 
 // Donations/IPN
 define("LAN_ANTEUP_IPN_01", "Reason");
@@ -24,6 +25,7 @@ define("LAN_ANTEUP_IPN_12", "A generous donation for no reason.");
 define("LAN_ANTEUP_IPN_13", "Hosting, server, whatever costs.");
 define("LAN_ANTEUP_IPN_14", "An anonymous donation.");
 define("LAN_ANTEUP_IPN_15", "Your .CSV file has been created. You can now import it into Excel, OpenOffice, Google Sheets or any other spreadsheet service.");
+define("LAN_ANTEUP_IPN_15", "The .CSV file could not be created.");
 
 // Preferences
 define("LAN_ANTEUP_PREFS_01_A", "Menu Title");

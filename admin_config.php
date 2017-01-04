@@ -33,19 +33,19 @@ class anteup_adminArea extends e_admin_dispatcher
 	);
 
 	protected $adminMenu = array(
-		'main/list'			=> array('caption'=> LAN_ANTEUP_MANAGE_DONATIONS, 'perm' => 'P'),
-		'main/create'		=> array('caption'=> LAN_ANTEUP_CREATE_DONATIONS, 'perm' => 'P'),
-		'currency/list'		=> array('caption'=> LAN_ANTEUP_MANAGE_CURRENCIES, 'perm' => 'P'),
-		'currency/create'	=> array('caption'=> LAN_ANTEUP_CREATE_CURRENCIES, 'perm' => 'P'),
-		'main/prefs' 		=> array('caption'=> LAN_PREFS, 'perm' => 'P'),
-		'main/custom'		=> array('caption' => 'Export to .CSV', 'perm' => 'P'),
+		'main/list'			=> array('caption' => LAN_ANTEUP_MANAGE_DONATIONS, 'perm' => 'P'),
+		'main/create'		=> array('caption' => LAN_ANTEUP_CREATE_DONATIONS, 'perm' => 'P'),
+		'currency/list'		=> array('caption' => LAN_ANTEUP_MANAGE_CURRENCIES, 'perm' => 'P'),
+		'currency/create'	=> array('caption' => LAN_ANTEUP_CREATE_CURRENCIES, 'perm' => 'P'),
+		'main/prefs' 		=> array('caption' => LAN_PREFS, 'perm' => 'P'),
+		'main/custom'		=> array('caption' => LAN_ANTEUP_CSV_EXPORT, 'perm' => 'P'),
 	);
 
 	protected $adminMenuAliases = array(
 		'main/edit'	=> 'main/list'
 	);
 
-	protected $menuTitle = 'AnteUp';
+	protected $menuTitle = LAN_ANTEUP_NAME;
 }
 
 class anteup_ipn_ui extends e_admin_ui
@@ -361,6 +361,7 @@ class anteup_ipn_ui extends e_admin_ui
 		$donations = $sql->retrieve('anteup_ipn', '*', '', true);
 
 		fputcsv($fp, array(LAN_ID, LAN_ANTEUP_IPN_01, LAN_ANTEUP_IPN_02, LAN_ANTEUP_IPN_03, LAN_ANTEUP_IPN_04, LAN_ANTEUP_IPN_05, LAN_USER, LAN_EMAIL, LAN_ANTEUP_IPN_06, LAN_ANTEUP_IPN_07));
+		
 		foreach($donations as $donation)
 		{
 			fputcsv($fp, $donation);
@@ -368,7 +369,15 @@ class anteup_ipn_ui extends e_admin_ui
 
 		fclose($fp);
 
-		$text = LAN_ANTEUP_IPN_15;
+		if(file_exists('anteup_donations.csv'))
+		{
+			$text = e107::getMessage()->addSuccess(LAN_ANTEUP_IPN_15);
+		}
+		else
+		{
+			$text = e107::getMessage()->addError(LAN_ANTEUP_IPN_16);
+		}
+
 		return $text;
 	}
 }
