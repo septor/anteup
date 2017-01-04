@@ -23,6 +23,7 @@ define("LAN_ANTEUP_IPN_11", "Thanks for your work!");
 define("LAN_ANTEUP_IPN_12", "A generous donation for no reason.");
 define("LAN_ANTEUP_IPN_13", "Hosting, server, whatever costs.");
 define("LAN_ANTEUP_IPN_14", "An anonymous donation.");
+define("LAN_ANTEUP_IPN_15", "Your .CSV file has been created. You can now import it into Excel, OpenOffice, Google Sheets or any other spreadsheet service.");
 
 // Preferences
 define("LAN_ANTEUP_PREFS_01_A", "Menu Title");

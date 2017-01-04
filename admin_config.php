@@ -38,6 +38,7 @@ class anteup_adminArea extends e_admin_dispatcher
 		'currency/list'		=> array('caption'=> LAN_ANTEUP_MANAGE_CURRENCIES, 'perm' => 'P'),
 		'currency/create'	=> array('caption'=> LAN_ANTEUP_CREATE_CURRENCIES, 'perm' => 'P'),
 		'main/prefs' 		=> array('caption'=> LAN_PREFS, 'perm' => 'P'),
+		'main/custom'		=> array('caption' => 'Export to .CSV', 'perm' => 'P'),
 	);
 
 	protected $adminMenuAliases = array(
@@ -284,7 +285,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'help' 	=> LAN_ANTEUP_PREFS_13_B,
 		),
 		'anteup_logging' => array(
-			'title'			=> LAN_ANTEUP_PREFS_14_A, 
+			'title'			=> LAN_ANTEUP_PREFS_14_A,
 			'type'        	=> 'boolean',
 			'writeParms'	=> 'label=yesno',
 			'data'        	=> 'int',
@@ -296,8 +297,8 @@ class anteup_ipn_ui extends e_admin_ui
 	{
 		$sql = e107::getDb();
 
-		// Check for sandbox mode 
-		$sandbox = e107::pref('anteup', 'anteup_sandbox'); 
+		// Check for sandbox mode
+		$sandbox = e107::pref('anteup', 'anteup_sandbox');
 		if(vartrue($sandbox))
 		{
 			e107::getMessage()->addWarning(LAN_ANTEUP_SANDBOX_ON);
@@ -349,6 +350,26 @@ class anteup_ipn_ui extends e_admin_ui
 
 	public function onUpdateError($new_data, $old_data, $id)
 	{
+	}
+
+	public function customPage()
+	{
+		// Used for Export to .CSV feature right now
+		// /anteup/ dir needs write access or anteup_donations.csv needs to be created or this fails
+		$sql = e107::getDb();
+		$fp = fopen('anteup_donations.csv', 'w+');
+		$donations = $sql->retrieve('anteup_ipn', '*', '', true);
+
+		fputcsv($fp, array(LAN_ID, LAN_ANTEUP_IPN_01, LAN_ANTEUP_IPN_02, LAN_ANTEUP_IPN_03, LAN_ANTEUP_IPN_04, LAN_ANTEUP_IPN_05, LAN_USER, LAN_EMAIL, LAN_ANTEUP_IPN_06, LAN_ANTEUP_IPN_07));
+		foreach($donations as $donation)
+		{
+			fputcsv($fp, $donation);
+		}
+
+		fclose($fp);
+
+		$text = LAN_ANTEUP_IPN_15;
+		return $text;
 	}
 }
 
@@ -452,8 +473,8 @@ class anteup_currency_ui extends e_admin_ui
 
 	public function init()
 	{
-		// Check for sandbox mode 
-		$sandbox = e107::pref('anteup', 'anteup_sandbox'); 
+		// Check for sandbox mode
+		$sandbox = e107::pref('anteup', 'anteup_sandbox');
 		if(vartrue($sandbox))
 		{
 			e107::getMessage()->addWarning(LAN_ANTEUP_SANDBOX_ON);
