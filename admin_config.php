@@ -37,8 +37,8 @@ class anteup_adminArea extends e_admin_dispatcher
 		'main/create'		=> array('caption' => LAN_ANTEUP_CREATE_DONATIONS, 'perm' => 'P'),
 		'currency/list'		=> array('caption' => LAN_ANTEUP_MANAGE_CURRENCIES, 'perm' => 'P'),
 		'currency/create'	=> array('caption' => LAN_ANTEUP_CREATE_CURRENCIES, 'perm' => 'P'),
-		'main/prefs' 		=> array('caption' => LAN_PREFS, 'perm' => 'P'),
 		'main/custom'		=> array('caption' => LAN_ANTEUP_CSV_EXPORT, 'perm' => 'P'),
+		'main/prefs' 		=> array('caption' => LAN_PREFS, 'perm' => 'P'),
 	);
 
 	protected $adminMenuAliases = array(
