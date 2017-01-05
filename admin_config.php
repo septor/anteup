@@ -170,13 +170,13 @@ class anteup_ipn_ui extends e_admin_ui
 		'payment_date' => array(
 			'title' => LAN_ANTEUP_IPN_06,
 			'type' => 'datestamp',
-			'data' => 'str',
+			'data' => 'int',
 			'width' => 'auto',
 			'inline' => true,
 			'filter' => true,
 			'help' => '',
 			'readParms' => '',
-			'writeParms' => '',
+			'writeParms'=> 'type=date',
 			'class' => 'left',
 			'thclass' => 'left',
 		),
@@ -227,13 +227,15 @@ class anteup_ipn_ui extends e_admin_ui
 		'anteup_due' => array(
 			'title' => LAN_ANTEUP_PREFS_04_A,
 			'type' 	=> 'datestamp',
-			'data' 	=> 'str',
+			'writeParms'=> 'type=date',
+			'data' 	=> 'int',
 			'help' 	=> LAN_ANTEUP_PREFS_04_B,
 		),
 		'anteup_lastdue' => array(
 			'title' => LAN_ANTEUP_PREFS_05_A,
 			'type' 	=> 'datestamp',
-			'data' 	=> 'str',
+			'writeParms'=> 'type=date',
+			'data' 	=> 'int',
 			'help' 	=> LAN_ANTEUP_PREFS_05_B,
 		),
 		'anteup_menutext' => array(
