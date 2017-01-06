@@ -356,23 +356,21 @@ class anteup_ipn_ui extends e_admin_ui
 
 	public function customPage()
 	{
-		// Used for Export to .CSV feature right now
-		// /anteup/ dir needs write access or anteup_donations.csv needs to be created or this fails
-		$sql = e107::getDb();
-		$fp = fopen('anteup_donations.csv', 'w+');
-		$donations = $sql->retrieve('anteup_ipn', '*', '', true);
-
-		fputcsv($fp, array(LAN_ID, LAN_ANTEUP_IPN_01, LAN_ANTEUP_IPN_02, LAN_ANTEUP_IPN_03, LAN_ANTEUP_IPN_04, LAN_ANTEUP_IPN_05, LAN_USER, LAN_EMAIL, LAN_ANTEUP_IPN_06, LAN_ANTEUP_IPN_07));
-		
-		foreach($donations as $donation)
-		{
-			fputcsv($fp, $donation);
-		}
-
-		fclose($fp);
-
 		if(file_exists('anteup_donations.csv'))
 		{
+			$sql = e107::getDb();
+			$fp = fopen('anteup_donations.csv', 'w+');
+			$donations = $sql->retrieve('anteup_ipn', '*', '', true);
+
+			fputcsv($fp, array(LAN_ID, LAN_ANTEUP_IPN_01, LAN_ANTEUP_IPN_02, LAN_ANTEUP_IPN_03, LAN_ANTEUP_IPN_04, LAN_ANTEUP_IPN_05, LAN_USER, LAN_EMAIL, LAN_ANTEUP_IPN_06, LAN_ANTEUP_IPN_07));
+
+			foreach($donations as $donation)
+			{
+				fputcsv($fp, $donation);
+			}
+
+			fclose($fp);
+
 			$text = e107::getMessage()->addSuccess(LAN_ANTEUP_IPN_15);
 		}
 		else
