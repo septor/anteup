@@ -80,7 +80,7 @@ $ANTEUP_TEMPLATE['donations']['entry'] = "
 
 $ANTEUP_TEMPLATE['donations']['end'] = "
 			<tr>
-				<td style='text-align:right;' colspan='5'>".LAN_ANTEUP_DONATIONS_06." {ANTEUP_TOTAL: format}</td>
+				<td style='text-align:right;' colspan='5'>".LAN_ANTEUP_DONATIONS_06.": {ANTEUP_TOTAL: format}</td>
 			</tr>
 		</tbody>
 	</table>

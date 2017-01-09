@@ -26,7 +26,7 @@ define("LAN_ANTEUP_DONATIONS_02", "Reason");
 define("LAN_ANTEUP_DONATIONS_03", "Date Donated");
 define("LAN_ANTEUP_DONATIONS_04", "Amount");
 define("LAN_ANTEUP_DONATIONS_05", "Status");
-define("LAN_ANTEUP_DONATIONS_06", "Total Lifetime Donations:");
+define("LAN_ANTEUP_DONATIONS_06", "Total Lifetime Donations");
 define("LAN_ANTEUP_DONATIONS_07", "No donations found during that time period.");
 define("LAN_ANTEUP_DONATIONS_08", "Sorry, friend, but you can't view this page based on your userclass.");
 
