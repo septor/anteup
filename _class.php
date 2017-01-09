@@ -26,7 +26,7 @@ function format_currency($input, $id, $commify = true)
 function get_info($type)
 {
 	$sql = e107::getDb();
-	$pref = e107::pref('anteup');
+	$pref = e107::getPlugPref('anteup');
 
 	$lastDue = $pref['anteup_lastdue'];
 	$currDue = $pref['anteup_due'];
