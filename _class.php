@@ -33,7 +33,7 @@ function get_info($type)
 	$current = 0;
 	$total = 0;
 
-	$sql->select("anteup_ipn");
+	$sql->select("anteup_ipn", "*", "payment_status='Completed'");
 
 	while($row = $sql->fetch())
 	{
@@ -47,11 +47,11 @@ function get_info($type)
 	}
 
 	if($type == "current")
-	{		
-		return $current; 
+	{
+		return $current;
 	}
 	elseif($type == "total")
-	{	
-		return $total; 
+	{
+		return $total;
 	}
 }
