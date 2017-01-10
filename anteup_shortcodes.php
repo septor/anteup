@@ -93,11 +93,20 @@ class anteup_shortcodes extends e_shortcode
 		{
 			foreach($recents as $recent)
 			{
-				$userInfo = e107::user($recent['user_id']);
-				$donatorsArray[] = $userInfo['user_name'];
+				if($recent['user_id'] == 0)
+				{
+					$donatorsArray[] = LAN_ANONYMOUS;
+				}
+				else
+				{
+					$userInfo = e107::user($recent['user_id']);
+					if(!in_array($userInfo['user_name'], $donatorsArray))
+					{
+						$donatorsArray[] = $userInfo['user_name'];
+					}
+				}
 			}
 
-			$donatorsArray = array_unique($donatorsArray);
 			$donators = implode(', ', $donatorsArray);
 
 			return $donators;
