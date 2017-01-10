@@ -32,16 +32,16 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_lastdue($parm='')
 	{
 		$lastdue = e107::pref('anteup', 'anteup_lastdue');
-		$dateformat = e107::pref('anteup', 'anteup_dateformat'); 
-		
+		$dateformat = e107::pref('anteup', 'anteup_dateformat');
+
 		return e107::getDate()->convert_date($lastdue, $dateformat);
 	}
 
 	function sc_anteup_due($parm='')
 	{
 		$due = e107::pref('anteup', 'anteup_due');
-		$dateformat = e107::pref('anteup', 'anteup_dateformat'); 
-		
+		$dateformat = e107::pref('anteup', 'anteup_dateformat');
+
 		return e107::getDate()->convert_date($due, $dateformat);
 	}
 
@@ -85,38 +85,22 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_mostrecent($parm='')
 	{
-		//$is_admin = ($user['permissions'] == 'admin') ? true : false;
 		$amount = (isset($parm['amount'])) ? (int) $parm['amount'] : 5;
 
-		$data = e107::getDb()->retrieve('anteup_ipn', 'user_id', 'ORDER BY payment_date LIMIT 0,'.$amount.'', true); 
-				
-		if($data)
+		$recents = e107::getDb()->retrieve('anteup_ipn', 'user_id', 'ORDER BY payment_date LIMIT 0,'.$amount.'', true);
+
+		if($recents)
 		{
-			// flatten array	
-			$userids = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($data)), FALSE);
-			
-			// remove duplicates
-			$userids =  array_unique($userids);
-			
-			$donators_array = array();
-			
-			// loop through each and find username or set as anonymous 
-			foreach($userids as $userid)
+			foreach($recents as $recent)
 			{
-				if($userid == 0)
-				{
-					$donators_array[] = LAN_ANONYMOUS;
-				}
-				else
-				{
-					$userInfo = e107::user($this->var['user_id']);
-					$donators_array[] = $userInfo['user_name'];
-				}
+				$userInfo = e107::user($recent['user_id']);
+				$donatorsArray[] = $userInfo['user_name'];
 			}
 
-			$donators = implode(', ', $donators_array);
+			$donatorsArray = array_unique($donatorsArray);
+			$donators = implode(', ', $donatorsArray);
 
-			return $donators; 
+			return $donators;
 		}
 		else
 		{
@@ -135,7 +119,7 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_menutext($parm='')
 	{
 		$text = e107::pref('anteup', 'anteup_menutext');
-		return e107::getParser()->toHtml($text, true); 
+		return e107::getParser()->toHtml($text, true);
 		//($text == "LAN_ANTEUP_MENU_TEXT" ? LAN_ANTEUP_MENU_TEXT : $text);
 	}
 
@@ -234,7 +218,7 @@ class anteup_shortcodes extends e_shortcode
 			'costs' 	=> LAN_ANTEUP_DONATE_REASON_03,
 			'anonymous' => LAN_ANTEUP_DONATE_REASON_04
 		);
-		
+
 		return $reasons[$this->var['item_name']];
 	}
 
@@ -250,8 +234,8 @@ class anteup_shortcodes extends e_shortcode
 			return e107::getParser()->toDate($this->var['payment_date'], relative);
 		}
 
-		$dateformat = e107::pref('anteup', 'anteup_dateformat'); 
-		return e107::getParser()->toDate($this->var['payment_date'], $dateformat);	
+		$dateformat = e107::pref('anteup', 'anteup_dateformat');
+		return e107::getParser()->toDate($this->var['payment_date'], $dateformat);
 	}
 
 	function sc_anteup_donation_amount($parm='')
