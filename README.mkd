@@ -1,5 +1,3 @@
-## 27-12-2016: CURRENTLY THE PLUGIN IS NOT WORKING PROPERLY. WORK IN PROGRESS. PLEASE WAIT FOR THE NEXT RELEASE: 1.1.0. 
-
 # Ante Up!
 
 An extensive Donation Tracker with PayPal integration.
