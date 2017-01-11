@@ -129,7 +129,6 @@ class anteup_shortcodes extends e_shortcode
 	{
 		$text = e107::pref('anteup', 'anteup_menutext');
 		return e107::getParser()->toHtml($text, true);
-		//($text == "LAN_ANTEUP_MENU_TEXT" ? LAN_ANTEUP_MENU_TEXT : $text);
 	}
 
 	function sc_anteup_donatelink($parm='')
@@ -281,6 +280,5 @@ class anteup_shortcodes extends e_shortcode
 	{
 		$text = e107::pref('anteup', 'anteup_pagetext');
 		return e107::getParser()->toHtml($text, true);
-		//($text == "LAN_ANTEUP_PAGE_TEXT" ? LAN_ANTEUP_PAGE_TEXT : $text);
 	}
 }

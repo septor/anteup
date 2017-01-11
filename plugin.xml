@@ -17,7 +17,7 @@
 		<link url="e107_plugins/anteup/donations.php" description="Donations" icon="" iconSmall="" function="">LAN_ANTEUP_DONATIONSLINK</link>
 	</siteLinks>
 	<pluginPrefs>
-		<pref name='anteup_mtitle'>LAN_ANTEUP_MENU_TITLE</pref>
+		<pref name='anteup_mtitle'>Donations</pref>
 		<pref name='anteup_currency'>20</pref>
 		<pref name='anteup_goal'>0</pref>
 		<pref name='anteup_due'>1464782400</pref>

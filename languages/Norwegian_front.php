@@ -1,10 +1,5 @@
 <?php
 
-// General
-define("LAN_ANTEUP_MENU_TITLE", "Donasjoner");
-define("LAN_ANTEUP_MENU_TEXT", "Takk for alle bidrag, vi setter stor pris på det!");
-define("LAN_ANTEUP_PAGE_TEXT", "Takk for at du vurderer å sende oss en donasjon. Vi setter pris på ditt bidrag, og vil bruke den til å bedre din opplevelse på nettstedet");
-
 // donate.php
 define("LAN_ANTEUP_DONATE_TITLE", "Donér");
 
