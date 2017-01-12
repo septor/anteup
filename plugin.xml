@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e107Plugin name="Ante Up" lan="LAN_ANTEUP_NAME" version="1.1.0" date="2017-01-15" compatibility="2.0" installRequired="true" >
+<e107Plugin name="AnteUp" lan="LAN_ANTEUP_NAME" version="1.1.0" date="2017-01-10" compatibility="2.0" installRequired="true" >
 	<author name="Patrick Weaver" url="http://www.trickmod.com" />
 	<summary lan="LAN_ANTEUP_SUMM">An extensive Donation Tracker with PayPal integration</summary>
 	<description lan="LAN_ANTEUP_DESC">Keep track of all your incoming donations with an extensive list of donations, who gave them to you, and how much they provided. Also contains a menu for displaying the amount of donations you'd like to receive for a given time and your progress towards it.</description>
@@ -11,7 +11,7 @@
 	<category>misc</category>
 	<copyright>2017</copyright>
 	<adminLinks>
-		<link url="admin_config.php" description="" icon="images/icon.png" iconSmall="images/icon.png" primary="true" >LAN_SETTINGS</link>
+		<link url="admin_config.php" description="" icon="images/icon_32.png" iconSmall="images/icon_16.png" icon128="images/icon_128.png" primary="true" >LAN_SETTINGS</link>
 	</adminLinks>
 	<siteLinks>
 		<link url="e107_plugins/anteup/donations.php" description="Donations" icon="" iconSmall="" function="">LAN_ANTEUP_DONATIONSLINK</link>
