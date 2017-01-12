@@ -1,12 +1,10 @@
-# Ante Up!
+# AnteUp!
 
 An extensive Donation Tracker with PayPal integration.
 
-## Rewrite or New Plugin?
+## Introduction
 
-While this is being published as a rewrite of the Roofdog Donation Tracker it should be noted that there have been massive changes to the code and very little, code wise, of the previous plugin still exists. With that said, however, the functionality and feel of the plugin will be very similar to the previously mentioned plugin.
-
-In all honesty, you should consider AnteUp as a brand new plugin based on the Roofdog Donation Tracker plugin. With that said it's likely to be your only option as a replacement for now. Using your old tables, preferences, etc is not an option though. You'll have to start fresh.
+This plugin was once based on the Roofdog Donation Tracker plugin, but has undergone a complete backend rewrite since then. Now, as the frontend is very similar to the aforementioned plugin, AnteUp is merely inspired by the Roofdog Donation Tracker plugin. Sadly, as so much has changed, you cannot import any of your data from RDT. You'll have to start fresh.
 
 ## Reporting Bugs & Requesting Features
 
