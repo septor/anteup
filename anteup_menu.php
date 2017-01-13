@@ -9,25 +9,15 @@
 
 if (!defined('e107_INIT')) { exit; }
 
-if(check_class(e107::pref('anteup', 'anteup_menuviewclass')))
+$pref = e107::getPlugPref('anteup');
+
+if(check_class($pref['anteup_menuviewclass']))
 {
 	require_once(e_PLUGIN."anteup/_class.php");
 	e107::lan('anteup');
-	$tp	= e107::getParser();
 	$sc	= e107::getScBatch('anteup', true);
 	$template = e107::getTemplate('anteup');
-	$text = $tp->parseTemplate($template['menu'], false, $sc);
+	$text = e107::getParser()->parseTemplate($template['menu'], false, $sc);
 
-	$caption = e107::pref('anteup', 'anteup_mtitle');
-
-	if($caption == "LAN_ANTEUP_MENU_TITLE")
-	{
-		$caption = LAN_ANTEUP_MENU_TITLE;
-	}	
-	else
-	{
-		$caption = $caption;
-	}
-
-	e107::getRender()->tablerender($caption, $text, 'anteup');
+	e107::getRender()->tablerender($pref['anteup_mtitle'], $text, 'anteup');
 }
