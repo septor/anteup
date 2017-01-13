@@ -8,7 +8,7 @@ This plugin was once based on the Roofdog Donation Tracker plugin, but has under
 
 ## Reporting Bugs & Requesting Features
 
-If you have an issue, bug, or you would like to request something be added utilize the [issue tracker](https://github.com/septor/anteup/issues). It's the most effective way to get my attention.
+If you have an issue, bug, or you would like to request something be added utilize the [issue tracker](https://github.com/septor/anteup/issues). It's the most effective way to get my attention. Feedback is always welcome, the most effective way to provide it (if it's not a bug or feature request) is by joining the [Gitter chat](https://gitter.im/septor/anteup)!
 
 
 ## Prerequisites
@@ -28,5 +28,3 @@ This plugin is a rewrite of version 2.7 of the Roofdog Donation Tracker by DelTr
 That plugin was based on my first Donation Tracker coupled with features from the Donate Menu by Lolo Irie, Cameron, Barry Keal (Father Barry), and Richard Perry (whoisrich).
 
 Please **do not** contact any of the previously mentioned authors for support with this plugin as they cannot  assist you.
-
-Join the chat at https://gitter.im/septor/anteup
