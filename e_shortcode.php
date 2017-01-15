@@ -7,10 +7,15 @@
  *
  */
 
-if(!defined('e107_INIT')){ exit; }
+if (!defined('e107_INIT')) { exit; }
 
 class anteup_shortcodes extends e_shortcode
 {
+	function __construct()
+	{
+		include_lan(e_PLUGIN.'anteup/languages/'.e_LANGUAGE.'_front.php');
+	}
+
 	function sc_anteup_symbol($parm='')
 	{
 		return e107::getDb()->retrieve('anteup_currency',  'symbol', 'id = '.e107::pref('anteup', 'anteup_currency'));
