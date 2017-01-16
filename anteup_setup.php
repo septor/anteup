@@ -54,7 +54,8 @@ class anteup_setup
 			e_PLUGIN."anteup/cert/",
 			e_PLUGIN."anteup/cert/api_cert_chain.crt",
 			e_PLUGIN."anteup/ipn.php",
-			e_PLUGIN."anteup/ipnlistener.php"
+			e_PLUGIN."anteup/ipnlistener.php",
+			e_PLUGIN."anteup/anteup_shortcodes.php"
 		);
 
 		foreach($deprecated as $file)
@@ -72,5 +73,8 @@ class anteup_setup
 				e107::getMessage()->addError("Unable to delete ".$file.". Please remove the file manually.");
 			}
 		}
+
+		// Refresh the plugin directory to make e107 aware of any changes that took place.
+		e107::getPlugin()->refresh('anteup');
 	}
 }
