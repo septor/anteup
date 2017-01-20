@@ -30,6 +30,12 @@ class anteup_adminArea extends e_admin_dispatcher
 			'ui' 			=> 'anteup_currency_form_ui',
 			'uipath' 		=> null
 		),
+		'campaign' => array(
+			'controller'	=> 'anteup_campaign_ui',
+			'path'			=> null,
+			'ui'			=> 'anteup_campaign_form_ui',
+			'uipath'		=> null
+		),
 	);
 
 	protected $adminMenu = array(
@@ -37,6 +43,8 @@ class anteup_adminArea extends e_admin_dispatcher
 		'main/create'		=> array('caption' => LAN_ANTEUP_CREATE_DONATIONS, 'perm' => 'P'),
 		'currency/list'		=> array('caption' => LAN_ANTEUP_MANAGE_CURRENCIES, 'perm' => 'P'),
 		'currency/create'	=> array('caption' => LAN_ANTEUP_CREATE_CURRENCIES, 'perm' => 'P'),
+		'campaign/list'		=> array('caption' => LAN_ANTEUP_MANAGE_CAMPAIGNS, 'perm' => 'P'),
+		'campaign/create'	=> array('caption' => LAN_ANTEUP_CREATE_CAMPAIGNS, 'perm' => 'P'),
 		'main/custom'		=> array('caption' => LAN_ANTEUP_CSV_EXPORT, 'perm' => 'P'),
 		'main/prefs' 		=> array('caption' => LAN_PREFS, 'perm' => 'P'),
 	);
@@ -521,7 +529,138 @@ class anteup_currency_form_ui extends e_admin_form_ui
 {
 }
 
-// TODO: Add campign admin UI code..
+class anteup_campaign_ui extends e_admin_ui
+{
+	protected $pluginTitle		= 'AnteUp';
+	protected $pluginName		= 'anteup';
+	protected $table			= 'anteup_campaign';
+	protected $pid				= 'id';
+	protected $perPage			= 20;
+	protected $batchDelete		= true;
+	protected $listOrder		= 'id DESC';
+
+	protected $fields = array(
+		'checkboxes' => array(
+			'title' => '',
+			'type' => null,
+			'data' => null,
+			'width' => '5%',
+			'thclass' => 'center',
+			'forced' => '1',
+			'class' => 'center',
+			'toggle' => 'e-multiselect',
+		),
+		'id' => array(
+			'title' => LAN_ID,
+			'data' => 'int',
+			'width' => '5%',
+			'help' => '',
+			'readParms' => '',
+			'writeParms' => '',
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+		'name' => array(
+			'title' => LAN_NAME,
+			'type' => 'text',
+			'data' => 'str',
+			'width' => 'auto',
+			'help' => '',
+			'readParms' => '',
+			'writeParms' => '',
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+		'description' => array(
+			'title' => LAN_DESCRIPTION,
+			'type' => 'text',
+			'data' => 'str',
+			'width' => 'auto',
+			'inline' => true,
+			'help' => '',
+			'readParms' => '',
+			'writeParms' => '',
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+		'duration' => array(
+			'title' => LAN_ANTEUP_CAMP_01_A,
+			'type' => 'text',
+			'data' => 'str',
+			'width' => '40%',
+			'inline' => true,
+			'help' => LAN_ANTEUP_CAMP_01_B,
+			'readParms' => '',
+			'writeParms' => '',
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+		'goal' => array(
+			'title' => LAN_ANTEUP_CAMP_02_A,
+			'type' => 'dropdown',
+			'data' => 'str',
+			'width' => 'auto',
+			'inline' => true,
+			'help' => LAN_ANTEUP_CAMP_02_B,
+			'readParms' => '',
+			'writeParms' => '',
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+		'options' => array(
+			'title' => LAN_OPTIONS,
+			'type' => null,
+			'data' => null,
+			'width' => '10%',
+			'thclass' => 'center last',
+			'class' => 'center last',
+			'forced' => '1',
+		),
+	);
+
+	protected $fieldpref = array();
+
+	public function init()
+	{
+		// Check for sandbox mode
+		$sandbox = e107::pref('anteup', 'anteup_sandbox');
+		if(vartrue($sandbox))
+		{
+			e107::getMessage()->addWarning(LAN_ANTEUP_SANDBOX_ON);
+		}
+	}
+
+	public function beforeCreate($new_data)
+	{
+		return $new_data;
+	}
+
+	public function afterCreate($new_data, $old_data, $id)
+	{
+	}
+
+	public function onCreateError($new_data, $old_data)
+	{
+	}
+
+	public function beforeUpdate($new_data, $old_data, $id)
+	{
+		return $new_data;
+	}
+
+	public function afterUpdate($new_data, $old_data, $id)
+	{
+	}
+
+	public function onUpdateError($new_data, $old_data, $id)
+	{
+	}
+}
+
+
+class anteup_campaign_form_ui extends e_admin_form_ui
+{
+}
 
 new anteup_adminArea();
 

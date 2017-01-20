@@ -5,6 +5,8 @@ define("LAN_ANTEUP_MANAGE_DONATIONS", "Manage Donations");
 define("LAN_ANTEUP_CREATE_DONATIONS", "Create Donations");
 define("LAN_ANTEUP_MANAGE_CURRENCIES", "Manage Currencies");
 define("LAN_ANTEUP_CREATE_CURRENCIES", "Create Currencies");
+define("LAN_ANTEUP_MANAGE_CAMPAIGNS", "Manage Campaigns");
+define("LAN_ANTEUP_CREATE_CAMPAIGNS", "Create Campaigns");
 define("LAN_ANTEUP_CSV_EXPORT", "Export to .CSV");
 
 // Donations/IPN
@@ -66,4 +68,10 @@ define("LAN_ANTEUP_CURR_02", "Code");
 define("LAN_ANTEUP_CURR_03", "Symbol Location");
 define("LAN_ANTEUP_CURR_04", "front");
 define("LAN_ANTEUP_CURR_05", "back");
+
+// Campaigns
+define("LAN_ANTEUP_CAMP_01_A", "Campaign Duration");
+define("LAN_ANTEUP_CAMP_01_B", "Enter a date for an end date. Enter 'goal' for the duration to be the donation goal. Enter 'unending' if the campaign never ends.");
+define("LAN_ANTEUP_CAMP_02_A", "Campaign Goal");
+define("LAN_ANTEUP_CAMP_02_B", "Enter a numerical amount. For no goal enter 'unlimited'.");
 ?>
