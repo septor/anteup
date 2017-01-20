@@ -1,6 +1,6 @@
 CREATE TABLE anteup_ipn (
 	`ipn_id` int(10) unsigned NOT NULL auto_increment,
-	`item_name` varchar(255) default NULL,
+	`campaign` varchar(255) default NULL,
 	`payment_status` varchar(15) NOT NULL default '',
 	`mc_gross` varchar(250) NOT NULL default '',
 	`mc_currency` varchar(250) NOT NULL default '',
@@ -18,5 +18,14 @@ CREATE TABLE anteup_currency (
 	`code` varchar(250) NOT NULL,
 	`description` varchar(250) NOT NULL,
 	`location` varchar(250) NOT NULL,
+	PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1;
+
+CREATE TABLE anteup_campaign (
+	`id` int(10) unsigned NOT NULL auto_increment,
+	`name` varchar(250) NOT NULL,
+	`description` varchar(250) NOT NULL,
+	`duration` varchar(250) NOT NULL,
+	`goal` varchar(250) NOT NULL,
 	PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1;

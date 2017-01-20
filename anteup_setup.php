@@ -38,8 +38,16 @@ class anteup_setup
 			(20, '&#36;', 'USD', 'U.S. Dollar', 'front')
 		";
 
-		$status = (e107::getDb()->gen($query_currencies)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;
-		e107::getMessage()->add("Adding currencies", $status);
+		$status_currencies = (e107::getDb()->gen($query_currencies)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;
+		e107::getMessage()->add("Adding currencies", $status_currencies);
+
+		$default_campaign = "
+		INSERT INTO `#anteup_campaign` (`id`, `name`, `description`, `duration`, `goal`) VALUES
+			(1, 'Default Campaign', 'A default campaign for all donations.', 'unending', 'unlimited')
+		";
+
+		$status_campaign = (e107::getDb()->gen($default_campaign)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;
+		e107::getMessage()->add("Adding default campaign". $status_campaign);
 	}
 
 	function uninstall_pre($var)
@@ -76,5 +84,7 @@ class anteup_setup
 
 		// Refresh the plugin directory to make e107 aware of any changes that took place.
 		e107::getPlugin()->refresh('anteup');
+
+		//TODO: Create anteup_campaign if it doesn't exist and auto fill it with a default campaign.
 	}
 }

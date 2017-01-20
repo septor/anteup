@@ -8,7 +8,7 @@ define("LAN_ANTEUP_CREATE_CURRENCIES", "Create Currencies");
 define("LAN_ANTEUP_CSV_EXPORT", "Export to .CSV");
 
 // Donations/IPN
-define("LAN_ANTEUP_IPN_01", "Reason");
+define("LAN_ANTEUP_IPN_01", "Campaign");
 define("LAN_ANTEUP_IPN_02", "Payment Status");
 define("LAN_ANTEUP_IPN_03", "Gross Income");
 define("LAN_ANTEUP_IPN_04", "Currency");

@@ -33,7 +33,7 @@ $ANTEUP_TEMPLATE['donate'] = "
 		<tbody>
 			<tr>
 				<td>".LAN_ANTEUP_DONATE_01.":</td>
-				<td>{ANTEUP_REASONSELECTOR}</td>
+				<td>{ANTEUP_CAMPAIGNSELECTOR}</td>
 			</tr>
 			<tr>
 				<td>".LAN_ANTEUP_DONATE_02.":</td>
@@ -71,7 +71,7 @@ $ANTEUP_TEMPLATE['donations']['start'] = "
 $ANTEUP_TEMPLATE['donations']['entry'] = "
 			<tr>
 				<td>{ANTEUP_DONATION_DONATOR}</td>
-				<td>{ANTEUP_DONATION_REASON}</td>
+				<td>{ANTEUP_DONATION_CAMPAIGN_NAME}</td>
 				<td>{ANTEUP_DONATION_DATE: format=relative}</td>
 				<td>{ANTEUP_DONATION_AMOUNT: format}</td>
 				<td>{ANTEUP_DONATION_STATUS}</td>

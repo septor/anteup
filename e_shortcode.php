@@ -142,20 +142,15 @@ class anteup_shortcodes extends e_shortcode
 		return "<a href='".e_PLUGIN_ABS."anteup/donate.php'><img src='".e_PLUGIN_ABS."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
 	}
 
-	function sc_anteup_reasonselector($parm)
+	function sc_anteup_campaignselector($parm)
 	{
 		$frm = e107::getForm();
-
-		$reasons = array(
-			LAN_ANTEUP_DONATE_REASON_01,
-			LAN_ANTEUP_DONATE_REASON_02,
-			LAN_ANTEUP_DONATE_REASON_03,
-			LAN_ANTEUP_DONATE_REASON_04
-		);
+		
+		$campaigns = e107::getDb()->retrieve('anteup_campaign', 'name', '', true);
 
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
 
-		$output = $frm->select('item_name', $reasons, array('class', $class));
+		$output = $frm->select('campaign', $campaigns, array('class', $class));
 
 		return $output;
 	}
@@ -223,16 +218,11 @@ class anteup_shortcodes extends e_shortcode
 		return $output;
 	}
 
-	function sc_anteup_donation_reason($parm='')
+	function sc_anteup_campaign_name($parm='')
 	{
-		$reasons = array(
-			'thanks' 	=> LAN_ANTEUP_DONATE_REASON_01,
-			'noreason' 	=> LAN_ANTEUP_DONATE_REASON_02,
-			'costs' 	=> LAN_ANTEUP_DONATE_REASON_03,
-			'anonymous' => LAN_ANTEUP_DONATE_REASON_04
-		);
+		$campaignName = e107::getDb()->retrieve('anteup_campaign', 'name', 'id='.$this->var['campaign'].'');
 
-		return $reasons[$this->var['item_name']];
+		return $campaignName;
 	}
 
 	function sc_anteup_donation_comment($parm='')

@@ -79,7 +79,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'class' => 'left',
 			'thclass' => 'left',
 		),
-		'item_name' => array(
+		'campaign' => array(
 			'title' => LAN_ANTEUP_IPN_01,
 			'type' => 'text',
 			'data' => 'str',
@@ -520,6 +520,8 @@ class anteup_currency_ui extends e_admin_ui
 class anteup_currency_form_ui extends e_admin_form_ui
 {
 }
+
+// TODO: Add campign admin UI code..
 
 new anteup_adminArea();
 

@@ -205,7 +205,7 @@ class ipn_listener
 
 		// Process IPN
 		$data = array(
-			"item_name"    		=> $tp->toDB($_POST['item_name']),
+			"campaign"    		=> $tp->toDB($_POST['campaign']),
 			"payment_status"    => $tp->toDB($payment_status),
 			"mc_gross"      	=> (float) $mc_gross,
 			"mc_currency"   	=> $tp->toDB($mc_currency),

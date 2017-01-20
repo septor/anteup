@@ -3,12 +3,7 @@
 // donate.php
 define("LAN_ANTEUP_DONATE_TITLE", "Donate");
 
-define("LAN_ANTEUP_DONATE_REASON_01", "Thanks for your work!");
-define("LAN_ANTEUP_DONATE_REASON_02", "A generous donation for no reason.");
-define("LAN_ANTEUP_DONATE_REASON_03", "Hosting, server, whatever costs.");
-define("LAN_ANTEUP_DONATE_REASON_04", "An anonymous donation.");
-
-define("LAN_ANTEUP_DONATE_01", "Donation reason");
+define("LAN_ANTEUP_DONATE_01", "Donation campaign");
 define("LAN_ANTEUP_DONATE_02", "Currency");
 define("LAN_ANTEUP_DONATE_03", "Amount");
 define("LAN_ANTEUP_DONATE_04", "Unable to accept donations because there is no PayPal address setup.");
@@ -17,7 +12,7 @@ define("LAN_ANTEUP_DONATE_04", "Unable to accept donations because there is no P
 define("LAN_ANTEUP_DONATIONS_TITLE", "Donations");
 
 define("LAN_ANTEUP_DONATIONS_01", "Donator");
-define("LAN_ANTEUP_DONATIONS_02", "Reason");
+define("LAN_ANTEUP_DONATIONS_02", "Campaign");
 define("LAN_ANTEUP_DONATIONS_03", "Date Donated");
 define("LAN_ANTEUP_DONATIONS_04", "Amount");
 define("LAN_ANTEUP_DONATIONS_05", "Status");
