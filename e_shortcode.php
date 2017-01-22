@@ -28,28 +28,39 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_goal($parm)
 	{
-		$pref = e107::pref('anteup');
-		$output = (!empty($pref['anteup_goal']) ? $pref['anteup_goal'] : 0);
 
-		return (isset($parm['format']) ? format_currency($output, $pref['anteup_currency']) : $output);
+		$preGoal = (isset($parm['campaign']) ? e107::getDb()->retrieve('anteup_campaign', 'goal', 'id='.$parm['campaign']) : 'unlimited');
+
+		if(is_numeric($preGoal))
+		{
+			$goal = (isset($parm['format']) ? format_currency($preGoal, e107::pref('anteup', 'anteup_currency')) : $preGoal);
+		}
+		else
+		{
+			$goal = $preGoal;
+		}
+
+		return $goal;
 	}
 
-	function sc_anteup_lastdue($parm='')
+	function sc_anteup_duration($parm)
 	{
-		$lastdue = e107::pref('anteup', 'anteup_lastdue');
-		$dateformat = e107::pref('anteup', 'anteup_dateformat');
+		$duration = (isset($parm['campaign']) ? e107::getDb()->retrieve('anteup_campaign', 'duration', 'id='.$parm['campaign']) : 'unending');
 
-		return e107::getDate()->convert_date($lastdue, $dateformat);
+		// TODO: Expand on this to display the Campaign Goal if goal is selected. Also, LAN 'Unending'.
+		if($duration != 'unending' || $duration != 'goal')
+		{
+			$output = e107::getDate()->convert_date($duration, e107::pref('anteup', 'anteup_dateformat'));
+		}
+		else
+		{
+			$output = $duration;
+		}
+
+		return $output;
 	}
 
-	function sc_anteup_due($parm='')
-	{
-		$due = e107::pref('anteup', 'anteup_due');
-		$dateformat = e107::pref('anteup', 'anteup_dateformat');
-
-		return e107::getDate()->convert_date($due, $dateformat);
-	}
-
+	// PAUSE
 	function sc_anteup_remaining($parm)
 	{
 		$pref = e107::pref('anteup');
@@ -145,7 +156,7 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_campaignselector($parm)
 	{
 		$frm = e107::getForm();
-		
+
 		$campaigns = e107::getDb()->retrieve('anteup_campaign', 'name', '', true);
 
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
