@@ -1,3 +1,5 @@
+**NOTICE: v1.2.0 will include a major overhaul on how this plugin functions. No longer will there be a single goal, but campaigns. More information will be provided as things are finalized. If you translated AnteUp, you'll need to send new translations down the road. Keep an eye on [Gitter](https://gitter.im/septor/anteup) for when this should happen!**
+
 # AnteUp!
 
 An extensive Donation Tracker with PayPal integration.
