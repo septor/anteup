@@ -18,27 +18,34 @@ function format_currency($input, $id, $commify = true)
 	return ($curr['location'] == "back" ? $input.$curr['symbol'] : $curr['symbol'].$input);
 }
 
-function get_info($type)
+function get_info($type, $campaign)
 {
 	$sql = e107::getDb();
-	$pref = e107::getPlugPref('anteup');
 
-	$lastDue = $pref['anteup_lastdue'];
-	$currDue = $pref['anteup_due'];
+	$campaignInfo = $sql->retrieve("anteup_campaign", "*", "id='".$campaign."'");
+	$donations = $sql->retireve("anteup_ipn", "*", "payment_status='Completed' AND campaign='".$campaign."'", true);
+
 	$current = 0;
 	$total = 0;
 
-	$sql->select("anteup_ipn", "*", "payment_status='Completed'");
-
-	while($row = $sql->fetch())
+	if($campaignInfo['duration'] != 'unending' || $campaignInfo['duration'] != 'goal')
 	{
-		$payDate = $row['payment_date'];
-
-		if($payDate > $lastDue && $payDate < $currDue)
+		foreach($donations as $donation)
 		{
-			$current += $row['mc_gross'];
+			if($donation['payment_date'] < $campaignInfo['duration'])
+			{
+				$current += $donation['mc_gross'];
+			}
+			$total += $donation['mc_gross'];
 		}
-		$total += $row['mc_gross'];
+	}
+	else
+	{
+		foreach($donations as $donation)
+		{
+			$current += $donation['mc_gross'];
+			$total = $current;
+		}
 	}
 
 	if($type == "current")
