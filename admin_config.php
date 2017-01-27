@@ -587,7 +587,7 @@ class anteup_campaign_ui extends e_admin_ui
 			'title' => LAN_ANTEUP_CAMP_01_A,
 			'type' => 'text',
 			'data' => 'str',
-			'width' => '40%',
+			'width' => 'auto',
 			'inline' => true,
 			'help' => LAN_ANTEUP_CAMP_01_B,
 			'readParms' => '',
@@ -597,7 +597,7 @@ class anteup_campaign_ui extends e_admin_ui
 		),
 		'goal' => array(
 			'title' => LAN_ANTEUP_CAMP_02_A,
-			'type' => 'dropdown',
+			'type' => 'text',
 			'data' => 'str',
 			'width' => 'auto',
 			'inline' => true,
