@@ -226,26 +226,6 @@ class anteup_ipn_ui extends e_admin_ui
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_02_B,
 		),
-		'anteup_goal' => array(
-			'title' => LAN_ANTEUP_PREFS_03_A,
-			'type' 	=> 'number',
-			'data' 	=> 'int',
-			'help' 	=> LAN_ANTEUP_PREFS_03_B,
-		),
-		'anteup_due' => array(
-			'title' => LAN_ANTEUP_PREFS_04_A,
-			'type' 	=> 'datestamp',
-			'writeParms'=> 'type=date',
-			'data' 	=> 'int',
-			'help' 	=> LAN_ANTEUP_PREFS_04_B,
-		),
-		'anteup_lastdue' => array(
-			'title' => LAN_ANTEUP_PREFS_05_A,
-			'type' 	=> 'datestamp',
-			'writeParms'=> 'type=date',
-			'data' 	=> 'int',
-			'help' 	=> LAN_ANTEUP_PREFS_05_B,
-		),
 		'anteup_menutext' => array(
 			'title' => LAN_ANTEUP_PREFS_06_A,
 			'type' 	=> 'bbarea',

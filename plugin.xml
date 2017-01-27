@@ -19,9 +19,6 @@
 	<pluginPrefs>
 		<pref name='anteup_mtitle'>Donations</pref>
 		<pref name='anteup_currency'>20</pref>
-		<pref name='anteup_goal'>0</pref>
-		<pref name='anteup_due'>1464782400</pref>
-		<pref name='anteup_lastdue'>1462104000</pref>
 		<pref name='anteup_menutext'>Thanks for all your donations, we greatly appreciate it!</pref>
 		<pref name='anteup_pagetext'>Thanks for considering to send us a donation. We appreciate your contribution and will use it to better your experience on the site</pref>
 		<pref name='anteup_dateformat'>short</pref>
