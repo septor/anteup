@@ -12,15 +12,10 @@ define("ANTEUP_ABS", SITEURLBASE.e_PLUGIN_ABS."anteup/");
 
 function format_currency($input, $id, $commify = true)
 {
-	$sql = e107::getDb();
-	$sql->select("anteup_currency", "*", "id='".intval($id)."'");
-    while($row = $sql->fetch())
-    {
-		$symbol = $row['symbol'];
-        $loc = $row['location'];
-    }
+	$curr = e107::getDb()->retrieve("anteup_currency", "*", "id='".intval($id)."'");
 	$input = (($commify) ? number_format($input, 2) : $input);
-	return ($loc == "back" ? $input.$symbol : $symbol.$input);
+
+	return ($curr['location'] == "back" ? $input.$curr['symbol'] : $curr['symbol'].$input);
 }
 
 function get_info($type)
