@@ -22,11 +22,11 @@ function get_info($type, $campaign)
 {
 	$sql = e107::getDb();
 
-	$campaignInfo = $sql->retrieve("anteup_campaign", "*", "id='".$campaign."'");
-	$donations = $sql->retireve("anteup_ipn", "*", "payment_status='Completed' AND campaign='".$campaign."'", true);
+	$campaignInfo 	= $sql->retrieve("anteup_campaign", "*", "id='".$campaign."'");
+	$donations 		= $sql->retrieve("anteup_ipn", "*", "payment_status='Completed' AND campaign='".$campaign."'", true);
 
 	$current = 0;
-	$total = 0;
+	$total	 = 0;
 
 	if($campaignInfo['duration'] != 'unending' || $campaignInfo['duration'] != 'goal')
 	{
