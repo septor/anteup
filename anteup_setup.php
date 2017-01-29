@@ -42,8 +42,8 @@ class anteup_setup
 		e107::getMessage()->add("Adding currencies", $status_currencies);
 
 		$default_campaign = "
-		INSERT INTO `#anteup_campaign` (`id`, `name`, `description`, `duration`, `goal`) VALUES
-			(1, 'Default Campaign', 'A default campaign for all donations.', 'unending', 'unlimited')
+		INSERT INTO `#anteup_campaign` (`id`, `name`, `description`, `start_date`, `goal_date`, `goal_amount`, 'status', 'viewclass') VALUES
+			(1, 'Default Campaign', 'A default campaign for all donations.', '".time()."', '', '0', '1', '')
 		";
 
 		$status_campaign = (e107::getDb()->gen($default_campaign)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;

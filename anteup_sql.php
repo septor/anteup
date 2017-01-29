@@ -25,7 +25,10 @@ CREATE TABLE anteup_campaign (
 	`id` int(10) unsigned NOT NULL auto_increment,
 	`name` varchar(250) NOT NULL,
 	`description` varchar(250) NOT NULL,
-	`duration` varchar(250) NOT NULL,
-	`goal` varchar(250) NOT NULL,
+	`start_date` varchar(250) NOT NULL,
+	`goal_date` varchar(250) NOT NULL,
+	`goal_amount` varchar(250) NOT NULL,
+	`status` int(10) NOT NULL,
+	`viewclass` varchar(250) NOT NULL,
 	PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1;

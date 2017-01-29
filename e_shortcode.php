@@ -29,38 +29,36 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_goal($parm)
 	{
 
-		$preGoal = (isset($parm['campaign']) ? e107::getDb()->retrieve('anteup_campaign', 'goal', 'id='.$parm['campaign']) : 'unlimited');
+		$preGoal = (isset($parm['campaign']) ? e107::getDb()->retrieve('anteup_campaign', 'goal_amount', 'id='.$parm['campaign']) : '0');
 
-		if(is_numeric($preGoal))
+		if($preGoal != "0")
 		{
 			$goal = (isset($parm['format']) ? format_currency($preGoal, e107::pref('anteup', 'anteup_currency')) : $preGoal);
 		}
 		else
 		{
-			$goal = $preGoal;
+			$goal = "Unlimited"; // TODO: LAN
 		}
 
 		return $goal;
 	}
 
-	function sc_anteup_duration($parm)
+	function sc_anteup_goaldate($parm)
 	{
-		$duration = (isset($parm['campaign']) ? e107::getDb()->retrieve('anteup_campaign', 'duration', 'id='.$parm['campaign']) : 'unending');
+		$duration = (isset($parm['campaign']) ? e107::getDb()->retrieve('anteup_campaign', 'goal_date', 'id='.$parm['campaign']) : 'unending');
 
-		// TODO: Expand on this to display the Campaign Goal if goal is selected. Also, LAN 'Unending'.
-		if($duration != 'unending' || $duration != 'goal')
+		if($duration != 'unending')
 		{
 			$output = e107::getDate()->convert_date($duration, e107::pref('anteup', 'anteup_dateformat'));
 		}
 		else
 		{
-			$output = $duration;
+			$output = "No End Date"; // TODO/WARNING: DO NOT LAN --  display goal_amount instead
 		}
 
 		return $output;
 	}
 
-	// PAUSE
 	function sc_anteup_remaining($parm)
 	{
 		$pref = e107::pref('anteup');

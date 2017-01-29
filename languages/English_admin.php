@@ -34,12 +34,7 @@ define("LAN_ANTEUP_PREFS_01_A", "Menu Title");
 define("LAN_ANTEUP_PREFS_01_B", "The caption for your menu item.");
 define("LAN_ANTEUP_PREFS_02_A", "Default Currency");
 define("LAN_ANTEUP_PREFS_02_B", "The currency you want displayed around your site.");
-define("LAN_ANTEUP_PREFS_03_A", "Donation Goal");
-define("LAN_ANTEUP_PREFS_03_B", "Your goal donation amount.");
-define("LAN_ANTEUP_PREFS_04_A", "Due Date");
-define("LAN_ANTEUP_PREFS_04_B", "The date you would like to get your donation goal.");
-define("LAN_ANTEUP_PREFS_05_A", "Previous Due Date");
-define("LAN_ANTEUP_PREFS_05_B", "Your last due date.");
+
 define("LAN_ANTEUP_PREFS_06_A", "Menu Text");
 define("LAN_ANTEUP_PREFS_06_B", "The text you want to display on your donation menu.");
 define("LAN_ANTEUP_PREFS_07_A", "Donate Page Text");
@@ -70,8 +65,14 @@ define("LAN_ANTEUP_CURR_04", "front");
 define("LAN_ANTEUP_CURR_05", "back");
 
 // Campaigns
-define("LAN_ANTEUP_CAMP_01_A", "Campaign Duration");
-define("LAN_ANTEUP_CAMP_01_B", "Enter a date for an end date. Enter 'goal' for the duration to be the donation goal. Enter 'unending' if the campaign never ends.");
-define("LAN_ANTEUP_CAMP_02_A", "Campaign Goal");
-define("LAN_ANTEUP_CAMP_02_B", "Enter a numerical amount. For no goal enter 'unlimited'.");
+define("LAN_ANTEUP_CAMP_01", "Campaign Start Date");
+define("LAN_ANTEUP_CAMP_02_A", "Campaign End Date");
+define("LAN_ANTEUP_CAMP_02_B", "Leave blank for an unending campaign.");
+define("LAN_ANTEUP_CAMP_03_A", "Campaign Goal Amount");
+define("LAN_ANTEUP_CAMP_03_B", "Enter a numerical amount. Enter 0 for unlimited.");
+define("LAN_ANTEUP_CAMP_04_A", "Campaign Status");
+define("LAN_ANTEUP_CAMP_04_B", "Inactive");
+define("LAN_ANTEUP_CAMP_04_C", "Active");
+define("LAN_ANTEUP_CAMP_05", "Campaign Viewclass");
+
 ?>
