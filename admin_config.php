@@ -549,10 +549,9 @@ class anteup_campaign_ui extends e_admin_ui
 		),
 		'description' => array(
 			'title' => LAN_DESCRIPTION,
-			'type' => 'text',
+			'type' => 'bbarea',
 			'data' => 'str',
 			'width' => 'auto',
-			'inline' => true,
 			'class' => 'left',
 			'thclass' => 'left',
 		),
