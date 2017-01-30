@@ -252,8 +252,10 @@ class anteup_ipn_ui extends e_admin_ui
 		),
 		'anteup_button' => array(
 			'title' => LAN_ANTEUP_PREFS_10_A,
-			'type' 	=> 'dropdown',
+			'type' 	=> 'image',
 			'data' 	=> 'str',
+			//'readParms' => 'thumb=60&thumb_urlraw=0&thumb_aw=60',
+			'writeParms' => 'media=anteup',
 			'help' 	=> LAN_ANTEUP_PREFS_10_B,
 		),
 		'anteup_paypal' => array(
