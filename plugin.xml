@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e107Plugin name="AnteUp" lan="LAN_ANTEUP_NAME" version="1.2.0" date="2017-01-30" compatibility="2.0" installRequired="true" >
+<e107Plugin name="AnteUp" lan="LAN_ANTEUP_NAME" version="1.2.0" date="2017-02-05" compatibility="2.0" installRequired="true" >
 	<author name="Patrick Weaver" url="http://www.trickmod.com" />
 	<summary lan="LAN_ANTEUP_SUMM">An extensive Donation Tracker with PayPal integration</summary>
 	<description lan="LAN_ANTEUP_DESC">Keep track of all your incoming donations with an extensive list of donations, who gave them to you, and how much they provided. Also contains a menu for displaying the amount of donations you'd like to receive for a given time and your progress towards it.</description>
@@ -11,11 +11,14 @@
 	<category>misc</category>
 	<copyright>2017</copyright>
 	<adminLinks>
-		<link url="admin_config.php" description="" icon="images/icon_32.png" iconSmall="images/icon_16.png" icon128="images/icon_128.png" primary="true" >LAN_SETTINGS</link>
+		<link url="admin_config.php" description="" icon="images/icons/icon_32.png" iconSmall="images/icons/icon_16.png" icon128="images/icons/icon_128.png" primary="true">LAN_SETTINGS</link>
 	</adminLinks>
 	<siteLinks>
 		<link url="e107_plugins/anteup/donations.php" description="Donations" icon="" iconSmall="" function="">LAN_ANTEUP_DONATIONSLINK</link>
 	</siteLinks>
+	<mediaCategories>
+		<category type="image" sef="anteup" perm="everyone" image='{e_PLUGIN}anteup/images/icons/icon_128.png'>AnteUp</category>
+	</mediaCategories>
 	<pluginPrefs>
 		<pref name='anteup_mtitle'>Donations</pref>
 		<pref name='anteup_currency'>20</pref>
@@ -23,7 +26,7 @@
 		<pref name='anteup_pagetext'>Thanks for considering to send us a donation. We appreciate your contribution and will use it to better your experience on the site</pref>
 		<pref name='anteup_dateformat'>short</pref>
 		<pref name='anteup_paypal'>yourpaypal@email.com</pref>
-		<pref name='anteup_button'>donate.gif</pref>
+		<pref name='anteup_button'>btn_donate_cc_147x47.png</pref>
 		<pref name='anteup_pageviewclass'></pref>
 		<pref name='anteup_menuviewclass'></pref>
 		<pref name='anteup_sandbox'>0</pref>
