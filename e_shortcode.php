@@ -37,7 +37,7 @@ class anteup_shortcodes extends e_shortcode
 		}
 		else
 		{
-			$goal = "Unlimited"; // TODO: LAN
+			$goal = LAN_ANTEUP_MENU_05;
 		}
 
 		return $goal;
@@ -62,11 +62,23 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_remaining($parm)
 	{
 		$pref = e107::pref('anteup');
-		$current = get_info("current");
-		$goal =  (!empty($pref['anteup_goal']) ? $pref['anteup_goal'] : 0);
-		$output = round($goal - $current, 2);
+		$campaign = (isset($parm['campaign'] ? $parm['campaign'] : 1);
+		$current = get_info("current", $campaign);
+		$goal =  e107::getDb->retrieve("anteup_campaign", "goal_amount", "id='".$campaign."'");
 
-		return (isset($parm['format']) ? format_currency($output, $pref['anteup_currency']) : $output);
+		if($goal != "0")
+		{
+			$remaining = round($goal - $current, 2);
+			$output = (isset($parm['format']) ? format_currency($remaining, $pref['anteup_currency']) : $remaining);
+		}
+		else
+		{
+			// The goal is set to 'unlimited' so there is no true remaining value.
+			// ENHANCEMENT: Possibly output text to indicate this?
+			$output = "";
+		}
+
+		return $output;
 	}
 
 	function sc_anteup_current($parm)
