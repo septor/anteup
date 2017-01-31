@@ -62,9 +62,9 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_remaining($parm)
 	{
 		$pref = e107::pref('anteup');
-		$campaign = (isset($parm['campaign'] ? $parm['campaign'] : 1);
+		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
 		$current = get_info("current", $campaign);
-		$goal =  e107::getDb->retrieve("anteup_campaign", "goal_amount", "id='".$campaign."'");
+		$goal =  e107::getDb()->retrieve("anteup_campaign", "goal_amount", "id='".$campaign."'");
 
 		if($goal != "0")
 		{
