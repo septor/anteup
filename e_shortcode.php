@@ -83,12 +83,14 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_current($parm)
 	{
-		return (isset($parm['format']) ? format_currency(get_info("current"), e107::pref('anteup', 'anteup_currency')) : get_info("current"));
+		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
+		return (isset($parm['format']) ? format_currency(get_info("current", $campaign), e107::pref('anteup', 'anteup_currency')) : get_info("current", $campaign));
 	}
 
 	function sc_anteup_total($parm)
 	{
-		return (isset($parm['format']) ? format_currency(get_info("total"), e107::pref('anteup', 'anteup_currency')) : get_info("total"));
+		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
+		return (isset($parm['format']) ? format_currency(get_info("total", $campaign), e107::pref('anteup', 'anteup_currency')) : get_info("total", $campaign));
 	}
 	function sc_anteup_percent($parm)
 	{
@@ -239,11 +241,14 @@ class anteup_shortcodes extends e_shortcode
 		return $output;
 	}
 
-	function sc_anteup_donation_campaign($parm='')
+	function sc_anteup_campaign_name($parm)
 	{
-		$campaignName = e107::getDb()->retrieve('anteup_campaign', 'name', 'id='.$this->var['campaign'].'');
+		return e107::getDb()->retrieve('anteup_campaign', 'name', 'id='.$parm['campaign'].'');
+	}
 
-		return $campaignName;
+	function sc_anteup_campaign_description($parm)
+	{
+		return e107::getDb()->retrieve('anteup_campaign', 'description', 'id='.$parm['campaign'].'');
 	}
 
 	function sc_anteup_donation_comment($parm='')
