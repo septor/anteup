@@ -16,14 +16,11 @@ class anteup_shortcodes extends e_shortcode
 		include_lan(e_PLUGIN.'anteup/languages/'.e_LANGUAGE.'_front.php');
 	}
 
-	function sc_anteup_symbol($parm='')
+	function sc_anteup_currency($parm)
 	{
-		return e107::getDb()->retrieve('anteup_currency',  'symbol', 'id = '.e107::pref('anteup', 'anteup_currency'));
-	}
+		$currency = e107::getDb()->retrieve('anteup_currency',  '*', 'id = '.e107::pref('anteup', 'anteup_currency'));
 
-	function sc_anteup_code($parm='')
-	{
-		return e107::getDb()->retrieve('anteup_currency',  'code', 'id = '.e107::pref('anteup', 'anteup_currency'));
+		return (isset($parm['code']) ? $currency['code'] : $currency['symbol']);
 	}
 
 	function sc_anteup_goal($parm)
