@@ -41,10 +41,13 @@ class anteup_adminArea extends e_admin_dispatcher
 	protected $adminMenu = array(
 		'main/list'			=> array('caption' => LAN_ANTEUP_MANAGE_DONATIONS, 'perm' => 'P'),
 		'main/create'		=> array('caption' => LAN_ANTEUP_CREATE_DONATIONS, 'perm' => 'P'),
+		'div/1'               => array('divider'=>true),
 		'currency/list'		=> array('caption' => LAN_ANTEUP_MANAGE_CURRENCIES, 'perm' => 'P'),
 		'currency/create'	=> array('caption' => LAN_ANTEUP_CREATE_CURRENCIES, 'perm' => 'P'),
+		'div/2'               => array('divider'=>true),
 		'campaign/list'		=> array('caption' => LAN_ANTEUP_MANAGE_CAMPAIGNS, 'perm' => 'P'),
 		'campaign/create'	=> array('caption' => LAN_ANTEUP_CREATE_CAMPAIGNS, 'perm' => 'P'),
+		'div/3'               => array('divider'=>true),
 		'main/custom'		=> array('caption' => LAN_ANTEUP_CSV_EXPORT, 'perm' => 'P'),
 		'main/prefs' 		=> array('caption' => LAN_PREFS, 'perm' => 'P'),
 	);
@@ -65,6 +68,10 @@ class anteup_ipn_ui extends e_admin_ui
 	protected $perPage			= 20;
 	protected $batchDelete		= true;
 	protected $listOrder		= 'ipn_id DESC';
+
+	protected $batchCopy        = true;
+	protected $batchExport      = true;
+
 
 	protected $fields = array(
 		'checkboxes' =>  array(
@@ -213,68 +220,80 @@ class anteup_ipn_ui extends e_admin_ui
 
 	protected $fieldpref = array('payment_date', 'user_id', 'txn_id', 'buyer_email', 'comment', 'payment_status', 'mc_gross');
 
+	protected $preftabs = array(LAN_GENERAL, "Menu", "Page");
+
 	protected $prefs = array(
 		'anteup_mtitle' => array(
 			'title' => LAN_ANTEUP_PREFS_01_A,
 			'type' 	=> 'text',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_01_B,
+			'tab'   => 1,
 		),
 		'anteup_currency' => array(
 			'title' => LAN_ANTEUP_PREFS_02_A,
 			'type' 	=> 'dropdown',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_02_B,
+			'tab'   => 0,
 		),
 		'anteup_menutext' => array(
 			'title' => LAN_ANTEUP_PREFS_06_A,
 			'type' 	=> 'bbarea',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_06_B,
+			'tab'   => 1,
 		),
 		'anteup_pagetext' => array(
 			'title' => LAN_ANTEUP_PREFS_07_A,
 			'type' 	=> 'bbarea',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_07_B,
+			'tab'   => 2,
 		),
 		'anteup_pageviewclass' => array(
 			'title' => LAN_ANTEUP_PREFS_08_A,
 			'type' 	=> 'userclass',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_08_B,
+			'tab'   => 2,
 		),
 		'anteup_menuviewclass' => array(
 			'title' => LAN_ANTEUP_PREFS_09_A,
 			'type' 	=> 'userclass',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_09_B,
+			'tab'   => 1,
 		),
 		'anteup_button' => array(
 			'title' => LAN_ANTEUP_PREFS_10_A,
 			'type' 	=> 'image',
 			'data' 	=> 'str',
 			//'readParms' => 'thumb=60&thumb_urlraw=0&thumb_aw=60',
-			'writeParms' => 'media=anteup',
+			'writeParms' => array('path'=>'{e_PLUGIN}anteup/images/'),
 			'help' 	=> LAN_ANTEUP_PREFS_10_B,
+			'tab'   => 0,
 		),
 		'anteup_paypal' => array(
 			'title' => LAN_ANTEUP_PREFS_11_A,
 			'type' 	=> 'text',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_11_B,
+			'tab'   => 0,
 		),
 		'anteup_dateformat' => array(
 			'title' => LAN_ANTEUP_PREFS_12_A,
 			'type' 	=> 'dropdown',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_12_B,
+			'tab'   => 0,
 		),
 		'anteup_sandbox' => array(
 			'title' => LAN_ANTEUP_PREFS_13_A,
 			'type'	=> 'boolean',
 			'data' 	=> 'integer',
 			'help' 	=> LAN_ANTEUP_PREFS_13_B,
+			'tab'   => 0,
 		),
 		'anteup_logging' => array(
 			'title'			=> LAN_ANTEUP_PREFS_14_A,
@@ -282,12 +301,18 @@ class anteup_ipn_ui extends e_admin_ui
 			'writeParms'	=> 'label=yesno',
 			'data'        	=> 'int',
 			'help'		  	=> LAN_ANTEUP_PREFS_14_B,
+			'tab'   => 0,
 		),
 	);
+
+	private $currency = array();
+	private $dateformat;
+	public $donateImage = array();
 
 	public function init()
 	{
 		$sql = e107::getDb();
+
 
 		// Check for sandbox mode
 		$sandbox = e107::pref('anteup', 'anteup_sandbox');
@@ -301,21 +326,25 @@ class anteup_ipn_ui extends e_admin_ui
 			while($row = $sql->fetch())
 				$this->currency[$row['id']] = $row['description']." (".$row['code'].")";
 
-		$this->fields['mc_currency']['writeParms'] = $this->currency;
-		$this->prefs['anteup_currency']['writeParms'] = $this->currency;
+		$this->fields['mc_currency']['writeParms']['optArray'] = $this->currency;
+		$this->prefs['anteup_currency']['writeParms']['optArray'] = $this->currency;
 
 		$this->dateformat = array('short' => LAN_ANTEUP_PREFS_12_C, 'long' => LAN_ANTEUP_PREFS_12_D, 'relative' => LAN_ANTEUP_PREFS_12_E);
 		$this->prefs['anteup_dateformat']['writeParms'] = $this->dateformat;
 
 		$this->donateImage[e107::pref('anteup', 'anteup_button')] = e107::pref('anteup', 'anteup_button');
-		foreach(glob(e_PLUGIN."anteup/images/icons/*.gif") as $icon)
+
+		foreach(glob(e_PLUGIN."anteup/images/*.png") as $icon)
 		{
-			$icon = str_replace(e_PLUGIN."anteup/images/icons/", "", $icon);
+			$icon = str_replace(e_PLUGIN."anteup/images/", "", $icon);
 
 			if($icon != e107::pref('anteup', 'anteup_button'))
 				$this->donateImage[$icon] = $icon;
 		}
-		$this->prefs['anteup_button']['writeParms'] = $this->donateImage;
+
+		ksort($this->donateImage);
+
+		$this->prefs['anteup_button']['writeParms']['optArray'] = $this->donateImage;
 	}
 
 	public function beforeCreate($new_data)
@@ -519,6 +548,8 @@ class anteup_campaign_ui extends e_admin_ui
 	protected $pid				= 'id';
 	protected $perPage			= 20;
 	protected $batchDelete		= true;
+	protected $batchCopy        = true;
+	protected $batchExport      = true;
 	protected $listOrder		= 'id DESC';
 
 	protected $fields = array(
@@ -547,14 +578,7 @@ class anteup_campaign_ui extends e_admin_ui
 			'class' => 'left',
 			'thclass' => 'left',
 		),
-		'description' => array(
-			'title' => LAN_DESCRIPTION,
-			'type' => 'bbarea',
-			'data' => 'str',
-			'width' => 'auto',
-			'class' => 'left',
-			'thclass' => 'left',
-		),
+
 		'start_date' => array(
 			'title' => LAN_ANTEUP_CAMP_01,
 			'type' => 'datestamp',
@@ -576,7 +600,7 @@ class anteup_campaign_ui extends e_admin_ui
 		),
 		'goal_amount' => array(
 			'title' => LAN_ANTEUP_CAMP_03_A,
-			'type' => 'text',
+			'type' => 'number',
 			'data' => 'str',
 			'width' => 'auto',
 			'inline' => true,
@@ -607,6 +631,14 @@ class anteup_campaign_ui extends e_admin_ui
 			'data' => 'int',
 			'width' => 'auto',
 			'inline' => true,
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+			'description' => array(
+			'title' => LAN_DESCRIPTION,
+			'type' => 'bbarea',
+			'data' => 'str',
+			'width' => 'auto',
 			'class' => 'left',
 			'thclass' => 'left',
 		),
