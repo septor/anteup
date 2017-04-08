@@ -27,7 +27,7 @@ define("LAN_ANTEUP_IPN_12", "A generous donation for no reason.");
 define("LAN_ANTEUP_IPN_13", "Hosting, server, whatever costs.");
 define("LAN_ANTEUP_IPN_14", "An anonymous donation.");
 define("LAN_ANTEUP_IPN_15", "The .CSV file has been created. It can now be imported into Excel, OpenOffice, Google Sheets or any other spreadsheet service.");
-define("LAN_ANTEUP_IPN_15", "The .CSV file could not be created.");
+define("LAN_ANTEUP_IPN_15", "The .CSV file could not be created."); // Duplicate key.
 
 // Preferences
 define("LAN_ANTEUP_PREFS_01_A", "Menu Title");
