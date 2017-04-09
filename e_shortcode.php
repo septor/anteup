@@ -9,6 +9,12 @@
 
 if (!defined('e107_INIT')) { exit; }
 
+
+/**
+* Class anteup_shortcodes
+ * @question do these shortcodes need to be available outside of the plugin and its menu?
+ */
+
 class anteup_shortcodes extends e_shortcode
 {
 	function __construct()
@@ -61,7 +67,7 @@ class anteup_shortcodes extends e_shortcode
 		$pref = e107::pref('anteup');
 		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
 		$current = get_info("current", $campaign);
-		$goal =  e107::getDb()->retrieve("anteup_campaign", "goal_amount", "id='".$campaign."'");
+		$goal = (int) e107::getDb()->retrieve("anteup_campaign", "goal_amount", "id='".$campaign."'");
 
 		if($goal != "0")
 		{
@@ -105,6 +111,8 @@ class anteup_shortcodes extends e_shortcode
 		$current = get_info("current");
 		$percent = round(($current / $goal) * 100, 0);
 
+		// e107::getForm()->progressBar(); // @todo
+
 		return "<div class='progress'>\n\t<div class='progress-bar' role='progressbar' aria-valuenow='".$percent."' aria-valuemin='0' aria-valuemax='100' style='width:".$percent."%'>\n\t\t<span class='sr-only'>".$percent."% donated</span>\n\t</div>\n</div>";
 	}
 
@@ -116,6 +124,7 @@ class anteup_shortcodes extends e_shortcode
 
 		if($recents)
 		{
+			$donatorsArray = array();
 			foreach($recents as $recent)
 			{
 				if($recent['user_id'] == 0)
@@ -159,7 +168,7 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_donatelink($parm='')
 	{
 		$pref = e107::pref('anteup');
-		return "<a href='".e_PLUGIN_ABS."anteup/donate.php'><img src='".e_PLUGIN_ABS."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
+		return "<a href='".e_PLUGIN_ABS."anteup/donate.php'><img src='".e_PLUGIN_ABS."anteup/images/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
 	}
 
 	function sc_anteup_campaignselector($parm)
@@ -183,6 +192,7 @@ class anteup_shortcodes extends e_shortcode
 		$defaultCode = $sql->retrieve('anteup_currency',  'code', 'id = '.e107::pref('anteup', 'anteup_currency'));
 
 		$sql->select("anteup_currency", "*");
+		$selectArray = array();
 		while($row = $sql->fetch())
 		{
 			$selectArray[$row['code']] = $row['description']." (".$row['symbol'].")";
@@ -202,6 +212,7 @@ class anteup_shortcodes extends e_shortcode
 		}
 		else
 		{
+			$amountArray = array();
 			for($i=1; $i<101; $i++)
 			{
 				$amountArray[$i.'.00'] = $i.'.00';
@@ -257,7 +268,7 @@ class anteup_shortcodes extends e_shortcode
 	{
 		if($parm['format'] == 'relative')
 		{
-			return e107::getParser()->toDate($this->var['payment_date'], relative);
+			return e107::getParser()->toDate($this->var['payment_date'], 'relative');
 		}
 
 		$dateformat = e107::pref('anteup', 'anteup_dateformat');
