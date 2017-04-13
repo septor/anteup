@@ -98,7 +98,8 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_percent($parm)
 	{
 		$pref = e107::pref('anteup');
-		$current = get_info("current");
+		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
+		$current = get_info("current",$campaign);
 		$goal =  (!empty($pref['anteup_goal']) ? $pref['anteup_goal'] : 0);
 		$output = round(($current / $goal) * 100, 0);
 
@@ -107,8 +108,9 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_bar($parm='')
 	{
 		$goal = e107::pref('anteup', 'anteup_goal'); // fix for PHP < 5.5
+		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
 		$goal = (!empty($goal) ? $goal : 0);
-		$current = get_info("current");
+		$current = get_info("current", $campaign);
 		$percent = round(($current / $goal) * 100, 0);
 
 		// e107::getForm()->progressBar(); // @todo
