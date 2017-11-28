@@ -120,7 +120,7 @@ class anteup_shortcodes extends e_shortcode
 	{
 		$amount = (isset($parm['amount'])) ? (int) $parm['amount'] : 5;
 
-		$recents = e107::getDb()->retrieve('anteup_ipn', 'user_id', 'ORDER BY payment_date LIMIT 0,'.$amount.'', true);
+		$recents = e107::getDb()->retrieve('anteup_ipn', 'user_id', 'ORDER BY payment_date DESC LIMIT 0,'.$amount.'', true);
 
 		if($recents)
 		{
