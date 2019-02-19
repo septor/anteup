@@ -18,7 +18,7 @@ function format_currency($input, $id, $commify = true)
 	return ($curr['location'] == "back" ? $input.$curr['symbol'] : $curr['symbol'].$input);
 }
 
-function get_info($type, $campaign)
+function get_info($type, $campaign = '')
 {
 	$sql = e107::getDb();
 
