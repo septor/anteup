@@ -28,7 +28,7 @@
 		<pref name='anteup_paypal'>yourpaypal@email.com</pref>
 		<pref name='anteup_button'>btn_donate_cc_147x47.png</pref>
 		<pref name='anteup_pageviewclass'></pref>
-		<pref name='anteup_menuviewclass'></pref>
+		<pref name='anteup_menuviewclass'>e_UC_PUBLIC</pref>
 		<pref name='anteup_sandbox'>0</pref>
 		<pref name="anteup_logging">0</pref>
 	</pluginPrefs>
