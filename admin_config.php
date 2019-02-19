@@ -13,7 +13,8 @@ if (!getperms('P'))
 	header('location:'.e_BASE.'index.php');
 	exit;
 }
-e107::lan('anteup', 'admin', true);
+
+e107::lan('anteup', true);
 
 class anteup_adminArea extends e_admin_dispatcher
 {
