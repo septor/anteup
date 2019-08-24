@@ -11,11 +11,12 @@ if(!defined('e107_INIT'))
 {
 	require_once('../../class2.php');
 }
+e107::lan('anteup');
+define('PAGE_NAME', LAN_ANTEUP_DONATIONS_TITLE);
 
 require_once(HEADERF);
 require_once(e_PLUGIN."anteup/_class.php");
 
-e107::lan('anteup');
 $pref = e107::getPlugPref('anteup');
 $mes = e107::getMessage(); 
 

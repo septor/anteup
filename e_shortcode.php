@@ -228,7 +228,7 @@ class anteup_shortcodes extends e_shortcode
 	{
 		$pref = e107::pref('anteup');
 
-		return "<input name='submit' type='image' src='".e_PLUGIN_ABS."anteup/images/icons/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' />";
+		return "<input name='submit' type='image' src='".e_PLUGIN_ABS."anteup/images/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' />";
 	}
 
 	function sc_anteup_donation_filter($parm)
