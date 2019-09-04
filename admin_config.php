@@ -620,8 +620,8 @@ class anteup_campaign_ui extends e_admin_ui
 				1 => LAN_ANTEUP_CAMP_04_C,
 			),
 			'writeParms' => array(
-				0 => LAN_ANTEUP_CAMP_04_C,
-				1 => LAN_ANTEUP_CAMP_04_D,
+				0 => LAN_ANTEUP_CAMP_04_B,
+				1 => LAN_ANTEUP_CAMP_04_C,
 			),
 			'class' => 'left',
 			'thclass' => 'left',
