@@ -41,13 +41,13 @@ class anteup_setup
 		$status_currencies = (e107::getDb()->gen($query_currencies)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;
 		e107::getMessage()->add("Adding currencies", $status_currencies);
 
-		$default_campaign = "
-		INSERT INTO `#anteup_campaign` (`id`, `name`, `description`, `start_date`, `goal_date`, `goal_amount`, 'status', 'viewclass') VALUES
+		$query_campaign = "
+		INSERT INTO `#anteup_campaign` (`id`, `name`, `description`, `start_date`, `goal_date`, `goal_amount`, `status`, `viewclass`) VALUES
 			(1, 'Default Campaign', 'A default campaign for all donations.', '".time()."', '', '0', '1', '')
 		";
 
-		$status_campaign = (e107::getDb()->gen($default_campaign)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;
-		e107::getMessage()->add("Adding default campaign". $status_campaign);
+		$status_campaign = (e107::getDb()->gen($query_campaign)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;
+		e107::getMessage()->add("Adding default campaign", $status_campaign);
 	}
 
 	function uninstall_pre($var)
