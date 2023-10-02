@@ -104,10 +104,11 @@ class anteup_ipn_ui extends e_admin_ui
 		),
 		'campaign' => array(
 			'title' 		=> LAN_ANTEUP_IPN_01,
-			'type' 			=> 'text',
+			'type' 			=> 'dropdown',
 			'data' 			=> 'str',
 			'width' 		=> 'auto',
 			'inline' 		=> true,
+			'validate'	 	=> true,
 			'help' 			=> '',
 			'readParms' 	=> array(),
 			'writeParms' 	=> array(),
@@ -120,6 +121,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'data' 			=> 'str',
 			'width' 		=> 'auto',
 			'inline' 		=> true,
+			'validate'	 	=> true,
 			'help' 			=> '',
 			'readParms' 	=> array(),
 			'writeParms' 	=> array('optArray' => array
@@ -138,6 +140,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'data' 			=> 'str',
 			'width' 		=> 'auto',
 			'inline' 		=> true,
+			'validate'	 	=> true,
 			'help' 			=> '',
 			'readParms' 	=> array(),
 			'writeParms' 	=> array(),
@@ -150,6 +153,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'data' 			=> 'str',
 			'width' 		=> 'auto',
 			'inline' 		=> true,
+			'validate'	 	=> true,
 			'help' 			=> '',
 			'readParms' 	=> array(),
 			'writeParms' 	=> array(),
@@ -198,6 +202,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'data' 			=> 'int',
 			'width' 		=> 'auto',
 			'inline' 		=> true,
+			'validate'	 	=> true,
 			'filter' 		=> true,
 			'help' 			=> '',
 			'readParms' 	=> array(),
@@ -323,7 +328,6 @@ class anteup_ipn_ui extends e_admin_ui
 	{
 		$sql = e107::getDb();
 
-
 		// Check for sandbox mode
 		$sandbox = e107::pref('anteup', 'anteup_sandbox');
 		if(vartrue($sandbox))
@@ -331,8 +335,26 @@ class anteup_ipn_ui extends e_admin_ui
 			e107::getMessage()->addWarning(LAN_ANTEUP_SANDBOX_ON);
 		}
 
+		// Retrieve campaigns from database and prepare dropdown
+		if($sql->select('anteup_campaign'))
+		{
+			while($row = $sql->fetch())
+			{
+				$this->campaign[$row['id']] = $row['name'];
+			}
+
+			// if($this->campaign == false)
+			// {
+			// 	$this->campaign[0] = "Create a campaign first!";
+			// }
+		}
+
+		// Push campaigns to 'add donation' dropdown
+		$this->fields['campaign']['writeParms']['optArray'] = $this->campaign;
+
+
 		// Retrieve currencies from database and prepare dropdown
-		$this->currency[0] = "Default currency";
+		$this->currency[0] = "Default currency"; // TODO LAN
 		if($sql->select('anteup_currency'))
 		{
 			while($row = $sql->fetch())
@@ -345,6 +367,7 @@ class anteup_ipn_ui extends e_admin_ui
 		$this->fields['mc_currency']['writeParms']['optArray'] = $this->currency;
 		$this->prefs['anteup_currency']['writeParms']['optArray'] = $this->currency;
 
+
 		// Set date formats
 		$this->dateformat = array(
 			'short' 	=> LAN_ANTEUP_PREFS_12_C, 
@@ -353,6 +376,7 @@ class anteup_ipn_ui extends e_admin_ui
 		);
 
 		$this->prefs['anteup_dateformat']['writeParms'] = $this->dateformat;
+
 
 		// Set donateimage 
 		$this->donateImage[e107::pref('anteup', 'anteup_button')] = e107::pref('anteup', 'anteup_button');
@@ -372,6 +396,13 @@ class anteup_ipn_ui extends e_admin_ui
 
 	public function beforeCreate($new_data, $old_data)
 	{
+		// Set default currency id
+		if(empty($new_data['mc_currency']))
+		{
+			$defaultcurrency 			= e107::getPlugPref('anteup', 'anteup_currency');
+			$new_data['mc_currency'] 	= $defaultcurrency;
+		}
+
 		return $new_data;
 	}
 
@@ -385,6 +416,13 @@ class anteup_ipn_ui extends e_admin_ui
 
 	public function beforeUpdate($new_data, $old_data, $id)
 	{
+		// Set default currency id
+		if(empty($new_data['mc_currency']))
+		{
+			$defaultcurrency 			= e107::getPlugPref('anteup', 'anteup_currency');
+			$new_data['mc_currency'] 	= $defaultcurrency;
+		}
+
 		return $new_data;
 	}
 
