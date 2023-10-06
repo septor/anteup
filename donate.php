@@ -17,9 +17,10 @@ require_once(e_PLUGIN."anteup/_class.php");
 $pref = e107::pref('anteup');
 $mes = e107::getMessage();
 
+$sandbox_mode = false; 
+
 // Check for sandbox mode 
-$sandbox = e107::pref('anteup', 'anteup_sandbox'); 
-if(vartrue($sandbox))
+if(e107::getPlugPref('anteup', 'anteup_sandbox'))
 {
 	$sandbox_mode = true; 
 	$mes->addWarning(LAN_ANTEUP_SANDBOX_ON);
