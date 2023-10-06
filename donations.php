@@ -62,6 +62,8 @@ if(check_class($pref['anteup_pageviewclass']))
 	else
 	{
 		$endDate = time();
+		$startDate = '';
+		$campaign = '';
 	}
 
 	//print_a($where_query);
