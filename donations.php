@@ -22,17 +22,6 @@ $mes = e107::getMessage();
 
 if(check_class($pref['anteup_pageviewclass']))
 {
-	if(isset($_POST['filterDates']))
-	{
-		$startDate 	= (int) $_POST['startDate'];
-		$endDate 	= (int) $_POST['endDate'];
-	}
-	else
-	{
-		$startDate 	= $pref['anteup_lastdue'];
-		$endDate 	= $pref['anteup_due'];
-	}
-
 	$sql = e107::getDb();
 	$tp = e107::getParser();
 	$sc = e107::getScBatch('anteup', true);
@@ -40,11 +29,48 @@ if(check_class($pref['anteup_pageviewclass']))
 	$template = e107::getTemplate('anteup');
 	$template = array_change_key_case($template);
 
-	$sc->setVars(array($startDate, $endDate));
-	$text = $tp->parseTemplate($template['donations']['filter'], false, $sc);
+	// Check if filter has been set 
+	$where_query = "payment_status = 'COMPLETED'";
 
+	if(isset($_POST['filterDonations']))
+	{
+		if(isset($_POST['campaign']))
+		{
+			$campaign = (int) $_POST['campaign'];
 
-	$entries = $sql->retrieve('anteup_ipn', '*', 'payment_date > '.$startDate.' AND payment_date < '.$endDate, true);
+			// if $campaign = 0, it means 'all campaigns' is selected. So do not filter!
+			if($campaign !== 0)
+			{
+				$where_query .= " AND campaign = ".$campaign; 
+			}
+		}
+
+		if(isset($_POST['startDate']))
+		{
+			$startDate = (int) $_POST['startDate']; 
+			$where_query .= " AND payment_date > ".$startDate;
+		}
+
+		
+		if(isset($_POST['endDate']))
+		{
+			$endDate = (int) $_POST['endDate']; 
+			$where_query .= " AND payment_date < ".$endDate;
+		}
+	}
+	// No filters set, just get everything
+	else
+	{
+		$endDate = time();
+	}
+
+	//print_a($where_query);
+	//$entries = $sql->retrieve('anteup_ipn', '*', 'payment_date > '.$startDate.' AND payment_date < '.$endDate, true);
+
+	$entries = $sql->retrieve('anteup_ipn', '*', $where_query, true);
+
+	$sc->setVars(array($startDate, $endDate, $campaign));
+	$text = $tp->parseTemplate($template['donations']['filter'], false, $sc); // TODO also add campaign filter?
 	
 	if($entries)
 	{

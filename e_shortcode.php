@@ -171,15 +171,29 @@ class anteup_shortcodes extends e_shortcode
 		return "<a href='".e_PLUGIN_ABS."anteup/donate.php'><img src='".e_PLUGIN_ABS."anteup/images/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
 	}
 
-	function sc_anteup_campaignselector($parm)
+	function sc_anteup_campaignselector($parm = array())
 	{
 		$frm = e107::getForm();
+		$sql = e107::getDb(); 
 
-		$campaigns = e107::getDb()->retrieve('anteup_campaign', 'name', '', true);
+		$campaigns = array();
 
+		// Add 'All campaigns' option (id = 0) to array
+		$campaigns["0"] =  LAN_ANTEUP_ALL_CAMPAIGNS; 
+
+		// Get existing campaigns from database
+		if($sql->select('anteup_campaign'))
+		{
+			while($row = $sql->fetch())
+			{
+				$campaigns[$row['id']] = $row['name'];
+			}
+		}		
+		
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
+		$selected = (!empty($parm['selected']) ? $parm['selected'] : "");
 
-		$output = $frm->select('campaign', $campaigns, array('class', $class));
+		$output = $frm->select('campaign', $campaigns, $selected, array('class', $class));
 
 		return $output;
 	}
@@ -241,7 +255,8 @@ class anteup_shortcodes extends e_shortcode
 			<tr>
 				<td>".$frm->datepicker('startDate', $this->var[0], 'type=date&format=DD, dd MM, yyyy&size=medium')."</td>
 				<td>".$frm->datepicker('endDate', $this->var[1], 'type=date&format=DD, dd MM, yyyy&size=medium')."</td>
-				<td class='right'>".$frm->button('filterDates', 'Filter', 'submit')."</td>
+				<td>".$this->sc_anteup_campaignselector(array('selected' => $this->var[2]))."</td>
+				<td class='right'>".$frm->button('filterDonations', 'Filter', 'submit')."</td>
 			</tr>
 		</table>";
 		$output .= $frm->close();
@@ -251,12 +266,12 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_campaign_name($parm)
 	{
-		return e107::getDb()->retrieve('anteup_campaign', 'name', 'id='.$parm['campaign'].'');
+		return e107::getDb()->retrieve('anteup_campaign', 'name', 'id='.$this->var['campaign'].'');
 	}
 
 	function sc_anteup_campaign_description($parm)
 	{
-		return e107::getDb()->retrieve('anteup_campaign', 'description', 'id='.$parm['campaign'].'');
+		return e107::getDb()->retrieve('anteup_campaign', 'description', 'id='.$this->var['user_id'].'');
 	}
 
 	function sc_anteup_donation_comment($parm='')
