@@ -271,7 +271,7 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_campaign_description($parm)
 	{
-		return e107::getDb()->retrieve('anteup_campaign', 'description', 'id='.$this->var['user_id'].'');
+		return e107::getDb()->retrieve('anteup_campaign', 'description', 'id='.$this->var['campaign'].'');
 	}
 
 	function sc_anteup_donation_comment($parm='')
