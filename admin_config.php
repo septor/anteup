@@ -674,7 +674,6 @@ class anteup_campaign_ui extends e_admin_ui
 			'data' 		=> 'str',
 			'width' 	=> 'auto',
 			'inline' 	=> true,
-			'validate'	=> true,
 			'help' 		=> LAN_ANTEUP_CAMP_03_B,
 			'class' 	=> 'left',
 			'thclass' 	=> 'left',
@@ -684,7 +683,6 @@ class anteup_campaign_ui extends e_admin_ui
 			'type' 		=> 'dropdown',
 			'data' 		=> 'str',
 			'width' 	=> 'auto',
-			'validate'	=> true,
 			'inline' 	=> true,
 			'readParms' => array(
 				0 => LAN_ANTEUP_CAMP_04_B,
@@ -702,7 +700,6 @@ class anteup_campaign_ui extends e_admin_ui
 			'type' 		=> 'userclass',
 			'data' 		=> 'int',
 			'width' 	=> 'auto',
-			'validate'	=> true,
 			'inline' 	=> true,
 			'class' 	=> 'left',
 			'thclass' 	=> 'left',
