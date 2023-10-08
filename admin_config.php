@@ -436,7 +436,8 @@ class anteup_ipn_ui extends e_admin_ui
 
 	public function customPage()
 	{
-		if(file_exists('anteup_donations.csv'))
+
+		if(!file_exists('anteup_donations.csv'))
 		{
 			$sql = e107::getDb();
 			$fp = fopen('anteup_donations.csv', 'w+');
