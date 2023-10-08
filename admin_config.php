@@ -451,14 +451,14 @@ class anteup_ipn_ui extends e_admin_ui
 
 			fclose($fp);
 
-			$text = e107::getMessage()->addSuccess(LAN_ANTEUP_IPN_15);
+			e107::getMessage()->addSuccess(LAN_ANTEUP_IPN_15);
 		}
 		else
 		{
-			$text = e107::getMessage()->addError(LAN_ANTEUP_IPN_16);
+			e107::getMessage()->addError(LAN_ANTEUP_IPN_16);
 		}
 
-		return $text;
+		return e107::getMessage()->render();
 	}
 }
 
