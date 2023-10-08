@@ -72,17 +72,17 @@ if(check_class($pref['anteup_pageviewclass']))
 	$entries = $sql->retrieve('anteup_ipn', '*', $where_query, true);
 
 	$sc->setVars(array($startDate, $endDate, $campaign));
-	$text = $tp->parseTemplate($template['donations']['filter'], false, $sc); // TODO also add campaign filter?
+	$text = $tp->parseTemplate($template['donations']['filter'], true, $sc); // TODO also add campaign filter?
 	
 	if($entries)
 	{
-		$text .= $tp->parseTemplate($template['donations']['start'], false, $sc);
+		$text .= $tp->parseTemplate($template['donations']['start'], true, $sc);
 		foreach($entries as $entry)
 		{
 			$sc->setVars($entry);
-			$text .= $tp->parseTemplate($template['donations']['entry'], false, $sc);
+			$text .= $tp->parseTemplate($template['donations']['entry'], true, $sc);
 		}
-		$text .= $tp->parseTemplate($template['donations']['end'], false, $sc);
+		$text .= $tp->parseTemplate($template['donations']['end'], true, $sc);
 	}
 	else
 	{

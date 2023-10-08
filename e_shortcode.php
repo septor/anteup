@@ -12,7 +12,6 @@ if (!defined('e107_INIT')) { exit; }
 
 /**
 * Class anteup_shortcodes
- * @question do these shortcodes need to be available outside of the plugin and its menu?
  */
 
 class anteup_shortcodes extends e_shortcode
@@ -24,19 +23,42 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_currency($parm)
 	{
-		$currency = e107::getDb()->retrieve('anteup_currency',  '*', 'id = '.e107::pref('anteup', 'anteup_currency'));
+		$currency = e107::getDb()->retrieve('anteup_currency',  '*', 'id = '.e107::getPlugPref('anteup', 'anteup_currency'));
 
 		return (isset($parm['code']) ? $currency['code'] : $currency['symbol']);
 	}
 
 	function sc_anteup_goal($parm)
 	{
+		// Campaign id can be set through shortcode vars (e.g. used in menu) being either, or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
+		{
+			$campaign_id = $this->var['id'];
+		}
 
-		$preGoal = (isset($parm['campaign']) ? e107::getDb()->retrieve('anteup_campaign', 'goal_amount', 'id='.$parm['campaign']) : '0');
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
+
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
+
+
+
+		$preGoal = e107::getDb()->retrieve('anteup_campaign', 'goal_amount', 'id='.$campaign_id); 
 
 		if($preGoal != "0")
 		{
-			$goal = (isset($parm['format']) ? format_currency($preGoal, e107::pref('anteup', 'anteup_currency')) : $preGoal);
+			$goal = (isset($parm['format']) ? format_currency($preGoal, e107::getPlugPref('anteup', 'anteup_currency')) : $preGoal);
 		}
 		else
 		{
@@ -48,26 +70,72 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_goaldate($parm)
 	{
-		$duration = (isset($parm['campaign']) ? e107::getDb()->retrieve('anteup_campaign', 'goal_date', 'id='.$parm['campaign']) : 'unending');
-
-		if($duration != 'unending')
+		// Campaign id can be set through shortcode vars (e.g. used in menu), or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
 		{
-			$output = e107::getDate()->convert_date($duration, e107::pref('anteup', 'anteup_dateformat'));
+			$campaign_id = $this->var['id'];
+		}
+
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
+
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
+		
+		$goaldate = e107::getDb()->retrieve('anteup_campaign', 'goal_date', 'id='.$campaign_id); 
+
+		if(!empty($goaldate))
+		{
+			$output = e107::getDate()->convert_date($goaldate, e107::getPlugPref('anteup', 'anteup_dateformat'));
 		}
 		else
 		{
-			$output = "No End Date"; // TODO/WARNING: DO NOT LAN --  display goal_amount instead
+			$output = "No End Date"; // TODO/WARNING: DO NOT LAN --  display goal_amount instead 
 		}
 
 		return $output;
 	}
 
-	function sc_anteup_remaining($parm)
+	function sc_anteup_remaining($parm = array())
 	{
-		$pref = e107::pref('anteup');
-		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
-		$current = get_info("current", $campaign);
-		$goal = (int) e107::getDb()->retrieve("anteup_campaign", "goal_amount", "id='".$campaign."'");
+		$pref 		= e107::getPlugPref('anteup');
+		$campaign 	= (isset($parm['campaign']) ? $parm['campaign'] : 1);
+		
+		// Campaign id can be set through shortcode vars (e.g. used in menu), or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
+		{
+			$campaign_id = $this->var['id'];
+		}
+
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
+
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
+
+
+		$current = get_info("current", $campaign_id);
+		$goal = (int) e107::getDb()->retrieve("anteup_campaign", "goal_amount", "id='".$campaign_id."'");
 
 		if($goal != "0")
 		{
@@ -78,7 +146,7 @@ class anteup_shortcodes extends e_shortcode
 		{
 			// The goal is set to 'unlimited' so there is no true remaining value.
 			// ENHANCEMENT: Possibly output text to indicate this?
-			$output = "";
+			$output = "Unlimited";
 		}
 
 		return $output;
@@ -86,48 +154,141 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_current($parm)
 	{
-		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
-		return (isset($parm['format']) ? format_currency(get_info("current", $campaign), e107::pref('anteup', 'anteup_currency')) : get_info("current", $campaign));
+		// Campaign id can be set through shortcode vars (e.g. used in menu), or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
+		{
+			$campaign_id = $this->var['id'];
+		}
+
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
+
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
+		return (isset($parm['format']) ? format_currency(get_info("current", $campaign_id), e107::getPlugPref('anteup', 'anteup_currency')) : get_info("current", $campaign_id));
 	}
 
 	function sc_anteup_total($parm)
 	{
-		$campaign = (isset($parm['campaign']) ? $parm['campaign'] : 1);
-		return (isset($parm['format']) ? format_currency(get_info("total", $campaign), e107::pref('anteup', 'anteup_currency')) : get_info("total", $campaign));
+		// Campaign id can be set through shortcode vars (e.g. used in menu), or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
+		{
+			$campaign_id = $this->var['id'];
+		}
+
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
+
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
+		return (isset($parm['format']) ? format_currency(get_info("total", $campaign_id), e107::getPlugPref('anteup', 'anteup_currency')) : get_info("total", $campaign_id));
 	}
 	function sc_anteup_percent($parm)
 	{
-		$pref = e107::pref('anteup');
-		$current = get_info("current");
+		$pref 		= e107::PlugPref('anteup');
+		$current 	= get_info("current");
+
 		$goal =  (!empty($pref['anteup_goal']) ? $pref['anteup_goal'] : 0);
 		$output = round(($current / $goal) * 100, 0);
 
 		return (isset($parm['format']) ? format_currency($output, $pref['anteup_currency']) : $output);
 	}
+
 	function sc_anteup_bar($parm='')
 	{
-		$goal = e107::pref('anteup', 'anteup_goal'); // fix for PHP < 5.5
-		$goal = (!empty($goal) ? $goal : 0);
-		$current = get_info("current");
-		$percent = round(($current / $goal) * 100, 0);
+		// Campaign id can be set through shortcode vars (e.g. used in menu), or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
+		{
+			$campaign_id = $this->var['id'];
+		}
 
-		// e107::getForm()->progressBar(); // @todo
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
 
-		return "<div class='progress'>\n\t<div class='progress-bar' role='progressbar' aria-valuenow='".$percent."' aria-valuemin='0' aria-valuemax='100' style='width:".$percent."%'>\n\t\t<span class='sr-only'>".$percent."% donated</span>\n\t</div>\n</div>";
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
+		$goal = e107::getDb()->retrieve('anteup_campaign', 'goal_amount', 'id='.$campaign_id); 
+		$current = get_info("current", $campaign_id);
+		
+		if($goal == "0")
+		{
+			$percent = 100;
+		}
+		else
+		{
+			$percent = round(($current / $goal) * 100, 0);
+		}
+		
+		$class = (!empty($parm['class'])) ? $parm['class'] : 'img-responsive';
+
+		return e107::getForm()->progressBar("anteup_".$campaign_id, $percent, array('label' => $percent.LAN_ANTEUP_MENU_06, 'class' => $class)); 
+
+		//return "<div class='progress'>\n\t<div class='progress-bar' role='progressbar' aria-valuenow='".$percent."' aria-valuemin='0' aria-valuemax='100' style='width:".$percent."%'>\n\t\t<span class='sr-only'>".$percent."% donated</span>\n\t</div>\n</div>";
 	}
 
-	function sc_anteup_mostrecent($parm='')
+	function sc_anteup_mostrecent($parm = array())
 	{
+		// Campaign id can be set through shortcode vars (e.g. used in menu), or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
+		{
+			$campaign_id = $this->var['id'];
+		}
+
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
+
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
 		$amount = (isset($parm['amount'])) ? (int) $parm['amount'] : 5;
 
-		$recents = e107::getDb()->retrieve('anteup_ipn', 'user_id', 'ORDER BY payment_date DESC LIMIT 0,'.$amount.'', true);
+		$recents = e107::getDb()->retrieve('anteup_ipn', 'user_id', "campaign = ".$campaign_id." ORDER BY payment_date DESC LIMIT 0,".$amount."", true);
 
 		if($recents)
 		{
 			$donatorsArray = array();
 			foreach($recents as $recent)
 			{
-				if($recent['user_id'] == 0)
+				if($recent['user_id'] == 0 || empty($recent['user_id']))
 				{
 					$donatorsArray[] = LAN_ANONYMOUS;
 				}
@@ -161,13 +322,13 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_menutext($parm='')
 	{
-		$text = e107::pref('anteup', 'anteup_menutext');
+		$text = e107::getPlugPref('anteup', 'anteup_menutext');
 		return e107::getParser()->toHtml($text, true);
 	}
 
 	function sc_anteup_donatelink($parm='')
 	{
-		$pref = e107::pref('anteup');
+		$pref = e107::getPlugPref('anteup');
 		return "<a href='".e_PLUGIN_ABS."anteup/donate.php'><img src='".e_PLUGIN_ABS."anteup/images/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
 	}
 
@@ -178,9 +339,12 @@ class anteup_shortcodes extends e_shortcode
 
 		$campaigns = array();
 
-		// Add 'All campaigns' option (id = 0) to array
-		$campaigns["0"] =  LAN_ANTEUP_ALL_CAMPAIGNS; 
-
+		// Add 'All campaigns' option (id = 0) to array on 'donations.php'
+		if(defset('e_PAGE') == 'donations.php') 
+		{ 
+			$campaigns["0"] = LAN_ANTEUP_ALL_CAMPAIGNS; 
+		}
+		
 		// Get existing campaigns from database
 		if($sql->select('anteup_campaign'))
 		{
@@ -199,11 +363,12 @@ class anteup_shortcodes extends e_shortcode
 	}
 
 
-	function sc_anteup_currencyselector($parm)
+	function sc_anteup_currencyselector($parm = array())
 	{
 		$sql = e107::getDb();
+
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
-		$defaultCode = $sql->retrieve('anteup_currency',  'code', 'id = '.e107::pref('anteup', 'anteup_currency'));
+		$defaultCode = $sql->retrieve('anteup_currency',  'code', 'id = '.e107::getPlugPref('anteup', 'anteup_currency'));
 
 		$sql->select("anteup_currency", "*");
 		$selectArray = array();
@@ -240,7 +405,7 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_submitdonation($parm='')
 	{
-		$pref = e107::pref('anteup');
+		$pref = e107::getPlugPref('anteup');
 
 		return "<input name='submit' type='image' src='".e_PLUGIN_ABS."anteup/images/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' />";
 	}
@@ -266,12 +431,56 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_campaign_name($parm)
 	{
-		return e107::getDb()->retrieve('anteup_campaign', 'name', 'id='.$this->var['campaign'].'');
+		// Campaign id can be set through shortcode vars (e.g. used in menu), or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
+		{
+			$campaign_id = $this->var['id'];
+		}
+
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
+
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
+		return e107::getDb()->retrieve('anteup_campaign', 'name', 'id='.$campaign_id.'');
 	}
 
 	function sc_anteup_campaign_description($parm)
 	{
-		return e107::getDb()->retrieve('anteup_campaign', 'description', 'id='.$this->var['campaign'].'');
+		// Campaign id can be set through shortcode vars (e.g. used in menu), or by parameters in the shortcode e.g. {ANTEUP_CAMPAIGN_DESCRIPTION: campaign=1} on any (custom) page
+		if(isset($this->var['id']))
+		{
+			$campaign_id = $this->var['id'];
+		}
+
+		if(isset($this->var['campaign']))
+		{
+			$campaign_id = $this->var['campaign'];
+		}
+
+		if(!isset($this->var['id']) && !empty($parm['campaign']))
+		{
+			$campaign_id = $parm['campaign'];
+		}
+
+		if(!isset($campaign_id))
+		{
+			print_a("DEBUG - CAMPAIGN ID IS EMPTY?: ".$campaign_id); // TODO - make nice or remove
+		}
+
+		$description = e107::getDb()->retrieve('anteup_campaign', 'description', 'id='.$campaign_id.'');
+
+		return e107::getParser()->toHTML($description, true);
 	}
 
 	function sc_anteup_donation_comment($parm='')
@@ -286,13 +495,13 @@ class anteup_shortcodes extends e_shortcode
 			return e107::getParser()->toDate($this->var['payment_date'], 'relative');
 		}
 
-		$dateformat = e107::pref('anteup', 'anteup_dateformat');
+		$dateformat = e107::getPlugPref('anteup', 'anteup_dateformat');
 		return e107::getParser()->toDate($this->var['payment_date'], $dateformat);
 	}
 
 	function sc_anteup_donation_amount($parm='')
 	{
-		return (isset($parm['format']) ? format_currency($this->var['mc_gross'], e107::pref('anteup', 'anteup_currency')) : $this->var['mc_gross']);
+		return (isset($parm['format']) ? format_currency($this->var['mc_gross'], e107::getPlugPref('anteup', 'anteup_currency')) : $this->var['mc_gross']);
 	}
 
 	function sc_anteup_donation_txnid($parm='')
@@ -308,7 +517,7 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_donation_donator($parm='')
 	{
 		// Check if donation was done anonymously, else lookup the username of the donator
-		if($this->var['user_id'] == 0)
+		if($this->var['user_id'] == 0 || empty($this->var['user_id']))
 		{
 			return LAN_ANONYMOUS;
 		}
@@ -322,7 +531,7 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_pagetext($parm='')
 	{
-		$text = e107::pref('anteup', 'anteup_pagetext');
+		$text = e107::getPlugPref('anteup', 'anteup_pagetext');
 		return e107::getParser()->toHtml($text, true);
 	}
 }

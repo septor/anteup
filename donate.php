@@ -37,7 +37,7 @@ if(!empty($pref['anteup_paypal']) && $pref['anteup_paypal'] != "yourpaypal@email
 
 	$text = $frm->open('donate_form', 'post', $url);
 
-	$text .= $tp->parseTemplate($template['donate'], false, $sc);
+	$text .= $tp->parseTemplate($template['donate'], true, $sc);
 		
 	$text .= $frm->hidden('cmd', '_donations');
 	$text .= $frm->hidden('business', $pref['anteup_paypal']);

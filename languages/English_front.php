@@ -32,6 +32,7 @@ define("LAN_ANTEUP_MENU_02", "Status");
 define("LAN_ANTEUP_MENU_03", "Remaining");
 define("LAN_ANTEUP_MENU_04", "Most recent donator(s)");
 define("LAN_ANTEUP_MENU_05", "Unlimited");
+define("LAN_ANTEUP_MENU_06", "% donated"); // as in "50% donated"
 
 // general 
 define("LAN_ANTEUP_ALL_CAMPAIGNS", "All campaigns"); 

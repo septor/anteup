@@ -18,7 +18,7 @@ function format_currency($input, $id, $commify = true)
 	return ($curr['location'] == "back" ? $input.$curr['symbol'] : $curr['symbol'].$input);
 }
 
-function get_info($type, $campaign = '')
+function get_info($type, $campaign = 1)
 {
 	$sql = e107::getDb();
 
@@ -28,11 +28,11 @@ function get_info($type, $campaign = '')
 	$current = 0;
 	$total	 = 0;
 
-	if($campaignInfo['duration'] != 'unending' || $campaignInfo['duration'] != 'goal')
+	if($campaignInfo['goal_date'])
 	{
 		foreach($donations as $donation)
 		{
-			if($donation['payment_date'] < $campaignInfo['duration'])
+			if($donation['payment_date'] < $campaignInfo['goal_date'])
 			{
 				$current += $donation['mc_gross'];
 			}

@@ -59,9 +59,6 @@ class anteup_menu_form extends e_form
 
 		$campaigns = array();
 
-		// Add 'All campaigns' option (id = 0) to array
-		$campaigns["0"] = LAN_ANTEUP_ALL_CAMPAIGNS; 
-
 		// Get existing campaigns from database
 		if($sql->select('anteup_campaign'))
 		{
