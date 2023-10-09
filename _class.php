@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
  * AnteUp - A Donation Tracking Plugin for e107
  *

@@ -89,5 +89,3 @@ $ANTEUP_TEMPLATE['donations']['end'] = "
 		</tbody>
 	</table>
 ";
-
-?>
