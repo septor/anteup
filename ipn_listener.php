@@ -109,7 +109,7 @@ class ipn_listener
 	private function validateIPN($req = null)
 	{
 		$log = e107::getLog(); 
-		
+
 		if($this->logging)
 		{
 			$log->add('Start IPN validating', $_POST, E_LOG_INFORMATIVE, 'ANTEUP');
@@ -198,7 +198,7 @@ class ipn_listener
 			// TODO NOTIFY
 			if($this->logging)
 			{
-				$log->add('Donation not completed', $_POST, E_LOG_WARNING, 'ANTEUP');
+				$log->add('Donation not completed (payment status)', $_POST, E_LOG_WARNING, 'ANTEUP');
 			}
 			exit;
 		}
