@@ -518,7 +518,7 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_donation_amount($parm='')
 	{
-		return (isset($parm['format']) ? format_currency($this->var['mc_gross'], e107::getPlugPref('anteup', 'anteup_currency')) : $this->var['mc_gross']);
+		return (isset($parm['format']) ? format_currency($this->var['mc_gross'], $this->var['mc_currency']) : $this->var['mc_gross']);
 	}
 
 	function sc_anteup_donation_txnid($parm='')
