@@ -74,11 +74,9 @@ class anteup_ipn_ui extends e_admin_ui
 	protected $pid				= 'ipn_id';
 	protected $perPage			= 20;
 	protected $batchDelete		= true;
-	protected $listOrder		= 'ipn_id DESC';
-
 	protected $batchCopy        = true;
 	protected $batchExport      = true;
-
+	protected $listOrder		= 'ipn_id ASC';
 
 	protected $fields = array(
 		'checkboxes' =>  array(
@@ -109,6 +107,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'width' 		=> 'auto',
 			'inline' 		=> true,
 			'validate'	 	=> true,
+			'filter'		=> true,
 			'help' 			=> '',
 			'readParms' 	=> array(),
 			'writeParms' 	=> array(),
@@ -122,6 +121,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'width' 		=> 'auto',
 			'inline' 		=> true,
 			'validate'	 	=> true,
+			'filter'		=> true,
 			'help' 			=> '',
 			'readParms' 	=> array(),
 			'writeParms' 	=> array('optArray' => array
@@ -216,6 +216,7 @@ class anteup_ipn_ui extends e_admin_ui
 			'data' 			=> 'str',
 			'width' 		=> '40%',
 			'inline' 		=> true,
+			'filter'		=> true,
 			'help' 			=> '',
 			'readParms' 	=> array(),
 			'writeParms' 	=> array(),
@@ -475,7 +476,9 @@ class anteup_currency_ui extends e_admin_ui
 	protected $pid				= 'id';
 	protected $perPage			= 20;
 	protected $batchDelete		= true;
-	protected $listOrder		= 'id DESC';
+	protected $batchCopy        = true;
+	protected $batchExport      = true;
+	protected $listOrder		= 'id ASC';
 
 	protected $fields = array(
 		'checkboxes' => array(
@@ -618,7 +621,7 @@ class anteup_campaign_ui extends e_admin_ui
 	protected $batchDelete		= true;
 	protected $batchCopy        = true;
 	protected $batchExport      = true;
-	protected $listOrder		= 'id DESC';
+	protected $listOrder		= 'id ASC';
 
 	protected $fields = array(
 		'checkboxes' => array(
