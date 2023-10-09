@@ -32,7 +32,7 @@ if(!class_exists('anteup_menu'))
             $this->template = e107::getTemplate('anteup', 'anteup', 'menu'); 
         }
 
-        public function render($parm = null)
+        public function render($parm = array())
         {
             $text = '';
             $sql  = e107::getDb();
@@ -73,13 +73,17 @@ if(!class_exists('anteup_menu'))
 
 $class = new anteup_menu;
 
-if(!isset($parm))
+if(is_string($parm) && empty($parm))
 {
-    $parm = null;
+	$parm = array(); 
 }
 
 // Override campaign id based on menupref (set in menu manager), or set default to 1
-$parm['campaign'] = isset($parm['campaign']) ? (int) $parm['campaign'] : 1; 
+if(!isset($parm['campaign']))
+{
+	$parm['campaign'] = "1"; 
+}
+
 
 // Set template
 //$parm['template'] = isset($parm['template']) ? $parm['template'] : "default"; // TODO - allow multiple menu templates (e.g. a default one, and one for "unlimited" campaigns)
