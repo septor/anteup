@@ -40,8 +40,8 @@ if(!class_exists('anteup_menu'))
            	$campaigninfo 	= $sql->retrieve("anteup_campaign", "*", "id='".$parm['campaign']."'");
            	$donations 		= $sql->retrieve("anteup_ipn", "*", "payment_status='Completed' AND campaign='".$parm['campaign']."'", true);
 
-            // Check if there are donations for this campaign
-            if($donations)
+            // Check if campaign is active
+            if($campaigninfo['status'])
             {
                 // Load shortcodes
                 $sc = e107::getScBatch('anteup', TRUE);
@@ -54,16 +54,16 @@ if(!class_exists('anteup_menu'))
 
                 return $text; 
             }
-            // Query invalid or no donations to this campaign
+            // Campaign not active
             else
             {
-                $text = LAN_ANTEUP_DONATIONS_07; // TODO - add more accurate LAN (e.g. "No donations to this campaign."))
+                $text .= "Campaign not active"; // TODO LAN
+            }
 
-                // If SQL error, show to admins. 
-                if(ADMIN && $sql->getLastErrorNumber())
-                {
-                    $text = 'SQL Error #'.$sql->getLastErrorNumber().': '.$sql->getLastErrorText();
-                }
+            // If SQL error, show to admins. 
+            if(ADMIN && $sql->getLastErrorNumber())
+            {
+                $text .= 'SQL Error #'.$sql->getLastErrorNumber().': '.$sql->getLastErrorText();
             }
 
             return $text;
