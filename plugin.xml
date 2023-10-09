@@ -14,7 +14,7 @@
 		<link url="admin_config.php" description="" icon="images/icons/icon_32.png" iconSmall="images/icons/icon_16.png" icon128="images/icons/icon_128.png" primary="true">LAN_SETTINGS</link>
 	</adminLinks>
 	<siteLinks>
-		<link url="e107_plugins/anteup/donations.php" description="Donations" icon="" iconSmall="" function="">LAN_ANTEUP_DONATIONSLINK</link>
+		<link url="{e_PLUGIN}anteup/donations.php" description="Donations" icon="" iconSmall="" function="">LAN_ANTEUP_DONATIONSLINK</link>
 	</siteLinks>
 	<mediaCategories>
 		<category type="image" sef="anteup" perm="everyone" image='{e_PLUGIN}anteup/images/icons/icon_128.png'>AnteUp</category>
