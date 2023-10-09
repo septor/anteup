@@ -385,7 +385,7 @@ class anteup_shortcodes extends e_shortcode
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
 		$frm = e107::getForm();
 
-		if($parm['textbox'])
+		if(isset($parm['textbox']))
 		{
 			$output = $frm->text('amount', '5.00', array('class' => $class));
 		}

@@ -14,7 +14,7 @@ require_once(HEADERF);
 require_once(e_PLUGIN."anteup/_class.php");
 
 
-$pref = e107::pref('anteup');
+$pref = e107::getPlugPref('anteup');
 $mes = e107::getMessage();
 
 $sandbox_mode = false; 
