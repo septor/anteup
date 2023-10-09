@@ -26,11 +26,14 @@ e107::lan('anteup', false, true);
 class ipn_listener
 {
 	private $plugPrefs = null;
+	private $logging = false; 
 
 	public function __construct()
 	{
 		// Get plugin preferences.
-		$this->plugPrefs = e107::getPlugConfig('anteup')->getPref();
+		$this->plugPrefs = e107::getPlugPref('anteup');
+
+		$this->logging = (bool) $this->plugPrefs['anteup_logging'];
 
 		$ipn = $this->readIPN();
 		$valid = $this->validateIPN($ipn);
@@ -49,6 +52,13 @@ class ipn_listener
 	 */
 	private function readIPN()
 	{
+		$log = e107::getLog(); 
+
+		if($this->logging)
+		{
+			$log->add('Start readIPN', $_POST, E_LOG_INFORMATIVE, 'ANTEUP');
+		}
+
 		$raw_post_data = file_get_contents('php://input');
 		$raw_post_array = explode('&', $raw_post_data);
 
@@ -98,6 +108,13 @@ class ipn_listener
 	 */
 	private function validateIPN($req = null)
 	{
+		$log = e107::getLog(); 
+		
+		if($this->logging)
+		{
+			$log->add('Start IPN validating', $_POST, E_LOG_INFORMATIVE, 'ANTEUP');
+		}
+
 		if($req)
 		{
 			if((int) $this->plugPrefs['anteup_sandbox'] === 1)
@@ -125,9 +142,9 @@ class ipn_listener
 			// curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
 			if(!($res = curl_exec($ch)))
 			{
-				if($logging)
+				if($this->logging)
 				{
-					e107::getLog()->add('cURL error', curl_error($ch), E_LOG_WARNING, 'ANTEUP');
+					$log->add('cURL error', curl_error($ch), E_LOG_WARNING, 'ANTEUP');
 				}
 
 				curl_close($ch);
@@ -142,8 +159,13 @@ class ipn_listener
 			}
 			else
 			{
-				e107::getLog()->add('IPN not verified', "result: ".$res, E_LOG_WARNING, 'ANTEUP');
+				$log->add('IPN not verified', "result: ".$res, E_LOG_WARNING, 'ANTEUP');
 			}
+		}
+
+		if($this->logging)
+		{
+			$log->add('REQ is null?', $req, E_LOG_WARNING, 'ANTEUP');
 		}
 
 		return false;
@@ -163,9 +185,7 @@ class ipn_listener
 		$db = e107::getDb();
 		$tp = e107::getParser();
 
-		$logging = (bool) $this->plugPrefs['anteup_logging'];
-
-		if($logging)
+		if($this->logging)
 		{
 			$log->add('Start IPN processing', $_POST, E_LOG_INFORMATIVE, 'ANTEUP');
 		}
@@ -176,7 +196,7 @@ class ipn_listener
 		if(strtoupper($payment_status) != 'COMPLETED')
 		{
 			// TODO NOTIFY
-			if($logging)
+			if($this->logging)
 			{
 				$log->add('Donation not completed', $_POST, E_LOG_WARNING, 'ANTEUP');
 			}
@@ -189,7 +209,7 @@ class ipn_listener
 
 		if($exists > 0)
 		{
-			if($logging)
+			if($this->logging)
 			{
 				$log->add('Existing TXN ID', $_POST, E_LOG_WARNING, 'ANTEUP');
 			}
@@ -236,7 +256,7 @@ class ipn_listener
 			// Some error occured during the insertion process. Log it. 
 			else
 			{
-				if($logging)
+				if($this->logging)
 				{
 					$error = $db->getLastErrorText(); 
 					$log->add('SQL Insert Error', "SQL error: ".$error, E_LOG_WARNING, 'ANTEUP');
