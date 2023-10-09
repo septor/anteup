@@ -342,22 +342,39 @@ class anteup_shortcodes extends e_shortcode
 		// Add 'All campaigns' option (id = 0) to array on 'donations.php'
 		if(defset('e_PAGE') == 'donations.php') 
 		{ 
+			$formid 		= 'campaign';
 			$campaigns["0"] = LAN_ANTEUP_ALL_CAMPAIGNS; 
-		}
-		
-		// Get existing campaigns from database
-		if($sql->select('anteup_campaign'))
-		{
-			while($row = $sql->fetch())
+
+			// Get existing campaigns from database
+			if($sql->select('anteup_campaign'))
 			{
-				$campaigns[$row['id']] = $row['name'];
+				while($row = $sql->fetch())
+				{
+					$campaigns[$row['id']] = $row['name'];
+				}
+			}
+		}	
+		
+		// Change formid to item_name and use campaign name as value in selector, to allow paypal to process it. 
+		if(defset('e_PAGE') == 'donate.php') 
+		{ 
+			$formid 	= 'item_name';
+			$campaigns 	= array(); 
+
+			// Get existing campaigns from database
+			if($sql->select('anteup_campaign'))
+			{
+				while($row = $sql->fetch())
+				{
+					$campaigns[$row['name']] = $row['name']; 
+				}
 			}
 		}		
 		
 		$class = (!empty($parm['class']) ? $parm['class'] : "tbox");
 		$selected = (!empty($parm['selected']) ? $parm['selected'] : "");
 
-		$output = $frm->select('campaign', $campaigns, $selected, array('class', $class));
+		$output = $frm->select($formid, $campaigns, $selected, array('class', $class));
 
 		return $output;
 	}

@@ -223,9 +223,12 @@ class ipn_listener
 		$payment_date 	= vartrue($_POST['payment_date'], '');
 		$buyer_email    = vartrue($_POST['payer_email'], '');
 
+		$campaign_name = vartrue($_POST['item_name'], '');
+		$campaign_id   = e107::getDb()->retrieve('anteup_campaign', 'id', "name = '".$campaign_name."'");
+
 		// Process IPN
 		$data = array(
-			"campaign"    		=> $tp->toDB($_POST['campaign']),
+			"campaign"    		=> $campaign_id,
 			"payment_status"    => $tp->toDB($payment_status),
 			"mc_gross"      	=> (float) $mc_gross,
 			"mc_currency"   	=> $tp->toDB($mc_currency),
