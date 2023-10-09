@@ -322,8 +322,7 @@ class anteup_shortcodes extends e_shortcode
 
 	function sc_anteup_menutext($parm='')
 	{
-		$text = e107::getPlugPref('anteup', 'anteup_menutext');
-		return e107::getParser()->toHtml($text, true);
+		return "NO LONGER IN USE - CHANGE CAMPAIGN DESCRIPTION INSTEAD"; 
 	}
 
 	function sc_anteup_donatelink($parm='')

@@ -236,16 +236,9 @@ class anteup_ipn_ui extends e_admin_ui
 
 	protected $fieldpref = array('payment_date', 'campaign', 'user_id', 'txn_id', 'buyer_email', 'comment', 'payment_status', 'mc_gross');
 
-	protected $preftabs = array(LAN_GENERAL, "Menu", "Page");
+	protected $preftabs = array(LAN_GENERAL, "Page");
 
 	protected $prefs = array(
-		'anteup_mtitle' => array(
-			'title' => LAN_ANTEUP_PREFS_01_A,
-			'type' 	=> 'text',
-			'data' 	=> 'str',
-			'help' 	=> LAN_ANTEUP_PREFS_01_B,
-			'tab'   => 1,
-		),
 		'anteup_currency' => array(
 			'title' => LAN_ANTEUP_PREFS_02_A,
 			'type' 	=> 'dropdown',
@@ -253,32 +246,18 @@ class anteup_ipn_ui extends e_admin_ui
 			'help' 	=> LAN_ANTEUP_PREFS_02_B,
 			'tab'   => 0,
 		),
-		'anteup_menutext' => array(
-			'title' => LAN_ANTEUP_PREFS_06_A,
-			'type' 	=> 'bbarea',
-			'data' 	=> 'str',
-			'help' 	=> LAN_ANTEUP_PREFS_06_B,
-			'tab'   => 1,
-		),
 		'anteup_pagetext' => array(
 			'title' => LAN_ANTEUP_PREFS_07_A,
 			'type' 	=> 'bbarea',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_07_B,
-			'tab'   => 2,
+			'tab'   => 1,
 		),
 		'anteup_pageviewclass' => array(
 			'title' => LAN_ANTEUP_PREFS_08_A,
 			'type' 	=> 'userclass',
 			'data' 	=> 'str',
 			'help' 	=> LAN_ANTEUP_PREFS_08_B,
-			'tab'   => 2,
-		),
-		'anteup_menuviewclass' => array(
-			'title' => LAN_ANTEUP_PREFS_09_A,
-			'type' 	=> 'userclass',
-			'data' 	=> 'str',
-			'help' 	=> LAN_ANTEUP_PREFS_09_B,
 			'tab'   => 1,
 		),
 		'anteup_button' => array(

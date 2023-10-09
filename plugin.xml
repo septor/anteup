@@ -20,15 +20,12 @@
 		<category type="image" sef="anteup" perm="everyone" image='{e_PLUGIN}anteup/images/icons/icon_128.png'>AnteUp</category>
 	</mediaCategories>
 	<pluginPrefs>
-		<pref name='anteup_mtitle'>Donations</pref>
 		<pref name='anteup_currency'>20</pref>
-		<pref name='anteup_menutext'>Thanks for all your donations, we greatly appreciate it!</pref>
 		<pref name='anteup_pagetext'>Thanks for considering to send us a donation. We appreciate your contribution and will use it to better your experience on the site</pref>
 		<pref name='anteup_dateformat'>short</pref>
 		<pref name='anteup_paypal'>yourpaypal@email.com</pref>
 		<pref name='anteup_button'>btn_donate_cc_147x47.png</pref>
 		<pref name='anteup_pageviewclass'>e_UC_PUBLIC</pref>
-		<pref name='anteup_menuviewclass'>e_UC_PUBLIC</pref>
 		<pref name='anteup_sandbox'>0</pref>
 		<pref name="anteup_logging">0</pref>
 	</pluginPrefs>
