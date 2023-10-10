@@ -45,6 +45,8 @@ if(!empty($pref['anteup_paypal']) && $pref['anteup_paypal'] != "yourpaypal@email
 	$text .= $frm->hidden('return', ANTEUP_ABS.'return.php?thanks');
 	$text .= $frm->hidden('cancel_return', ANTEUP_ABS.'return.php?cancel');
 
+	//$text .= $frm->hidden('no_recurring', "0"); // TODO - this enables monthly recurring donations. Still do research if we can retrieve recurring donations as well and insert into database?
+
 	if(USER)
 	{
 		$text .= $frm->hidden('custom', USERID);
