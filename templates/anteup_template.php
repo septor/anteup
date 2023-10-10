@@ -10,26 +10,6 @@ if(!defined('e107_INIT')){ exit; }
 
 $ANTEUP_TEMPLATE = array();
 
-$ANTEUP_TEMPLATE['menu']['body'] = "
-<div style='text-align:center;'>
-	{ANTEUP_CAMPAIGN_DESCRIPTION}
-	<br><br>
-	{LAN=LAN_ANTEUP_MENU_01}: {ANTEUP_GOALDATE}<br />
-	<a href='".e_PLUGIN_ABS."anteup/donations.php'>{ANTEUP_BAR}</a>
-	{LAN=LAN_ANTEUP_MENU_02} ({ANTEUP_CURRENCY: code}): {ANTEUP_CURRENT: format}/{ANTEUP_GOAL: format}<br />
-	{LAN=LAN_ANTEUP_MENU_03}: {ANTEUP_REMAINING: format}<br />
-	{LAN=LAN_ANTEUP_DONATIONS_06}: {ANTEUP_TOTAL: format}<br />
-	<br	/>
-	{ANTEUP_DONATELINK}
-	<br /><br />
-	{LAN=LAN_ANTEUP_MENU_04}: {ANTEUP_MOSTRECENT}
-	<br /><br />
-	{ANTEUP_ADMIN}
-</div>
-";
-
-$ANTEUP_TEMPLATE['menu']['caption'] = "{ANTEUP_MENUCAPTION} - {ANTEUP_CAMPAIGN_NAME}";
-
 $ANTEUP_TEMPLATE['donate'] = "
 	{ANTEUP_PAGETEXT}
 	<br />

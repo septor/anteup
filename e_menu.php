@@ -25,6 +25,8 @@ class anteup_menu
 		$fields = array();
 		//print_a($menu);
 
+		$layouts = e107::getLayouts('anteup','anteup_menu');
+
 		$fields['caption'] 	= array(
 			'title' 		=> LAN_CAPTION, 
 			'type' 			=> 'text', 
@@ -36,6 +38,12 @@ class anteup_menu
 			'title' 		=> "Campaign", // TODO LAN
 			'type' 			=> 'method',
 			'data'			=> 'array', 
+		);
+
+		$fields['layout'] = array(
+			'title'=> LAN_TEMPLATE, 
+			'type'=>'dropdown', 
+			'writeParms' => array('optArray' => $layouts[0]),
 		);
 
         return $fields;

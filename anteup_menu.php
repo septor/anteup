@@ -25,11 +25,17 @@ if(!class_exists('anteup_menu'))
     class anteup_menu
     {
 
+        public $menuPref;
         public $template = array();
 
         function __construct()
         {
-            $this->template = e107::getTemplate('anteup', 'anteup', 'menu'); 
+            $this->menuPref = e107::getMenu()->pref();
+
+            // Set some defaults ...
+            if (empty($this->menuPref['layout'])) $this->menuPref['layout'] = 'default';
+
+            $this->template = e107::getTemplate('anteup', 'anteup_menu', $this->menuPref['layout']); 
         }
 
         public function render($parm = array())
@@ -83,10 +89,6 @@ if(!isset($parm['campaign']))
 {
 	$parm['campaign'] = "1"; 
 }
-
-
-// Set template
-//$parm['template'] = isset($parm['template']) ? $parm['template'] : "default"; // TODO - allow multiple menu templates (e.g. a default one, and one for "unlimited" campaigns)
 
 $text = $class->render($parm);
 
