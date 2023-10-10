@@ -15,7 +15,7 @@ $ANTEUP_MENU_TEMPLATE['default']['body'] = "
 	{ANTEUP_CAMPAIGN_DESCRIPTION}
 	<br><br>
 	{LAN=LAN_ANTEUP_MENU_01}: {ANTEUP_GOALDATE}<br />
-	<a href='".e_PLUGIN_ABS."anteup/donations.php'>{ANTEUP_BAR}</a>
+	<a href='{ANTEUP_DONATIONSLINK}'>{ANTEUP_BAR}</a>
 	{LAN=LAN_ANTEUP_MENU_02} ({ANTEUP_CURRENCY: code}): {ANTEUP_CURRENT: format}/{ANTEUP_GOAL: format}<br />
 	{LAN=LAN_ANTEUP_MENU_03}: {ANTEUP_REMAINING: format}<br />
 	{LAN=LAN_ANTEUP_DONATIONS_06}: {ANTEUP_TOTAL: format}<br />

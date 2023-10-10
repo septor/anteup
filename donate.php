@@ -6,7 +6,12 @@
 * For additional information refer to the README.mkd file.
 *
 */
-require_once("../../class2.php");
+
+if(!defined('e107_INIT'))
+{
+	require_once(__DIR__.'/../../class2.php');
+}
+
 e107::lan('anteup');
 define('PAGE_NAME', LAN_ANTEUP_DONATE_TITLE);
 

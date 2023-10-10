@@ -328,8 +328,17 @@ class anteup_shortcodes extends e_shortcode
 	function sc_anteup_donatelink($parm='')
 	{
 		$pref = e107::getPlugPref('anteup');
-		return "<a href='".e_PLUGIN_ABS."anteup/donate.php'><img src='".e_PLUGIN_ABS."anteup/images/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
+		$url = e107::url('anteup', 'donate');
+
+		return "<a href='".$url."'><img src='".e_PLUGIN_ABS."anteup/images/".$pref['anteup_button']."' title='".$pref['anteup_button']."' style='border:none' /></a>";
 	}
+
+	function sc_anteup_donationslink($parm='')
+	{
+		return e107::url('anteup', 'donations');
+		//return e107::url('anteup', 'donations', '', 'full');
+	}
+
 
 	function sc_anteup_campaignselector($parm = array())
 	{
