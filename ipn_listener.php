@@ -175,8 +175,6 @@ class ipn_listener
 	 * Process IPN data:
 	 * - Done: Check whether the payment_status is Completed.
 	 * - Done: Check that txn_id has not been previously processed.
-	 * - Done: Check that receiver_email is your Primary PayPal email.
-	 * - Done: Check that the "custom" value is a valid menu item.
 	 * - Done: Process the notification.
 	 */
 	private function processIPN()
