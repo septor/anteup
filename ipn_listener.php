@@ -221,9 +221,11 @@ class ipn_listener
 		$payment_date 	= vartrue($_POST['payment_date'], '');
 		$buyer_email    = vartrue($_POST['payer_email'], '');
 
+		// Convert campaign name back to campaign id
 		$campaign_name = vartrue($_POST['item_name'], '');
 		$campaign_id   = e107::getDb()->retrieve('anteup_campaign', 'id', "name = '".$campaign_name."'");
 
+		// Convert currency code to currency id
 		$currency_id = e107::getDb()->retrieve('anteup_currency', 'id', "code = '".$mc_currency."'");
 
 		// Process IPN

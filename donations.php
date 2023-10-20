@@ -67,13 +67,10 @@ if(check_class($pref['anteup_pageviewclass']))
 		$campaign = '';
 	}
 
-	//print_a($where_query);
-	//$entries = $sql->retrieve('anteup_ipn', '*', 'payment_date > '.$startDate.' AND payment_date < '.$endDate, true);
-
 	$entries = $sql->retrieve('anteup_ipn', '*', $where_query, true);
 
 	$sc->setVars(array($startDate, $endDate, $campaign));
-	$text = $tp->parseTemplate($template['donations']['filter'], true, $sc); // TODO also add campaign filter?
+	$text = $tp->parseTemplate($template['donations']['filter'], true, $sc); 
 	
 	if($entries)
 	{
